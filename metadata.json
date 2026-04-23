@@ -1,0 +1,6 @@
+{
+  "name": "Nexus Flight Analytics",
+  "description": "High-end visual analytics platform for nycflights13.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

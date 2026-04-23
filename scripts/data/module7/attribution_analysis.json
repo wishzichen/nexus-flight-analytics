@@ -1,0 +1,504 @@
+{
+  "ageAnalysis": [
+    {
+      "plane_age_group": "新飞机 (0-5年)",
+      "flightCount": 46022,
+      "avgDepDelay": 11.8,
+      "avgArrDelay": 4.9,
+      "severeDelayRate": 7.4,
+      "onTimeRate": 79.2,
+      "avgPlaneAge": 3.2
+    },
+    {
+      "plane_age_group": "中年飞机 (5-10年)",
+      "flightCount": 72328,
+      "avgDepDelay": 14.9,
+      "avgArrDelay": 9.4,
+      "severeDelayRate": 9.6,
+      "onTimeRate": 75.7,
+      "avgPlaneAge": 8
+    },
+    {
+      "plane_age_group": "老飞机 (10-20年)",
+      "flightCount": 122659,
+      "avgDepDelay": 13.4,
+      "avgArrDelay": 7.3,
+      "severeDelayRate": 8.2,
+      "onTimeRate": 77.6,
+      "avgPlaneAge": 13.4
+    },
+    {
+      "plane_age_group": "超龄飞机 (>20年)",
+      "flightCount": 33787,
+      "avgDepDelay": 10.6,
+      "avgArrDelay": 3.9,
+      "severeDelayRate": 6.8,
+      "onTimeRate": 82.1,
+      "avgPlaneAge": 24.1
+    }
+  ],
+  "weatherAnalysis": [
+    {
+      "weather_condition": "降水",
+      "flightCount": 14759,
+      "avgDepDelay": 30.5,
+      "avgArrDelay": 30.8,
+      "severeDelayRate": 18.2,
+      "onTimeRate": 61.3
+    },
+    {
+      "weather_condition": "低能见度",
+      "flightCount": 12001,
+      "avgDepDelay": 26.7,
+      "avgArrDelay": 30.7,
+      "severeDelayRate": 15.9,
+      "onTimeRate": 65.7
+    },
+    {
+      "weather_condition": "大风",
+      "flightCount": 12213,
+      "avgDepDelay": 15.3,
+      "avgArrDelay": 11.6,
+      "severeDelayRate": 9.4,
+      "onTimeRate": 74.8
+    },
+    {
+      "weather_condition": "数据缺失",
+      "flightCount": 1606,
+      "avgDepDelay": 13,
+      "avgArrDelay": 8.9,
+      "severeDelayRate": 8.3,
+      "onTimeRate": 77.2
+    },
+    {
+      "weather_condition": "正常",
+      "flightCount": 287942,
+      "avgDepDelay": 11,
+      "avgArrDelay": 4.5,
+      "severeDelayRate": 7.2,
+      "onTimeRate": 80
+    }
+  ],
+  "correlationMatrix": [
+    {
+      "variable": "湿度",
+      "correlation": 0.118
+    },
+    {
+      "variable": "气压",
+      "correlation": -0.114
+    },
+    {
+      "variable": "能见度",
+      "correlation": -0.094
+    },
+    {
+      "variable": "降水",
+      "correlation": 0.09
+    },
+    {
+      "variable": "温度",
+      "correlation": 0.062
+    },
+    {
+      "variable": "风速",
+      "correlation": 0.047
+    },
+    {
+      "variable": "阵风",
+      "correlation": 0.041
+    }
+  ],
+  "interactionAnalysis": [
+    {
+      "plane_age_group": "中年飞机 (5-10年)",
+      "weather_condition": "低能见度",
+      "flightCount": 2837,
+      "avgDepDelay": 31,
+      "severeDelayRate": 19.1
+    },
+    {
+      "plane_age_group": "中年飞机 (5-10年)",
+      "weather_condition": "大风",
+      "flightCount": 2855,
+      "avgDepDelay": 18.6,
+      "severeDelayRate": 12
+    },
+    {
+      "plane_age_group": "中年飞机 (5-10年)",
+      "weather_condition": "数据缺失",
+      "flightCount": 393,
+      "avgDepDelay": 16,
+      "severeDelayRate": 10.5
+    },
+    {
+      "plane_age_group": "中年飞机 (5-10年)",
+      "weather_condition": "正常",
+      "flightCount": 64146,
+      "avgDepDelay": 13.1,
+      "severeDelayRate": 8.5
+    },
+    {
+      "plane_age_group": "中年飞机 (5-10年)",
+      "weather_condition": "降水",
+      "flightCount": 3416,
+      "avgDepDelay": 34.5,
+      "severeDelayRate": 21.1
+    },
+    {
+      "plane_age_group": "新飞机 (0-5年)",
+      "weather_condition": "低能见度",
+      "flightCount": 1728,
+      "avgDepDelay": 26.2,
+      "severeDelayRate": 15.6
+    },
+    {
+      "plane_age_group": "新飞机 (0-5年)",
+      "weather_condition": "大风",
+      "flightCount": 1682,
+      "avgDepDelay": 15.7,
+      "severeDelayRate": 9.7
+    },
+    {
+      "plane_age_group": "新飞机 (0-5年)",
+      "weather_condition": "数据缺失",
+      "flightCount": 258,
+      "avgDepDelay": 11.7,
+      "severeDelayRate": 8.1
+    },
+    {
+      "plane_age_group": "新飞机 (0-5年)",
+      "weather_condition": "正常",
+      "flightCount": 40484,
+      "avgDepDelay": 10.1,
+      "severeDelayRate": 6.4
+    },
+    {
+      "plane_age_group": "新飞机 (0-5年)",
+      "weather_condition": "降水",
+      "flightCount": 2083,
+      "avgDepDelay": 29.9,
+      "severeDelayRate": 18.2
+    },
+    {
+      "plane_age_group": "未知",
+      "weather_condition": "低能见度",
+      "flightCount": 2502,
+      "avgDepDelay": 23.3,
+      "severeDelayRate": 14.1
+    },
+    {
+      "plane_age_group": "未知",
+      "weather_condition": "大风",
+      "flightCount": 2508,
+      "avgDepDelay": 11.3,
+      "severeDelayRate": 7.4
+    },
+    {
+      "plane_age_group": "未知",
+      "weather_condition": "数据缺失",
+      "flightCount": 250,
+      "avgDepDelay": 8.6,
+      "severeDelayRate": 6.4
+    },
+    {
+      "plane_age_group": "未知",
+      "weather_condition": "正常",
+      "flightCount": 49799,
+      "avgDepDelay": 8.5,
+      "severeDelayRate": 6.4
+    },
+    {
+      "plane_age_group": "未知",
+      "weather_condition": "降水",
+      "flightCount": 2853,
+      "avgDepDelay": 25.9,
+      "severeDelayRate": 16.3
+    },
+    {
+      "plane_age_group": "老飞机 (10-20年)",
+      "weather_condition": "低能见度",
+      "flightCount": 4748,
+      "avgDepDelay": 26,
+      "severeDelayRate": 15.1
+    },
+    {
+      "plane_age_group": "老飞机 (10-20年)",
+      "weather_condition": "大风",
+      "flightCount": 4587,
+      "avgDepDelay": 15.7,
+      "severeDelayRate": 9.4
+    },
+    {
+      "plane_age_group": "老飞机 (10-20年)",
+      "weather_condition": "数据缺失",
+      "flightCount": 593,
+      "avgDepDelay": 15.1,
+      "severeDelayRate": 8.7
+    },
+    {
+      "plane_age_group": "老飞机 (10-20年)",
+      "weather_condition": "正常",
+      "flightCount": 109019,
+      "avgDepDelay": 11.8,
+      "severeDelayRate": 7.4
+    },
+    {
+      "plane_age_group": "老飞机 (10-20年)",
+      "weather_condition": "降水",
+      "flightCount": 5878,
+      "avgDepDelay": 30.9,
+      "severeDelayRate": 18.2
+    },
+    {
+      "plane_age_group": "超龄飞机 (>20年)",
+      "weather_condition": "低能见度",
+      "flightCount": 1309,
+      "avgDepDelay": 26.2,
+      "severeDelayRate": 15.4
+    },
+    {
+      "plane_age_group": "超龄飞机 (>20年)",
+      "weather_condition": "大风",
+      "flightCount": 1344,
+      "avgDepDelay": 12.9,
+      "severeDelayRate": 6.9
+    },
+    {
+      "plane_age_group": "超龄飞机 (>20年)",
+      "weather_condition": "数据缺失",
+      "flightCount": 140,
+      "avgDepDelay": 6.1,
+      "severeDelayRate": 4.3
+    },
+    {
+      "plane_age_group": "超龄飞机 (>20年)",
+      "weather_condition": "正常",
+      "flightCount": 29827,
+      "avgDepDelay": 9,
+      "severeDelayRate": 6
+    },
+    {
+      "plane_age_group": "超龄飞机 (>20年)",
+      "weather_condition": "降水",
+      "flightCount": 1537,
+      "avgDepDelay": 28.7,
+      "severeDelayRate": 15.5
+    }
+  ],
+  "ageWindAnalysis": [
+    {
+      "age_group": "0-5年",
+      "wind_group": "中风",
+      "flightCount": 2678,
+      "avgDepDelay": 18.5,
+      "avgWindSpeed": 23.2
+    },
+    {
+      "age_group": "0-5年",
+      "wind_group": "强风",
+      "flightCount": 122,
+      "avgDepDelay": 34.1,
+      "avgWindSpeed": 33.6
+    },
+    {
+      "age_group": "0-5年",
+      "wind_group": "微风",
+      "flightCount": 20245,
+      "avgDepDelay": 9.8,
+      "avgWindSpeed": 6.3
+    },
+    {
+      "age_group": "0-5年",
+      "wind_group": "轻风",
+      "flightCount": 22719,
+      "avgDepDelay": 12.7,
+      "avgWindSpeed": 13.9
+    },
+    {
+      "age_group": "10-20年",
+      "wind_group": "中风",
+      "flightCount": 6513,
+      "avgDepDelay": 15.9,
+      "avgWindSpeed": 23.2
+    },
+    {
+      "age_group": "10-20年",
+      "wind_group": "强风",
+      "flightCount": 291,
+      "avgDepDelay": 21.5,
+      "avgWindSpeed": 33.6
+    },
+    {
+      "age_group": "10-20年",
+      "wind_group": "微风",
+      "flightCount": 57281,
+      "avgDepDelay": 12,
+      "avgWindSpeed": 6.2
+    },
+    {
+      "age_group": "10-20年",
+      "wind_group": "轻风",
+      "flightCount": 57989,
+      "avgDepDelay": 14.4,
+      "avgWindSpeed": 13.7
+    },
+    {
+      "age_group": "5-10年",
+      "wind_group": "中风",
+      "flightCount": 4440,
+      "avgDepDelay": 19.4,
+      "avgWindSpeed": 23.2
+    },
+    {
+      "age_group": "5-10年",
+      "wind_group": "强风",
+      "flightCount": 223,
+      "avgDepDelay": 40.6,
+      "avgWindSpeed": 33.5
+    },
+    {
+      "age_group": "5-10年",
+      "wind_group": "微风",
+      "flightCount": 31611,
+      "avgDepDelay": 13,
+      "avgWindSpeed": 6.3
+    },
+    {
+      "age_group": "5-10年",
+      "wind_group": "轻风",
+      "flightCount": 35663,
+      "avgDepDelay": 15.8,
+      "avgWindSpeed": 13.8
+    },
+    {
+      "age_group": ">20年",
+      "wind_group": "中风",
+      "flightCount": 2061,
+      "avgDepDelay": 13,
+      "avgWindSpeed": 23.2
+    },
+    {
+      "age_group": ">20年",
+      "wind_group": "强风",
+      "flightCount": 96,
+      "avgDepDelay": 31.8,
+      "avgWindSpeed": 33.1
+    },
+    {
+      "age_group": ">20年",
+      "wind_group": "微风",
+      "flightCount": 14446,
+      "avgDepDelay": 8.8,
+      "avgWindSpeed": 6.5
+    },
+    {
+      "age_group": ">20年",
+      "wind_group": "轻风",
+      "flightCount": 17046,
+      "avgDepDelay": 11.8,
+      "avgWindSpeed": 13.9
+    }
+  ],
+  "featureImportance": [
+    {
+      "feature": "湿度",
+      "importance": 11.8
+    },
+    {
+      "feature": "气压",
+      "importance": 11.4
+    },
+    {
+      "feature": "能见度",
+      "importance": 9.4
+    },
+    {
+      "feature": "降水",
+      "importance": 9
+    },
+    {
+      "feature": "温度",
+      "importance": 6.2
+    },
+    {
+      "feature": "风速",
+      "importance": 4.7
+    },
+    {
+      "feature": "机龄",
+      "importance": 1.5
+    }
+  ],
+  "weatherBoxplotStats": [
+    {
+      "weather_condition": "低能见度",
+      "min": -20,
+      "q1": -4,
+      "median": 1,
+      "q3": 32,
+      "max": 853,
+      "mean": 26.7,
+      "count": 13124
+    },
+    {
+      "weather_condition": "大风",
+      "min": -32,
+      "q1": -5,
+      "median": -1,
+      "q3": 16,
+      "max": 960,
+      "mean": 15.3,
+      "count": 12976
+    },
+    {
+      "weather_condition": "正常",
+      "min": -43,
+      "q1": -5,
+      "median": -2,
+      "q3": 9,
+      "max": 1301,
+      "mean": 11,
+      "count": 293275
+    },
+    {
+      "weather_condition": "降水",
+      "min": -30,
+      "q1": -3,
+      "median": 4,
+      "q3": 41,
+      "max": 800,
+      "mean": 30.5,
+      "count": 15767
+    }
+  ],
+  "radarData": [
+    {
+      "factor": "机龄",
+      "value": 1.5
+    },
+    {
+      "factor": "天气",
+      "value": 14.2
+    },
+    {
+      "factor": "时段",
+      "value": 35
+    },
+    {
+      "factor": "航司",
+      "value": 30
+    },
+    {
+      "factor": "航线",
+      "value": 25
+    }
+  ],
+  "conclusions": {
+    "ageCorrelation": -0.015,
+    "topWeatherFactor": "湿度",
+    "topWeatherCorrelation": 0.118,
+    "oldPlaneDelayIncrease": -1.2,
+    "badWeatherDelayIncrease": 15.7
+  }
+}

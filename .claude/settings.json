@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./node_modules/.bin/tsc --noEmit)",
+      "Bash(rm -rf node_modules package-lock.json)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(Rscript run_all_analyses.R)",
+      "Bash(cmd /c \"cd /d E:\\\\TJUTCM\\\\Activities\\\\第二届数据分析大赛\\\\nexus-flight-analytics\\\\scripts && Rscript run_all_analyses.R\")",
+      "Bash(powershell -Command \"cd 'E:\\\\TJUTCM\\\\Activities\\\\第二届数据分析大赛\\\\nexus-flight-analytics\\\\scripts'; Rscript run_all_analyses.R\")",
+      "Bash(powershell -Command \"Get-ChildItem 'C:\\\\Program Files\\\\R' -ErrorAction SilentlyContinue | Select-Object Name\")",
+      "Bash(powershell -Command \"where.exe Rscript\")",
+      "Bash(powershell -Command \"Get-Process -Name node -ErrorAction SilentlyContinue | Select-Object Id, ProcessName\")",
+      "Bash(powershell -Command \"netstat -ano | Select-String ':3000'\")",
+      "Read(//e/R-4.5.2/bin/x64/**)",
+      "Bash(\"E:/R-4.5.2/bin/x64/R.exe\" --version)",
+      "Bash(export PATH=\"E:/R-4.5.2/bin/x64:$PATH\")",
+      "Bash(\"E:/R-4.5.2/bin/x64/Rscript.exe\" -e \"cat\\('R is working!\\\\n'\\)\")",
+      "Bash(\"E:/R-4.5.2/bin/x64/Rscript.exe\" -e \"packages <- c\\('nycflights13', 'jsonlite', 'dplyr', 'lubridate', 'tidyr'\\); installed <- packages %in% rownames\\(installed.packages\\(\\)\\); cat\\('Missing packages:', paste\\(packages[!installed], collapse=', '\\), '\\\\n'\\)\")",
+      "Bash(\"E:/R-4.5.2/bin/x64/Rscript.exe\" run_all_analyses.R)",
+      "Bash(\"E:/R-4.5.2/bin/x64/Rscript.exe\" scripts/05_module4_recovery.R)",
+      "Bash(curl -s http://localhost:3002/api/module1/summary)",
+      "Bash(curl -s http://localhost:3000/api/module1/summary)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //F //PID 29440)",
+      "Bash(taskkill //F //PID 5132)"
+    ]
+  }
+}

@@ -1,0 +1,1621 @@
+{
+  "summary": {
+    "totalFlights": 336776,
+    "avgDepDelay": 12.6,
+    "avgArrDelay": 6.9,
+    "medianDepDelay": -2,
+    "medianArrDelay": -5,
+    "depOnTimeRate": 78.5,
+    "arrOnTimeRate": 76.3,
+    "severeDelayRate": 8.1,
+    "extremeDelayRate": 3,
+    "avgAirTime": 150.7,
+    "avgDistance": 1039.9,
+    "avgSpeed": 394.3
+  },
+  "hourlyTrend": [
+    {
+      "hour": 5,
+      "flightCount": 1944,
+      "avgDepDelay": 0.7,
+      "avgArrDelay": -4.8,
+      "maxDepDelay": 201,
+      "severeDelayCount": 28,
+      "severeDelayRate": 1.4
+    },
+    {
+      "hour": 6,
+      "flightCount": 25526,
+      "avgDepDelay": 1.6,
+      "avgArrDelay": -3.4,
+      "maxDepDelay": 786,
+      "severeDelayCount": 574,
+      "severeDelayRate": 2.2
+    },
+    {
+      "hour": 7,
+      "flightCount": 22532,
+      "avgDepDelay": 1.9,
+      "avgArrDelay": -5.3,
+      "maxDepDelay": 898,
+      "severeDelayCount": 503,
+      "severeDelayRate": 2.2
+    },
+    {
+      "hour": 8,
+      "flightCount": 26800,
+      "avgDepDelay": 4.1,
+      "avgArrDelay": -1.1,
+      "maxDepDelay": 911,
+      "severeDelayCount": 909,
+      "severeDelayRate": 3.4
+    },
+    {
+      "hour": 9,
+      "flightCount": 19985,
+      "avgDepDelay": 4.6,
+      "avgArrDelay": -1.5,
+      "maxDepDelay": 1301,
+      "severeDelayCount": 722,
+      "severeDelayRate": 3.6
+    },
+    {
+      "hour": 10,
+      "flightCount": 16418,
+      "avgDepDelay": 6.5,
+      "avgArrDelay": 1,
+      "maxDepDelay": 788,
+      "severeDelayCount": 803,
+      "severeDelayRate": 4.9
+    },
+    {
+      "hour": 11,
+      "flightCount": 15737,
+      "avgDepDelay": 7.2,
+      "avgArrDelay": 1.5,
+      "maxDepDelay": 437,
+      "severeDelayCount": 756,
+      "severeDelayRate": 4.8
+    },
+    {
+      "hour": 12,
+      "flightCount": 17793,
+      "avgDepDelay": 8.6,
+      "avgArrDelay": 3.5,
+      "maxDepDelay": 636,
+      "severeDelayCount": 1002,
+      "severeDelayRate": 5.6
+    },
+    {
+      "hour": 13,
+      "flightCount": 19527,
+      "avgDepDelay": 11.4,
+      "avgArrDelay": 6.5,
+      "maxDepDelay": 634,
+      "severeDelayCount": 1351,
+      "severeDelayRate": 6.9
+    },
+    {
+      "hour": 14,
+      "flightCount": 21140,
+      "avgDepDelay": 13.8,
+      "avgArrDelay": 9.2,
+      "maxDepDelay": 602,
+      "severeDelayCount": 1733,
+      "severeDelayRate": 8.2
+    },
+    {
+      "hour": 15,
+      "flightCount": 23218,
+      "avgDepDelay": 16.9,
+      "avgArrDelay": 12.3,
+      "maxDepDelay": 483,
+      "severeDelayCount": 2207,
+      "severeDelayRate": 9.5
+    },
+    {
+      "hour": 16,
+      "flightCount": 22162,
+      "avgDepDelay": 18.8,
+      "avgArrDelay": 12.6,
+      "maxDepDelay": 1126,
+      "severeDelayCount": 2516,
+      "severeDelayRate": 11.4
+    },
+    {
+      "hour": 17,
+      "flightCount": 23766,
+      "avgDepDelay": 21.1,
+      "avgArrDelay": 16,
+      "maxDepDelay": 896,
+      "severeDelayCount": 2929,
+      "severeDelayRate": 12.3
+    },
+    {
+      "hour": 18,
+      "flightCount": 21157,
+      "avgDepDelay": 21.1,
+      "avgArrDelay": 14.8,
+      "maxDepDelay": 1014,
+      "severeDelayCount": 2687,
+      "severeDelayRate": 12.7
+    },
+    {
+      "hour": 19,
+      "flightCount": 20580,
+      "avgDepDelay": 24.8,
+      "avgArrDelay": 16.7,
+      "maxDepDelay": 1137,
+      "severeDelayCount": 3139,
+      "severeDelayRate": 15.3
+    },
+    {
+      "hour": 20,
+      "flightCount": 16103,
+      "avgDepDelay": 24.3,
+      "avgArrDelay": 16.7,
+      "maxDepDelay": 878,
+      "severeDelayCount": 2503,
+      "severeDelayRate": 15.5
+    },
+    {
+      "hour": 21,
+      "flightCount": 10524,
+      "avgDepDelay": 24.2,
+      "avgArrDelay": 18.4,
+      "maxDepDelay": 800,
+      "severeDelayCount": 1787,
+      "severeDelayRate": 17
+    },
+    {
+      "hour": 22,
+      "flightCount": 2561,
+      "avgDepDelay": 18.8,
+      "avgArrDelay": 16,
+      "maxDepDelay": 276,
+      "severeDelayCount": 338,
+      "severeDelayRate": 13.2
+    },
+    {
+      "hour": 23,
+      "flightCount": 1048,
+      "avgDepDelay": 14,
+      "avgArrDelay": 11.8,
+      "maxDepDelay": 245,
+      "severeDelayCount": 94,
+      "severeDelayRate": 9
+    }
+  ],
+  "topDestinations": [
+    {
+      "dest": "ORD",
+      "dest_name": "Chicago Ohare Intl",
+      "flightCount": 17283,
+      "avgArrDelay": 5.9,
+      "avgDepDelay": 13.6,
+      "onTimeRate": 76.7,
+      "avgDistance": 729,
+      "rank": 1
+    },
+    {
+      "dest": "ATL",
+      "dest_name": "Hartsfield Jackson Atlanta Intl",
+      "flightCount": 17215,
+      "avgArrDelay": 11.3,
+      "avgDepDelay": 12.5,
+      "onTimeRate": 74.7,
+      "avgDistance": 757,
+      "rank": 1
+    },
+    {
+      "dest": "LAX",
+      "dest_name": "Los Angeles Intl",
+      "flightCount": 16174,
+      "avgArrDelay": 0.5,
+      "avgDepDelay": 9.4,
+      "onTimeRate": 79.8,
+      "avgDistance": 2469,
+      "rank": 1
+    },
+    {
+      "dest": "BOS",
+      "dest_name": "General Edward Lawrence Logan Intl",
+      "flightCount": 15508,
+      "avgArrDelay": 2.9,
+      "avgDepDelay": 8.7,
+      "onTimeRate": 81.5,
+      "avgDistance": 191,
+      "rank": 1
+    },
+    {
+      "dest": "MCO",
+      "dest_name": "Orlando Intl",
+      "flightCount": 14082,
+      "avgArrDelay": 5.5,
+      "avgDepDelay": 11.3,
+      "onTimeRate": 78,
+      "avgDistance": 943,
+      "rank": 1
+    },
+    {
+      "dest": "CLT",
+      "dest_name": "Charlotte Douglas Intl",
+      "flightCount": 14064,
+      "avgArrDelay": 7.4,
+      "avgDepDelay": 9.2,
+      "onTimeRate": 76.7,
+      "avgDistance": 538,
+      "rank": 1
+    },
+    {
+      "dest": "SFO",
+      "dest_name": "San Francisco Intl",
+      "flightCount": 13331,
+      "avgArrDelay": 2.7,
+      "avgDepDelay": 12.9,
+      "onTimeRate": 78.1,
+      "avgDistance": 2578,
+      "rank": 1
+    },
+    {
+      "dest": "FLL",
+      "dest_name": "Fort Lauderdale Hollywood Intl",
+      "flightCount": 12055,
+      "avgArrDelay": 8.1,
+      "avgDepDelay": 12.7,
+      "onTimeRate": 74.1,
+      "avgDistance": 1070,
+      "rank": 1
+    },
+    {
+      "dest": "MIA",
+      "dest_name": "Miami Intl",
+      "flightCount": 11728,
+      "avgArrDelay": 0.3,
+      "avgDepDelay": 8.9,
+      "onTimeRate": 81.8,
+      "avgDistance": 1092,
+      "rank": 1
+    },
+    {
+      "dest": "DCA",
+      "dest_name": "Ronald Reagan Washington Natl",
+      "flightCount": 9705,
+      "avgArrDelay": 9.1,
+      "avgDepDelay": 10.3,
+      "onTimeRate": 75.4,
+      "avgDistance": 211,
+      "rank": 1
+    }
+  ],
+  "delayedDestinations": [
+    {
+      "dest": "CAE",
+      "dest_name": "Columbia Metropolitan",
+      "flightCount": 116,
+      "avgArrDelay": 41.8,
+      "avgDepDelay": 35.6,
+      "severeDelayRate": 23.4,
+      "rank": 1
+    },
+    {
+      "dest": "TUL",
+      "dest_name": "Tulsa Intl",
+      "flightCount": 315,
+      "avgArrDelay": 33.7,
+      "avgDepDelay": 34.9,
+      "severeDelayRate": 22.4,
+      "rank": 1
+    },
+    {
+      "dest": "OKC",
+      "dest_name": "Will Rogers World",
+      "flightCount": 346,
+      "avgArrDelay": 30.6,
+      "avgDepDelay": 30.6,
+      "severeDelayRate": 19.6,
+      "rank": 1
+    },
+    {
+      "dest": "BHM",
+      "dest_name": "Birmingham Intl",
+      "flightCount": 297,
+      "avgArrDelay": 16.9,
+      "avgDepDelay": 29.7,
+      "severeDelayRate": 18.4,
+      "rank": 1
+    },
+    {
+      "dest": "TYS",
+      "dest_name": "Mc Ghee Tyson",
+      "flightCount": 631,
+      "avgArrDelay": 24.1,
+      "avgDepDelay": 28.5,
+      "severeDelayRate": 21.8,
+      "rank": 1
+    },
+    {
+      "dest": "DSM",
+      "dest_name": "Des Moines Intl",
+      "flightCount": 569,
+      "avgArrDelay": 19,
+      "avgDepDelay": 26.2,
+      "severeDelayRate": 18.8,
+      "rank": 1
+    },
+    {
+      "dest": "ALB",
+      "dest_name": "Albany Intl",
+      "flightCount": 439,
+      "avgArrDelay": 14.4,
+      "avgDepDelay": 23.6,
+      "severeDelayRate": 15.5,
+      "rank": 1
+    },
+    {
+      "dest": "MSN",
+      "dest_name": "Dane Co Rgnl Truax Fld",
+      "flightCount": 572,
+      "avgArrDelay": 20.2,
+      "avgDepDelay": 23.6,
+      "severeDelayRate": 14.9,
+      "rank": 1
+    },
+    {
+      "dest": "RIC",
+      "dest_name": "Richmond Intl",
+      "flightCount": 2454,
+      "avgArrDelay": 20.1,
+      "avgDepDelay": 23.6,
+      "severeDelayRate": 16.4,
+      "rank": 1
+    },
+    {
+      "dest": "TVC",
+      "dest_name": "Cherry Capital Airport",
+      "flightCount": 101,
+      "avgArrDelay": 13,
+      "avgDepDelay": 22.1,
+      "severeDelayRate": 15.6,
+      "rank": 1
+    }
+  ],
+  "delayedAirlines": [
+    {
+      "carrier": "F9",
+      "carrier_name": "Frontier Airlines Inc.",
+      "flightCount": 685,
+      "avgDepDelay": 20.2,
+      "avgArrDelay": 21.9,
+      "onTimeRate": 71.8,
+      "severeDelayRate": 10.7,
+      "rank": 1
+    },
+    {
+      "carrier": "EV",
+      "carrier_name": "ExpressJet Airlines Inc.",
+      "flightCount": 54173,
+      "avgDepDelay": 20,
+      "avgArrDelay": 15.8,
+      "onTimeRate": 69.5,
+      "severeDelayRate": 13.4,
+      "rank": 1
+    },
+    {
+      "carrier": "YV",
+      "carrier_name": "Mesa Airlines Inc.",
+      "flightCount": 601,
+      "avgDepDelay": 19,
+      "avgArrDelay": 15.6,
+      "onTimeRate": 71.4,
+      "severeDelayRate": 14.5,
+      "rank": 1
+    },
+    {
+      "carrier": "FL",
+      "carrier_name": "AirTran Airways Corporation",
+      "flightCount": 3260,
+      "avgDepDelay": 18.7,
+      "avgArrDelay": 20.1,
+      "onTimeRate": 73.3,
+      "severeDelayRate": 9.9,
+      "rank": 1
+    },
+    {
+      "carrier": "WN",
+      "carrier_name": "Southwest Airlines Co.",
+      "flightCount": 12275,
+      "avgDepDelay": 17.7,
+      "avgArrDelay": 9.6,
+      "onTimeRate": 73.1,
+      "severeDelayRate": 8.8,
+      "rank": 1
+    },
+    {
+      "carrier": "9E",
+      "carrier_name": "Endeavor Air Inc.",
+      "flightCount": 18460,
+      "avgDepDelay": 16.7,
+      "avgArrDelay": 7.4,
+      "onTimeRate": 74.3,
+      "severeDelayRate": 11.3,
+      "rank": 1
+    },
+    {
+      "carrier": "B6",
+      "carrier_name": "JetBlue Airways",
+      "flightCount": 54635,
+      "avgDepDelay": 13,
+      "avgArrDelay": 9.5,
+      "onTimeRate": 77.2,
+      "severeDelayRate": 8.4,
+      "rank": 1
+    },
+    {
+      "carrier": "VX",
+      "carrier_name": "Virgin America",
+      "flightCount": 5162,
+      "avgDepDelay": 12.9,
+      "avgArrDelay": 1.8,
+      "onTimeRate": 82.6,
+      "severeDelayRate": 7.1,
+      "rank": 1
+    },
+    {
+      "carrier": "UA",
+      "carrier_name": "United Air Lines Inc.",
+      "flightCount": 58665,
+      "avgDepDelay": 12.1,
+      "avgArrDelay": 3.6,
+      "onTimeRate": 79,
+      "severeDelayRate": 6.6,
+      "rank": 1
+    },
+    {
+      "carrier": "MQ",
+      "carrier_name": "Envoy Air",
+      "flightCount": 26397,
+      "avgDepDelay": 10.6,
+      "avgArrDelay": 10.8,
+      "onTimeRate": 78.9,
+      "severeDelayRate": 7.9,
+      "rank": 1
+    }
+  ],
+  "heatmap": [
+    {
+      "hour": 5,
+      "weekday": 1,
+      "avgDelay": 0.2,
+      "flightCount": 293,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 6,
+      "weekday": 1,
+      "avgDelay": 2.3,
+      "flightCount": 4085,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 7,
+      "weekday": 1,
+      "avgDelay": 2.1,
+      "flightCount": 3454,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 8,
+      "weekday": 1,
+      "avgDelay": 4.6,
+      "flightCount": 4034,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 9,
+      "weekday": 1,
+      "avgDelay": 5.2,
+      "flightCount": 2961,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 10,
+      "weekday": 1,
+      "avgDelay": 7.9,
+      "flightCount": 2480,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 11,
+      "weekday": 1,
+      "avgDelay": 8,
+      "flightCount": 2344,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 12,
+      "weekday": 1,
+      "avgDelay": 9.8,
+      "flightCount": 2676,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 13,
+      "weekday": 1,
+      "avgDelay": 12.9,
+      "flightCount": 2888,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 14,
+      "weekday": 1,
+      "avgDelay": 17.4,
+      "flightCount": 3122,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 15,
+      "weekday": 1,
+      "avgDelay": 20.9,
+      "flightCount": 3440,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 16,
+      "weekday": 1,
+      "avgDelay": 23.3,
+      "flightCount": 3234,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 17,
+      "weekday": 1,
+      "avgDelay": 25.7,
+      "flightCount": 3531,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 18,
+      "weekday": 1,
+      "avgDelay": 25,
+      "flightCount": 3167,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 19,
+      "weekday": 1,
+      "avgDelay": 28.5,
+      "flightCount": 3082,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 20,
+      "weekday": 1,
+      "avgDelay": 26,
+      "flightCount": 2485,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 21,
+      "weekday": 1,
+      "avgDelay": 26.5,
+      "flightCount": 1668,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 22,
+      "weekday": 1,
+      "avgDelay": 22.1,
+      "flightCount": 376,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 23,
+      "weekday": 1,
+      "avgDelay": 12.6,
+      "flightCount": 150,
+      "weekdayName": "周一"
+    },
+    {
+      "hour": 5,
+      "weekday": 2,
+      "avgDelay": -1.1,
+      "flightCount": 296,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 6,
+      "weekday": 2,
+      "avgDelay": 0.6,
+      "flightCount": 4040,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 7,
+      "weekday": 2,
+      "avgDelay": 0.8,
+      "flightCount": 3472,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 8,
+      "weekday": 2,
+      "avgDelay": 3.4,
+      "flightCount": 4048,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 9,
+      "weekday": 2,
+      "avgDelay": 4.3,
+      "flightCount": 2963,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 10,
+      "weekday": 2,
+      "avgDelay": 5.5,
+      "flightCount": 2449,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 11,
+      "weekday": 2,
+      "avgDelay": 7.2,
+      "flightCount": 2334,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 12,
+      "weekday": 2,
+      "avgDelay": 7.3,
+      "flightCount": 2636,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 13,
+      "weekday": 2,
+      "avgDelay": 10.8,
+      "flightCount": 2868,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 14,
+      "weekday": 2,
+      "avgDelay": 11.7,
+      "flightCount": 3146,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 15,
+      "weekday": 2,
+      "avgDelay": 14.3,
+      "flightCount": 3439,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 16,
+      "weekday": 2,
+      "avgDelay": 16.9,
+      "flightCount": 3265,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 17,
+      "weekday": 2,
+      "avgDelay": 18.8,
+      "flightCount": 3551,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 18,
+      "weekday": 2,
+      "avgDelay": 17.5,
+      "flightCount": 3146,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 19,
+      "weekday": 2,
+      "avgDelay": 20,
+      "flightCount": 3140,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 20,
+      "weekday": 2,
+      "avgDelay": 20,
+      "flightCount": 2414,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 21,
+      "weekday": 2,
+      "avgDelay": 19.7,
+      "flightCount": 1531,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 22,
+      "weekday": 2,
+      "avgDelay": 16.3,
+      "flightCount": 381,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 23,
+      "weekday": 2,
+      "avgDelay": 11,
+      "flightCount": 151,
+      "weekdayName": "周二"
+    },
+    {
+      "hour": 5,
+      "weekday": 3,
+      "avgDelay": 0.4,
+      "flightCount": 284,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 6,
+      "weekday": 3,
+      "avgDelay": 0.9,
+      "flightCount": 3986,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 7,
+      "weekday": 3,
+      "avgDelay": 1.2,
+      "flightCount": 3420,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 8,
+      "weekday": 3,
+      "avgDelay": 4.9,
+      "flightCount": 3992,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 9,
+      "weekday": 3,
+      "avgDelay": 4.1,
+      "flightCount": 2916,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 10,
+      "weekday": 3,
+      "avgDelay": 6.3,
+      "flightCount": 2448,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 11,
+      "weekday": 3,
+      "avgDelay": 6.4,
+      "flightCount": 2338,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 12,
+      "weekday": 3,
+      "avgDelay": 7.9,
+      "flightCount": 2640,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 13,
+      "weekday": 3,
+      "avgDelay": 11.2,
+      "flightCount": 2852,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 14,
+      "weekday": 3,
+      "avgDelay": 13.9,
+      "flightCount": 3057,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 15,
+      "weekday": 3,
+      "avgDelay": 16.3,
+      "flightCount": 3419,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 16,
+      "weekday": 3,
+      "avgDelay": 17.5,
+      "flightCount": 3258,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 17,
+      "weekday": 3,
+      "avgDelay": 17.8,
+      "flightCount": 3550,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 18,
+      "weekday": 3,
+      "avgDelay": 19.9,
+      "flightCount": 3152,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 19,
+      "weekday": 3,
+      "avgDelay": 23.7,
+      "flightCount": 3079,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 20,
+      "weekday": 3,
+      "avgDelay": 22.8,
+      "flightCount": 2418,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 21,
+      "weekday": 3,
+      "avgDelay": 23.2,
+      "flightCount": 1539,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 22,
+      "weekday": 3,
+      "avgDelay": 18.8,
+      "flightCount": 362,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 23,
+      "weekday": 3,
+      "avgDelay": 15,
+      "flightCount": 148,
+      "weekdayName": "周三"
+    },
+    {
+      "hour": 5,
+      "weekday": 4,
+      "avgDelay": 0.2,
+      "flightCount": 292,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 6,
+      "weekday": 4,
+      "avgDelay": 1.4,
+      "flightCount": 4026,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 7,
+      "weekday": 4,
+      "avgDelay": 1.7,
+      "flightCount": 3432,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 8,
+      "weekday": 4,
+      "avgDelay": 4,
+      "flightCount": 3986,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 9,
+      "weekday": 4,
+      "avgDelay": 5.5,
+      "flightCount": 2938,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 10,
+      "weekday": 4,
+      "avgDelay": 8.5,
+      "flightCount": 2462,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 11,
+      "weekday": 4,
+      "avgDelay": 9.1,
+      "flightCount": 2314,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 12,
+      "weekday": 4,
+      "avgDelay": 12.3,
+      "flightCount": 2613,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 13,
+      "weekday": 4,
+      "avgDelay": 16.6,
+      "flightCount": 2842,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 14,
+      "weekday": 4,
+      "avgDelay": 19.3,
+      "flightCount": 3051,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 15,
+      "weekday": 4,
+      "avgDelay": 22.3,
+      "flightCount": 3341,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 16,
+      "weekday": 4,
+      "avgDelay": 24.9,
+      "flightCount": 3171,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 17,
+      "weekday": 4,
+      "avgDelay": 28.1,
+      "flightCount": 3495,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 18,
+      "weekday": 4,
+      "avgDelay": 26.7,
+      "flightCount": 3141,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 19,
+      "weekday": 4,
+      "avgDelay": 29.9,
+      "flightCount": 3019,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 20,
+      "weekday": 4,
+      "avgDelay": 30.9,
+      "flightCount": 2418,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 21,
+      "weekday": 4,
+      "avgDelay": 30.7,
+      "flightCount": 1590,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 22,
+      "weekday": 4,
+      "avgDelay": 25.1,
+      "flightCount": 376,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 23,
+      "weekday": 4,
+      "avgDelay": 17.9,
+      "flightCount": 150,
+      "weekdayName": "周四"
+    },
+    {
+      "hour": 5,
+      "weekday": 5,
+      "avgDelay": -0.7,
+      "flightCount": 286,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 6,
+      "weekday": 5,
+      "avgDelay": 2.4,
+      "flightCount": 3979,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 7,
+      "weekday": 5,
+      "avgDelay": 3.8,
+      "flightCount": 3397,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 8,
+      "weekday": 5,
+      "avgDelay": 5.5,
+      "flightCount": 3961,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 9,
+      "weekday": 5,
+      "avgDelay": 6.5,
+      "flightCount": 2897,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 10,
+      "weekday": 5,
+      "avgDelay": 8.2,
+      "flightCount": 2466,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 11,
+      "weekday": 5,
+      "avgDelay": 8.9,
+      "flightCount": 2307,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 12,
+      "weekday": 5,
+      "avgDelay": 10.5,
+      "flightCount": 2613,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 13,
+      "weekday": 5,
+      "avgDelay": 13.3,
+      "flightCount": 2835,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 14,
+      "weekday": 5,
+      "avgDelay": 15.2,
+      "flightCount": 3097,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 15,
+      "weekday": 5,
+      "avgDelay": 18.6,
+      "flightCount": 3357,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 16,
+      "weekday": 5,
+      "avgDelay": 20.2,
+      "flightCount": 3195,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 17,
+      "weekday": 5,
+      "avgDelay": 24.1,
+      "flightCount": 3468,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 18,
+      "weekday": 5,
+      "avgDelay": 24.3,
+      "flightCount": 3120,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 19,
+      "weekday": 5,
+      "avgDelay": 28,
+      "flightCount": 3101,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 20,
+      "weekday": 5,
+      "avgDelay": 28.6,
+      "flightCount": 2495,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 21,
+      "weekday": 5,
+      "avgDelay": 28.7,
+      "flightCount": 1622,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 22,
+      "weekday": 5,
+      "avgDelay": 17.5,
+      "flightCount": 357,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 23,
+      "weekday": 5,
+      "avgDelay": 14.7,
+      "flightCount": 147,
+      "weekdayName": "周五"
+    },
+    {
+      "hour": 5,
+      "weekday": 6,
+      "avgDelay": 2.5,
+      "flightCount": 272,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 6,
+      "weekday": 6,
+      "avgDelay": 2.4,
+      "flightCount": 2971,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 7,
+      "weekday": 6,
+      "avgDelay": 2.9,
+      "flightCount": 2605,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 8,
+      "weekday": 6,
+      "avgDelay": 3.7,
+      "flightCount": 3342,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 9,
+      "weekday": 6,
+      "avgDelay": 4.1,
+      "flightCount": 2530,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 10,
+      "weekday": 6,
+      "avgDelay": 4.5,
+      "flightCount": 1936,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 11,
+      "weekday": 6,
+      "avgDelay": 6.8,
+      "flightCount": 1937,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 12,
+      "weekday": 6,
+      "avgDelay": 5.9,
+      "flightCount": 2020,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 13,
+      "weekday": 6,
+      "avgDelay": 7.5,
+      "flightCount": 2390,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 14,
+      "weekday": 6,
+      "avgDelay": 9.6,
+      "flightCount": 2579,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 15,
+      "weekday": 6,
+      "avgDelay": 11.1,
+      "flightCount": 2846,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 16,
+      "weekday": 6,
+      "avgDelay": 11,
+      "flightCount": 2838,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 17,
+      "weekday": 6,
+      "avgDelay": 10.7,
+      "flightCount": 2647,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 18,
+      "weekday": 6,
+      "avgDelay": 11.2,
+      "flightCount": 2255,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 19,
+      "weekday": 6,
+      "avgDelay": 14.8,
+      "flightCount": 2071,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 20,
+      "weekday": 6,
+      "avgDelay": 12.3,
+      "flightCount": 1324,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 21,
+      "weekday": 6,
+      "avgDelay": 8.8,
+      "flightCount": 885,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 22,
+      "weekday": 6,
+      "avgDelay": 8.1,
+      "flightCount": 325,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 23,
+      "weekday": 6,
+      "avgDelay": 13.1,
+      "flightCount": 150,
+      "weekdayName": "周六"
+    },
+    {
+      "hour": 5,
+      "weekday": 7,
+      "avgDelay": 4.3,
+      "flightCount": 221,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 6,
+      "weekday": 7,
+      "avgDelay": 1.6,
+      "flightCount": 2439,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 7,
+      "weekday": 7,
+      "avgDelay": 0.9,
+      "flightCount": 2752,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 8,
+      "weekday": 7,
+      "avgDelay": 2.6,
+      "flightCount": 3437,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 9,
+      "weekday": 7,
+      "avgDelay": 2.2,
+      "flightCount": 2780,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 10,
+      "weekday": 7,
+      "avgDelay": 3.9,
+      "flightCount": 2177,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 11,
+      "weekday": 7,
+      "avgDelay": 3.8,
+      "flightCount": 2163,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 12,
+      "weekday": 7,
+      "avgDelay": 5.8,
+      "flightCount": 2595,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 13,
+      "weekday": 7,
+      "avgDelay": 7.1,
+      "flightCount": 2852,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 14,
+      "weekday": 7,
+      "avgDelay": 9.1,
+      "flightCount": 3088,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 15,
+      "weekday": 7,
+      "avgDelay": 13.8,
+      "flightCount": 3376,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 16,
+      "weekday": 7,
+      "avgDelay": 16.7,
+      "flightCount": 3201,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 17,
+      "weekday": 7,
+      "avgDelay": 20,
+      "flightCount": 3524,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 18,
+      "weekday": 7,
+      "avgDelay": 20.2,
+      "flightCount": 3176,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 19,
+      "weekday": 7,
+      "avgDelay": 25.5,
+      "flightCount": 3088,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 20,
+      "weekday": 7,
+      "avgDelay": 24,
+      "flightCount": 2549,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 21,
+      "weekday": 7,
+      "avgDelay": 24.5,
+      "flightCount": 1689,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 22,
+      "weekday": 7,
+      "avgDelay": 22.1,
+      "flightCount": 384,
+      "weekdayName": "周日"
+    },
+    {
+      "hour": 23,
+      "weekday": 7,
+      "avgDelay": 13.8,
+      "flightCount": 152,
+      "weekdayName": "周日"
+    }
+  ],
+  "ontimePie": [
+    {
+      "category": "提前/准点",
+      "count": 200089,
+      "percentage": 60.9
+    },
+    {
+      "category": "轻微延误",
+      "count": 57658,
+      "percentage": 17.6
+    },
+    {
+      "category": "中度延误",
+      "count": 22483,
+      "percentage": 6.8
+    },
+    {
+      "category": "严重延误",
+      "count": 21710,
+      "percentage": 6.6
+    },
+    {
+      "category": "极端延误",
+      "count": 26581,
+      "percentage": 8.1
+    }
+  ],
+  "worstHours": [
+    {
+      "hour": 19,
+      "flightCount": 20580,
+      "avgDepDelay": 24.8,
+      "avgArrDelay": 16.7,
+      "maxDepDelay": 1137,
+      "severeDelayCount": 3139,
+      "severeDelayRate": 15.3,
+      "hourLabel": "19:00"
+    },
+    {
+      "hour": 20,
+      "flightCount": 16103,
+      "avgDepDelay": 24.3,
+      "avgArrDelay": 16.7,
+      "maxDepDelay": 878,
+      "severeDelayCount": 2503,
+      "severeDelayRate": 15.5,
+      "hourLabel": "20:00"
+    },
+    {
+      "hour": 21,
+      "flightCount": 10524,
+      "avgDepDelay": 24.2,
+      "avgArrDelay": 18.4,
+      "maxDepDelay": 800,
+      "severeDelayCount": 1787,
+      "severeDelayRate": 17,
+      "hourLabel": "21:00"
+    },
+    {
+      "hour": 17,
+      "flightCount": 23766,
+      "avgDepDelay": 21.1,
+      "avgArrDelay": 16,
+      "maxDepDelay": 896,
+      "severeDelayCount": 2929,
+      "severeDelayRate": 12.3,
+      "hourLabel": "17:00"
+    },
+    {
+      "hour": 18,
+      "flightCount": 21157,
+      "avgDepDelay": 21.1,
+      "avgArrDelay": 14.8,
+      "maxDepDelay": 1014,
+      "severeDelayCount": 2687,
+      "severeDelayRate": 12.7,
+      "hourLabel": "18:00"
+    }
+  ],
+  "monthlyStats": [
+    {
+      "month": 1,
+      "flightCount": 27004,
+      "avgDepDelay": 10,
+      "avgArrDelay": 6.1,
+      "onTimeRate": 81.4,
+      "monthName": "1月"
+    },
+    {
+      "month": 2,
+      "flightCount": 24951,
+      "avgDepDelay": 10.8,
+      "avgArrDelay": 5.6,
+      "onTimeRate": 79.8,
+      "monthName": "2月"
+    },
+    {
+      "month": 3,
+      "flightCount": 28834,
+      "avgDepDelay": 13.2,
+      "avgArrDelay": 5.8,
+      "onTimeRate": 77.7,
+      "monthName": "3月"
+    },
+    {
+      "month": 4,
+      "flightCount": 28330,
+      "avgDepDelay": 13.9,
+      "avgArrDelay": 11.2,
+      "onTimeRate": 77.4,
+      "monthName": "4月"
+    },
+    {
+      "month": 5,
+      "flightCount": 28796,
+      "avgDepDelay": 13,
+      "avgArrDelay": 3.5,
+      "onTimeRate": 77.1,
+      "monthName": "5月"
+    },
+    {
+      "month": 6,
+      "flightCount": 28243,
+      "avgDepDelay": 20.8,
+      "avgArrDelay": 16.5,
+      "onTimeRate": 71.2,
+      "monthName": "6月"
+    },
+    {
+      "month": 7,
+      "flightCount": 29425,
+      "avgDepDelay": 21.7,
+      "avgArrDelay": 16.7,
+      "onTimeRate": 70.4,
+      "monthName": "7月"
+    },
+    {
+      "month": 8,
+      "flightCount": 29327,
+      "avgDepDelay": 12.6,
+      "avgArrDelay": 6,
+      "onTimeRate": 77.9,
+      "monthName": "8月"
+    },
+    {
+      "month": 9,
+      "flightCount": 27574,
+      "avgDepDelay": 6.7,
+      "avgArrDelay": -4,
+      "onTimeRate": 86.1,
+      "monthName": "9月"
+    },
+    {
+      "month": 10,
+      "flightCount": 28889,
+      "avgDepDelay": 6.2,
+      "avgArrDelay": -0.2,
+      "onTimeRate": 85,
+      "monthName": "10月"
+    },
+    {
+      "month": 11,
+      "flightCount": 27268,
+      "avgDepDelay": 5.4,
+      "avgArrDelay": 0.5,
+      "onTimeRate": 85.5,
+      "monthName": "11月"
+    },
+    {
+      "month": 12,
+      "flightCount": 28135,
+      "avgDepDelay": 16.6,
+      "avgArrDelay": 14.9,
+      "onTimeRate": 72.3,
+      "monthName": "12月"
+    }
+  ],
+  "originStats": [
+    {
+      "origin": "EWR",
+      "origin_name": "Newark Liberty Intl",
+      "flightCount": 120835,
+      "avgDepDelay": 15.1,
+      "avgArrDelay": 9.1,
+      "onTimeRate": 75.4
+    },
+    {
+      "origin": "JFK",
+      "origin_name": "John F Kennedy Intl",
+      "flightCount": 111279,
+      "avgDepDelay": 12.1,
+      "avgArrDelay": 5.6,
+      "onTimeRate": 79.3
+    },
+    {
+      "origin": "LGA",
+      "origin_name": "La Guardia",
+      "flightCount": 104662,
+      "avgDepDelay": 10.3,
+      "avgArrDelay": 5.8,
+      "onTimeRate": 81.1
+    }
+  ]
+}
