@@ -79,6 +79,6 @@ npm run deploy:diagnose
 - `src/main.tsx` 使用 `HashRouter`，避免刷新 `/dashboard` 这类前端路由时出现 404。
 - `vite.config.ts` 的 `copy-static-data` 插件会把 JSON 数据复制到 `dist/data/`，同时写入 `.nojekyll`。
 - `src/lib/staticApi.ts` 只在生产构建中启用，把原本依赖 Express 的 `/api/...` 调用转换成静态数据读取。
-- `.github/workflows/deploy-pages.yml` 会在部署前检测 Pages 发布源；如果仓库仍是分支/Jekyll 发布模式，会短暂等待，让 Vite artifact 尽量成为同一次 push 的最后一个 Pages 部署。
+- `.github/workflows/deploy-pages.yml` 会在部署前检测 Pages 发布源；如果仓库仍是分支/Jekyll 发布模式，会等待一段时间，让 Vite artifact 尽量成为同一次 push 的最后一个 Pages 部署。
 
-如果暂时无法把 Source 改成 `GitHub Actions`，可以在仓库 `Settings -> Secrets and variables -> Actions -> Variables` 中设置 `LEGACY_PAGES_WAIT_SECONDS`，例如 `120`，让自定义 Vite 部署更稳定地排在 Jekyll 分支部署之后。Source 修正为 `GitHub Actions` 后，这个等待会自动跳过。
+如果暂时无法把 Source 改成 `GitHub Actions`，可以在仓库 `Settings -> Secrets and variables -> Actions -> Variables` 中设置 `LEGACY_PAGES_WAIT_SECONDS`，例如 `240`，让自定义 Vite 部署更稳定地排在 Jekyll 分支部署之后。Source 修正为 `GitHub Actions` 后，这个等待会自动跳过。

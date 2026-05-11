@@ -28,9 +28,6 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
       - name: Install dependencies
         run: npm ci
 
@@ -69,7 +66,7 @@ jobs:
         env:
           LEGACY_PAGES_WAIT_SECONDS: ${{ vars.LEGACY_PAGES_WAIT_SECONDS }}
         run: |
-          seconds="${LEGACY_PAGES_WAIT_SECONDS:-75}"
+          seconds="${LEGACY_PAGES_WAIT_SECONDS:-180}"
           if [ "$seconds" -gt 0 ]; then
             echo "Waiting ${seconds}s so this Vite deployment is the final Pages deployment for this push."
             sleep "$seconds"
