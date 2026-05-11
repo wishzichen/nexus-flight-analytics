@@ -24,7 +24,25 @@
       "Bash(curl -s http://localhost:3000/api/module1/summary)",
       "Bash(netstat -ano)",
       "Bash(taskkill //F //PID 29440)",
-      "Bash(taskkill //F //PID 5132)"
+      "Bash(taskkill //F //PID 5132)",
+      "Bash(node simple-server.mjs)",
+      "Bash(curl -s http://localhost:3000/api/module8/summary)",
+      "Bash(curl -s \"http://localhost:3000/api/module8/search?page=1&pageSize=5\")",
+      "Bash(taskkill //F //PID 28240)",
+      "Bash(taskkill //F //PID 20552)",
+      "Read(//dev/**)",
+      "Bash(node -e \"const data = require\\('fs'\\).readFileSync\\('E:/TJUTCM/Activities/第二届数据分析大赛/nexus-flight-analytics/data/module8/explorer_data.json', 'utf-8'\\); const obj = JSON.parse\\(data\\); console.log\\('Keys:', Object.keys\\(obj\\)\\); console.log\\('Has airlineOptions:', !!obj.airlineOptions\\); console.log\\('Has destOptions:', !!obj.destOptions\\); console.log\\('Has delayLevelOptions:', !!obj.delayLevelOptions\\); if\\(obj.airlineOptions\\) console.log\\('airlineOptions sample:', JSON.stringify\\(obj.airlineOptions[0]\\)\\); if\\(obj.destOptions\\) console.log\\('destOptions sample:', JSON.stringify\\(obj.destOptions[0]\\)\\); if\\(obj.delayLevelOptions\\) console.log\\('delayLevelOptions sample:', JSON.stringify\\(obj.delayLevelOptions[0]\\)\\); if\\(obj.summaryStats\\) console.log\\('summaryStats:', JSON.stringify\\(obj.summaryStats\\)\\);\")",
+      "Bash(node -e \"const data = require\\('./data/module8/full_data_chunk_1.json'\\); console.log\\('记录数:', data.length\\); console.log\\('字段数:', Object.keys\\(data[0]\\).length\\); console.log\\('字段列表:', Object.keys\\(data[0]\\).join\\(', '\\)\\);\")",
+      "Bash(Rscript -e \"library\\(nycflights13\\); cat\\('总记录数:', nrow\\(flights\\), '\\\\n'\\); cat\\('字段数:', ncol\\(flights\\), '\\\\n'\\); cat\\('字段列表:\\\\n'\\); print\\(names\\(flights\\)\\); cat\\('\\\\n前3条数据:\\\\n'\\); print\\(head\\(flights, 3\\)\\)\")",
+      "Bash(node -e \"const data = require\\('./data/module8/full_data_chunk_1.json'\\); console.log\\('样本数据（前2条）:'\\); console.log\\(JSON.stringify\\(data.slice\\(0, 2\\), null, 2\\)\\);\")",
+      "Bash(node -e \"const summary = require\\('./data/module8/full_summary.json'\\); console.log\\('数据摘要:'\\); console.log\\(JSON.stringify\\(summary, null, 2\\)\\);\")",
+      "Bash(where R)",
+      "Bash(where Rscript)",
+      "Read(//c/Program Files/**)",
+      "Bash(/e/R-4.5.2/bin/x64/Rscript.exe --version)",
+      "Bash(/e/R-4.5.2/bin/x64/Rscript.exe -e \"library\\(nycflights13\\); cat\\('nycflights13 包已安装\\\\n'\\); cat\\('总记录数:', nrow\\(flights\\), '\\\\n'\\); cat\\('字段数:', ncol\\(flights\\), '\\\\n'\\)\")",
+      "Bash(/e/R-4.5.2/bin/x64/Rscript.exe scripts/01_data_preparation.R)",
+      "Bash(/e/R-4.5.2/bin/x64/Rscript.exe scripts/09_module8_explorer_full.R)"
     ]
   }
 }

@@ -33,7 +33,7 @@ dir.create("data/module2", showWarnings = FALSE, recursive = TRUE)
 # ==============================================================================
 
 hourly_dep_delay <- flights %>%
-  filter(!is.na(dep_delay), hour >= 5, hour <= 23) %>%
+  filter(!is.na(dep_delay), !is.na(hour)) %>%
   group_by(hour) %>%
   summarise(
     flightCount = n(),
@@ -50,7 +50,7 @@ hourly_dep_delay <- flights %>%
 # ==============================================================================
 
 hourly_arr_delay <- flights %>%
-  filter(!is.na(arr_delay), hour >= 5, hour <= 23) %>%
+  filter(!is.na(arr_delay), !is.na(hour)) %>%
   group_by(hour) %>%
   summarise(
     flightCount = n(),
@@ -66,7 +66,7 @@ hourly_arr_delay <- flights %>%
 # ==============================================================================
 
 hourly_comparison <- flights %>%
-  filter(!is.na(dep_delay), !is.na(arr_delay), hour >= 5, hour <= 23) %>%
+  filter(!is.na(dep_delay), !is.na(arr_delay), !is.na(hour)) %>%
   group_by(hour) %>%
   summarise(
     avgDepDelay = round(mean(dep_delay, na.rm = TRUE), 1),
@@ -116,16 +116,17 @@ weekday_analysis <- flights %>%
   arrange(weekday)
 
 # ==============================================================================
-# 6. 星期 × 小时 热力图
+# 6. 星期 × 小时 热力图（0-23 全天）
 # ==============================================================================
 
 weekday_hour_heatmap <- flights %>%
-  filter(!is.na(dep_delay), hour >= 5, hour <= 23, !is.na(weekday)) %>%
+  filter(!is.na(dep_delay), !is.na(hour), !is.na(weekday)) %>%
   group_by(weekday, hour) %>%
   summarise(
     avgDelay = round(mean(dep_delay, na.rm = TRUE), 1),
     flightCount = n(),
-    severeDelayRate = round(mean(dep_delay > 60, na.rm = TRUE) * 100, 1)
+    severeDelayRate = round(mean(dep_delay > 60, na.rm = TRUE) * 100, 1),
+    .groups = 'drop'
   ) %>%
   mutate(
     weekdayName = c("周一", "周二", "周三", "周四", "周五", "周六", "周日")[weekday]
@@ -169,7 +170,7 @@ volume_delay_relation <- hourly_dep_delay %>%
 
 # 分析延误是否随时间累积
 cumulative_effect <- flights %>%
-  filter(!is.na(dep_delay), hour >= 5, hour <= 23) %>%
+  filter(!is.na(dep_delay), !is.na(hour)) %>%
   group_by(hour) %>%
   summarise(
     avgDelay = round(mean(dep_delay, na.rm = TRUE), 1),

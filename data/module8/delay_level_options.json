@@ -1,0 +1,22 @@
+[
+  {
+    "delayLevel": "准点",
+    "count": 200089
+  },
+  {
+    "delayLevel": "轻微",
+    "count": 57658
+  },
+  {
+    "delayLevel": "中度",
+    "count": 44193
+  },
+  {
+    "delayLevel": "严重",
+    "count": 26581
+  },
+  {
+    "delayLevel": "数据缺失",
+    "count": 8255
+  }
+]

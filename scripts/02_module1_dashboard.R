@@ -129,15 +129,16 @@ delayed_airlines <- flights %>%
   mutate(rank = row_number())
 
 # ==============================================================================
-# 6. 小时 × 星期 热力图
+# 6. 小时 × 星期 热力图（0-23 全天）
 # ==============================================================================
 
 heatmap_data <- flights %>%
-  filter(!is.na(dep_delay), hour >= 5, hour <= 23) %>%
+  filter(!is.na(dep_delay), !is.na(hour), !is.na(weekday)) %>%
   group_by(hour, weekday) %>%
   summarise(
     avgDelay = round(mean(dep_delay, na.rm = TRUE), 1),
-    flightCount = n()
+    flightCount = n(),
+    .groups = 'drop'
   ) %>%
   mutate(
     weekdayName = case_when(

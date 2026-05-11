@@ -1,0 +1,62 @@
+[
+  {
+    "month": 1,
+    "count": 27004,
+    "monthName": "1月"
+  },
+  {
+    "month": 2,
+    "count": 24951,
+    "monthName": "2月"
+  },
+  {
+    "month": 3,
+    "count": 28834,
+    "monthName": "3月"
+  },
+  {
+    "month": 4,
+    "count": 28330,
+    "monthName": "4月"
+  },
+  {
+    "month": 5,
+    "count": 28796,
+    "monthName": "5月"
+  },
+  {
+    "month": 6,
+    "count": 28243,
+    "monthName": "6月"
+  },
+  {
+    "month": 7,
+    "count": 29425,
+    "monthName": "7月"
+  },
+  {
+    "month": 8,
+    "count": 29327,
+    "monthName": "8月"
+  },
+  {
+    "month": 9,
+    "count": 27574,
+    "monthName": "9月"
+  },
+  {
+    "month": 10,
+    "count": 28889,
+    "monthName": "10月"
+  },
+  {
+    "month": 11,
+    "count": 27268,
+    "monthName": "11月"
+  },
+  {
+    "month": 12,
+    "count": 28135,
+    "monthName": "12月"
+  }
+]

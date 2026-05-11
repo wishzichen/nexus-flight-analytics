@@ -148,34 +148,127 @@ export default function Module2TimeAnalysis() {
 
   // 热力图
   const heatmapOption = {
-    ...chartBaseOptions,
+    backgroundColor: 'transparent',
+    grid: {
+      left: '70px',
+      right: '30px',
+      top: '30px',
+      bottom: '100px',
+      containLabel: false
+    },
     tooltip: {
-      ...chartBaseOptions.tooltip,
-      formatter: (params: any) => `${params.data[1]} ${params.data[0]}:00<br/>平均延误: ${params.data[2]}分钟`
+      position: 'top',
+      backgroundColor: 'rgba(15, 23, 42, 0.95)',
+      borderColor: '#334155',
+      borderWidth: 1,
+      textStyle: {
+        color: '#e2e8f0',
+        fontSize: 13
+      },
+      formatter: (params: any) => {
+        const hour = params.data[0];
+        const weekday = params.data[1];
+        const delay = params.data[2];
+        return `<div style="padding: 4px 8px;">
+          <div style="font-weight: 600; margin-bottom: 4px; color: #38bdf8;">${weekday} ${hour}:00</div>
+          <div>平均延误: <span style="color: #fbbf24; font-weight: 600;">${delay.toFixed(1)}</span> 分钟</div>
+        </div>`;
+      }
     },
     xAxis: {
-      ...chartBaseOptions.xAxis,
       type: 'category',
-      data: Array.from({ length: 19 }, (_, i) => i + 5)
+      data: Array.from({ length: 19 }, (_, i) => i + 5),
+      position: 'top',
+      splitArea: {
+        show: true,
+        areaStyle: {
+          color: ['rgba(255,255,255,0.01)', 'rgba(255,255,255,0.03)']
+        }
+      },
+      axisLine: {
+        show: true,
+        lineStyle: { color: '#334155', width: 1 }
+      },
+      axisLabel: {
+        color: '#94a3b8',
+        fontSize: 11,
+        interval: 0,
+        margin: 8,
+        formatter: (value: number) => value
+      },
+      axisTick: {
+        show: false
+      }
     },
     yAxis: {
-      ...chartBaseOptions.yAxis,
       type: 'category',
-      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+      splitArea: {
+        show: true,
+        areaStyle: {
+          color: ['rgba(255,255,255,0.01)', 'rgba(255,255,255,0.03)']
+        }
+      },
+      axisLine: {
+        show: true,
+        lineStyle: { color: '#334155', width: 1 }
+      },
+      axisLabel: {
+        color: '#cbd5e1',
+        fontSize: 13,
+        fontWeight: 500,
+        margin: 12
+      },
+      axisTick: {
+        show: false
+      }
     },
     visualMap: {
       min: 0,
-      max: 40,
+      max: 50,
       calculable: true,
       orient: 'horizontal',
       left: 'center',
-      bottom: '0%',
-      inRange: { color: ['#10b981', '#fbbf24', '#f97316', '#ef4444'] },
-      textStyle: { color: '#64748b' }
+      bottom: '15px',
+      itemWidth: 25,
+      itemHeight: 200,
+      inRange: {
+        color: [
+          '#10b981',  // 绿色 - 准点
+          '#84cc16',  // 黄绿 - 轻微
+          '#fbbf24',  // 黄色 - 中度
+          '#fb923c',  // 橙色 - 较重
+          '#f97316',  // 深橙 - 严重
+     '#ef4444'   // 红色 - 极端
+        ]
+      },
+      textStyle: {
+        color: '#94a3b8',
+        fontSize: 12
+      },
+      text: ['严重延误', '准点'],
+      textGap: 15,
+      precision: 0
     },
     series: [{
       type: 'heatmap',
-      data: weekdayHourHeatmap?.map((d: any) => [d.hour, d.weekdayName, d.avgDelay]) || []
+      data: weekdayHourHeatmap?.map((d: any) => [d.hour, d.weekdayName, d.avgDelay || 0]) || [],
+      label: {
+        show: false
+      },
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 15,
+          shadowColor: 'rgba(0, 0, 0, 0.6)',
+          borderColor: '#38bdf8',
+          borderWidth: 2
+        }
+      },
+      itemStyle: {
+        borderColor: '#0f172a',
+        borderWidth: 2,
+        borderRadius: 2
+      }
     }]
   };
 
@@ -273,14 +366,18 @@ export default function Module2TimeAnalysis() {
 
         {/* 热力图 */}
         <div className="glass-panel p-6 rounded-2xl lg:col-span-2">
-          <h3 className="text-lg font-medium text-slate-100 mb-4 flex items-center gap-2">
-            <AlertCircle className="w-5 h-5 text-red-400" />
-            星期×小时延误热力图
-          </h3>
-          <p className="text-sm text-slate-400 mb-4">
-            精准定位高风险时段，{conclusions?.worstHour || '--'}:00为最差时刻
-          </p>
-          <div className="h-[350px]">
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h3 className="text-lg font-medium text-slate-100 flex items-center gap-2">
+                <AlertCircle className="w-5 h-5 text-red-400" />
+                星期×小时延误热力图
+              </h3>
+              <p className="text-sm text-slate-400 mt-2">
+                精准定位高风险时段（5:00-23:00），{conclusions?.worstHour || '--'}:00为最差时刻
+              </p>
+            </div>
+          </div>
+          <div className="h-[400px]">
             <ReactECharts option={heatmapOption} style={{ height: '100%', width: '100%' }} />
           </div>
         </div>

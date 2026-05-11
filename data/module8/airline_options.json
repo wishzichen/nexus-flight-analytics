@@ -1,0 +1,82 @@
+[
+  {
+    "airlineCode": "UA",
+    "airlineName": "United Air Lines Inc.",
+    "count": 58665
+  },
+  {
+    "airlineCode": "B6",
+    "airlineName": "JetBlue Airways",
+    "count": 54635
+  },
+  {
+    "airlineCode": "EV",
+    "airlineName": "ExpressJet Airlines Inc.",
+    "count": 54173
+  },
+  {
+    "airlineCode": "DL",
+    "airlineName": "Delta Air Lines Inc.",
+    "count": 48110
+  },
+  {
+    "airlineCode": "AA",
+    "airlineName": "American Airlines Inc.",
+    "count": 32729
+  },
+  {
+    "airlineCode": "MQ",
+    "airlineName": "Envoy Air",
+    "count": 26397
+  },
+  {
+    "airlineCode": "US",
+    "airlineName": "US Airways Inc.",
+    "count": 20536
+  },
+  {
+    "airlineCode": "9E",
+    "airlineName": "Endeavor Air Inc.",
+    "count": 18460
+  },
+  {
+    "airlineCode": "WN",
+    "airlineName": "Southwest Airlines Co.",
+    "count": 12275
+  },
+  {
+    "airlineCode": "VX",
+    "airlineName": "Virgin America",
+    "count": 5162
+  },
+  {
+    "airlineCode": "FL",
+    "airlineName": "AirTran Airways Corporation",
+    "count": 3260
+  },
+  {
+    "airlineCode": "AS",
+    "airlineName": "Alaska Airlines Inc.",
+    "count": 714
+  },
+  {
+    "airlineCode": "F9",
+    "airlineName": "Frontier Airlines Inc.",
+    "count": 685
+  },
+  {
+    "airlineCode": "YV",
+    "airlineName": "Mesa Airlines Inc.",
+    "count": 601
+  },
+  {
+    "airlineCode": "HA",
+    "airlineName": "Hawaiian Airlines Inc.",
+    "count": 342
+  },
+  {
+    "airlineCode": "OO",
+    "airlineName": "SkyWest Airlines Inc.",
+    "count": 32
+  }
+]

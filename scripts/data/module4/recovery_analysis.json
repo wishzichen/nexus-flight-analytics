@@ -1,0 +1,8099 @@
+{
+  "recoveryStats": {
+    "totalHighDelayFlights": 26329,
+    "avgDepDelay": 122,
+    "avgArrDelay": 119,
+    "avgRecovery": 3,
+    "medianRecovery": 6,
+    "recoveryRate": 62.7,
+    "fullRecoveryRate": 0,
+    "avgSpeed": 389,
+    "avgAirTime": 137.8
+  },
+  "speedScatter": [
+    {
+      "dep_delay": 62,
+      "arr_delay": 63,
+      "speed_mph": 408.4472,
+      "recovery_minutes": -1,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 68,
+      "arr_delay": 93,
+      "speed_mph": 369.4286,
+      "recovery_minutes": -25,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 166,
+      "arr_delay": 163,
+      "speed_mph": 282.6667,
+      "recovery_minutes": 3,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 63,
+      "arr_delay": 126,
+      "speed_mph": 414.7826,
+      "recovery_minutes": -63,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 87,
+      "arr_delay": 82,
+      "speed_mph": 384,
+      "recovery_minutes": 5,
+      "carrier": "US",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 86,
+      "arr_delay": 62,
+      "speed_mph": 418.3217,
+      "recovery_minutes": 24,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 69,
+      "arr_delay": 43,
+      "speed_mph": 481.2632,
+      "recovery_minutes": 26,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 189,
+      "arr_delay": 172,
+      "speed_mph": 300,
+      "recovery_minutes": 17,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 143,
+      "arr_delay": 133,
+      "speed_mph": 447.1233,
+      "recovery_minutes": 10,
+      "carrier": "YV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 149,
+      "arr_delay": 125,
+      "speed_mph": 448.8189,
+      "recovery_minutes": 24,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 137,
+      "arr_delay": 140,
+      "speed_mph": 319.0476,
+      "recovery_minutes": -3,
+      "carrier": "DL",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 117,
+      "arr_delay": 114,
+      "speed_mph": 515.4839,
+      "recovery_minutes": 3,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 62,
+      "arr_delay": 62,
+      "speed_mph": 349.4595,
+      "recovery_minutes": 0,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 129,
+      "arr_delay": 118,
+      "speed_mph": 472.9412,
+      "recovery_minutes": 11,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 104,
+      "arr_delay": 101,
+      "speed_mph": 445.8621,
+      "recovery_minutes": 3,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 152,
+      "arr_delay": 131,
+      "speed_mph": 472.4026,
+      "recovery_minutes": 21,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 157,
+      "arr_delay": 152,
+      "speed_mph": 364,
+      "recovery_minutes": 5,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 174,
+      "arr_delay": 171,
+      "speed_mph": 442.1918,
+      "recovery_minutes": 3,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 122,
+      "arr_delay": 121,
+      "speed_mph": 319.2453,
+      "recovery_minutes": 1,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 140,
+      "arr_delay": 184,
+      "speed_mph": 383.2,
+      "recovery_minutes": -44,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 150,
+      "arr_delay": 120,
+      "speed_mph": 448.7755,
+      "recovery_minutes": 30,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 75,
+      "arr_delay": 103,
+      "speed_mph": 218.1818,
+      "recovery_minutes": -28,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 117,
+      "arr_delay": 110,
+      "speed_mph": 396.1905,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 82,
+      "arr_delay": 81,
+      "speed_mph": 393.3333,
+      "recovery_minutes": 1,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 83,
+      "arr_delay": 78,
+      "speed_mph": 271.3636,
+      "recovery_minutes": 5,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 114,
+      "arr_delay": 106,
+      "speed_mph": 252.3529,
+      "recovery_minutes": 8,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 85,
+      "arr_delay": 103,
+      "speed_mph": 354.7674,
+      "recovery_minutes": -18,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 143,
+      "arr_delay": 135,
+      "speed_mph": 323.2653,
+      "recovery_minutes": 8,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 99,
+      "arr_delay": 100,
+      "speed_mph": 388.8,
+      "recovery_minutes": -1,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 198,
+      "arr_delay": 191,
+      "speed_mph": 290.4545,
+      "recovery_minutes": 7,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 130,
+      "arr_delay": 103,
+      "speed_mph": 453.2075,
+      "recovery_minutes": 27,
+      "carrier": "AS",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 71,
+      "arr_delay": 26,
+      "speed_mph": 500.5161,
+      "recovery_minutes": 45,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 141,
+      "arr_delay": 144,
+      "speed_mph": 369.4118,
+      "recovery_minutes": -3,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 92,
+      "arr_delay": 60,
+      "speed_mph": 453.3835,
+      "recovery_minutes": 32,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 120,
+      "arr_delay": 122,
+      "speed_mph": 457.0732,
+      "recovery_minutes": -2,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 78,
+      "arr_delay": 61,
+      "speed_mph": 434.7945,
+      "recovery_minutes": 17,
+      "carrier": "US",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 85,
+      "arr_delay": 89,
+      "speed_mph": 472.3153,
+      "recovery_minutes": -4,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 114,
+      "arr_delay": 120,
+      "speed_mph": 404.4304,
+      "recovery_minutes": -6,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 127,
+      "arr_delay": 129,
+      "speed_mph": 316.8421,
+      "recovery_minutes": -2,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 65,
+      "arr_delay": 49,
+      "speed_mph": 403.4483,
+      "recovery_minutes": 16,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 88,
+      "arr_delay": 83,
+      "speed_mph": 394.8148,
+      "recovery_minutes": 5,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 94,
+      "arr_delay": 87,
+      "speed_mph": 338.4,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 85,
+      "arr_delay": 96,
+      "speed_mph": 313.5849,
+      "recovery_minutes": -11,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 154,
+      "arr_delay": 162,
+      "speed_mph": 324.6269,
+      "recovery_minutes": -8,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 222,
+      "arr_delay": 234,
+      "speed_mph": 434.2105,
+      "recovery_minutes": -12,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 66,
+      "arr_delay": 60,
+      "speed_mph": 255,
+      "recovery_minutes": 6,
+      "carrier": "DL",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 397,
+      "arr_delay": 401,
+      "speed_mph": 485.8209,
+      "recovery_minutes": -4,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 132,
+      "arr_delay": 160,
+      "speed_mph": 383.1056,
+      "recovery_minutes": -28,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 107,
+      "arr_delay": 147,
+      "speed_mph": 354.0845,
+      "recovery_minutes": -40,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 68,
+      "arr_delay": 75,
+      "speed_mph": 369.7059,
+      "recovery_minutes": -7,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 239,
+      "arr_delay": 234,
+      "speed_mph": 376.3636,
+      "recovery_minutes": 5,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 98,
+      "arr_delay": 101,
+      "speed_mph": 385.2229,
+      "recovery_minutes": -3,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 243,
+      "arr_delay": 230,
+      "speed_mph": 440,
+      "recovery_minutes": 13,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 61,
+      "arr_delay": 43,
+      "speed_mph": 360,
+      "recovery_minutes": 18,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 145,
+      "arr_delay": 132,
+      "speed_mph": 357.561,
+      "recovery_minutes": 13,
+      "carrier": "AA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 105,
+      "arr_delay": 79,
+      "speed_mph": 466.5815,
+      "recovery_minutes": 26,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 85,
+      "arr_delay": 82,
+      "speed_mph": 373,
+      "recovery_minutes": 3,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 245,
+      "arr_delay": 207,
+      "speed_mph": 453.4286,
+      "recovery_minutes": 38,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 93,
+      "arr_delay": 66,
+      "speed_mph": 371.3043,
+      "recovery_minutes": 27,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 224,
+      "arr_delay": 180,
+      "speed_mph": 414.8077,
+      "recovery_minutes": 44,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 161,
+      "arr_delay": 159,
+      "speed_mph": 282.6667,
+      "recovery_minutes": 2,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 168,
+      "arr_delay": 194,
+      "speed_mph": 433.4783,
+      "recovery_minutes": -26,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 86,
+      "arr_delay": 77,
+      "speed_mph": 456.8889,
+      "recovery_minutes": 9,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 143,
+      "arr_delay": 141,
+      "speed_mph": 347.25,
+      "recovery_minutes": 2,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 372,
+      "arr_delay": 334,
+      "speed_mph": 412.6027,
+      "recovery_minutes": 38,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 123,
+      "arr_delay": 193,
+      "speed_mph": 486.5132,
+      "recovery_minutes": -70,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 170,
+      "arr_delay": 182,
+      "speed_mph": 382.8837,
+      "recovery_minutes": -12,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 158,
+      "arr_delay": 188,
+      "speed_mph": 385.7895,
+      "recovery_minutes": -30,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 84,
+      "arr_delay": 112,
+      "speed_mph": 320.5714,
+      "recovery_minutes": -28,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 184,
+      "arr_delay": 148,
+      "speed_mph": 531.6279,
+      "recovery_minutes": 36,
+      "carrier": "FL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 63,
+      "arr_delay": 41,
+      "speed_mph": 457.0732,
+      "recovery_minutes": 22,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 107,
+      "arr_delay": 87,
+      "speed_mph": 393.2484,
+      "recovery_minutes": 20,
+      "carrier": "9E",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 106,
+      "arr_delay": 120,
+      "speed_mph": 363.0769,
+      "recovery_minutes": -14,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 77,
+      "arr_delay": 68,
+      "speed_mph": 431.8182,
+      "recovery_minutes": 9,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 72,
+      "arr_delay": 88,
+      "speed_mph": 345.3061,
+      "recovery_minutes": -16,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 99,
+      "arr_delay": 122,
+      "speed_mph": 343.1068,
+      "recovery_minutes": -23,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 169,
+      "arr_delay": 197,
+      "speed_mph": 471.4286,
+      "recovery_minutes": -28,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 144,
+      "arr_delay": 135,
+      "speed_mph": 276.7742,
+      "recovery_minutes": 9,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 104,
+      "arr_delay": 83,
+      "speed_mph": 441.4599,
+      "recovery_minutes": 21,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 82,
+      "arr_delay": 73,
+      "speed_mph": 378.8182,
+      "recovery_minutes": 9,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 74,
+      "arr_delay": 67,
+      "speed_mph": 292.3404,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 81,
+      "arr_delay": 82,
+      "speed_mph": 439.6154,
+      "recovery_minutes": -1,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 152,
+      "arr_delay": 184,
+      "speed_mph": 325.3846,
+      "recovery_minutes": -32,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 242,
+      "arr_delay": 219,
+      "speed_mph": 473.1868,
+      "recovery_minutes": 23,
+      "carrier": "US",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 151,
+      "arr_delay": 116,
+      "speed_mph": 398.9189,
+      "recovery_minutes": 35,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 163,
+      "arr_delay": 168,
+      "speed_mph": 461.4706,
+      "recovery_minutes": -5,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 68,
+      "arr_delay": 38,
+      "speed_mph": 453.2847,
+      "recovery_minutes": 30,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 71,
+      "arr_delay": 47,
+      "speed_mph": 403.3333,
+      "recovery_minutes": 24,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 73,
+      "arr_delay": 44,
+      "speed_mph": 438.4615,
+      "recovery_minutes": 29,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 106,
+      "arr_delay": 113,
+      "speed_mph": 459.7122,
+      "recovery_minutes": -7,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 103,
+      "arr_delay": 118,
+      "speed_mph": 443.494,
+      "recovery_minutes": -15,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 178,
+      "arr_delay": 150,
+      "speed_mph": 367.8261,
+      "recovery_minutes": 28,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 77,
+      "arr_delay": 186,
+      "speed_mph": 345,
+      "recovery_minutes": -109,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 122,
+      "arr_delay": 169,
+      "speed_mph": 463.8462,
+      "recovery_minutes": -47,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 124,
+      "arr_delay": 123,
+      "speed_mph": 335.6044,
+      "recovery_minutes": 1,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 64,
+      "arr_delay": 65,
+      "speed_mph": 373.0693,
+      "recovery_minutes": -1,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 229,
+      "arr_delay": 267,
+      "speed_mph": 332.8,
+      "recovery_minutes": -38,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 62,
+      "arr_delay": 78,
+      "speed_mph": 359.1667,
+      "recovery_minutes": -16,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 89,
+      "arr_delay": 82,
+      "speed_mph": 283.0769,
+      "recovery_minutes": 7,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 119,
+      "arr_delay": 100,
+      "speed_mph": 266.25,
+      "recovery_minutes": 19,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 146,
+      "arr_delay": 115,
+      "speed_mph": 439.8,
+      "recovery_minutes": 31,
+      "carrier": "AA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 206,
+      "arr_delay": 171,
+      "speed_mph": 501.3333,
+      "recovery_minutes": 35,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 69,
+      "arr_delay": 52,
+      "speed_mph": 484.2424,
+      "recovery_minutes": 17,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 105,
+      "arr_delay": 68,
+      "speed_mph": 461.4433,
+      "recovery_minutes": 37,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 68,
+      "arr_delay": 33,
+      "speed_mph": 471.3861,
+      "recovery_minutes": 35,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 90,
+      "arr_delay": 87,
+      "speed_mph": 375.1724,
+      "recovery_minutes": 3,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 64,
+      "arr_delay": 36,
+      "speed_mph": 422.8767,
+      "recovery_minutes": 28,
+      "carrier": "9E",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 283,
+      "arr_delay": 385,
+      "speed_mph": 402.4699,
+      "recovery_minutes": -102,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 281,
+      "arr_delay": 328,
+      "speed_mph": 323.1933,
+      "recovery_minutes": -47,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 109,
+      "arr_delay": 80,
+      "speed_mph": 489.4505,
+      "recovery_minutes": 29,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 103,
+      "arr_delay": 98,
+      "speed_mph": 410.5419,
+      "recovery_minutes": 5,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 63,
+      "arr_delay": 78,
+      "speed_mph": 452.7439,
+      "recovery_minutes": -15,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 67,
+      "arr_delay": 51,
+      "speed_mph": 376.8932,
+      "recovery_minutes": 16,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 150,
+      "arr_delay": 157,
+      "speed_mph": 403.2787,
+      "recovery_minutes": -7,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 78,
+      "arr_delay": 98,
+      "speed_mph": 393.7725,
+      "recovery_minutes": -20,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 174,
+      "arr_delay": 171,
+      "speed_mph": 390,
+      "recovery_minutes": 3,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 133,
+      "arr_delay": 138,
+      "speed_mph": 468,
+      "recovery_minutes": -5,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 187,
+      "arr_delay": 161,
+      "speed_mph": 334.5455,
+      "recovery_minutes": 26,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 92,
+      "arr_delay": 115,
+      "speed_mph": 319.5349,
+      "recovery_minutes": -23,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 224,
+      "arr_delay": 221,
+      "speed_mph": 422.2642,
+      "recovery_minutes": 3,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 79,
+      "arr_delay": 59,
+      "speed_mph": 477.8894,
+      "recovery_minutes": 20,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 70,
+      "arr_delay": 83,
+      "speed_mph": 380.7273,
+      "recovery_minutes": -13,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 233,
+      "arr_delay": 230,
+      "speed_mph": 340.8,
+      "recovery_minutes": 3,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 104,
+      "arr_delay": 86,
+      "speed_mph": 408.6486,
+      "recovery_minutes": 18,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 139,
+      "arr_delay": 118,
+      "speed_mph": 432.6316,
+      "recovery_minutes": 21,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 62,
+      "arr_delay": 69,
+      "speed_mph": 171.4286,
+      "recovery_minutes": -7,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 65,
+      "arr_delay": 93,
+      "speed_mph": 341.4085,
+      "recovery_minutes": -28,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 99,
+      "arr_delay": 88,
+      "speed_mph": 465.1034,
+      "recovery_minutes": 11,
+      "carrier": "DL",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 66,
+      "arr_delay": 58,
+      "speed_mph": 376.7647,
+      "recovery_minutes": 8,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 110,
+      "arr_delay": 114,
+      "speed_mph": 353.617,
+      "recovery_minutes": -4,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 144,
+      "arr_delay": 159,
+      "speed_mph": 405.4144,
+      "recovery_minutes": -15,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 184,
+      "arr_delay": 207,
+      "speed_mph": 341.9095,
+      "recovery_minutes": -23,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 78,
+      "arr_delay": 73,
+      "speed_mph": 396.8944,
+      "recovery_minutes": 5,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 143,
+      "arr_delay": 115,
+      "speed_mph": 449.6,
+      "recovery_minutes": 28,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 135,
+      "arr_delay": 133,
+      "speed_mph": 328.2692,
+      "recovery_minutes": 2,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 245,
+      "arr_delay": 225,
+      "speed_mph": 386.087,
+      "recovery_minutes": 20,
+      "carrier": "AA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 135,
+      "arr_delay": 143,
+      "speed_mph": 349.0476,
+      "recovery_minutes": -8,
+      "carrier": "AA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 137,
+      "arr_delay": 132,
+      "speed_mph": 410.5785,
+      "recovery_minutes": 5,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 168,
+      "arr_delay": 142,
+      "speed_mph": 392.1818,
+      "recovery_minutes": 26,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 79,
+      "arr_delay": 129,
+      "speed_mph": 460.9615,
+      "recovery_minutes": -50,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 105,
+      "arr_delay": 92,
+      "speed_mph": 371.1628,
+      "recovery_minutes": 13,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 61,
+      "arr_delay": 22,
+      "speed_mph": 496.8462,
+      "recovery_minutes": 39,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 67,
+      "arr_delay": 89,
+      "speed_mph": 411.133,
+      "recovery_minutes": -22,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 86,
+      "arr_delay": 95,
+      "speed_mph": 364.375,
+      "recovery_minutes": -9,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 74,
+      "arr_delay": 63,
+      "speed_mph": 420.5505,
+      "recovery_minutes": 11,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 102,
+      "arr_delay": 94,
+      "speed_mph": 286.25,
+      "recovery_minutes": 8,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 161,
+      "arr_delay": 140,
+      "speed_mph": 420.5941,
+      "recovery_minutes": 21,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 72,
+      "arr_delay": 90,
+      "speed_mph": 428.8525,
+      "recovery_minutes": -18,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 145,
+      "arr_delay": 139,
+      "speed_mph": 381.7699,
+      "recovery_minutes": 6,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 102,
+      "arr_delay": 82,
+      "speed_mph": 373.3981,
+      "recovery_minutes": 20,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 88,
+      "arr_delay": 87,
+      "speed_mph": 355.5,
+      "recovery_minutes": 1,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 311,
+      "arr_delay": 286,
+      "speed_mph": 435.4286,
+      "recovery_minutes": 25,
+      "carrier": "FL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 138,
+      "arr_delay": 122,
+      "speed_mph": 298.5714,
+      "recovery_minutes": 16,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 117,
+      "arr_delay": 141,
+      "speed_mph": 397.5652,
+      "recovery_minutes": -24,
+      "carrier": "FL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 92,
+      "arr_delay": 73,
+      "speed_mph": 393.6842,
+      "recovery_minutes": 19,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 148,
+      "arr_delay": 128,
+      "speed_mph": 392.6786,
+      "recovery_minutes": 20,
+      "carrier": "AA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 116,
+      "arr_delay": 98,
+      "speed_mph": 413.5135,
+      "recovery_minutes": 18,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 301,
+      "arr_delay": 259,
+      "speed_mph": 457.8723,
+      "recovery_minutes": 42,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 115,
+      "arr_delay": 116,
+      "speed_mph": 388.1928,
+      "recovery_minutes": -1,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 161,
+      "arr_delay": 152,
+      "speed_mph": 335.493,
+      "recovery_minutes": 9,
+      "carrier": "FL",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 135,
+      "arr_delay": 127,
+      "speed_mph": 355,
+      "recovery_minutes": 8,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 125,
+      "arr_delay": 173,
+      "speed_mph": 410.4348,
+      "recovery_minutes": -48,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 78,
+      "arr_delay": 89,
+      "speed_mph": 387.9452,
+      "recovery_minutes": -11,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 77,
+      "arr_delay": 120,
+      "speed_mph": 352.3171,
+      "recovery_minutes": -43,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 65,
+      "arr_delay": 47,
+      "speed_mph": 493.1818,
+      "recovery_minutes": 18,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 146,
+      "arr_delay": 191,
+      "speed_mph": 385.2101,
+      "recovery_minutes": -45,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 69,
+      "arr_delay": 33,
+      "speed_mph": 422.8767,
+      "recovery_minutes": 36,
+      "carrier": "9E",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 315,
+      "arr_delay": 303,
+      "speed_mph": 398.6087,
+      "recovery_minutes": 12,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 696,
+      "arr_delay": 674,
+      "speed_mph": 381.2658,
+      "recovery_minutes": 22,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 93,
+      "arr_delay": 71,
+      "speed_mph": 437.4888,
+      "recovery_minutes": 22,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 75,
+      "arr_delay": 85,
+      "speed_mph": 317.095,
+      "recovery_minutes": -10,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 195,
+      "arr_delay": 182,
+      "speed_mph": 396.2791,
+      "recovery_minutes": 13,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 217,
+      "arr_delay": 226,
+      "speed_mph": 461.7857,
+      "recovery_minutes": -9,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 140,
+      "arr_delay": 135,
+      "speed_mph": 453.75,
+      "recovery_minutes": 5,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 145,
+      "arr_delay": 148,
+      "speed_mph": 431.8182,
+      "recovery_minutes": -3,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 139,
+      "arr_delay": 136,
+      "speed_mph": 404.4304,
+      "recovery_minutes": 3,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 66,
+      "arr_delay": 49,
+      "speed_mph": 341.1429,
+      "recovery_minutes": 17,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 126,
+      "arr_delay": 188,
+      "speed_mph": 362.6667,
+      "recovery_minutes": -62,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 225,
+      "arr_delay": 205,
+      "speed_mph": 291.0638,
+      "recovery_minutes": 20,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 366,
+      "arr_delay": 368,
+      "speed_mph": 421.9608,
+      "recovery_minutes": -2,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 142,
+      "arr_delay": 131,
+      "speed_mph": 461.1429,
+      "recovery_minutes": 11,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 179,
+      "arr_delay": 169,
+      "speed_mph": 371.1765,
+      "recovery_minutes": 10,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 69,
+      "arr_delay": 56,
+      "speed_mph": 381.5789,
+      "recovery_minutes": 13,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 61,
+      "arr_delay": 56,
+      "speed_mph": 416.0584,
+      "recovery_minutes": 5,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 158,
+      "arr_delay": 127,
+      "speed_mph": 457.3333,
+      "recovery_minutes": 31,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 114,
+      "arr_delay": 95,
+      "speed_mph": 366,
+      "recovery_minutes": 19,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 1005,
+      "arr_delay": 989,
+      "speed_mph": 368.125,
+      "recovery_minutes": 16,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 77,
+      "arr_delay": 70,
+      "speed_mph": 342.2727,
+      "recovery_minutes": 7,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 195,
+      "arr_delay": 198,
+      "speed_mph": 391.8919,
+      "recovery_minutes": -3,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 84,
+      "arr_delay": 46,
+      "speed_mph": 225.6,
+      "recovery_minutes": 38,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 100,
+      "arr_delay": 130,
+      "speed_mph": 447.1579,
+      "recovery_minutes": -30,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 79,
+      "arr_delay": 96,
+      "speed_mph": 367.0588,
+      "recovery_minutes": -17,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 62,
+      "arr_delay": 52,
+      "speed_mph": 382.7848,
+      "recovery_minutes": 10,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 65,
+      "arr_delay": 49,
+      "speed_mph": 384,
+      "recovery_minutes": 16,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 63,
+      "arr_delay": 51,
+      "speed_mph": 391.6216,
+      "recovery_minutes": 12,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 115,
+      "arr_delay": 85,
+      "speed_mph": 375.9574,
+      "recovery_minutes": 30,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 112,
+      "arr_delay": 95,
+      "speed_mph": 333.3333,
+      "recovery_minutes": 17,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 140,
+      "arr_delay": 194,
+      "speed_mph": 295.4795,
+      "recovery_minutes": -54,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 65,
+      "arr_delay": 79,
+      "speed_mph": 354.8148,
+      "recovery_minutes": -14,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 62,
+      "arr_delay": 50,
+      "speed_mph": 266.6667,
+      "recovery_minutes": 12,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 93,
+      "arr_delay": 54,
+      "speed_mph": 472.2137,
+      "recovery_minutes": 39,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 84,
+      "arr_delay": 73,
+      "speed_mph": 451.7419,
+      "recovery_minutes": 11,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 104,
+      "arr_delay": 132,
+      "speed_mph": 402.2951,
+      "recovery_minutes": -28,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 70,
+      "arr_delay": 49,
+      "speed_mph": 401.0526,
+      "recovery_minutes": 21,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 78,
+      "arr_delay": 56,
+      "speed_mph": 427.2,
+      "recovery_minutes": 22,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 183,
+      "arr_delay": 176,
+      "speed_mph": 292.3404,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 114,
+      "arr_delay": 126,
+      "speed_mph": 313.1707,
+      "recovery_minutes": -12,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 210,
+      "arr_delay": 203,
+      "speed_mph": 385.7895,
+      "recovery_minutes": 7,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 139,
+      "arr_delay": 249,
+      "speed_mph": 357.1875,
+      "recovery_minutes": -110,
+      "carrier": "FL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 138,
+      "arr_delay": 125,
+      "speed_mph": 487.4227,
+      "recovery_minutes": 13,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 193,
+      "arr_delay": 219,
+      "speed_mph": 340.2632,
+      "recovery_minutes": -26,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 80,
+      "arr_delay": 79,
+      "speed_mph": 424.3636,
+      "recovery_minutes": 1,
+      "carrier": "WN",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 90,
+      "arr_delay": 89,
+      "speed_mph": 370.4348,
+      "recovery_minutes": 1,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 284,
+      "arr_delay": 290,
+      "speed_mph": 233.75,
+      "recovery_minutes": -6,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 141,
+      "arr_delay": 185,
+      "speed_mph": 438.3051,
+      "recovery_minutes": -44,
+      "carrier": "DL",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 215,
+      "arr_delay": 240,
+      "speed_mph": 306.9065,
+      "recovery_minutes": -25,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 263,
+      "arr_delay": 252,
+      "speed_mph": 359.4393,
+      "recovery_minutes": 11,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 122,
+      "arr_delay": 128,
+      "speed_mph": 320,
+      "recovery_minutes": -6,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 95,
+      "arr_delay": 147,
+      "speed_mph": 380,
+      "recovery_minutes": -52,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 73,
+      "arr_delay": 78,
+      "speed_mph": 510,
+      "recovery_minutes": -5,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 61,
+      "arr_delay": 64,
+      "speed_mph": 269.2683,
+      "recovery_minutes": -3,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 62,
+      "arr_delay": 82,
+      "speed_mph": 454.3846,
+      "recovery_minutes": -20,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 88,
+      "arr_delay": 76,
+      "speed_mph": 462.0217,
+      "recovery_minutes": 12,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 74,
+      "arr_delay": 75,
+      "speed_mph": 430.9859,
+      "recovery_minutes": -1,
+      "carrier": "MQ",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 61,
+      "arr_delay": 74,
+      "speed_mph": 380.3571,
+      "recovery_minutes": -13,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 118,
+      "arr_delay": 97,
+      "speed_mph": 448.2353,
+      "recovery_minutes": 21,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 133,
+      "arr_delay": 94,
+      "speed_mph": 474.4409,
+      "recovery_minutes": 39,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 154,
+      "arr_delay": 208,
+      "speed_mph": 470.4153,
+      "recovery_minutes": -54,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 100,
+      "arr_delay": 118,
+      "speed_mph": 452.7439,
+      "recovery_minutes": -18,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 65,
+      "arr_delay": 63,
+      "speed_mph": 395.7798,
+      "recovery_minutes": 2,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 92,
+      "arr_delay": 74,
+      "speed_mph": 467.2727,
+      "recovery_minutes": 18,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 75,
+      "arr_delay": 80,
+      "speed_mph": 333.75,
+      "recovery_minutes": -5,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 78,
+      "arr_delay": 63,
+      "speed_mph": 428.2759,
+      "recovery_minutes": 15,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 97,
+      "arr_delay": 89,
+      "speed_mph": 460.2985,
+      "recovery_minutes": 8,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 63,
+      "arr_delay": 82,
+      "speed_mph": 345.3659,
+      "recovery_minutes": -19,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 88,
+      "arr_delay": 80,
+      "speed_mph": 373.4118,
+      "recovery_minutes": 8,
+      "carrier": "US",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 75,
+      "arr_delay": 58,
+      "speed_mph": 411.1538,
+      "recovery_minutes": 17,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 140,
+      "arr_delay": 129,
+      "speed_mph": 314.2105,
+      "recovery_minutes": 11,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 73,
+      "arr_delay": 136,
+      "speed_mph": 289.5302,
+      "recovery_minutes": -63,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 75,
+      "arr_delay": 44,
+      "speed_mph": 466.5306,
+      "recovery_minutes": 31,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 86,
+      "arr_delay": 65,
+      "speed_mph": 448.8889,
+      "recovery_minutes": 21,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 107,
+      "arr_delay": 136,
+      "speed_mph": 297.2727,
+      "recovery_minutes": -29,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 94,
+      "arr_delay": 85,
+      "speed_mph": 386.3415,
+      "recovery_minutes": 9,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 153,
+      "arr_delay": 137,
+      "speed_mph": 336.5714,
+      "recovery_minutes": 16,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 121,
+      "arr_delay": 97,
+      "speed_mph": 349.0323,
+      "recovery_minutes": 24,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 68,
+      "arr_delay": 69,
+      "speed_mph": 249.3333,
+      "recovery_minutes": -1,
+      "carrier": "AA",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 70,
+      "arr_delay": 62,
+      "speed_mph": 380.1342,
+      "recovery_minutes": 8,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 80,
+      "arr_delay": 61,
+      "speed_mph": 409.1803,
+      "recovery_minutes": 19,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 138,
+      "arr_delay": 162,
+      "speed_mph": 442.3448,
+      "recovery_minutes": -24,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 164,
+      "arr_delay": 171,
+      "speed_mph": 334.4444,
+      "recovery_minutes": -7,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 72,
+      "arr_delay": 84,
+      "speed_mph": 360.3846,
+      "recovery_minutes": -12,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 179,
+      "arr_delay": 162,
+      "speed_mph": 420.8276,
+      "recovery_minutes": 17,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 71,
+      "arr_delay": 119,
+      "speed_mph": 446.8831,
+      "recovery_minutes": -48,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 75,
+      "arr_delay": 96,
+      "speed_mph": 475.9615,
+      "recovery_minutes": -21,
+      "carrier": "DL",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 108,
+      "arr_delay": 102,
+      "speed_mph": 345.3061,
+      "recovery_minutes": 6,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 175,
+      "arr_delay": 190,
+      "speed_mph": 402.6316,
+      "recovery_minutes": -15,
+      "carrier": "MQ",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 101,
+      "arr_delay": 84,
+      "speed_mph": 426.9903,
+      "recovery_minutes": 17,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 125,
+      "arr_delay": 108,
+      "speed_mph": 362.521,
+      "recovery_minutes": 17,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 65,
+      "arr_delay": 52,
+      "speed_mph": 429.0909,
+      "recovery_minutes": 13,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 144,
+      "arr_delay": 130,
+      "speed_mph": 439.1837,
+      "recovery_minutes": 14,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 165,
+      "arr_delay": 190,
+      "speed_mph": 398.8657,
+      "recovery_minutes": -25,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 277,
+      "arr_delay": 266,
+      "speed_mph": 390.3226,
+      "recovery_minutes": 11,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 254,
+      "arr_delay": 239,
+      "speed_mph": 491.6923,
+      "recovery_minutes": 15,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 88,
+      "arr_delay": 58,
+      "speed_mph": 415.6364,
+      "recovery_minutes": 30,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 102,
+      "arr_delay": 100,
+      "speed_mph": 377.4834,
+      "recovery_minutes": 2,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 107,
+      "arr_delay": 101,
+      "speed_mph": 359.5041,
+      "recovery_minutes": 6,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 124,
+      "arr_delay": 102,
+      "speed_mph": 443.2979,
+      "recovery_minutes": 22,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 237,
+      "arr_delay": 296,
+      "speed_mph": 392.7273,
+      "recovery_minutes": -59,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 108,
+      "arr_delay": 118,
+      "speed_mph": 316.8421,
+      "recovery_minutes": -10,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 79,
+      "arr_delay": 74,
+      "speed_mph": 279.1837,
+      "recovery_minutes": 5,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 87,
+      "arr_delay": 83,
+      "speed_mph": 331.7647,
+      "recovery_minutes": 4,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 202,
+      "arr_delay": 194,
+      "speed_mph": 298.6047,
+      "recovery_minutes": 8,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 63,
+      "arr_delay": 93,
+      "speed_mph": 417.1348,
+      "recovery_minutes": -30,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 198,
+      "arr_delay": 175,
+      "speed_mph": 453.3871,
+      "recovery_minutes": 23,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 130,
+      "arr_delay": 133,
+      "speed_mph": 390.1935,
+      "recovery_minutes": -3,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 108,
+      "arr_delay": 84,
+      "speed_mph": 438.8235,
+      "recovery_minutes": 24,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 99,
+      "arr_delay": 67,
+      "speed_mph": 447.9755,
+      "recovery_minutes": 32,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 328,
+      "arr_delay": 385,
+      "speed_mph": 288.2432,
+      "recovery_minutes": -57,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 79,
+      "arr_delay": 43,
+      "speed_mph": 547.8857,
+      "recovery_minutes": 36,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 77,
+      "arr_delay": 81,
+      "speed_mph": 429.8061,
+      "recovery_minutes": -4,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 101,
+      "arr_delay": 149,
+      "speed_mph": 337.1271,
+      "recovery_minutes": -48,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 63,
+      "arr_delay": 70,
+      "speed_mph": 467.4419,
+      "recovery_minutes": -7,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 69,
+      "arr_delay": 50,
+      "speed_mph": 381.2658,
+      "recovery_minutes": 19,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 67,
+      "arr_delay": 125,
+      "speed_mph": 280.5,
+      "recovery_minutes": -58,
+      "carrier": "DL",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 108,
+      "arr_delay": 99,
+      "speed_mph": 398.5075,
+      "recovery_minutes": 9,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 64,
+      "arr_delay": 60,
+      "speed_mph": 402.4528,
+      "recovery_minutes": 4,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 129,
+      "arr_delay": 144,
+      "speed_mph": 259.5652,
+      "recovery_minutes": -15,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 243,
+      "arr_delay": 236,
+      "speed_mph": 291.2195,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 74,
+      "arr_delay": 85,
+      "speed_mph": 455.7576,
+      "recovery_minutes": -11,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 63,
+      "arr_delay": -1,
+      "speed_mph": 494.0659,
+      "recovery_minutes": 64,
+      "carrier": "DL",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 67,
+      "arr_delay": 67,
+      "speed_mph": 382.7027,
+      "recovery_minutes": 0,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 87,
+      "arr_delay": 75,
+      "speed_mph": 378.6667,
+      "recovery_minutes": 12,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 79,
+      "arr_delay": 72,
+      "speed_mph": 348.5714,
+      "recovery_minutes": 7,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 96,
+      "arr_delay": 104,
+      "speed_mph": 379.5349,
+      "recovery_minutes": -8,
+      "carrier": "US",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 67,
+      "arr_delay": 48,
+      "speed_mph": 348,
+      "recovery_minutes": 19,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 97,
+      "arr_delay": 88,
+      "speed_mph": 378.1818,
+      "recovery_minutes": 9,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 72,
+      "arr_delay": 56,
+      "speed_mph": 474.1463,
+      "recovery_minutes": 16,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 139,
+      "arr_delay": 133,
+      "speed_mph": 419.4495,
+      "recovery_minutes": 6,
+      "carrier": "FL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 203,
+      "arr_delay": 191,
+      "speed_mph": 266.25,
+      "recovery_minutes": 12,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 99,
+      "arr_delay": 102,
+      "speed_mph": 318.1395,
+      "recovery_minutes": -3,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 100,
+      "arr_delay": 69,
+      "speed_mph": 470.1818,
+      "recovery_minutes": 31,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 184,
+      "arr_delay": 162,
+      "speed_mph": 452.5962,
+      "recovery_minutes": 22,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 114,
+      "arr_delay": 126,
+      "speed_mph": 453.7674,
+      "recovery_minutes": -12,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 64,
+      "arr_delay": 53,
+      "speed_mph": 313.8462,
+      "recovery_minutes": 11,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 224,
+      "arr_delay": 198,
+      "speed_mph": 435.2332,
+      "recovery_minutes": 26,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 70,
+      "arr_delay": 54,
+      "speed_mph": 304.4776,
+      "recovery_minutes": 16,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 110,
+      "arr_delay": 115,
+      "speed_mph": 311.3793,
+      "recovery_minutes": -5,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 73,
+      "arr_delay": 88,
+      "speed_mph": 290.5263,
+      "recovery_minutes": -15,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 65,
+      "arr_delay": 71,
+      "speed_mph": 450.1045,
+      "recovery_minutes": -6,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 71,
+      "arr_delay": 48,
+      "speed_mph": 329.3617,
+      "recovery_minutes": 23,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 106,
+      "arr_delay": 96,
+      "speed_mph": 476.6078,
+      "recovery_minutes": 10,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 144,
+      "arr_delay": 146,
+      "speed_mph": 378.4211,
+      "recovery_minutes": -2,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 95,
+      "arr_delay": 91,
+      "speed_mph": 359.3258,
+      "recovery_minutes": 4,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 72,
+      "arr_delay": 79,
+      "speed_mph": 413.0137,
+      "recovery_minutes": -7,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 140,
+      "arr_delay": 122,
+      "speed_mph": 426.24,
+      "recovery_minutes": 18,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 81,
+      "arr_delay": 70,
+      "speed_mph": 437.25,
+      "recovery_minutes": 11,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 79,
+      "arr_delay": 87,
+      "speed_mph": 426.2637,
+      "recovery_minutes": -8,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 111,
+      "arr_delay": 92,
+      "speed_mph": 457.4713,
+      "recovery_minutes": 19,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 83,
+      "arr_delay": 168,
+      "speed_mph": 367.3743,
+      "recovery_minutes": -85,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 126,
+      "arr_delay": 115,
+      "speed_mph": 418.2353,
+      "recovery_minutes": 11,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 65,
+      "arr_delay": 54,
+      "speed_mph": 375.3846,
+      "recovery_minutes": 11,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 76,
+      "arr_delay": 114,
+      "speed_mph": 346.2162,
+      "recovery_minutes": -38,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 118,
+      "arr_delay": 103,
+      "speed_mph": 433.8129,
+      "recovery_minutes": 15,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 95,
+      "arr_delay": 80,
+      "speed_mph": 391.2676,
+      "recovery_minutes": 15,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 190,
+      "arr_delay": 172,
+      "speed_mph": 380.2597,
+      "recovery_minutes": 18,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 146,
+      "arr_delay": 140,
+      "speed_mph": 348.7912,
+      "recovery_minutes": 6,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 134,
+      "arr_delay": 165,
+      "speed_mph": 329.8643,
+      "recovery_minutes": -31,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 88,
+      "arr_delay": 149,
+      "speed_mph": 417.5294,
+      "recovery_minutes": -61,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 62,
+      "arr_delay": 83,
+      "speed_mph": 414.3624,
+      "recovery_minutes": -21,
+      "carrier": "9E",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 93,
+      "arr_delay": 66,
+      "speed_mph": 506.4286,
+      "recovery_minutes": 27,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 97,
+      "arr_delay": 80,
+      "speed_mph": 328,
+      "recovery_minutes": 17,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 89,
+      "arr_delay": 119,
+      "speed_mph": 317.5,
+      "recovery_minutes": -30,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 164,
+      "arr_delay": 149,
+      "speed_mph": 349.6721,
+      "recovery_minutes": 15,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 69,
+      "arr_delay": 60,
+      "speed_mph": 441.3103,
+      "recovery_minutes": 9,
+      "carrier": "WN",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 80,
+      "arr_delay": 75,
+      "speed_mph": 281.6949,
+      "recovery_minutes": 5,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 94,
+      "arr_delay": 104,
+      "speed_mph": 324.4068,
+      "recovery_minutes": -10,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 268,
+      "arr_delay": 259,
+      "speed_mph": 362.521,
+      "recovery_minutes": 9,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 69,
+      "arr_delay": 75,
+      "speed_mph": 396,
+      "recovery_minutes": -6,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 61,
+      "arr_delay": 60,
+      "speed_mph": 435.6923,
+      "recovery_minutes": 1,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 220,
+      "arr_delay": 244,
+      "speed_mph": 434.5631,
+      "recovery_minutes": -24,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 62,
+      "arr_delay": 40,
+      "speed_mph": 443.4375,
+      "recovery_minutes": 22,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 118,
+      "arr_delay": 99,
+      "speed_mph": 426.7606,
+      "recovery_minutes": 19,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 80,
+      "arr_delay": 59,
+      "speed_mph": 425.3793,
+      "recovery_minutes": 21,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 73,
+      "arr_delay": 53,
+      "speed_mph": 352.9412,
+      "recovery_minutes": 20,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 71,
+      "arr_delay": 75,
+      "speed_mph": 463.7594,
+      "recovery_minutes": -4,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 67,
+      "arr_delay": 55,
+      "speed_mph": 387,
+      "recovery_minutes": 12,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 94,
+      "arr_delay": 95,
+      "speed_mph": 161.1429,
+      "recovery_minutes": -1,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 99,
+      "arr_delay": 99,
+      "speed_mph": 342.5197,
+      "recovery_minutes": 0,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 76,
+      "arr_delay": 51,
+      "speed_mph": 436.8,
+      "recovery_minutes": 25,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 165,
+      "arr_delay": 172,
+      "speed_mph": 430.4348,
+      "recovery_minutes": -7,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 66,
+      "arr_delay": 46,
+      "speed_mph": 454.2056,
+      "recovery_minutes": 20,
+      "carrier": "F9",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 253,
+      "arr_delay": 216,
+      "speed_mph": 487.1111,
+      "recovery_minutes": 37,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 169,
+      "arr_delay": 166,
+      "speed_mph": 367.7922,
+      "recovery_minutes": 3,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 66,
+      "arr_delay": 46,
+      "speed_mph": 430.6931,
+      "recovery_minutes": 20,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 106,
+      "arr_delay": 98,
+      "speed_mph": 353.617,
+      "recovery_minutes": 8,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 93,
+      "arr_delay": 106,
+      "speed_mph": 272.459,
+      "recovery_minutes": -13,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 176,
+      "arr_delay": 171,
+      "speed_mph": 471.1579,
+      "recovery_minutes": 5,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 105,
+      "arr_delay": 90,
+      "speed_mph": 372.2727,
+      "recovery_minutes": 15,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 171,
+      "arr_delay": 189,
+      "speed_mph": 393.5526,
+      "recovery_minutes": -18,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 81,
+      "arr_delay": 88,
+      "speed_mph": 310.4651,
+      "recovery_minutes": -7,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 69,
+      "arr_delay": 101,
+      "speed_mph": 423.1579,
+      "recovery_minutes": -32,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 97,
+      "arr_delay": 95,
+      "speed_mph": 322.5,
+      "recovery_minutes": 2,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 197,
+      "arr_delay": 177,
+      "speed_mph": 425.9155,
+      "recovery_minutes": 20,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 149,
+      "arr_delay": 111,
+      "speed_mph": 490.099,
+      "recovery_minutes": 38,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 120,
+      "arr_delay": 180,
+      "speed_mph": 392.6444,
+      "recovery_minutes": -60,
+      "carrier": "DL",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 123,
+      "arr_delay": 107,
+      "speed_mph": 502.9787,
+      "recovery_minutes": 16,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 122,
+      "arr_delay": 131,
+      "speed_mph": 344.186,
+      "recovery_minutes": -9,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 86,
+      "arr_delay": 75,
+      "speed_mph": 453.5294,
+      "recovery_minutes": 11,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 105,
+      "arr_delay": 92,
+      "speed_mph": 399.75,
+      "recovery_minutes": 13,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 105,
+      "arr_delay": 151,
+      "speed_mph": 418.3099,
+      "recovery_minutes": -46,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 61,
+      "arr_delay": 54,
+      "speed_mph": 420.8276,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 145,
+      "arr_delay": 131,
+      "speed_mph": 439.2188,
+      "recovery_minutes": 14,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 97,
+      "arr_delay": 108,
+      "speed_mph": 254.4444,
+      "recovery_minutes": -11,
+      "carrier": "YV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 92,
+      "arr_delay": 71,
+      "speed_mph": 385.9459,
+      "recovery_minutes": 21,
+      "carrier": "WN",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 76,
+      "arr_delay": 87,
+      "speed_mph": 292.5,
+      "recovery_minutes": -11,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 62,
+      "arr_delay": 81,
+      "speed_mph": 259.6875,
+      "recovery_minutes": -19,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 144,
+      "arr_delay": 159,
+      "speed_mph": 421.875,
+      "recovery_minutes": -15,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 146,
+      "arr_delay": 140,
+      "speed_mph": 386.087,
+      "recovery_minutes": 6,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 137,
+      "arr_delay": 110,
+      "speed_mph": 464.3478,
+      "recovery_minutes": 27,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 70,
+      "arr_delay": 65,
+      "speed_mph": 404.5714,
+      "recovery_minutes": 5,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 263,
+      "arr_delay": 285,
+      "speed_mph": 328.9209,
+      "recovery_minutes": -22,
+      "carrier": "FL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 62,
+      "arr_delay": 50,
+      "speed_mph": 452.6733,
+      "recovery_minutes": 12,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 70,
+      "arr_delay": 63,
+      "speed_mph": 377.5221,
+      "recovery_minutes": 7,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 88,
+      "arr_delay": 69,
+      "speed_mph": 407.027,
+      "recovery_minutes": 19,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 89,
+      "arr_delay": 75,
+      "speed_mph": 298.6957,
+      "recovery_minutes": 14,
+      "carrier": "YV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 117,
+      "arr_delay": 119,
+      "speed_mph": 419.4495,
+      "recovery_minutes": -2,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 83,
+      "arr_delay": 156,
+      "speed_mph": 402.4528,
+      "recovery_minutes": -73,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 87,
+      "arr_delay": 80,
+      "speed_mph": 326.5909,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 160,
+      "arr_delay": 120,
+      "speed_mph": 410.3774,
+      "recovery_minutes": 40,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 69,
+      "arr_delay": 51,
+      "speed_mph": 330.989,
+      "recovery_minutes": 18,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 81,
+      "arr_delay": 74,
+      "speed_mph": 462.2093,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 61,
+      "arr_delay": 54,
+      "speed_mph": 366.2264,
+      "recovery_minutes": 7,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 184,
+      "arr_delay": 181,
+      "speed_mph": 340.8,
+      "recovery_minutes": 3,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 75,
+      "arr_delay": 82,
+      "speed_mph": 431.25,
+      "recovery_minutes": -7,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 143,
+      "arr_delay": 145,
+      "speed_mph": 346.9565,
+      "recovery_minutes": -2,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 106,
+      "arr_delay": 121,
+      "speed_mph": 446.4179,
+      "recovery_minutes": -15,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 107,
+      "arr_delay": 69,
+      "speed_mph": 438.4615,
+      "recovery_minutes": 38,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 64,
+      "arr_delay": 30,
+      "speed_mph": 483.3645,
+      "recovery_minutes": 34,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 194,
+      "arr_delay": 200,
+      "speed_mph": 344,
+      "recovery_minutes": -6,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 84,
+      "arr_delay": 116,
+      "speed_mph": 398.0488,
+      "recovery_minutes": -32,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 109,
+      "arr_delay": 121,
+      "speed_mph": 280.4082,
+      "recovery_minutes": -12,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 97,
+      "arr_delay": 89,
+      "speed_mph": 365.6962,
+      "recovery_minutes": 8,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 103,
+      "arr_delay": 117,
+      "speed_mph": 378.9041,
+      "recovery_minutes": -14,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 80,
+      "arr_delay": 72,
+      "speed_mph": 238.7234,
+      "recovery_minutes": 8,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 118,
+      "arr_delay": 111,
+      "speed_mph": 422.2222,
+      "recovery_minutes": 7,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 75,
+      "arr_delay": 95,
+      "speed_mph": 181.8182,
+      "recovery_minutes": -20,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 79,
+      "arr_delay": 76,
+      "speed_mph": 440.2878,
+      "recovery_minutes": 3,
+      "carrier": "MQ",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 99,
+      "arr_delay": 79,
+      "speed_mph": 303.2432,
+      "recovery_minutes": 20,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 89,
+      "arr_delay": 84,
+      "speed_mph": 444.1667,
+      "recovery_minutes": 5,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 112,
+      "arr_delay": 91,
+      "speed_mph": 362.7273,
+      "recovery_minutes": 21,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 136,
+      "arr_delay": 181,
+      "speed_mph": 411.5217,
+      "recovery_minutes": -45,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 75,
+      "arr_delay": 58,
+      "speed_mph": 442.3529,
+      "recovery_minutes": 17,
+      "carrier": "WN",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 73,
+      "arr_delay": 63,
+      "speed_mph": 334.4262,
+      "recovery_minutes": 10,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 142,
+      "arr_delay": 106,
+      "speed_mph": 415.125,
+      "recovery_minutes": 36,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 125,
+      "arr_delay": 141,
+      "speed_mph": 415.8621,
+      "recovery_minutes": -16,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 101,
+      "arr_delay": 84,
+      "speed_mph": 383.4783,
+      "recovery_minutes": 17,
+      "carrier": "9E",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 144,
+      "arr_delay": 188,
+      "speed_mph": 290.4545,
+      "recovery_minutes": -44,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 78,
+      "arr_delay": 51,
+      "speed_mph": 416.4103,
+      "recovery_minutes": 27,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 121,
+      "arr_delay": 76,
+      "speed_mph": 498.0583,
+      "recovery_minutes": 45,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 151,
+      "arr_delay": 138,
+      "speed_mph": 290,
+      "recovery_minutes": 13,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 96,
+      "arr_delay": 99,
+      "speed_mph": 334.1176,
+      "recovery_minutes": -3,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 65,
+      "arr_delay": 53,
+      "speed_mph": 362.5532,
+      "recovery_minutes": 12,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 68,
+      "arr_delay": 55,
+      "speed_mph": 443.3898,
+      "recovery_minutes": 13,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 119,
+      "arr_delay": 115,
+      "speed_mph": 267.1429,
+      "recovery_minutes": 4,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 98,
+      "arr_delay": 95,
+      "speed_mph": 295.2,
+      "recovery_minutes": 3,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 99,
+      "arr_delay": 110,
+      "speed_mph": 370.4,
+      "recovery_minutes": -11,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 192,
+      "arr_delay": 182,
+      "speed_mph": 313.1707,
+      "recovery_minutes": 10,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 76,
+      "arr_delay": 68,
+      "speed_mph": 321.4737,
+      "recovery_minutes": 8,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 265,
+      "arr_delay": 253,
+      "speed_mph": 328.2692,
+      "recovery_minutes": 12,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 100,
+      "arr_delay": 97,
+      "speed_mph": 426.4,
+      "recovery_minutes": 3,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 125,
+      "arr_delay": 98,
+      "speed_mph": 492.4415,
+      "recovery_minutes": 27,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 68,
+      "arr_delay": 64,
+      "speed_mph": 453.3835,
+      "recovery_minutes": 4,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 148,
+      "arr_delay": 239,
+      "speed_mph": 283.8158,
+      "recovery_minutes": -91,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 63,
+      "arr_delay": 73,
+      "speed_mph": 437.8082,
+      "recovery_minutes": -10,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 63,
+      "arr_delay": 37,
+      "speed_mph": 401.7722,
+      "recovery_minutes": 26,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 217,
+      "arr_delay": 199,
+      "speed_mph": 370.9091,
+      "recovery_minutes": 18,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 72,
+      "arr_delay": 68,
+      "speed_mph": 377.6471,
+      "recovery_minutes": 4,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 78,
+      "arr_delay": 66,
+      "speed_mph": 418.4615,
+      "recovery_minutes": 12,
+      "carrier": "US",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 85,
+      "arr_delay": 102,
+      "speed_mph": 336.1765,
+      "recovery_minutes": -17,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 233,
+      "arr_delay": 215,
+      "speed_mph": 422.1106,
+      "recovery_minutes": 18,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 63,
+      "arr_delay": 65,
+      "speed_mph": 418.75,
+      "recovery_minutes": -2,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 118,
+      "arr_delay": 100,
+      "speed_mph": 442.5,
+      "recovery_minutes": 18,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 86,
+      "arr_delay": 87,
+      "speed_mph": 456,
+      "recovery_minutes": -1,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 129,
+      "arr_delay": 98,
+      "speed_mph": 477.4154,
+      "recovery_minutes": 31,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 89,
+      "arr_delay": 62,
+      "speed_mph": 444.1341,
+      "recovery_minutes": 27,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 63,
+      "arr_delay": 39,
+      "speed_mph": 369.5798,
+      "recovery_minutes": 24,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 94,
+      "arr_delay": 94,
+      "speed_mph": 312.2727,
+      "recovery_minutes": 0,
+      "carrier": "YV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 125,
+      "arr_delay": 125,
+      "speed_mph": 446.7153,
+      "recovery_minutes": 0,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 108,
+      "arr_delay": 130,
+      "speed_mph": 362.8571,
+      "recovery_minutes": -22,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 126,
+      "arr_delay": 154,
+      "speed_mph": 364.2478,
+      "recovery_minutes": -28,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 303,
+      "arr_delay": 305,
+      "speed_mph": 326.3014,
+      "recovery_minutes": -2,
+      "carrier": "FL",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 174,
+      "arr_delay": 215,
+      "speed_mph": 279.0698,
+      "recovery_minutes": -41,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 80,
+      "arr_delay": 76,
+      "speed_mph": 418.3178,
+      "recovery_minutes": 4,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 91,
+      "arr_delay": 85,
+      "speed_mph": 323.3824,
+      "recovery_minutes": 6,
+      "carrier": "AA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 77,
+      "arr_delay": 67,
+      "speed_mph": 491.6923,
+      "recovery_minutes": 10,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 66,
+      "arr_delay": 51,
+      "speed_mph": 435.1724,
+      "recovery_minutes": 15,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 75,
+      "arr_delay": 96,
+      "speed_mph": 363.9301,
+      "recovery_minutes": -21,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 90,
+      "arr_delay": 60,
+      "speed_mph": 458.9809,
+      "recovery_minutes": 30,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 69,
+      "arr_delay": 46,
+      "speed_mph": 337.8947,
+      "recovery_minutes": 23,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 125,
+      "arr_delay": 118,
+      "speed_mph": 402.1053,
+      "recovery_minutes": 7,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 150,
+      "arr_delay": 125,
+      "speed_mph": 442.0859,
+      "recovery_minutes": 25,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 93,
+      "arr_delay": 72,
+      "speed_mph": 320.8696,
+      "recovery_minutes": 21,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 79,
+      "arr_delay": 63,
+      "speed_mph": 321.0811,
+      "recovery_minutes": 16,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 79,
+      "arr_delay": 72,
+      "speed_mph": 369,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 85,
+      "arr_delay": 86,
+      "speed_mph": 422.2222,
+      "recovery_minutes": -1,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 105,
+      "arr_delay": 125,
+      "speed_mph": 369.8684,
+      "recovery_minutes": -20,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 166,
+      "arr_delay": 170,
+      "speed_mph": 455.7764,
+      "recovery_minutes": -4,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 65,
+      "arr_delay": 42,
+      "speed_mph": 404.4604,
+      "recovery_minutes": 23,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 232,
+      "arr_delay": 216,
+      "speed_mph": 392.6316,
+      "recovery_minutes": 16,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 304,
+      "arr_delay": 303,
+      "speed_mph": 412.3944,
+      "recovery_minutes": 1,
+      "carrier": "DL",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 63,
+      "arr_delay": 76,
+      "speed_mph": 392.5,
+      "recovery_minutes": -13,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 209,
+      "arr_delay": 194,
+      "speed_mph": 424.2581,
+      "recovery_minutes": 15,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 88,
+      "arr_delay": 71,
+      "speed_mph": 392.8125,
+      "recovery_minutes": 17,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 110,
+      "arr_delay": 110,
+      "speed_mph": 373.1034,
+      "recovery_minutes": 0,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 135,
+      "arr_delay": 160,
+      "speed_mph": 412.9787,
+      "recovery_minutes": -25,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 66,
+      "arr_delay": 32,
+      "speed_mph": 464.7826,
+      "recovery_minutes": 34,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 195,
+      "arr_delay": 170,
+      "speed_mph": 445.0485,
+      "recovery_minutes": 25,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 90,
+      "arr_delay": 106,
+      "speed_mph": 326.5909,
+      "recovery_minutes": -16,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 85,
+      "arr_delay": 60,
+      "speed_mph": 417.931,
+      "recovery_minutes": 25,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 84,
+      "arr_delay": 136,
+      "speed_mph": 372.7119,
+      "recovery_minutes": -52,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 224,
+      "arr_delay": 210,
+      "speed_mph": 418.2353,
+      "recovery_minutes": 14,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 128,
+      "arr_delay": 128,
+      "speed_mph": 322.5,
+      "recovery_minutes": 0,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 90,
+      "arr_delay": 88,
+      "speed_mph": 349.4595,
+      "recovery_minutes": 2,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 87,
+      "arr_delay": 80,
+      "speed_mph": 356.5574,
+      "recovery_minutes": 7,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 175,
+      "arr_delay": 226,
+      "speed_mph": 430.4698,
+      "recovery_minutes": -51,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 67,
+      "arr_delay": 41,
+      "speed_mph": 434.6218,
+      "recovery_minutes": 26,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 111,
+      "arr_delay": 167,
+      "speed_mph": 187,
+      "recovery_minutes": -56,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 104,
+      "arr_delay": 92,
+      "speed_mph": 411.3253,
+      "recovery_minutes": 12,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 218,
+      "arr_delay": 277,
+      "speed_mph": 357.0732,
+      "recovery_minutes": -59,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 219,
+      "arr_delay": 206,
+      "speed_mph": 407.4324,
+      "recovery_minutes": 13,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 96,
+      "arr_delay": 71,
+      "speed_mph": 447.191,
+      "recovery_minutes": 25,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)"
+    },
+    {
+      "dep_delay": 171,
+      "arr_delay": 209,
+      "speed_mph": 358.8571,
+      "recovery_minutes": -38,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 103,
+      "arr_delay": 73,
+      "speed_mph": 327.6923,
+      "recovery_minutes": 30,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 80,
+      "arr_delay": 73,
+      "speed_mph": 468.4543,
+      "recovery_minutes": 7,
+      "carrier": "DL",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 107,
+      "arr_delay": 99,
+      "speed_mph": 468.4543,
+      "recovery_minutes": 8,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)"
+    },
+    {
+      "dep_delay": 72,
+      "arr_delay": 64,
+      "speed_mph": 277.8462,
+      "recovery_minutes": 8,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 233,
+      "arr_delay": 217,
+      "speed_mph": 442.5,
+      "recovery_minutes": 16,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)"
+    },
+    {
+      "dep_delay": 142,
+      "arr_delay": 127,
+      "speed_mph": 387.2727,
+      "recovery_minutes": 15,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 129,
+      "arr_delay": 140,
+      "speed_mph": 273.6585,
+      "recovery_minutes": -11,
+      "carrier": "AA",
+      "distance_group": "短途 (<500英里)"
+    },
+    {
+      "dep_delay": 67,
+      "arr_delay": 60,
+      "speed_mph": 434.6939,
+      "recovery_minutes": 7,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)"
+    }
+  ],
+  "recoveryScatter": [
+    {
+      "dep_delay": 61,
+      "recovery_minutes": 16,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 746
+    },
+    {
+      "dep_delay": 117,
+      "recovery_minutes": 20,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 733
+    },
+    {
+      "dep_delay": 599,
+      "recovery_minutes": -13,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 760
+    },
+    {
+      "dep_delay": 67,
+      "recovery_minutes": 14,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 199
+    },
+    {
+      "dep_delay": 80,
+      "recovery_minutes": -15,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1085
+    },
+    {
+      "dep_delay": 222,
+      "recovery_minutes": 9,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 764
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": 3,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)",
+      "distance": 214
+    },
+    {
+      "dep_delay": 78,
+      "recovery_minutes": 8,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 944
+    },
+    {
+      "dep_delay": 240,
+      "recovery_minutes": 27,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 828
+    },
+    {
+      "dep_delay": 74,
+      "recovery_minutes": -30,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1010
+    },
+    {
+      "dep_delay": 62,
+      "recovery_minutes": 14,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 719
+    },
+    {
+      "dep_delay": 85,
+      "recovery_minutes": 16,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)",
+      "distance": 228
+    },
+    {
+      "dep_delay": 73,
+      "recovery_minutes": -27,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1428
+    },
+    {
+      "dep_delay": 123,
+      "recovery_minutes": -22,
+      "carrier": "FL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 762
+    },
+    {
+      "dep_delay": 73,
+      "recovery_minutes": 15,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 277
+    },
+    {
+      "dep_delay": 107,
+      "recovery_minutes": 0,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 273
+    },
+    {
+      "dep_delay": 68,
+      "recovery_minutes": 24,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1167
+    },
+    {
+      "dep_delay": 207,
+      "recovery_minutes": -2,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2465
+    },
+    {
+      "dep_delay": 138,
+      "recovery_minutes": 2,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 277
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": -6,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1028
+    },
+    {
+      "dep_delay": 93,
+      "recovery_minutes": 6,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1065
+    },
+    {
+      "dep_delay": 109,
+      "recovery_minutes": 8,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 950
+    },
+    {
+      "dep_delay": 70,
+      "recovery_minutes": 24,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1148
+    },
+    {
+      "dep_delay": 174,
+      "recovery_minutes": -7,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 746
+    },
+    {
+      "dep_delay": 114,
+      "recovery_minutes": 28,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)",
+      "distance": 425
+    },
+    {
+      "dep_delay": 70,
+      "recovery_minutes": 10,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1416
+    },
+    {
+      "dep_delay": 102,
+      "recovery_minutes": 21,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2586
+    },
+    {
+      "dep_delay": 76,
+      "recovery_minutes": -20,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 733
+    },
+    {
+      "dep_delay": 116,
+      "recovery_minutes": 22,
+      "carrier": "AA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 733
+    },
+    {
+      "dep_delay": 177,
+      "recovery_minutes": -21,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1521
+    },
+    {
+      "dep_delay": 102,
+      "recovery_minutes": 15,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 502
+    },
+    {
+      "dep_delay": 193,
+      "recovery_minutes": 3,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 937
+    },
+    {
+      "dep_delay": 67,
+      "recovery_minutes": -58,
+      "carrier": "DL",
+      "distance_group": "短途 (<500英里)",
+      "distance": 187
+    },
+    {
+      "dep_delay": 159,
+      "recovery_minutes": -7,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 944
+    },
+    {
+      "dep_delay": 73,
+      "recovery_minutes": -8,
+      "carrier": "FL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 762
+    },
+    {
+      "dep_delay": 124,
+      "recovery_minutes": -8,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 711
+    },
+    {
+      "dep_delay": 76,
+      "recovery_minutes": 8,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1620
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": -5,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 725
+    },
+    {
+      "dep_delay": 69,
+      "recovery_minutes": 0,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1023
+    },
+    {
+      "dep_delay": 95,
+      "recovery_minutes": 0,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 866
+    },
+    {
+      "dep_delay": 305,
+      "recovery_minutes": -2,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 277
+    },
+    {
+      "dep_delay": 88,
+      "recovery_minutes": 30,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)",
+      "distance": 404
+    },
+    {
+      "dep_delay": 157,
+      "recovery_minutes": 10,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)",
+      "distance": 214
+    },
+    {
+      "dep_delay": 62,
+      "recovery_minutes": -8,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2475
+    },
+    {
+      "dep_delay": 70,
+      "recovery_minutes": 12,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1069
+    },
+    {
+      "dep_delay": 74,
+      "recovery_minutes": 24,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2454
+    },
+    {
+      "dep_delay": 73,
+      "recovery_minutes": 33,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 655
+    },
+    {
+      "dep_delay": 70,
+      "recovery_minutes": 10,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 488
+    },
+    {
+      "dep_delay": 89,
+      "recovery_minutes": 12,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1023
+    },
+    {
+      "dep_delay": 76,
+      "recovery_minutes": -11,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1023
+    },
+    {
+      "dep_delay": 88,
+      "recovery_minutes": 1,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 209
+    },
+    {
+      "dep_delay": 80,
+      "recovery_minutes": -21,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 872
+    },
+    {
+      "dep_delay": 112,
+      "recovery_minutes": 10,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 799
+    },
+    {
+      "dep_delay": 78,
+      "recovery_minutes": -45,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 760
+    },
+    {
+      "dep_delay": 88,
+      "recovery_minutes": -28,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1182
+    },
+    {
+      "dep_delay": 75,
+      "recovery_minutes": 13,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 209
+    },
+    {
+      "dep_delay": 263,
+      "recovery_minutes": 18,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 725
+    },
+    {
+      "dep_delay": 222,
+      "recovery_minutes": -12,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2475
+    },
+    {
+      "dep_delay": 155,
+      "recovery_minutes": -16,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 719
+    },
+    {
+      "dep_delay": 73,
+      "recovery_minutes": -4,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 212
+    },
+    {
+      "dep_delay": 108,
+      "recovery_minutes": 19,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 541
+    },
+    {
+      "dep_delay": 110,
+      "recovery_minutes": -5,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 301
+    },
+    {
+      "dep_delay": 68,
+      "recovery_minutes": 4,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 301
+    },
+    {
+      "dep_delay": 192,
+      "recovery_minutes": -59,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 872
+    },
+    {
+      "dep_delay": 109,
+      "recovery_minutes": -19,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 746
+    },
+    {
+      "dep_delay": 61,
+      "recovery_minutes": -9,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1008
+    },
+    {
+      "dep_delay": 108,
+      "recovery_minutes": 9,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 160
+    },
+    {
+      "dep_delay": 66,
+      "recovery_minutes": 34,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1010
+    },
+    {
+      "dep_delay": 136,
+      "recovery_minutes": 19,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 944
+    },
+    {
+      "dep_delay": 83,
+      "recovery_minutes": 7,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1389
+    },
+    {
+      "dep_delay": 143,
+      "recovery_minutes": -43,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1391
+    },
+    {
+      "dep_delay": 120,
+      "recovery_minutes": -1,
+      "carrier": "DL",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2454
+    },
+    {
+      "dep_delay": 66,
+      "recovery_minutes": 0,
+      "carrier": "DL",
+      "distance_group": "短途 (<500英里)",
+      "distance": 187
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": 15,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 483
+    },
+    {
+      "dep_delay": 96,
+      "recovery_minutes": -12,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2586
+    },
+    {
+      "dep_delay": 233,
+      "recovery_minutes": -83,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 748
+    },
+    {
+      "dep_delay": 195,
+      "recovery_minutes": 8,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1428
+    },
+    {
+      "dep_delay": 66,
+      "recovery_minutes": 44,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1096
+    },
+    {
+      "dep_delay": 80,
+      "recovery_minutes": 21,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 258
+    },
+    {
+      "dep_delay": 84,
+      "recovery_minutes": 10,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 719
+    },
+    {
+      "dep_delay": 190,
+      "recovery_minutes": -1,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1620
+    },
+    {
+      "dep_delay": 334,
+      "recovery_minutes": 1,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 764
+    },
+    {
+      "dep_delay": 194,
+      "recovery_minutes": 48,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 765
+    },
+    {
+      "dep_delay": 74,
+      "recovery_minutes": 4,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 284
+    },
+    {
+      "dep_delay": 145,
+      "recovery_minutes": 30,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 290
+    },
+    {
+      "dep_delay": 172,
+      "recovery_minutes": 11,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 419
+    },
+    {
+      "dep_delay": 148,
+      "recovery_minutes": 28,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1389
+    },
+    {
+      "dep_delay": 102,
+      "recovery_minutes": 25,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 292
+    },
+    {
+      "dep_delay": 141,
+      "recovery_minutes": -18,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1389
+    },
+    {
+      "dep_delay": 128,
+      "recovery_minutes": -16,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 764
+    },
+    {
+      "dep_delay": 69,
+      "recovery_minutes": -125,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2565
+    },
+    {
+      "dep_delay": 92,
+      "recovery_minutes": 1,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1085
+    },
+    {
+      "dep_delay": 198,
+      "recovery_minutes": 8,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 764
+    },
+    {
+      "dep_delay": 114,
+      "recovery_minutes": 3,
+      "carrier": "US",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 529
+    },
+    {
+      "dep_delay": 94,
+      "recovery_minutes": 21,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1416
+    },
+    {
+      "dep_delay": 76,
+      "recovery_minutes": 11,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1605
+    },
+    {
+      "dep_delay": 79,
+      "recovery_minutes": -45,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2227
+    },
+    {
+      "dep_delay": 91,
+      "recovery_minutes": -5,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)",
+      "distance": 213
+    },
+    {
+      "dep_delay": 200,
+      "recovery_minutes": -6,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2565
+    },
+    {
+      "dep_delay": 192,
+      "recovery_minutes": 15,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1076
+    },
+    {
+      "dep_delay": 61,
+      "recovery_minutes": 3,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 589
+    },
+    {
+      "dep_delay": 333,
+      "recovery_minutes": 16,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1620
+    },
+    {
+      "dep_delay": 92,
+      "recovery_minutes": -72,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2422
+    },
+    {
+      "dep_delay": 116,
+      "recovery_minutes": -6,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2586
+    },
+    {
+      "dep_delay": 99,
+      "recovery_minutes": 15,
+      "carrier": "DL",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2422
+    },
+    {
+      "dep_delay": 65,
+      "recovery_minutes": 27,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 997
+    },
+    {
+      "dep_delay": 128,
+      "recovery_minutes": 17,
+      "carrier": "FL",
+      "distance_group": "短途 (<500英里)",
+      "distance": 397
+    },
+    {
+      "dep_delay": 140,
+      "recovery_minutes": 25,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2475
+    },
+    {
+      "dep_delay": 109,
+      "recovery_minutes": 17,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 762
+    },
+    {
+      "dep_delay": 261,
+      "recovery_minutes": 15,
+      "carrier": "DL",
+      "distance_group": "短途 (<500英里)",
+      "distance": 488
+    },
+    {
+      "dep_delay": 86,
+      "recovery_minutes": 4,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)",
+      "distance": 96
+    },
+    {
+      "dep_delay": 170,
+      "recovery_minutes": 12,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1096
+    },
+    {
+      "dep_delay": 68,
+      "recovery_minutes": 8,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1005
+    },
+    {
+      "dep_delay": 70,
+      "recovery_minutes": 17,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 544
+    },
+    {
+      "dep_delay": 69,
+      "recovery_minutes": 26,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1416
+    },
+    {
+      "dep_delay": 76,
+      "recovery_minutes": 8,
+      "carrier": "US",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2133
+    },
+    {
+      "dep_delay": 92,
+      "recovery_minutes": -44,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1010
+    },
+    {
+      "dep_delay": 125,
+      "recovery_minutes": 21,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1076
+    },
+    {
+      "dep_delay": 199,
+      "recovery_minutes": -13,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1069
+    },
+    {
+      "dep_delay": 141,
+      "recovery_minutes": -9,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 319
+    },
+    {
+      "dep_delay": 103,
+      "recovery_minutes": 6,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 340
+    },
+    {
+      "dep_delay": 68,
+      "recovery_minutes": 11,
+      "carrier": "9E",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1182
+    },
+    {
+      "dep_delay": 63,
+      "recovery_minutes": -76,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2475
+    },
+    {
+      "dep_delay": 63,
+      "recovery_minutes": 13,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 292
+    },
+    {
+      "dep_delay": 66,
+      "recovery_minutes": 43,
+      "carrier": "9E",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1029
+    },
+    {
+      "dep_delay": 121,
+      "recovery_minutes": -30,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2475
+    },
+    {
+      "dep_delay": 82,
+      "recovery_minutes": -36,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 642
+    },
+    {
+      "dep_delay": 73,
+      "recovery_minutes": -12,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 719
+    },
+    {
+      "dep_delay": 121,
+      "recovery_minutes": -3,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1521
+    },
+    {
+      "dep_delay": 91,
+      "recovery_minutes": -4,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 746
+    },
+    {
+      "dep_delay": 80,
+      "recovery_minutes": 21,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 500
+    },
+    {
+      "dep_delay": 84,
+      "recovery_minutes": 29,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1005
+    },
+    {
+      "dep_delay": 156,
+      "recovery_minutes": 29,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2576
+    },
+    {
+      "dep_delay": 134,
+      "recovery_minutes": -126,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 740
+    },
+    {
+      "dep_delay": 81,
+      "recovery_minutes": 20,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2586
+    },
+    {
+      "dep_delay": 214,
+      "recovery_minutes": 2,
+      "carrier": "WN",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1167
+    },
+    {
+      "dep_delay": 78,
+      "recovery_minutes": 24,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 198
+    },
+    {
+      "dep_delay": 357,
+      "recovery_minutes": 4,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 950
+    },
+    {
+      "dep_delay": 134,
+      "recovery_minutes": 23,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 711
+    },
+    {
+      "dep_delay": 63,
+      "recovery_minutes": 30,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2454
+    },
+    {
+      "dep_delay": 128,
+      "recovery_minutes": -8,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2475
+    },
+    {
+      "dep_delay": 96,
+      "recovery_minutes": 13,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 258
+    },
+    {
+      "dep_delay": 154,
+      "recovery_minutes": 20,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1372
+    },
+    {
+      "dep_delay": 95,
+      "recovery_minutes": 16,
+      "carrier": "AA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 944
+    },
+    {
+      "dep_delay": 87,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 488
+    },
+    {
+      "dep_delay": 66,
+      "recovery_minutes": -6,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2454
+    },
+    {
+      "dep_delay": 116,
+      "recovery_minutes": 1,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 431
+    },
+    {
+      "dep_delay": 63,
+      "recovery_minutes": 5,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 488
+    },
+    {
+      "dep_delay": 97,
+      "recovery_minutes": 5,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 335
+    },
+    {
+      "dep_delay": 80,
+      "recovery_minutes": -4,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 199
+    },
+    {
+      "dep_delay": 152,
+      "recovery_minutes": 37,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2454
+    },
+    {
+      "dep_delay": 63,
+      "recovery_minutes": 7,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 733
+    },
+    {
+      "dep_delay": 70,
+      "recovery_minutes": 7,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 711
+    },
+    {
+      "dep_delay": 91,
+      "recovery_minutes": 13,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 937
+    },
+    {
+      "dep_delay": 129,
+      "recovery_minutes": -24,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 378
+    },
+    {
+      "dep_delay": 100,
+      "recovery_minutes": 16,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1372
+    },
+    {
+      "dep_delay": 79,
+      "recovery_minutes": 0,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 199
+    },
+    {
+      "dep_delay": 83,
+      "recovery_minutes": 4,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 719
+    },
+    {
+      "dep_delay": 66,
+      "recovery_minutes": -14,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1400
+    },
+    {
+      "dep_delay": 61,
+      "recovery_minutes": 8,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 463
+    },
+    {
+      "dep_delay": 74,
+      "recovery_minutes": -26,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1028
+    },
+    {
+      "dep_delay": 71,
+      "recovery_minutes": 15,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1134
+    },
+    {
+      "dep_delay": 91,
+      "recovery_minutes": 24,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 866
+    },
+    {
+      "dep_delay": 65,
+      "recovery_minutes": 22,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 762
+    },
+    {
+      "dep_delay": 63,
+      "recovery_minutes": 13,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1587
+    },
+    {
+      "dep_delay": 68,
+      "recovery_minutes": -13,
+      "carrier": "WN",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1411
+    },
+    {
+      "dep_delay": 106,
+      "recovery_minutes": -32,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 645
+    },
+    {
+      "dep_delay": 144,
+      "recovery_minutes": 13,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 502
+    },
+    {
+      "dep_delay": 72,
+      "recovery_minutes": 21,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1023
+    },
+    {
+      "dep_delay": 91,
+      "recovery_minutes": 18,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 199
+    },
+    {
+      "dep_delay": 153,
+      "recovery_minutes": 20,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 665
+    },
+    {
+      "dep_delay": 76,
+      "recovery_minutes": -15,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 997
+    },
+    {
+      "dep_delay": 152,
+      "recovery_minutes": -7,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 950
+    },
+    {
+      "dep_delay": 74,
+      "recovery_minutes": 19,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)",
+      "distance": 301
+    },
+    {
+      "dep_delay": 224,
+      "recovery_minutes": 14,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 711
+    },
+    {
+      "dep_delay": 95,
+      "recovery_minutes": 31,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 733
+    },
+    {
+      "dep_delay": 95,
+      "recovery_minutes": 3,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 427
+    },
+    {
+      "dep_delay": 138,
+      "recovery_minutes": -21,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1626
+    },
+    {
+      "dep_delay": 131,
+      "recovery_minutes": -11,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1416
+    },
+    {
+      "dep_delay": 73,
+      "recovery_minutes": 3,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 228
+    },
+    {
+      "dep_delay": 76,
+      "recovery_minutes": 26,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1400
+    },
+    {
+      "dep_delay": 144,
+      "recovery_minutes": 4,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 273
+    },
+    {
+      "dep_delay": 89,
+      "recovery_minutes": -4,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 820
+    },
+    {
+      "dep_delay": 88,
+      "recovery_minutes": 21,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 944
+    },
+    {
+      "dep_delay": 239,
+      "recovery_minutes": 0,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)",
+      "distance": 200
+    },
+    {
+      "dep_delay": 208,
+      "recovery_minutes": -5,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 944
+    },
+    {
+      "dep_delay": 93,
+      "recovery_minutes": -53,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1521
+    },
+    {
+      "dep_delay": 137,
+      "recovery_minutes": -4,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 569
+    },
+    {
+      "dep_delay": 173,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 416
+    },
+    {
+      "dep_delay": 133,
+      "recovery_minutes": 17,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 541
+    },
+    {
+      "dep_delay": 84,
+      "recovery_minutes": 5,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 212
+    },
+    {
+      "dep_delay": 88,
+      "recovery_minutes": 34,
+      "carrier": "US",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2133
+    },
+    {
+      "dep_delay": 85,
+      "recovery_minutes": 22,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1215
+    },
+    {
+      "dep_delay": 90,
+      "recovery_minutes": 32,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 764
+    },
+    {
+      "dep_delay": 137,
+      "recovery_minutes": 25,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1990
+    },
+    {
+      "dep_delay": 144,
+      "recovery_minutes": 18,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 266
+    },
+    {
+      "dep_delay": 303,
+      "recovery_minutes": -23,
+      "carrier": "WN",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1605
+    },
+    {
+      "dep_delay": 75,
+      "recovery_minutes": -16,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 642
+    },
+    {
+      "dep_delay": 107,
+      "recovery_minutes": 32,
+      "carrier": "9E",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1031
+    },
+    {
+      "dep_delay": 63,
+      "recovery_minutes": -14,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1598
+    },
+    {
+      "dep_delay": 79,
+      "recovery_minutes": 9,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2434
+    },
+    {
+      "dep_delay": 106,
+      "recovery_minutes": 17,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 762
+    },
+    {
+      "dep_delay": 97,
+      "recovery_minutes": 3,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1017
+    },
+    {
+      "dep_delay": 232,
+      "recovery_minutes": -43,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)",
+      "distance": 184
+    },
+    {
+      "dep_delay": 69,
+      "recovery_minutes": -2,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 264
+    },
+    {
+      "dep_delay": 81,
+      "recovery_minutes": -4,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 266
+    },
+    {
+      "dep_delay": 67,
+      "recovery_minutes": 17,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1023
+    },
+    {
+      "dep_delay": 69,
+      "recovery_minutes": -15,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 872
+    },
+    {
+      "dep_delay": 63,
+      "recovery_minutes": 13,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 764
+    },
+    {
+      "dep_delay": 181,
+      "recovery_minutes": 13,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1065
+    },
+    {
+      "dep_delay": 102,
+      "recovery_minutes": 4,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 997
+    },
+    {
+      "dep_delay": 78,
+      "recovery_minutes": 2,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 740
+    },
+    {
+      "dep_delay": 72,
+      "recovery_minutes": 39,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1372
+    },
+    {
+      "dep_delay": 164,
+      "recovery_minutes": 9,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 228
+    },
+    {
+      "dep_delay": 77,
+      "recovery_minutes": 27,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1035
+    },
+    {
+      "dep_delay": 69,
+      "recovery_minutes": 12,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 416
+    },
+    {
+      "dep_delay": 202,
+      "recovery_minutes": 8,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)",
+      "distance": 214
+    },
+    {
+      "dep_delay": 65,
+      "recovery_minutes": 23,
+      "carrier": "AA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 888
+    },
+    {
+      "dep_delay": 122,
+      "recovery_minutes": -30,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2565
+    },
+    {
+      "dep_delay": 204,
+      "recovery_minutes": -88,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 950
+    },
+    {
+      "dep_delay": 79,
+      "recovery_minutes": 12,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 733
+    },
+    {
+      "dep_delay": 61,
+      "recovery_minutes": 6,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 209
+    },
+    {
+      "dep_delay": 149,
+      "recovery_minutes": -27,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 209
+    },
+    {
+      "dep_delay": 274,
+      "recovery_minutes": -7,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1035
+    },
+    {
+      "dep_delay": 263,
+      "recovery_minutes": -2,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1182
+    },
+    {
+      "dep_delay": 134,
+      "recovery_minutes": 5,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 944
+    },
+    {
+      "dep_delay": 169,
+      "recovery_minutes": -17,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 502
+    },
+    {
+      "dep_delay": 166,
+      "recovery_minutes": -54,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2586
+    },
+    {
+      "dep_delay": 133,
+      "recovery_minutes": 14,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 541
+    },
+    {
+      "dep_delay": 71,
+      "recovery_minutes": 7,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2425
+    },
+    {
+      "dep_delay": 106,
+      "recovery_minutes": -38,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1096
+    },
+    {
+      "dep_delay": 107,
+      "recovery_minutes": 9,
+      "carrier": "DL",
+      "distance_group": "短途 (<500英里)",
+      "distance": 335
+    },
+    {
+      "dep_delay": 87,
+      "recovery_minutes": -42,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 711
+    },
+    {
+      "dep_delay": 165,
+      "recovery_minutes": 27,
+      "carrier": "FL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 762
+    },
+    {
+      "dep_delay": 167,
+      "recovery_minutes": 28,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 725
+    },
+    {
+      "dep_delay": 130,
+      "recovery_minutes": 15,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 187
+    },
+    {
+      "dep_delay": 87,
+      "recovery_minutes": 28,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 541
+    },
+    {
+      "dep_delay": 241,
+      "recovery_minutes": 32,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)",
+      "distance": 404
+    },
+    {
+      "dep_delay": 273,
+      "recovery_minutes": 18,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1183
+    },
+    {
+      "dep_delay": 93,
+      "recovery_minutes": 39,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1400
+    },
+    {
+      "dep_delay": 89,
+      "recovery_minutes": 17,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 199
+    },
+    {
+      "dep_delay": 118,
+      "recovery_minutes": 42,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 4963
+    },
+    {
+      "dep_delay": 244,
+      "recovery_minutes": 13,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1008
+    },
+    {
+      "dep_delay": 93,
+      "recovery_minutes": -29,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 719
+    },
+    {
+      "dep_delay": 102,
+      "recovery_minutes": 22,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 719
+    },
+    {
+      "dep_delay": 82,
+      "recovery_minutes": -4,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1372
+    },
+    {
+      "dep_delay": 63,
+      "recovery_minutes": -21,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2454
+    },
+    {
+      "dep_delay": 76,
+      "recovery_minutes": 20,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2576
+    },
+    {
+      "dep_delay": 123,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 529
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": -18,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 628
+    },
+    {
+      "dep_delay": 99,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 277
+    },
+    {
+      "dep_delay": 85,
+      "recovery_minutes": 23,
+      "carrier": "AA",
+      "distance_group": "短途 (<500英里)",
+      "distance": 187
+    },
+    {
+      "dep_delay": 75,
+      "recovery_minutes": 1,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1076
+    },
+    {
+      "dep_delay": 108,
+      "recovery_minutes": 11,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1598
+    },
+    {
+      "dep_delay": 94,
+      "recovery_minutes": -2,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 594
+    },
+    {
+      "dep_delay": 75,
+      "recovery_minutes": 36,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 3370
+    },
+    {
+      "dep_delay": 87,
+      "recovery_minutes": -13,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 746
+    },
+    {
+      "dep_delay": 89,
+      "recovery_minutes": -12,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 665
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": 3,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 277
+    },
+    {
+      "dep_delay": 206,
+      "recovery_minutes": -26,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 762
+    },
+    {
+      "dep_delay": 62,
+      "recovery_minutes": -34,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1076
+    },
+    {
+      "dep_delay": 68,
+      "recovery_minutes": 20,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1598
+    },
+    {
+      "dep_delay": 62,
+      "recovery_minutes": 21,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1023
+    },
+    {
+      "dep_delay": 156,
+      "recovery_minutes": 5,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)",
+      "distance": 427
+    },
+    {
+      "dep_delay": 87,
+      "recovery_minutes": 19,
+      "carrier": "9E",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1029
+    },
+    {
+      "dep_delay": 270,
+      "recovery_minutes": 18,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 544
+    },
+    {
+      "dep_delay": 104,
+      "recovery_minutes": 25,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1726
+    },
+    {
+      "dep_delay": 187,
+      "recovery_minutes": 11,
+      "carrier": "FL",
+      "distance_group": "短途 (<500英里)",
+      "distance": 397
+    },
+    {
+      "dep_delay": 99,
+      "recovery_minutes": -9,
+      "carrier": "MQ",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1020
+    },
+    {
+      "dep_delay": 115,
+      "recovery_minutes": 19,
+      "carrier": "9E",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1391
+    },
+    {
+      "dep_delay": 110,
+      "recovery_minutes": -23,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 746
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": 31,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2475
+    },
+    {
+      "dep_delay": 78,
+      "recovery_minutes": 18,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2565
+    },
+    {
+      "dep_delay": 141,
+      "recovery_minutes": 3,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 273
+    },
+    {
+      "dep_delay": 79,
+      "recovery_minutes": 10,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 631
+    },
+    {
+      "dep_delay": 71,
+      "recovery_minutes": -79,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 199
+    },
+    {
+      "dep_delay": 127,
+      "recovery_minutes": -13,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 427
+    },
+    {
+      "dep_delay": 208,
+      "recovery_minutes": 16,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 725
+    },
+    {
+      "dep_delay": 103,
+      "recovery_minutes": -31,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 266
+    },
+    {
+      "dep_delay": 118,
+      "recovery_minutes": -41,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)",
+      "distance": 94
+    },
+    {
+      "dep_delay": 61,
+      "recovery_minutes": -20,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1598
+    },
+    {
+      "dep_delay": 128,
+      "recovery_minutes": 3,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 228
+    },
+    {
+      "dep_delay": 72,
+      "recovery_minutes": 14,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 746
+    },
+    {
+      "dep_delay": 71,
+      "recovery_minutes": 12,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2565
+    },
+    {
+      "dep_delay": 150,
+      "recovery_minutes": -6,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 264
+    },
+    {
+      "dep_delay": 112,
+      "recovery_minutes": -11,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 200
+    },
+    {
+      "dep_delay": 204,
+      "recovery_minutes": -8,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 431
+    },
+    {
+      "dep_delay": 61,
+      "recovery_minutes": 8,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)",
+      "distance": 200
+    },
+    {
+      "dep_delay": 107,
+      "recovery_minutes": 8,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2475
+    },
+    {
+      "dep_delay": 87,
+      "recovery_minutes": -31,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 719
+    },
+    {
+      "dep_delay": 281,
+      "recovery_minutes": -10,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 569
+    },
+    {
+      "dep_delay": 72,
+      "recovery_minutes": 4,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 888
+    },
+    {
+      "dep_delay": 106,
+      "recovery_minutes": 15,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1085
+    },
+    {
+      "dep_delay": 100,
+      "recovery_minutes": -20,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1598
+    },
+    {
+      "dep_delay": 126,
+      "recovery_minutes": -36,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 762
+    },
+    {
+      "dep_delay": 81,
+      "recovery_minutes": 7,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1325
+    },
+    {
+      "dep_delay": 79,
+      "recovery_minutes": 10,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2248
+    },
+    {
+      "dep_delay": 92,
+      "recovery_minutes": -8,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 228
+    },
+    {
+      "dep_delay": 171,
+      "recovery_minutes": 6,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1576
+    },
+    {
+      "dep_delay": 67,
+      "recovery_minutes": 6,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1620
+    },
+    {
+      "dep_delay": 87,
+      "recovery_minutes": 3,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 416
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": -4,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 799
+    },
+    {
+      "dep_delay": 92,
+      "recovery_minutes": -6,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1521
+    },
+    {
+      "dep_delay": 90,
+      "recovery_minutes": 6,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2475
+    },
+    {
+      "dep_delay": 315,
+      "recovery_minutes": 22,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1020
+    },
+    {
+      "dep_delay": 94,
+      "recovery_minutes": 1,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 569
+    },
+    {
+      "dep_delay": 131,
+      "recovery_minutes": -34,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 746
+    },
+    {
+      "dep_delay": 152,
+      "recovery_minutes": -19,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 950
+    },
+    {
+      "dep_delay": 90,
+      "recovery_minutes": 2,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 277
+    },
+    {
+      "dep_delay": 307,
+      "recovery_minutes": -22,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 944
+    },
+    {
+      "dep_delay": 111,
+      "recovery_minutes": -36,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)",
+      "distance": 184
+    },
+    {
+      "dep_delay": 162,
+      "recovery_minutes": -21,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 872
+    },
+    {
+      "dep_delay": 130,
+      "recovery_minutes": 27,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2565
+    },
+    {
+      "dep_delay": 99,
+      "recovery_minutes": -16,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 944
+    },
+    {
+      "dep_delay": 88,
+      "recovery_minutes": 6,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 209
+    },
+    {
+      "dep_delay": 141,
+      "recovery_minutes": 25,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2475
+    },
+    {
+      "dep_delay": 123,
+      "recovery_minutes": 19,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 544
+    },
+    {
+      "dep_delay": 77,
+      "recovery_minutes": 20,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 431
+    },
+    {
+      "dep_delay": 158,
+      "recovery_minutes": -3,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1076
+    },
+    {
+      "dep_delay": 84,
+      "recovery_minutes": 20,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1023
+    },
+    {
+      "dep_delay": 130,
+      "recovery_minutes": 9,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2565
+    },
+    {
+      "dep_delay": 81,
+      "recovery_minutes": 3,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)",
+      "distance": 200
+    },
+    {
+      "dep_delay": 218,
+      "recovery_minutes": -59,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 488
+    },
+    {
+      "dep_delay": 148,
+      "recovery_minutes": 19,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 719
+    },
+    {
+      "dep_delay": 104,
+      "recovery_minutes": 4,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 213
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": 4,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 187
+    },
+    {
+      "dep_delay": 72,
+      "recovery_minutes": -74,
+      "carrier": "DL",
+      "distance_group": "短途 (<500英里)",
+      "distance": 187
+    },
+    {
+      "dep_delay": 95,
+      "recovery_minutes": -17,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1089
+    },
+    {
+      "dep_delay": 297,
+      "recovery_minutes": 34,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 719
+    },
+    {
+      "dep_delay": 164,
+      "recovery_minutes": -6,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 284
+    },
+    {
+      "dep_delay": 88,
+      "recovery_minutes": 2,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 631
+    },
+    {
+      "dep_delay": 82,
+      "recovery_minutes": -9,
+      "carrier": "FL",
+      "distance_group": "短途 (<500英里)",
+      "distance": 397
+    },
+    {
+      "dep_delay": 168,
+      "recovery_minutes": 13,
+      "carrier": "FL",
+      "distance_group": "短途 (<500英里)",
+      "distance": 397
+    },
+    {
+      "dep_delay": 73,
+      "recovery_minutes": -45,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 431
+    },
+    {
+      "dep_delay": 97,
+      "recovery_minutes": -1,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1598
+    },
+    {
+      "dep_delay": 167,
+      "recovery_minutes": 11,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1020
+    },
+    {
+      "dep_delay": 148,
+      "recovery_minutes": 4,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 760
+    },
+    {
+      "dep_delay": 79,
+      "recovery_minutes": -8,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1626
+    },
+    {
+      "dep_delay": 175,
+      "recovery_minutes": 3,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 416
+    },
+    {
+      "dep_delay": 156,
+      "recovery_minutes": 9,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1085
+    },
+    {
+      "dep_delay": 67,
+      "recovery_minutes": 8,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 820
+    },
+    {
+      "dep_delay": 82,
+      "recovery_minutes": 21,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 950
+    },
+    {
+      "dep_delay": 70,
+      "recovery_minutes": 1,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1010
+    },
+    {
+      "dep_delay": 75,
+      "recovery_minutes": -48,
+      "carrier": "WN",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1411
+    },
+    {
+      "dep_delay": 76,
+      "recovery_minutes": 12,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 264
+    },
+    {
+      "dep_delay": 95,
+      "recovery_minutes": -8,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 888
+    },
+    {
+      "dep_delay": 271,
+      "recovery_minutes": 25,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 950
+    },
+    {
+      "dep_delay": 79,
+      "recovery_minutes": -9,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 711
+    },
+    {
+      "dep_delay": 69,
+      "recovery_minutes": 2,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 762
+    },
+    {
+      "dep_delay": 67,
+      "recovery_minutes": -24,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)",
+      "distance": 184
+    },
+    {
+      "dep_delay": 125,
+      "recovery_minutes": 4,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1107
+    },
+    {
+      "dep_delay": 83,
+      "recovery_minutes": 8,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2454
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": 15,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 228
+    },
+    {
+      "dep_delay": 181,
+      "recovery_minutes": 25,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 213
+    },
+    {
+      "dep_delay": 91,
+      "recovery_minutes": 20,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 479
+    },
+    {
+      "dep_delay": 81,
+      "recovery_minutes": 19,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1148
+    },
+    {
+      "dep_delay": 200,
+      "recovery_minutes": -6,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 246
+    },
+    {
+      "dep_delay": 86,
+      "recovery_minutes": -14,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1372
+    },
+    {
+      "dep_delay": 192,
+      "recovery_minutes": 37,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1605
+    },
+    {
+      "dep_delay": 120,
+      "recovery_minutes": 9,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1085
+    },
+    {
+      "dep_delay": 81,
+      "recovery_minutes": 6,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 764
+    },
+    {
+      "dep_delay": 136,
+      "recovery_minutes": -2,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1605
+    },
+    {
+      "dep_delay": 69,
+      "recovery_minutes": 8,
+      "carrier": "DL",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2586
+    },
+    {
+      "dep_delay": 67,
+      "recovery_minutes": 0,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 748
+    },
+    {
+      "dep_delay": 154,
+      "recovery_minutes": 11,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 277
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": 11,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)",
+      "distance": 184
+    },
+    {
+      "dep_delay": 88,
+      "recovery_minutes": 12,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2133
+    },
+    {
+      "dep_delay": 89,
+      "recovery_minutes": 3,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)",
+      "distance": 200
+    },
+    {
+      "dep_delay": 245,
+      "recovery_minutes": -1,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1028
+    },
+    {
+      "dep_delay": 276,
+      "recovery_minutes": 28,
+      "carrier": "US",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 544
+    },
+    {
+      "dep_delay": 247,
+      "recovery_minutes": 42,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 828
+    },
+    {
+      "dep_delay": 81,
+      "recovery_minutes": -9,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1008
+    },
+    {
+      "dep_delay": 110,
+      "recovery_minutes": 2,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1096
+    },
+    {
+      "dep_delay": 74,
+      "recovery_minutes": 15,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1065
+    },
+    {
+      "dep_delay": 69,
+      "recovery_minutes": 9,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 246
+    },
+    {
+      "dep_delay": 95,
+      "recovery_minutes": -4,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)",
+      "distance": 404
+    },
+    {
+      "dep_delay": 80,
+      "recovery_minutes": -15,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 445
+    },
+    {
+      "dep_delay": 73,
+      "recovery_minutes": 7,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)",
+      "distance": 214
+    },
+    {
+      "dep_delay": 87,
+      "recovery_minutes": 28,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1008
+    },
+    {
+      "dep_delay": 125,
+      "recovery_minutes": 14,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 733
+    },
+    {
+      "dep_delay": 72,
+      "recovery_minutes": 11,
+      "carrier": "US",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 529
+    },
+    {
+      "dep_delay": 62,
+      "recovery_minutes": 4,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 266
+    },
+    {
+      "dep_delay": 454,
+      "recovery_minutes": 20,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 746
+    },
+    {
+      "dep_delay": 129,
+      "recovery_minutes": 9,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 746
+    },
+    {
+      "dep_delay": 139,
+      "recovery_minutes": 2,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1092
+    },
+    {
+      "dep_delay": 106,
+      "recovery_minutes": 32,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2425
+    },
+    {
+      "dep_delay": 149,
+      "recovery_minutes": 23,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 725
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": -16,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 764
+    },
+    {
+      "dep_delay": 63,
+      "recovery_minutes": -26,
+      "carrier": "YV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 229
+    },
+    {
+      "dep_delay": 132,
+      "recovery_minutes": -14,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2425
+    },
+    {
+      "dep_delay": 106,
+      "recovery_minutes": -5,
+      "carrier": "AA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 733
+    },
+    {
+      "dep_delay": 122,
+      "recovery_minutes": 17,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1085
+    },
+    {
+      "dep_delay": 160,
+      "recovery_minutes": 28,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 427
+    },
+    {
+      "dep_delay": 84,
+      "recovery_minutes": 18,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 277
+    },
+    {
+      "dep_delay": 101,
+      "recovery_minutes": -12,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 641
+    },
+    {
+      "dep_delay": 185,
+      "recovery_minutes": 1,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 529
+    },
+    {
+      "dep_delay": 141,
+      "recovery_minutes": -7,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 488
+    },
+    {
+      "dep_delay": 173,
+      "recovery_minutes": -35,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 748
+    },
+    {
+      "dep_delay": 85,
+      "recovery_minutes": 20,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 479
+    },
+    {
+      "dep_delay": 111,
+      "recovery_minutes": -25,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 264
+    },
+    {
+      "dep_delay": 140,
+      "recovery_minutes": -3,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 445
+    },
+    {
+      "dep_delay": 83,
+      "recovery_minutes": 10,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1074
+    },
+    {
+      "dep_delay": 156,
+      "recovery_minutes": -25,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 569
+    },
+    {
+      "dep_delay": 94,
+      "recovery_minutes": 0,
+      "carrier": "YV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 229
+    },
+    {
+      "dep_delay": 128,
+      "recovery_minutes": -3,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1092
+    },
+    {
+      "dep_delay": 86,
+      "recovery_minutes": -14,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1576
+    },
+    {
+      "dep_delay": 65,
+      "recovery_minutes": 7,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)",
+      "distance": 94
+    },
+    {
+      "dep_delay": 243,
+      "recovery_minutes": -95,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1428
+    },
+    {
+      "dep_delay": 70,
+      "recovery_minutes": -2,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1074
+    },
+    {
+      "dep_delay": 201,
+      "recovery_minutes": -88,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2586
+    },
+    {
+      "dep_delay": 138,
+      "recovery_minutes": -7,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 301
+    },
+    {
+      "dep_delay": 221,
+      "recovery_minutes": 20,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)",
+      "distance": 335
+    },
+    {
+      "dep_delay": 70,
+      "recovery_minutes": -36,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 997
+    },
+    {
+      "dep_delay": 119,
+      "recovery_minutes": 0,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1023
+    },
+    {
+      "dep_delay": 225,
+      "recovery_minutes": 32,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2454
+    },
+    {
+      "dep_delay": 138,
+      "recovery_minutes": 18,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 419
+    },
+    {
+      "dep_delay": 69,
+      "recovery_minutes": 6,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 479
+    },
+    {
+      "dep_delay": 92,
+      "recovery_minutes": 20,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 997
+    },
+    {
+      "dep_delay": 178,
+      "recovery_minutes": 26,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 533
+    },
+    {
+      "dep_delay": 72,
+      "recovery_minutes": -13,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1598
+    },
+    {
+      "dep_delay": 218,
+      "recovery_minutes": -16,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)",
+      "distance": 214
+    },
+    {
+      "dep_delay": 62,
+      "recovery_minutes": 16,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 509
+    },
+    {
+      "dep_delay": 72,
+      "recovery_minutes": -8,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 746
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": 18,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 544
+    },
+    {
+      "dep_delay": 240,
+      "recovery_minutes": 17,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1065
+    },
+    {
+      "dep_delay": 188,
+      "recovery_minutes": 2,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 645
+    },
+    {
+      "dep_delay": 247,
+      "recovery_minutes": 2,
+      "carrier": "EV",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1008
+    },
+    {
+      "dep_delay": 139,
+      "recovery_minutes": -57,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 888
+    },
+    {
+      "dep_delay": 63,
+      "recovery_minutes": -6,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 199
+    },
+    {
+      "dep_delay": 67,
+      "recovery_minutes": 17,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1069
+    },
+    {
+      "dep_delay": 62,
+      "recovery_minutes": 11,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1626
+    },
+    {
+      "dep_delay": 132,
+      "recovery_minutes": -6,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 488
+    },
+    {
+      "dep_delay": 169,
+      "recovery_minutes": 28,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 738
+    },
+    {
+      "dep_delay": 291,
+      "recovery_minutes": -11,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1065
+    },
+    {
+      "dep_delay": 161,
+      "recovery_minutes": 28,
+      "carrier": "DL",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2586
+    },
+    {
+      "dep_delay": 69,
+      "recovery_minutes": 15,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 116
+    },
+    {
+      "dep_delay": 200,
+      "recovery_minutes": 24,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1020
+    },
+    {
+      "dep_delay": 90,
+      "recovery_minutes": 16,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 544
+    },
+    {
+      "dep_delay": 293,
+      "recovery_minutes": 17,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 762
+    },
+    {
+      "dep_delay": 255,
+      "recovery_minutes": 24,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1089
+    },
+    {
+      "dep_delay": 61,
+      "recovery_minutes": 12,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 277
+    },
+    {
+      "dep_delay": 113,
+      "recovery_minutes": 26,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 589
+    },
+    {
+      "dep_delay": 100,
+      "recovery_minutes": -14,
+      "carrier": "MQ",
+      "distance_group": "短途 (<500英里)",
+      "distance": 479
+    },
+    {
+      "dep_delay": 90,
+      "recovery_minutes": 13,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1389
+    },
+    {
+      "dep_delay": 112,
+      "recovery_minutes": -1,
+      "carrier": "B6",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 740
+    },
+    {
+      "dep_delay": 224,
+      "recovery_minutes": 17,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 550
+    },
+    {
+      "dep_delay": 162,
+      "recovery_minutes": 18,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1096
+    },
+    {
+      "dep_delay": 119,
+      "recovery_minutes": 4,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 544
+    },
+    {
+      "dep_delay": 123,
+      "recovery_minutes": -12,
+      "carrier": "MQ",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 719
+    },
+    {
+      "dep_delay": 160,
+      "recovery_minutes": 25,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1587
+    },
+    {
+      "dep_delay": 68,
+      "recovery_minutes": 23,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)",
+      "distance": 427
+    },
+    {
+      "dep_delay": 95,
+      "recovery_minutes": 18,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 229
+    },
+    {
+      "dep_delay": 143,
+      "recovery_minutes": 8,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)",
+      "distance": 264
+    },
+    {
+      "dep_delay": 92,
+      "recovery_minutes": -40,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1023
+    },
+    {
+      "dep_delay": 65,
+      "recovery_minutes": 6,
+      "carrier": "B6",
+      "distance_group": "短途 (<500英里)",
+      "distance": 187
+    },
+    {
+      "dep_delay": 245,
+      "recovery_minutes": 18,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)",
+      "distance": 184
+    },
+    {
+      "dep_delay": 229,
+      "recovery_minutes": 17,
+      "carrier": "YV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 229
+    },
+    {
+      "dep_delay": 67,
+      "recovery_minutes": 20,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1089
+    },
+    {
+      "dep_delay": 155,
+      "recovery_minutes": 16,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)",
+      "distance": 200
+    },
+    {
+      "dep_delay": 98,
+      "recovery_minutes": -12,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 628
+    },
+    {
+      "dep_delay": 67,
+      "recovery_minutes": 16,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 266
+    },
+    {
+      "dep_delay": 141,
+      "recovery_minutes": 21,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 641
+    },
+    {
+      "dep_delay": 150,
+      "recovery_minutes": 4,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 199
+    },
+    {
+      "dep_delay": 78,
+      "recovery_minutes": 28,
+      "carrier": "WN",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1167
+    },
+    {
+      "dep_delay": 132,
+      "recovery_minutes": 10,
+      "carrier": "9E",
+      "distance_group": "短途 (<500英里)",
+      "distance": 94
+    },
+    {
+      "dep_delay": 134,
+      "recovery_minutes": 20,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1089
+    },
+    {
+      "dep_delay": 95,
+      "recovery_minutes": -18,
+      "carrier": "B6",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2475
+    },
+    {
+      "dep_delay": 232,
+      "recovery_minutes": 18,
+      "carrier": "UA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 937
+    },
+    {
+      "dep_delay": 73,
+      "recovery_minutes": -2,
+      "carrier": "VX",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2475
+    },
+    {
+      "dep_delay": 89,
+      "recovery_minutes": 31,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1035
+    },
+    {
+      "dep_delay": 188,
+      "recovery_minutes": -67,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 502
+    },
+    {
+      "dep_delay": 324,
+      "recovery_minutes": 9,
+      "carrier": "UA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1620
+    },
+    {
+      "dep_delay": 125,
+      "recovery_minutes": -18,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1096
+    },
+    {
+      "dep_delay": 222,
+      "recovery_minutes": 9,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1010
+    },
+    {
+      "dep_delay": 144,
+      "recovery_minutes": 1,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1069
+    },
+    {
+      "dep_delay": 122,
+      "recovery_minutes": -42,
+      "carrier": "9E",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 589
+    },
+    {
+      "dep_delay": 64,
+      "recovery_minutes": -5,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2475
+    },
+    {
+      "dep_delay": 74,
+      "recovery_minutes": 1,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 212
+    },
+    {
+      "dep_delay": 97,
+      "recovery_minutes": -24,
+      "carrier": "AA",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 733
+    },
+    {
+      "dep_delay": 82,
+      "recovery_minutes": -4,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 212
+    },
+    {
+      "dep_delay": 128,
+      "recovery_minutes": 5,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 946
+    },
+    {
+      "dep_delay": 362,
+      "recovery_minutes": 46,
+      "carrier": "AA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2454
+    },
+    {
+      "dep_delay": 66,
+      "recovery_minutes": -9,
+      "carrier": "B6",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1074
+    },
+    {
+      "dep_delay": 92,
+      "recovery_minutes": 13,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 872
+    },
+    {
+      "dep_delay": 96,
+      "recovery_minutes": 25,
+      "carrier": "DL",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 762
+    },
+    {
+      "dep_delay": 110,
+      "recovery_minutes": -3,
+      "carrier": "US",
+      "distance_group": "短途 (<500英里)",
+      "distance": 214
+    },
+    {
+      "dep_delay": 114,
+      "recovery_minutes": -5,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 284
+    },
+    {
+      "dep_delay": 249,
+      "recovery_minutes": 14,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 748
+    },
+    {
+      "dep_delay": 84,
+      "recovery_minutes": 33,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1096
+    },
+    {
+      "dep_delay": 68,
+      "recovery_minutes": -6,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2425
+    },
+    {
+      "dep_delay": 108,
+      "recovery_minutes": 11,
+      "carrier": "UA",
+      "distance_group": "短途 (<500英里)",
+      "distance": 200
+    },
+    {
+      "dep_delay": 148,
+      "recovery_minutes": 23,
+      "carrier": "DL",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1183
+    },
+    {
+      "dep_delay": 75,
+      "recovery_minutes": -2,
+      "carrier": "WN",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 872
+    },
+    {
+      "dep_delay": 93,
+      "recovery_minutes": 4,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 209
+    },
+    {
+      "dep_delay": 133,
+      "recovery_minutes": 5,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 209
+    },
+    {
+      "dep_delay": 62,
+      "recovery_minutes": -4,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 946
+    },
+    {
+      "dep_delay": 119,
+      "recovery_minutes": 8,
+      "carrier": "EV",
+      "distance_group": "短途 (<500英里)",
+      "distance": 284
+    },
+    {
+      "dep_delay": 282,
+      "recovery_minutes": 40,
+      "carrier": "UA",
+      "distance_group": "超长途 (>2000英里)",
+      "distance": 2454
+    },
+    {
+      "dep_delay": 81,
+      "recovery_minutes": 27,
+      "carrier": "AA",
+      "distance_group": "长途 (1000-2000英里)",
+      "distance": 1389
+    },
+    {
+      "dep_delay": 129,
+      "recovery_minutes": 19,
+      "carrier": "EV",
+      "distance_group": "中途 (500-1000英里)",
+      "distance": 544
+    }
+  ],
+  "airlineRecovery": [
+    {
+      "carrier": "HA",
+      "carrier_name": "Hawaiian Airlines Inc.",
+      "flightCount": 10,
+      "avgDepDelay": 243.3,
+      "avgArrDelay": 211.9,
+      "avgRecovery": 31.4,
+      "recoveryRate": 90,
+      "avgSpeed": 481.5
+    },
+    {
+      "carrier": "AS",
+      "carrier_name": "Alaska Airlines Inc.",
+      "flightCount": 39,
+      "avgDepDelay": 118.4,
+      "avgArrDelay": 99.9,
+      "avgRecovery": 18.4,
+      "recoveryRate": 79.5,
+      "avgSpeed": 446
+    },
+    {
+      "carrier": "9E",
+      "carrier_name": "Endeavor Air Inc.",
+      "flightCount": 1926,
+      "avgDepDelay": 123.5,
+      "avgArrDelay": 116.3,
+      "avgRecovery": 7.2,
+      "recoveryRate": 70.8,
+      "avgSpeed": 348.7
+    },
+    {
+      "carrier": "UA",
+      "carrier_name": "United Air Lines Inc.",
+      "flightCount": 3780,
+      "avgDepDelay": 120.9,
+      "avgArrDelay": 114.9,
+      "avgRecovery": 6,
+      "recoveryRate": 67.1,
+      "avgSpeed": 420.8
+    },
+    {
+      "carrier": "AA",
+      "carrier_name": "American Airlines Inc.",
+      "flightCount": 1991,
+      "avgDepDelay": 123.3,
+      "avgArrDelay": 117.7,
+      "avgRecovery": 5.6,
+      "recoveryRate": 65.7,
+      "avgSpeed": 416.7
+    },
+    {
+      "carrier": "WN",
+      "carrier_name": "Southwest Airlines Co.",
+      "flightCount": 1054,
+      "avgDepDelay": 131.8,
+      "avgArrDelay": 126.6,
+      "avgRecovery": 5.3,
+      "recoveryRate": 65.7,
+      "avgSpeed": 400.8
+    },
+    {
+      "carrier": "DL",
+      "carrier_name": "Delta Air Lines Inc.",
+      "flightCount": 2638,
+      "avgDepDelay": 135.7,
+      "avgArrDelay": 130.9,
+      "avgRecovery": 4.8,
+      "recoveryRate": 65.9,
+      "avgSpeed": 420.2
+    },
+    {
+      "carrier": "VX",
+      "carrier_name": "Virgin America",
+      "flightCount": 361,
+      "avgDepDelay": 144.9,
+      "avgArrDelay": 140.5,
+      "avgRecovery": 4.4,
+      "recoveryRate": 60.9,
+      "avgSpeed": 447.8
+    },
+    {
+      "carrier": "EV",
+      "carrier_name": "ExpressJet Airlines Inc.",
+      "flightCount": 6786,
+      "avgDepDelay": 118.2,
+      "avgArrDelay": 116.3,
+      "avgRecovery": 1.9,
+      "recoveryRate": 61.1,
+      "avgSpeed": 361.3
+    },
+    {
+      "carrier": "B6",
+      "carrier_name": "JetBlue Airways",
+      "flightCount": 4549,
+      "avgDepDelay": 117.6,
+      "avgArrDelay": 116.8,
+      "avgRecovery": 0.8,
+      "recoveryRate": 59,
+      "avgSpeed": 398.2
+    },
+    {
+      "carrier": "YV",
+      "carrier_name": "Mesa Airlines Inc.",
+      "flightCount": 78,
+      "avgDepDelay": 117.6,
+      "avgArrDelay": 117.3,
+      "avgRecovery": 0.3,
+      "recoveryRate": 65.4,
+      "avgSpeed": 329.2
+    },
+    {
+      "carrier": "FL",
+      "carrier_name": "AirTran Airways Corporation",
+      "flightCount": 310,
+      "avgDepDelay": 145.3,
+      "avgArrDelay": 146.2,
+      "avgRecovery": -0.9,
+      "recoveryRate": 59.7,
+      "avgSpeed": 399.3
+    },
+    {
+      "carrier": "F9",
+      "carrier_name": "Frontier Airlines Inc.",
+      "flightCount": 73,
+      "avgDepDelay": 144.9,
+      "avgArrDelay": 146.5,
+      "avgRecovery": -1.6,
+      "recoveryRate": 63,
+      "avgSpeed": 426.3
+    },
+    {
+      "carrier": "US",
+      "carrier_name": "US Airways Inc.",
+      "flightCount": 759,
+      "avgDepDelay": 115.5,
+      "avgArrDelay": 117.6,
+      "avgRecovery": -2.1,
+      "recoveryRate": 55.7,
+      "avgSpeed": 346.6
+    },
+    {
+      "carrier": "MQ",
+      "carrier_name": "Envoy Air",
+      "flightCount": 1971,
+      "avgDepDelay": 114.5,
+      "avgArrDelay": 117,
+      "avgRecovery": -2.5,
+      "recoveryRate": 54.3,
+      "avgSpeed": 368.3
+    }
+  ],
+  "airlineBoxplotStats": [
+    {
+      "carrier": "AS",
+      "min": -34,
+      "q1": 4,
+      "median": 25,
+      "q3": 36,
+      "max": 55,
+      "mean": 18.4,
+      "count": 39
+    },
+    {
+      "carrier": "9E",
+      "min": -102,
+      "q1": -2,
+      "median": 11,
+      "q3": 23,
+      "max": 61,
+      "mean": 7.2,
+      "count": 1926
+    },
+    {
+      "carrier": "UA",
+      "min": -165,
+      "q1": -6,
+      "median": 10,
+      "q3": 23,
+      "max": 70,
+      "mean": 6,
+      "count": 3780
+    },
+    {
+      "carrier": "AA",
+      "min": -122,
+      "q1": -6,
+      "median": 9,
+      "q3": 23,
+      "max": 70,
+      "mean": 5.6,
+      "count": 1991
+    },
+    {
+      "carrier": "WN",
+      "min": -125,
+      "q1": -5,
+      "median": 9,
+      "q3": 20,
+      "max": 55,
+      "mean": 5.3,
+      "count": 1054
+    },
+    {
+      "carrier": "DL",
+      "min": -129,
+      "q1": -6,
+      "median": 9,
+      "q3": 21,
+      "max": 66,
+      "mean": 4.8,
+      "count": 2638
+    },
+    {
+      "carrier": "VX",
+      "min": -119,
+      "q1": -9,
+      "median": 8,
+      "q3": 23,
+      "max": 69,
+      "mean": 4.4,
+      "count": 361
+    },
+    {
+      "carrier": "EV",
+      "min": -150,
+      "q1": -6,
+      "median": 5,
+      "q3": 13,
+      "max": 109,
+      "mean": 1.9,
+      "count": 6786
+    },
+    {
+      "carrier": "B6",
+      "min": -146,
+      "q1": -8,
+      "median": 4,
+      "q3": 14,
+      "max": 64,
+      "mean": 0.8,
+      "count": 4549
+    },
+    {
+      "carrier": "YV",
+      "min": -78,
+      "q1": -8.2,
+      "median": 6,
+      "q3": 13,
+      "max": 29,
+      "mean": 0.3,
+      "count": 78
+    },
+    {
+      "carrier": "FL",
+      "min": -110,
+      "q1": -11,
+      "median": 6,
+      "q3": 13,
+      "max": 36,
+      "mean": -0.9,
+      "count": 310
+    },
+    {
+      "carrier": "F9",
+      "min": -74,
+      "q1": -14,
+      "median": 5,
+      "q3": 12,
+      "max": 34,
+      "mean": -1.6,
+      "count": 73
+    },
+    {
+      "carrier": "US",
+      "min": -116,
+      "q1": -11,
+      "median": 3,
+      "q3": 13,
+      "max": 64,
+      "mean": -2.1,
+      "count": 759
+    },
+    {
+      "carrier": "MQ",
+      "min": -135,
+      "q1": -11,
+      "median": 2,
+      "q3": 11,
+      "max": 49,
+      "mean": -2.5,
+      "count": 1971
+    }
+  ],
+  "destRecovery": [
+    {
+      "dest": "SNA",
+      "dest_name": "John Wayne Arpt Orange Co",
+      "flightCount": 31,
+      "avgDepDelay": 93.7,
+      "avgArrDelay": 61.8,
+      "avgRecovery": 31.9,
+      "recoveryRate": 90.3,
+      "avgDistance": 2434
+    },
+    {
+      "dest": "BDL",
+      "dest_name": "Bradley Intl",
+      "flightCount": 50,
+      "avgDepDelay": 109.8,
+      "avgArrDelay": 99.3,
+      "avgRecovery": 10.5,
+      "recoveryRate": 86,
+      "avgDistance": 116
+    },
+    {
+      "dest": "BHM",
+      "dest_name": "Birmingham Intl",
+      "flightCount": 49,
+      "avgDepDelay": 128.6,
+      "avgArrDelay": 113,
+      "avgRecovery": 15.6,
+      "recoveryRate": 85.7,
+      "avgDistance": 866
+    },
+    {
+      "dest": "PSE",
+      "flightCount": 21,
+      "avgDepDelay": 113.4,
+      "avgArrDelay": 105.3,
+      "avgRecovery": 8.1,
+      "recoveryRate": 85.7,
+      "avgDistance": 1617
+    },
+    {
+      "dest": "BGR",
+      "dest_name": "Bangor Intl",
+      "flightCount": 49,
+      "avgDepDelay": 112.8,
+      "avgArrDelay": 100.9,
+      "avgRecovery": 11.9,
+      "recoveryRate": 83.7,
+      "avgDistance": 378
+    },
+    {
+      "dest": "MHT",
+      "dest_name": "Manchester Regional Airport",
+      "flightCount": 135,
+      "avgDepDelay": 110.1,
+      "avgArrDelay": 102.9,
+      "avgRecovery": 7.1,
+      "recoveryRate": 77.8,
+      "avgDistance": 207
+    },
+    {
+      "dest": "CAK",
+      "dest_name": "Akron Canton Regional Airport",
+      "flightCount": 98,
+      "avgDepDelay": 151.3,
+      "avgArrDelay": 147.7,
+      "avgRecovery": 3.7,
+      "recoveryRate": 76.5,
+      "avgDistance": 397
+    },
+    {
+      "dest": "PDX",
+      "dest_name": "Portland Intl",
+      "flightCount": 103,
+      "avgDepDelay": 130.4,
+      "avgArrDelay": 117.6,
+      "avgRecovery": 12.8,
+      "recoveryRate": 75.7,
+      "avgDistance": 2446
+    },
+    {
+      "dest": "SYR",
+      "dest_name": "Syracuse Hancock Intl",
+      "flightCount": 168,
+      "avgDepDelay": 114.3,
+      "avgArrDelay": 107.5,
+      "avgRecovery": 6.9,
+      "recoveryRate": 75.6,
+      "avgDistance": 205
+    },
+    {
+      "dest": "OAK",
+      "dest_name": "Metropolitan Oakland Intl",
+      "flightCount": 28,
+      "avgDepDelay": 101.5,
+      "avgArrDelay": 93.3,
+      "avgRecovery": 8.1,
+      "recoveryRate": 75,
+      "avgDistance": 2576
+    },
+    {
+      "dest": "PIT",
+      "dest_name": "Pittsburgh Intl",
+      "flightCount": 249,
+      "avgDepDelay": 123.5,
+      "avgArrDelay": 115.2,
+      "avgRecovery": 8.2,
+      "recoveryRate": 74.7,
+      "avgDistance": 334
+    },
+    {
+      "dest": "BQN",
+      "flightCount": 62,
+      "avgDepDelay": 110.8,
+      "avgArrDelay": 104.7,
+      "avgRecovery": 6.1,
+      "recoveryRate": 74.2,
+      "avgDistance": 1581
+    },
+    {
+      "dest": "ALB",
+      "dest_name": "Albany Intl",
+      "flightCount": 64,
+      "avgDepDelay": 116.3,
+      "avgArrDelay": 109.9,
+      "avgRecovery": 6.4,
+      "recoveryRate": 73.4,
+      "avgDistance": 143
+    },
+    {
+      "dest": "HNL",
+      "dest_name": "Honolulu Intl",
+      "flightCount": 33,
+      "avgDepDelay": 161.7,
+      "avgArrDelay": 145,
+      "avgRecovery": 16.6,
+      "recoveryRate": 72.7,
+      "avgDistance": 4969
+    },
+    {
+      "dest": "SAT",
+      "dest_name": "San Antonio Intl",
+      "flightCount": 71,
+      "avgDepDelay": 136.4,
+      "avgArrDelay": 127.1,
+      "avgRecovery": 9.3,
+      "recoveryRate": 71.8,
+      "avgDistance": 1580
+    }
+  ],
+  "distanceRecovery": [
+    {
+      "distance_group": "超长途 (>2000英里)",
+      "flightCount": 3140,
+      "avgDepDelay": 123.2,
+      "avgArrDelay": 117.8,
+      "avgRecovery": 5.4,
+      "recoveryRate": 63.1,
+      "avgSpeed": 452.7,
+      "avgAirTime": 328.3,
+      "avgDistance": 2471
+    },
+    {
+      "distance_group": "长途 (1000-2000英里)",
+      "flightCount": 6808,
+      "avgDepDelay": 122.7,
+      "avgArrDelay": 118.5,
+      "avgRecovery": 4.2,
+      "recoveryRate": 63.2,
+      "avgSpeed": 428.7,
+      "avgAirTime": 174.5,
+      "avgDistance": 1242
+    },
+    {
+      "distance_group": "中途 (500-1000英里)",
+      "flightCount": 9167,
+      "avgDepDelay": 124.6,
+      "avgArrDelay": 122.5,
+      "avgRecovery": 2,
+      "recoveryRate": 61.6,
+      "avgSpeed": 392.4,
+      "avgAirTime": 111.3,
+      "avgDistance": 725
+    },
+    {
+      "distance_group": "短途 (<500英里)",
+      "flightCount": 7214,
+      "avgDepDelay": 117.6,
+      "avgArrDelay": 115.6,
+      "avgRecovery": 2,
+      "recoveryRate": 63.6,
+      "avgSpeed": 319.4,
+      "avgAirTime": 54,
+      "avgDistance": 291
+    }
+  ],
+  "speedRecoveryTrend": [
+    {
+      "speed_bin": "(100,150]",
+      "avgSpeed": 133.9,
+      "avgRecovery": -29,
+      "avgArrDelay": 147.9,
+      "count": 35
+    },
+    {
+      "speed_bin": "(150,200]",
+      "avgSpeed": 178,
+      "avgRecovery": -16.6,
+      "avgArrDelay": 137.2,
+      "count": 134
+    },
+    {
+      "speed_bin": "(200,250]",
+      "avgSpeed": 231.4,
+      "avgRecovery": -10.2,
+      "avgArrDelay": 129,
+      "count": 428
+    },
+    {
+      "speed_bin": "(250,300]",
+      "avgSpeed": 279.8,
+      "avgRecovery": -3.4,
+      "avgArrDelay": 120.4,
+      "count": 2049
+    },
+    {
+      "speed_bin": "(300,350]",
+      "avgSpeed": 328.2,
+      "avgRecovery": -2.4,
+      "avgArrDelay": 120.3,
+      "count": 3977
+    },
+    {
+      "speed_bin": "(350,400]",
+      "avgSpeed": 376.9,
+      "avgRecovery": -1.1,
+      "avgArrDelay": 122.4,
+      "count": 7042
+    },
+    {
+      "speed_bin": "(400,450]",
+      "avgSpeed": 424.8,
+      "avgRecovery": 4.8,
+      "avgArrDelay": 119,
+      "count": 8295
+    },
+    {
+      "speed_bin": "(450,500]",
+      "avgSpeed": 468.4,
+      "avgRecovery": 15.5,
+      "avgArrDelay": 111.7,
+      "count": 4119
+    },
+    {
+      "speed_bin": "(500,550]",
+      "avgSpeed": 509.8,
+      "avgRecovery": 29.1,
+      "avgArrDelay": 86.2,
+      "count": 248
+    }
+  ],
+  "recoveryDistribution": [
+    {
+      "recovery_category": "严重恶化 (<-30分钟)",
+      "count": 1924,
+      "percentage": 7.3
+    },
+    {
+      "recovery_category": "中度追回 (15~30分钟)",
+      "count": 5992,
+      "percentage": 22.8
+    },
+    {
+      "recovery_category": "大幅追回 (>30分钟)",
+      "count": 2046,
+      "percentage": 7.8
+    },
+    {
+      "recovery_category": "轻微恶化 (-30~0分钟)",
+      "count": 7416,
+      "percentage": 28.2
+    },
+    {
+      "recovery_category": "轻微追回 (0~15分钟)",
+      "count": 8951,
+      "percentage": 34
+    }
+  ]
+}

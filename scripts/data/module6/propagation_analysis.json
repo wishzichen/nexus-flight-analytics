@@ -47,675 +47,528 @@
   ],
   "propagationScatter": [
     {
-      "tailnum": "N3FDAA",
+      "tailnum": "N719MQ",
       "task_sequence": 2,
-      "prev_arr_delay": 2,
+      "prev_arr_delay": -32,
       "dep_delay": -6,
-      "carrier": "AA"
+      "carrier": "MQ"
     },
     {
-      "tailnum": "N319NB",
+      "tailnum": "N17730",
       "task_sequence": 2,
-      "prev_arr_delay": -24,
-      "dep_delay": -5,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N319NB",
-      "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": 9,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N315NB",
-      "task_sequence": 3,
-      "prev_arr_delay": 3,
-      "dep_delay": 0,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N317JB",
-      "task_sequence": 3,
       "prev_arr_delay": -12,
-      "dep_delay": -3,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N14250",
-      "task_sequence": 2,
-      "prev_arr_delay": -23,
-      "dep_delay": -4,
+      "dep_delay": 198,
       "carrier": "UA"
     },
     {
-      "tailnum": "N915XJ",
+      "tailnum": "N364NB",
       "task_sequence": 2,
-      "prev_arr_delay": 8,
-      "dep_delay": 35,
-      "carrier": "9E"
-    },
-    {
-      "tailnum": "N544MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -15,
-      "dep_delay": -1,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N607JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 3,
-      "dep_delay": -9,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N13955",
-      "task_sequence": 2,
-      "prev_arr_delay": 22,
-      "dep_delay": 59,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N354JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -18,
+      "prev_arr_delay": -17,
       "dep_delay": -3,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N349NB",
-      "task_sequence": 2,
-      "prev_arr_delay": -30,
-      "dep_delay": 2,
       "carrier": "DL"
     },
     {
-      "tailnum": "N805JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -8,
-      "dep_delay": -1,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N527MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -15,
-      "dep_delay": -2,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N328JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 14,
-      "dep_delay": 35,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N525MQ",
-      "task_sequence": 3,
-      "prev_arr_delay": -8,
-      "dep_delay": -6,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N27962",
+      "tailnum": "N3EHAA",
       "task_sequence": 2,
       "prev_arr_delay": -5,
-      "dep_delay": 68,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N3GNAA",
-      "task_sequence": 2,
-      "prev_arr_delay": -4,
-      "dep_delay": -3,
+      "dep_delay": 11,
       "carrier": "AA"
     },
     {
-      "tailnum": "N347NW",
+      "tailnum": "N17244",
       "task_sequence": 2,
-      "prev_arr_delay": -8,
-      "dep_delay": 0,
-      "carrier": "DL"
+      "prev_arr_delay": 7,
+      "dep_delay": -3,
+      "carrier": "UA"
     },
     {
-      "tailnum": "N13538",
+      "tailnum": "N591JB",
       "task_sequence": 2,
-      "prev_arr_delay": -18,
-      "dep_delay": -2,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N564JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 3,
-      "dep_delay": 77,
+      "prev_arr_delay": -5,
+      "dep_delay": 75,
       "carrier": "B6"
     },
     {
-      "tailnum": "N952UW",
-      "task_sequence": 3,
-      "prev_arr_delay": 13,
-      "dep_delay": 6,
-      "carrier": "US"
+      "tailnum": "N587JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -3,
+      "dep_delay": 2,
+      "carrier": "B6"
     },
     {
-      "tailnum": "N534MQ",
-      "task_sequence": 3,
-      "prev_arr_delay": 5,
-      "dep_delay": 41,
+      "tailnum": "N506MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 1,
+      "dep_delay": 15,
       "carrier": "MQ"
     },
     {
-      "tailnum": "N505MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 13,
-      "dep_delay": 27,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N15572",
-      "task_sequence": 2,
-      "prev_arr_delay": 30,
-      "dep_delay": 81,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N760US",
+      "tailnum": "N643JB",
       "task_sequence": 3,
-      "prev_arr_delay": 10,
-      "dep_delay": -4,
-      "carrier": "US"
+      "prev_arr_delay": 105,
+      "dep_delay": 119,
+      "carrier": "B6"
     },
     {
-      "tailnum": "N16961",
+      "tailnum": "N184JB",
       "task_sequence": 2,
-      "prev_arr_delay": -4,
-      "dep_delay": -7,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N314NB",
-      "task_sequence": 2,
-      "prev_arr_delay": 8,
-      "dep_delay": -9,
-      "carrier": "DL"
+      "prev_arr_delay": -15,
+      "dep_delay": 0,
+      "carrier": "B6"
     },
     {
       "tailnum": "N14542",
       "task_sequence": 2,
-      "prev_arr_delay": -9,
-      "dep_delay": -7,
+      "prev_arr_delay": -2,
+      "dep_delay": 52,
       "carrier": "EV"
     },
     {
-      "tailnum": "N652JB",
+      "tailnum": "N902DE",
       "task_sequence": 2,
-      "prev_arr_delay": 55,
-      "dep_delay": 41,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N820MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -3,
+      "prev_arr_delay": -19,
       "dep_delay": -3,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N611QX",
-      "task_sequence": 2,
-      "prev_arr_delay": -27,
-      "dep_delay": 58,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N725MQ",
-      "task_sequence": 3,
-      "prev_arr_delay": -22,
-      "dep_delay": -15,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N13538",
-      "task_sequence": 2,
-      "prev_arr_delay": -4,
-      "dep_delay": 27,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N605JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -24,
-      "dep_delay": -15,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N721TW",
-      "task_sequence": 2,
-      "prev_arr_delay": -28,
-      "dep_delay": 4,
       "carrier": "DL"
     },
     {
-      "tailnum": "N948UW",
-      "task_sequence": 3,
-      "prev_arr_delay": -10,
-      "dep_delay": -7,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N17169",
-      "task_sequence": 2,
-      "prev_arr_delay": 24,
-      "dep_delay": -5,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N521JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -4,
-      "dep_delay": -9,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N3FCAA",
-      "task_sequence": 2,
-      "prev_arr_delay": -5,
-      "dep_delay": -7,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N16178",
+      "tailnum": "N325NB",
       "task_sequence": 2,
       "prev_arr_delay": -1,
-      "dep_delay": -6,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N339JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 95,
-      "dep_delay": 2,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N823MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 31,
-      "dep_delay": 17,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N193JB",
-      "task_sequence": 4,
-      "prev_arr_delay": 7,
-      "dep_delay": 2,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N768US",
-      "task_sequence": 3,
-      "prev_arr_delay": -17,
-      "dep_delay": -5,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N503JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -5,
-      "dep_delay": 26,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N901DE",
-      "task_sequence": 2,
-      "prev_arr_delay": 3,
-      "dep_delay": -5,
+      "dep_delay": 9,
       "carrier": "DL"
     },
     {
-      "tailnum": "N8771A",
+      "tailnum": "N12922",
       "task_sequence": 2,
-      "prev_arr_delay": 8,
-      "dep_delay": 54,
-      "carrier": "9E"
-    },
-    {
-      "tailnum": "N646JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -21,
-      "dep_delay": 63,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N284JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 58,
-      "dep_delay": 85,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N307JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 118,
-      "dep_delay": 33,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N11536",
-      "task_sequence": 3,
-      "prev_arr_delay": 6,
-      "dep_delay": 27,
+      "prev_arr_delay": -9,
+      "dep_delay": 42,
       "carrier": "EV"
     },
     {
-      "tailnum": "N13956",
-      "task_sequence": 3,
-      "prev_arr_delay": -24,
-      "dep_delay": -3,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N14904",
-      "task_sequence": 2,
-      "prev_arr_delay": -32,
-      "dep_delay": -3,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N262WN",
-      "task_sequence": 2,
-      "prev_arr_delay": 1,
-      "dep_delay": -5,
-      "carrier": "WN"
-    },
-    {
-      "tailnum": "N3736C",
-      "task_sequence": 2,
-      "prev_arr_delay": 14,
-      "dep_delay": 33,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N3744F",
-      "task_sequence": 2,
-      "prev_arr_delay": -26,
-      "dep_delay": 0,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N14907",
-      "task_sequence": 2,
-      "prev_arr_delay": 149,
-      "dep_delay": -6,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N16918",
-      "task_sequence": 2,
-      "prev_arr_delay": -16,
-      "dep_delay": -5,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N723EV",
+      "tailnum": "N952UW",
       "task_sequence": 2,
       "prev_arr_delay": -17,
-      "dep_delay": -9,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N183JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -15,
-      "dep_delay": -5,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N279JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": -10,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N653JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 157,
-      "dep_delay": -6,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N39416",
-      "task_sequence": 2,
-      "prev_arr_delay": 31,
-      "dep_delay": 43,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N266JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -7,
-      "dep_delay": -6,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N502MQ",
-      "task_sequence": 3,
-      "prev_arr_delay": 58,
-      "dep_delay": 105,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N770UW",
-      "task_sequence": 2,
-      "prev_arr_delay": 16,
       "dep_delay": -8,
       "carrier": "US"
     },
     {
-      "tailnum": "N366NB",
+      "tailnum": "N487AA",
       "task_sequence": 2,
-      "prev_arr_delay": -10,
-      "dep_delay": 2,
-      "carrier": "DL"
+      "prev_arr_delay": 47,
+      "dep_delay": 6,
+      "carrier": "AA"
     },
     {
-      "tailnum": "N22909",
+      "tailnum": "N14953",
       "task_sequence": 2,
-      "prev_arr_delay": 54,
-      "dep_delay": -7,
+      "prev_arr_delay": -8,
+      "dep_delay": 0,
       "carrier": "EV"
     },
     {
-      "tailnum": "N509MQ",
-      "task_sequence": 3,
-      "prev_arr_delay": -28,
-      "dep_delay": 9,
-      "carrier": "MQ"
+      "tailnum": "N360NB",
+      "task_sequence": 2,
+      "prev_arr_delay": 23,
+      "dep_delay": 34,
+      "carrier": "DL"
     },
     {
-      "tailnum": "N187JB",
+      "tailnum": "N634JB",
       "task_sequence": 2,
-      "prev_arr_delay": 1,
+      "prev_arr_delay": 0,
       "dep_delay": -6,
       "carrier": "B6"
     },
     {
-      "tailnum": "N3AEMQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -19,
-      "dep_delay": -4,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N16963",
-      "task_sequence": 2,
-      "prev_arr_delay": -29,
+      "tailnum": "N190JB",
+      "task_sequence": 4,
+      "prev_arr_delay": -21,
       "dep_delay": -5,
-      "carrier": "EV"
+      "carrier": "B6"
     },
     {
-      "tailnum": "N3EPAA",
+      "tailnum": "N323AA",
       "task_sequence": 2,
-      "prev_arr_delay": -4,
-      "dep_delay": 47,
+      "prev_arr_delay": -18,
+      "dep_delay": -9,
       "carrier": "AA"
     },
     {
-      "tailnum": "N16701",
+      "tailnum": "N812AY",
       "task_sequence": 2,
-      "prev_arr_delay": 29,
-      "dep_delay": -3,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N373NW",
-      "task_sequence": 2,
-      "prev_arr_delay": -3,
-      "dep_delay": -5,
-      "carrier": "DL"
+      "prev_arr_delay": -1,
+      "dep_delay": -7,
+      "carrier": "9E"
     },
     {
       "tailnum": "N371CA",
       "task_sequence": 2,
-      "prev_arr_delay": -16,
-      "dep_delay": 35,
+      "prev_arr_delay": -30,
+      "dep_delay": 11,
       "carrier": "EV"
     },
     {
-      "tailnum": "N492UA",
+      "tailnum": "N21130",
       "task_sequence": 2,
-      "prev_arr_delay": 32,
-      "dep_delay": 17,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N959AT",
-      "task_sequence": 2,
-      "prev_arr_delay": 25,
-      "dep_delay": 0,
-      "carrier": "FL"
-    },
-    {
-      "tailnum": "N12552",
-      "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": 10,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N713MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -22,
-      "dep_delay": -9,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N16963",
-      "task_sequence": 2,
-      "prev_arr_delay": -1,
-      "dep_delay": -6,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N747UW",
-      "task_sequence": 2,
-      "prev_arr_delay": -18,
-      "dep_delay": -7,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N536JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -28,
-      "dep_delay": -2,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N16981",
-      "task_sequence": 2,
-      "prev_arr_delay": -20,
+      "prev_arr_delay": -17,
       "dep_delay": -1,
       "carrier": "EV"
     },
     {
-      "tailnum": "N249JB",
+      "tailnum": "N745VJ",
+      "task_sequence": 3,
+      "prev_arr_delay": 15,
+      "dep_delay": 5,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N12540",
       "task_sequence": 2,
-      "prev_arr_delay": -10,
+      "prev_arr_delay": -2,
+      "dep_delay": -1,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N296JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 6,
+      "dep_delay": -4,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N228JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -2,
+      "dep_delay": -7,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N13994",
+      "task_sequence": 2,
+      "prev_arr_delay": -1,
+      "dep_delay": 0,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N13123",
+      "task_sequence": 2,
+      "prev_arr_delay": -34,
+      "dep_delay": -1,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N3734B",
+      "task_sequence": 2,
+      "prev_arr_delay": -15,
       "dep_delay": -5,
-      "carrier": "B6"
+      "carrier": "DL"
     },
     {
-      "tailnum": "N12567",
+      "tailnum": "N829MQ",
       "task_sequence": 2,
-      "prev_arr_delay": -12,
-      "dep_delay": -10,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N623JB",
-      "task_sequence": 3,
-      "prev_arr_delay": -12,
-      "dep_delay": 43,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N16149",
-      "task_sequence": 2,
-      "prev_arr_delay": -14,
-      "dep_delay": 21,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N720MQ",
-      "task_sequence": 3,
-      "prev_arr_delay": -9,
-      "dep_delay": -3,
+      "prev_arr_delay": 59,
+      "dep_delay": 20,
       "carrier": "MQ"
     },
     {
-      "tailnum": "N833MQ",
+      "tailnum": "N12552",
+      "task_sequence": 2,
+      "prev_arr_delay": 5,
+      "dep_delay": -6,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N604AW",
+      "task_sequence": 2,
+      "prev_arr_delay": -4,
+      "dep_delay": -3,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N806UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -16,
+      "dep_delay": 23,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N507JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -11,
+      "dep_delay": -3,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N578UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -5,
+      "dep_delay": 0,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N817MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -15,
+      "dep_delay": 18,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N14570",
+      "task_sequence": 3,
+      "prev_arr_delay": 43,
+      "dep_delay": 3,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N3JUAA",
+      "task_sequence": 2,
+      "prev_arr_delay": 60,
+      "dep_delay": 79,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N454AA",
+      "task_sequence": 2,
+      "prev_arr_delay": -30,
+      "dep_delay": -8,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N629JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 180,
+      "dep_delay": 159,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N3GLAA",
+      "task_sequence": 2,
+      "prev_arr_delay": 8,
+      "dep_delay": 35,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N755US",
+      "task_sequence": 4,
+      "prev_arr_delay": -14,
+      "dep_delay": -9,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N3KDAA",
+      "task_sequence": 2,
+      "prev_arr_delay": -13,
+      "dep_delay": 14,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N3FTAA",
+      "task_sequence": 2,
+      "prev_arr_delay": -20,
+      "dep_delay": 113,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N435UA",
+      "task_sequence": 3,
+      "prev_arr_delay": -9,
+      "dep_delay": 0,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N266JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -19,
+      "dep_delay": -2,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N723TW",
+      "task_sequence": 2,
+      "prev_arr_delay": -22,
+      "dep_delay": -6,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N950UW",
+      "task_sequence": 2,
+      "prev_arr_delay": -3,
+      "dep_delay": -9,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N19554",
+      "task_sequence": 2,
+      "prev_arr_delay": 9,
+      "dep_delay": 9,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N854MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 14,
+      "dep_delay": 26,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N1EAMQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -10,
+      "dep_delay": -8,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N3FPAA",
       "task_sequence": 2,
       "prev_arr_delay": -14,
+      "dep_delay": -3,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N292JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 34,
+      "dep_delay": 111,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N335NB",
+      "task_sequence": 2,
+      "prev_arr_delay": -25,
+      "dep_delay": -3,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N12996",
+      "task_sequence": 2,
+      "prev_arr_delay": -9,
+      "dep_delay": 1,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N502MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 0,
       "dep_delay": -4,
       "carrier": "MQ"
     },
     {
-      "tailnum": "N517MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 24,
-      "dep_delay": -6,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N955UW",
+      "tailnum": "N294JB",
       "task_sequence": 3,
-      "prev_arr_delay": -11,
-      "dep_delay": -5,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N14923",
-      "task_sequence": 2,
-      "prev_arr_delay": -1,
-      "dep_delay": 24,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N524JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -9,
-      "dep_delay": 13,
+      "prev_arr_delay": 38,
+      "dep_delay": 68,
       "carrier": "B6"
     },
     {
-      "tailnum": "N14568",
+      "tailnum": "N720MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -7,
+      "dep_delay": -10,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N12922",
+      "task_sequence": 2,
+      "prev_arr_delay": 43,
+      "dep_delay": 15,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N635JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -24,
+      "dep_delay": -1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N346JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 25,
+      "dep_delay": 3,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N15985",
+      "task_sequence": 2,
+      "prev_arr_delay": -18,
+      "dep_delay": 4,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N274JB",
       "task_sequence": 3,
-      "prev_arr_delay": -32,
-      "dep_delay": -2,
+      "prev_arr_delay": -3,
+      "dep_delay": -7,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N708JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 50,
+      "dep_delay": -1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N935DL",
+      "task_sequence": 2,
+      "prev_arr_delay": 18,
+      "dep_delay": 2,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N663JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -4,
+      "dep_delay": 1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N13161",
+      "task_sequence": 3,
+      "prev_arr_delay": 15,
+      "dep_delay": -3,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N11551",
+      "task_sequence": 2,
+      "prev_arr_delay": 47,
+      "dep_delay": 23,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N836UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -6,
+      "dep_delay": 3,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N984DL",
+      "task_sequence": 2,
+      "prev_arr_delay": -15,
+      "dep_delay": 8,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N544MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -26,
+      "dep_delay": -8,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N692DL",
+      "task_sequence": 2,
+      "prev_arr_delay": 13,
+      "dep_delay": -4,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N11194",
+      "task_sequence": 2,
+      "prev_arr_delay": 33,
+      "dep_delay": 21,
       "carrier": "EV"
     },
     {
@@ -726,1179 +579,2404 @@
       "carrier": "EV"
     },
     {
-      "tailnum": "N958DL",
-      "task_sequence": 3,
-      "prev_arr_delay": 19,
-      "dep_delay": 12,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N14198",
+      "tailnum": "N608QX",
       "task_sequence": 2,
-      "prev_arr_delay": -7,
-      "dep_delay": 95,
+      "prev_arr_delay": -30,
+      "dep_delay": 13,
       "carrier": "EV"
     },
     {
-      "tailnum": "N624JB",
+      "tailnum": "N914DL",
       "task_sequence": 2,
-      "prev_arr_delay": 6,
-      "dep_delay": -2,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N667DN",
-      "task_sequence": 2,
-      "prev_arr_delay": -6,
+      "prev_arr_delay": -11,
       "dep_delay": -3,
       "carrier": "DL"
     },
     {
-      "tailnum": "N324NB",
+      "tailnum": "N721MQ",
       "task_sequence": 2,
       "prev_arr_delay": -5,
-      "dep_delay": 27,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N328JB",
-      "task_sequence": 3,
-      "prev_arr_delay": -7,
-      "dep_delay": -5,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N592JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -14,
-      "dep_delay": -10,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N360NB",
-      "task_sequence": 3,
-      "prev_arr_delay": -7,
-      "dep_delay": 3,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N629JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -22,
-      "dep_delay": 10,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N597JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 115,
-      "dep_delay": -5,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N637DL",
-      "task_sequence": 2,
-      "prev_arr_delay": 16,
-      "dep_delay": 0,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N11193",
-      "task_sequence": 2,
-      "prev_arr_delay": 37,
-      "dep_delay": 123,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N827AS",
-      "task_sequence": 2,
-      "prev_arr_delay": 10,
-      "dep_delay": 5,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N3EHAA",
-      "task_sequence": 2,
-      "prev_arr_delay": -7,
-      "dep_delay": 3,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N663JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -21,
-      "dep_delay": -7,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N764US",
-      "task_sequence": 2,
-      "prev_arr_delay": -2,
-      "dep_delay": -9,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N612JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -11,
-      "dep_delay": 0,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N985DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -3,
-      "dep_delay": -4,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N12136",
-      "task_sequence": 2,
-      "prev_arr_delay": 20,
-      "dep_delay": 5,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N3JPAA",
-      "task_sequence": 2,
-      "prev_arr_delay": -15,
-      "dep_delay": 68,
-      "carrier": "AA"
+      "dep_delay": -8,
+      "carrier": "MQ"
     },
     {
       "tailnum": "N14916",
-      "task_sequence": 2,
-      "prev_arr_delay": -5,
-      "dep_delay": -6,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N14993",
       "task_sequence": 3,
-      "prev_arr_delay": 44,
-      "dep_delay": -5,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N712EV",
-      "task_sequence": 2,
-      "prev_arr_delay": -26,
-      "dep_delay": 12,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N515MQ",
-      "task_sequence": 3,
-      "prev_arr_delay": 10,
-      "dep_delay": 39,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N552JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -33,
-      "dep_delay": 14,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N322NB",
-      "task_sequence": 2,
-      "prev_arr_delay": 17,
-      "dep_delay": 18,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N803MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 44,
-      "dep_delay": 55,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N309JB",
-      "task_sequence": 3,
-      "prev_arr_delay": -16,
-      "dep_delay": 19,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N328NW",
-      "task_sequence": 2,
-      "prev_arr_delay": 23,
-      "dep_delay": 16,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N961UW",
-      "task_sequence": 2,
-      "prev_arr_delay": -18,
-      "dep_delay": -8,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N508MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 9,
-      "dep_delay": 72,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N309JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 32,
-      "dep_delay": -6,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N594JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 112,
-      "dep_delay": 111,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N752US",
-      "task_sequence": 2,
       "prev_arr_delay": 0,
-      "dep_delay": -7,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N754EV",
-      "task_sequence": 2,
-      "prev_arr_delay": -32,
-      "dep_delay": 58,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N228JB",
-      "task_sequence": 3,
-      "prev_arr_delay": -14,
-      "dep_delay": 109,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N14542",
-      "task_sequence": 3,
-      "prev_arr_delay": -29,
-      "dep_delay": 0,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N0EGMQ",
-      "task_sequence": 3,
-      "prev_arr_delay": -8,
-      "dep_delay": -15,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N335NB",
-      "task_sequence": 2,
-      "prev_arr_delay": -18,
-      "dep_delay": -4,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N850UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -30,
-      "dep_delay": 0,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N316JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -16,
-      "dep_delay": 19,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N455UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -12,
-      "dep_delay": -4,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N711ZX",
-      "task_sequence": 2,
-      "prev_arr_delay": -1,
-      "dep_delay": -5,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N187JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -12,
-      "dep_delay": 19,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N757UW",
-      "task_sequence": 3,
-      "prev_arr_delay": -31,
-      "dep_delay": -5,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N39423",
-      "task_sequence": 2,
-      "prev_arr_delay": 4,
-      "dep_delay": 2,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N335NW",
-      "task_sequence": 2,
-      "prev_arr_delay": -14,
-      "dep_delay": -2,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N719MQ",
-      "task_sequence": 3,
-      "prev_arr_delay": -13,
-      "dep_delay": -9,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N658DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -12,
-      "dep_delay": -2,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N13903",
-      "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": -2,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N313US",
-      "task_sequence": 2,
-      "prev_arr_delay": -11,
-      "dep_delay": -3,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N557UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -8,
-      "dep_delay": 55,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N26549",
-      "task_sequence": 2,
-      "prev_arr_delay": -1,
-      "dep_delay": -5,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N17984",
-      "task_sequence": 2,
-      "prev_arr_delay": 23,
-      "dep_delay": 77,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N14960",
-      "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": -3,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N983DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -16,
-      "dep_delay": 236,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N766JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 1,
-      "dep_delay": 1,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N15980",
-      "task_sequence": 2,
-      "prev_arr_delay": 29,
-      "dep_delay": 22,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N369NW",
-      "task_sequence": 2,
-      "prev_arr_delay": 13,
-      "dep_delay": 32,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N534MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -3,
-      "dep_delay": -2,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N15986",
-      "task_sequence": 2,
-      "prev_arr_delay": 4,
-      "dep_delay": 67,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N566UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": 12,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N849MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 39,
-      "dep_delay": 23,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N17196",
-      "task_sequence": 2,
-      "prev_arr_delay": 1,
-      "dep_delay": -5,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N680DA",
-      "task_sequence": 2,
-      "prev_arr_delay": -8,
-      "dep_delay": -8,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N265JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 26,
-      "dep_delay": -6,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N11535",
-      "task_sequence": 2,
-      "prev_arr_delay": -8,
-      "dep_delay": -2,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N190JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 5,
-      "dep_delay": 7,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N3HTAA",
-      "task_sequence": 2,
-      "prev_arr_delay": 0,
-      "dep_delay": -5,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N725UW",
-      "task_sequence": 2,
-      "prev_arr_delay": 8,
-      "dep_delay": 31,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N591JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -1,
-      "dep_delay": 8,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N569JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 11,
-      "dep_delay": 8,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N351JB",
-      "task_sequence": 3,
-      "prev_arr_delay": -3,
-      "dep_delay": -4,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N369NB",
-      "task_sequence": 2,
-      "prev_arr_delay": -35,
-      "dep_delay": -5,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N713MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 7,
-      "dep_delay": -11,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N946UW",
-      "task_sequence": 2,
-      "prev_arr_delay": 4,
-      "dep_delay": -5,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N576UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": 23,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N298JB",
-      "task_sequence": 4,
-      "prev_arr_delay": -12,
-      "dep_delay": -2,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N526MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 7,
-      "dep_delay": -6,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N949UW",
-      "task_sequence": 3,
-      "prev_arr_delay": -2,
-      "dep_delay": 0,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N506JB",
-      "task_sequence": 3,
-      "prev_arr_delay": -13,
-      "dep_delay": -6,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N190JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 2,
-      "dep_delay": 3,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N809JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 45,
-      "dep_delay": 10,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N39418",
-      "task_sequence": 2,
-      "prev_arr_delay": -16,
-      "dep_delay": 4,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N351NB",
-      "task_sequence": 2,
-      "prev_arr_delay": -8,
-      "dep_delay": -5,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N75428",
-      "task_sequence": 2,
-      "prev_arr_delay": 10,
-      "dep_delay": 0,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N591JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 20,
-      "dep_delay": 4,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N467WN",
-      "task_sequence": 2,
-      "prev_arr_delay": 142,
-      "dep_delay": 203,
-      "carrier": "WN"
-    },
-    {
-      "tailnum": "N856MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 71,
-      "dep_delay": 21,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N848MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -10,
-      "dep_delay": 2,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N523MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 36,
-      "dep_delay": 34,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N14950",
-      "task_sequence": 2,
-      "prev_arr_delay": 22,
-      "dep_delay": 82,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N815MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 9,
-      "dep_delay": 39,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N73275",
-      "task_sequence": 2,
-      "prev_arr_delay": -17,
-      "dep_delay": 1,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N29917",
-      "task_sequence": 2,
-      "prev_arr_delay": 45,
-      "dep_delay": 76,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N947UW",
-      "task_sequence": 3,
-      "prev_arr_delay": -17,
-      "dep_delay": -4,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N14568",
-      "task_sequence": 3,
-      "prev_arr_delay": -17,
-      "dep_delay": 0,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N312US",
-      "task_sequence": 2,
-      "prev_arr_delay": 9,
-      "dep_delay": -4,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N337JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -11,
-      "dep_delay": -6,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N511MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -22,
-      "dep_delay": -7,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N267JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 2,
-      "dep_delay": -7,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N14573",
-      "task_sequence": 2,
-      "prev_arr_delay": 20,
       "dep_delay": 27,
       "carrier": "EV"
     },
     {
-      "tailnum": "N238JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 44,
-      "dep_delay": 12,
+      "tailnum": "N659JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 37,
+      "dep_delay": 34,
       "carrier": "B6"
     },
     {
-      "tailnum": "N372NW",
-      "task_sequence": 2,
-      "prev_arr_delay": -2,
-      "dep_delay": 41,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N508JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -11,
-      "dep_delay": 1,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N516MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 5,
-      "dep_delay": -8,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N534JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -16,
-      "dep_delay": 13,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N22909",
-      "task_sequence": 2,
-      "prev_arr_delay": 10,
-      "dep_delay": -3,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N348JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 72,
-      "dep_delay": 24,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N11551",
-      "task_sequence": 2,
-      "prev_arr_delay": 16,
-      "dep_delay": -3,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N945UW",
-      "task_sequence": 3,
-      "prev_arr_delay": -23,
-      "dep_delay": -12,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N13118",
-      "task_sequence": 3,
-      "prev_arr_delay": 73,
-      "dep_delay": -4,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N14542",
-      "task_sequence": 3,
-      "prev_arr_delay": -23,
-      "dep_delay": -8,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N431WN",
+      "tailnum": "N8938A",
       "task_sequence": 2,
       "prev_arr_delay": -1,
-      "dep_delay": 17,
-      "carrier": "WN"
-    },
-    {
-      "tailnum": "N439UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -29,
-      "dep_delay": 4,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N525MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 4,
-      "dep_delay": -5,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N971DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -12,
-      "dep_delay": -1,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N910XJ",
-      "task_sequence": 2,
-      "prev_arr_delay": -17,
-      "dep_delay": -3,
+      "dep_delay": 21,
       "carrier": "9E"
     },
     {
-      "tailnum": "N927XJ",
-      "task_sequence": 2,
-      "prev_arr_delay": -40,
-      "dep_delay": -10,
-      "carrier": "9E"
-    },
-    {
-      "tailnum": "N753EV",
-      "task_sequence": 2,
-      "prev_arr_delay": -32,
-      "dep_delay": -10,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N908DL",
-      "task_sequence": 2,
-      "prev_arr_delay": 6,
-      "dep_delay": -1,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N3CKAA",
-      "task_sequence": 2,
-      "prev_arr_delay": 3,
-      "dep_delay": -1,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N14953",
-      "task_sequence": 2,
-      "prev_arr_delay": 41,
-      "dep_delay": 107,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N14148",
+      "tailnum": "N14991",
       "task_sequence": 3,
-      "prev_arr_delay": -13,
-      "dep_delay": -5,
+      "prev_arr_delay": 6,
+      "dep_delay": 55,
       "carrier": "EV"
     },
     {
-      "tailnum": "N524JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 2,
-      "dep_delay": 2,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N977AT",
-      "task_sequence": 2,
-      "prev_arr_delay": -10,
-      "dep_delay": -4,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N608QX",
-      "task_sequence": 2,
-      "prev_arr_delay": 67,
+      "tailnum": "N17560",
+      "task_sequence": 4,
+      "prev_arr_delay": 9,
       "dep_delay": -7,
       "carrier": "EV"
     },
     {
-      "tailnum": "N14950",
-      "task_sequence": 3,
-      "prev_arr_delay": -16,
-      "dep_delay": 167,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N755US",
-      "task_sequence": 3,
-      "prev_arr_delay": -18,
-      "dep_delay": 2,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N13550",
-      "task_sequence": 4,
-      "prev_arr_delay": 96,
-      "dep_delay": 46,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N306JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 1,
-      "dep_delay": -4,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N754UW",
+      "tailnum": "N840UA",
       "task_sequence": 2,
-      "prev_arr_delay": -27,
-      "dep_delay": -5,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N3ASAA",
-      "task_sequence": 2,
-      "prev_arr_delay": 5,
-      "dep_delay": -3,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N766JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -11,
-      "dep_delay": -6,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N826AS",
-      "task_sequence": 2,
-      "prev_arr_delay": -6,
-      "dep_delay": 2,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N917DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -7,
-      "dep_delay": -5,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N11565",
-      "task_sequence": 2,
-      "prev_arr_delay": 21,
-      "dep_delay": 2,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N723MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 2,
-      "dep_delay": -8,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N14991",
-      "task_sequence": 2,
-      "prev_arr_delay": -9,
-      "dep_delay": 38,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N13161",
-      "task_sequence": 2,
-      "prev_arr_delay": -12,
-      "dep_delay": -9,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N458UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -30,
-      "dep_delay": -2,
+      "prev_arr_delay": -14,
+      "dep_delay": 1,
       "carrier": "UA"
     },
     {
-      "tailnum": "N354JB",
+      "tailnum": "N595JB",
       "task_sequence": 2,
-      "prev_arr_delay": -10,
-      "dep_delay": -6,
+      "prev_arr_delay": 59,
+      "dep_delay": 55,
       "carrier": "B6"
     },
     {
-      "tailnum": "N753EV",
+      "tailnum": "N21144",
       "task_sequence": 2,
-      "prev_arr_delay": -2,
-      "dep_delay": 10,
+      "prev_arr_delay": 59,
+      "dep_delay": 25,
       "carrier": "EV"
     },
     {
-      "tailnum": "N754EV",
-      "task_sequence": 2,
-      "prev_arr_delay": -16,
+      "tailnum": "N349NB",
+      "task_sequence": 3,
+      "prev_arr_delay": -38,
       "dep_delay": -3,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N16178",
-      "task_sequence": 3,
-      "prev_arr_delay": 184,
-      "dep_delay": 201,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N830AS",
-      "task_sequence": 2,
-      "prev_arr_delay": 15,
-      "dep_delay": 14,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N712US",
-      "task_sequence": 3,
-      "prev_arr_delay": 12,
-      "dep_delay": 8,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N360NW",
-      "task_sequence": 2,
-      "prev_arr_delay": -4,
-      "dep_delay": 19,
       "carrier": "DL"
     },
     {
-      "tailnum": "N919DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -3,
-      "dep_delay": 0,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N267JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -9,
-      "dep_delay": 5,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N768US",
+      "tailnum": "N294JB",
       "task_sequence": 4,
       "prev_arr_delay": 0,
-      "dep_delay": -4,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N15910",
-      "task_sequence": 3,
-      "prev_arr_delay": 143,
-      "dep_delay": 59,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N821UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -23,
-      "dep_delay": -4,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N11547",
-      "task_sequence": 2,
-      "prev_arr_delay": 95,
-      "dep_delay": 90,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N339JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 61,
-      "dep_delay": 32,
+      "dep_delay": -5,
       "carrier": "B6"
     },
     {
-      "tailnum": "N152UW",
+      "tailnum": "N527MQ",
       "task_sequence": 2,
-      "prev_arr_delay": -1,
-      "dep_delay": 1,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N526MQ",
-      "task_sequence": 3,
-      "prev_arr_delay": -9,
-      "dep_delay": -8,
+      "prev_arr_delay": -3,
+      "dep_delay": -9,
       "carrier": "MQ"
     },
     {
-      "tailnum": "N444UA",
+      "tailnum": "N334JB",
       "task_sequence": 2,
-      "prev_arr_delay": 22,
-      "dep_delay": 111,
+      "prev_arr_delay": -3,
+      "dep_delay": -5,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N78506",
+      "task_sequence": 2,
+      "prev_arr_delay": 8,
+      "dep_delay": 7,
       "carrier": "UA"
     },
     {
-      "tailnum": "N760JB",
-      "task_sequence": 3,
-      "prev_arr_delay": -2,
-      "dep_delay": -3,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N13553",
+      "tailnum": "N437UA",
       "task_sequence": 2,
-      "prev_arr_delay": 93,
-      "dep_delay": 30,
-      "carrier": "EV"
+      "prev_arr_delay": 99,
+      "dep_delay": 121,
+      "carrier": "UA"
     },
     {
-      "tailnum": "N523JB",
+      "tailnum": "N979AT",
       "task_sequence": 2,
-      "prev_arr_delay": -4,
-      "dep_delay": 22,
-      "carrier": "B6"
+      "prev_arr_delay": -17,
+      "dep_delay": 157,
+      "carrier": "DL"
     },
     {
-      "tailnum": "N762US",
-      "task_sequence": 2,
-      "prev_arr_delay": -11,
-      "dep_delay": -8,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N12569",
+      "tailnum": "N580UA",
       "task_sequence": 2,
       "prev_arr_delay": -18,
-      "dep_delay": 12,
+      "dep_delay": -1,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N16183",
+      "task_sequence": 2,
+      "prev_arr_delay": -27,
+      "dep_delay": -3,
       "carrier": "EV"
     },
     {
-      "tailnum": "N27962",
+      "tailnum": "N13978",
       "task_sequence": 2,
-      "prev_arr_delay": 12,
-      "dep_delay": -5,
+      "prev_arr_delay": -16,
+      "dep_delay": -6,
       "carrier": "EV"
     },
     {
       "tailnum": "N14543",
       "task_sequence": 2,
-      "prev_arr_delay": 44,
-      "dep_delay": 143,
+      "prev_arr_delay": 0,
+      "dep_delay": -10,
       "carrier": "EV"
     },
     {
-      "tailnum": "N37274",
+      "tailnum": "N184JB",
+      "task_sequence": 4,
+      "prev_arr_delay": 129,
+      "dep_delay": 68,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N18102",
+      "task_sequence": 2,
+      "prev_arr_delay": 35,
+      "dep_delay": 30,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N784JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -15,
+      "dep_delay": -12,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N267JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 0,
+      "dep_delay": 14,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N706JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 48,
+      "dep_delay": 139,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N648JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 68,
+      "dep_delay": -15,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N829AS",
+      "task_sequence": 2,
+      "prev_arr_delay": -18,
+      "dep_delay": 23,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N13161",
       "task_sequence": 2,
       "prev_arr_delay": -13,
+      "dep_delay": 89,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N924XJ",
+      "task_sequence": 2,
+      "prev_arr_delay": -23,
+      "dep_delay": -3,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N3JJAA",
+      "task_sequence": 2,
+      "prev_arr_delay": 5,
+      "dep_delay": 1,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N374JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 0,
+      "dep_delay": -8,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N517MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -1,
+      "dep_delay": -1,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N952UW",
+      "task_sequence": 2,
+      "prev_arr_delay": -24,
+      "dep_delay": -7,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N536JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -34,
+      "dep_delay": -1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N12157",
+      "task_sequence": 2,
+      "prev_arr_delay": 18,
+      "dep_delay": 4,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N594JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 7,
+      "dep_delay": 5,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N327NB",
+      "task_sequence": 3,
+      "prev_arr_delay": -29,
+      "dep_delay": -3,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N722MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 2,
+      "dep_delay": 43,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N206JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -9,
+      "dep_delay": -6,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N520JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -3,
+      "dep_delay": 1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N665JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 173,
+      "dep_delay": 96,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N503JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 4,
+      "dep_delay": -3,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N12564",
+      "task_sequence": 4,
+      "prev_arr_delay": 5,
+      "dep_delay": -4,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N929XJ",
+      "task_sequence": 2,
+      "prev_arr_delay": -27,
+      "dep_delay": 1,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N16954",
+      "task_sequence": 2,
+      "prev_arr_delay": 271,
+      "dep_delay": 314,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N956UW",
+      "task_sequence": 3,
+      "prev_arr_delay": -14,
+      "dep_delay": -7,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N458UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -3,
+      "dep_delay": -4,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N579JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 38,
+      "dep_delay": 12,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N346JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -5,
+      "dep_delay": 12,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N346NB",
+      "task_sequence": 2,
+      "prev_arr_delay": -28,
+      "dep_delay": 0,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N21154",
+      "task_sequence": 3,
+      "prev_arr_delay": 7,
+      "dep_delay": 63,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N827JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -20,
+      "dep_delay": -4,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N14952",
+      "task_sequence": 4,
+      "prev_arr_delay": 24,
+      "dep_delay": -7,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N22909",
+      "task_sequence": 2,
+      "prev_arr_delay": -10,
+      "dep_delay": -10,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N753EV",
+      "task_sequence": 2,
+      "prev_arr_delay": 0,
+      "dep_delay": -7,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N803UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -20,
       "dep_delay": -1,
       "carrier": "UA"
     },
     {
-      "tailnum": "N395DN",
+      "tailnum": "N13965",
+      "task_sequence": 2,
+      "prev_arr_delay": 16,
+      "dep_delay": 44,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N768US",
+      "task_sequence": 4,
+      "prev_arr_delay": 26,
+      "dep_delay": 42,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N803MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 15,
+      "dep_delay": -7,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N741EV",
+      "task_sequence": 3,
+      "prev_arr_delay": -40,
+      "dep_delay": -8,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N510UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -9,
+      "dep_delay": -3,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N548AA",
+      "task_sequence": 2,
+      "prev_arr_delay": -2,
+      "dep_delay": -7,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N502MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 47,
+      "dep_delay": 0,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N755US",
+      "task_sequence": 4,
+      "prev_arr_delay": 12,
+      "dep_delay": 16,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N563JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 24,
+      "dep_delay": 46,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N505MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -1,
+      "dep_delay": -2,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N759EV",
+      "task_sequence": 2,
+      "prev_arr_delay": -18,
+      "dep_delay": -4,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N16561",
+      "task_sequence": 3,
+      "prev_arr_delay": -12,
+      "dep_delay": 27,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N760EV",
+      "task_sequence": 3,
+      "prev_arr_delay": -1,
+      "dep_delay": 57,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N22909",
+      "task_sequence": 2,
+      "prev_arr_delay": -22,
+      "dep_delay": -4,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N597JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 4,
+      "dep_delay": 14,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N603JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -9,
+      "dep_delay": -15,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N589JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 2,
+      "dep_delay": 2,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N845UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -21,
+      "dep_delay": 2,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N3FXAA",
+      "task_sequence": 3,
+      "prev_arr_delay": -5,
+      "dep_delay": -6,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N16954",
+      "task_sequence": 2,
+      "prev_arr_delay": 10,
+      "dep_delay": 91,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N11551",
+      "task_sequence": 3,
+      "prev_arr_delay": -22,
+      "dep_delay": 33,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N334JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -14,
+      "dep_delay": -3,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N713MQ",
+      "task_sequence": 3,
+      "prev_arr_delay": -13,
+      "dep_delay": -6,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N851UA",
+      "task_sequence": 3,
+      "prev_arr_delay": -6,
+      "dep_delay": -6,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N563JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -9,
+      "dep_delay": -14,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N842UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -34,
+      "dep_delay": 3,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N735MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 73,
+      "dep_delay": 206,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N14542",
+      "task_sequence": 3,
+      "prev_arr_delay": -22,
+      "dep_delay": -4,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N3GFAA",
+      "task_sequence": 2,
+      "prev_arr_delay": 8,
+      "dep_delay": -8,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N921XJ",
+      "task_sequence": 2,
+      "prev_arr_delay": 207,
+      "dep_delay": 54,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N827MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 3,
+      "dep_delay": -6,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N809JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -17,
+      "dep_delay": 16,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N12921",
+      "task_sequence": 4,
+      "prev_arr_delay": -7,
+      "dep_delay": -2,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N373JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -4,
+      "dep_delay": 0,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N570JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -16,
+      "dep_delay": -6,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N922XJ",
+      "task_sequence": 2,
+      "prev_arr_delay": -12,
+      "dep_delay": -6,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N13550",
+      "task_sequence": 2,
+      "prev_arr_delay": 20,
+      "dep_delay": -9,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N833UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -27,
+      "dep_delay": -4,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N755EV",
+      "task_sequence": 2,
+      "prev_arr_delay": 45,
+      "dep_delay": -2,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N546MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 9,
+      "dep_delay": 0,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N21197",
+      "task_sequence": 2,
+      "prev_arr_delay": -19,
+      "dep_delay": -9,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N3733Z",
+      "task_sequence": 2,
+      "prev_arr_delay": 0,
+      "dep_delay": 1,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N10575",
+      "task_sequence": 2,
+      "prev_arr_delay": 15,
+      "dep_delay": 2,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N804MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 12,
+      "dep_delay": -7,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N17229",
+      "task_sequence": 2,
+      "prev_arr_delay": 5,
+      "dep_delay": -6,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N856MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -22,
+      "dep_delay": -8,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N762US",
+      "task_sequence": 3,
+      "prev_arr_delay": -8,
+      "dep_delay": -1,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N258JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 19,
+      "dep_delay": 61,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N184JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 14,
+      "dep_delay": 126,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N3FAAA",
+      "task_sequence": 2,
+      "prev_arr_delay": 12,
+      "dep_delay": 62,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N369NW",
+      "task_sequence": 2,
+      "prev_arr_delay": -2,
+      "dep_delay": 15,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N366NW",
+      "task_sequence": 2,
+      "prev_arr_delay": 34,
+      "dep_delay": 7,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N10575",
+      "task_sequence": 2,
+      "prev_arr_delay": 31,
+      "dep_delay": 21,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N16541",
+      "task_sequence": 2,
+      "prev_arr_delay": 160,
+      "dep_delay": 163,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N916XJ",
+      "task_sequence": 3,
+      "prev_arr_delay": -12,
+      "dep_delay": 38,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N453UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -15,
+      "dep_delay": -2,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N216JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -13,
+      "dep_delay": -8,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N316JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -4,
+      "dep_delay": -5,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N3EDAA",
+      "task_sequence": 2,
+      "prev_arr_delay": -13,
+      "dep_delay": -3,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N849UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -30,
+      "dep_delay": -1,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N806MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 5,
+      "dep_delay": -5,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N274JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -11,
+      "dep_delay": -1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N464UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -25,
+      "dep_delay": -2,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N527JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 18,
+      "dep_delay": 3,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N3JMAA",
+      "task_sequence": 2,
+      "prev_arr_delay": -19,
+      "dep_delay": 7,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N14905",
+      "task_sequence": 2,
+      "prev_arr_delay": -20,
+      "dep_delay": 27,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N569JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 273,
+      "dep_delay": -3,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N13949",
+      "task_sequence": 2,
+      "prev_arr_delay": -14,
+      "dep_delay": -8,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N713EV",
+      "task_sequence": 3,
+      "prev_arr_delay": -24,
+      "dep_delay": -6,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N184JB",
       "task_sequence": 2,
       "prev_arr_delay": -6,
+      "dep_delay": -8,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N328JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -20,
+      "dep_delay": -3,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N247JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -15,
+      "dep_delay": 7,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N710TW",
+      "task_sequence": 2,
+      "prev_arr_delay": -25,
+      "dep_delay": 2,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N292JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -5,
+      "dep_delay": 33,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N724MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 18,
+      "dep_delay": -7,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N724MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 186,
+      "dep_delay": 226,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N539MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -25,
+      "dep_delay": 0,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N12166",
+      "task_sequence": 2,
+      "prev_arr_delay": 5,
+      "dep_delay": 65,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N3FJAA",
+      "task_sequence": 2,
+      "prev_arr_delay": -26,
+      "dep_delay": -1,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N14972",
+      "task_sequence": 2,
+      "prev_arr_delay": -4,
+      "dep_delay": -5,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N33182",
+      "task_sequence": 2,
+      "prev_arr_delay": 93,
+      "dep_delay": 44,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N11192",
+      "task_sequence": 2,
+      "prev_arr_delay": 52,
+      "dep_delay": 69,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N342NB",
+      "task_sequence": 2,
+      "prev_arr_delay": -13,
+      "dep_delay": -3,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N37263",
+      "task_sequence": 2,
+      "prev_arr_delay": 86,
+      "dep_delay": 147,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N593JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -11,
+      "dep_delay": -17,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N961UW",
+      "task_sequence": 3,
+      "prev_arr_delay": -22,
+      "dep_delay": -5,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N362NB",
+      "task_sequence": 2,
+      "prev_arr_delay": -23,
+      "dep_delay": 99,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N705TW",
+      "task_sequence": 2,
+      "prev_arr_delay": 25,
+      "dep_delay": 0,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N746JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -10,
+      "dep_delay": -5,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N435UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -18,
+      "dep_delay": -4,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N589JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -18,
+      "dep_delay": -4,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N306JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -6,
+      "dep_delay": 22,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N535JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 22,
+      "dep_delay": 25,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N192JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -9,
+      "dep_delay": -18,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N360NW",
+      "task_sequence": 2,
+      "prev_arr_delay": -2,
+      "dep_delay": -2,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N725MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -4,
+      "dep_delay": -2,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N525MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 28,
+      "dep_delay": 36,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N533UA",
+      "task_sequence": 2,
+      "prev_arr_delay": 51,
+      "dep_delay": 56,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N373JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -18,
+      "dep_delay": -7,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N346JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -6,
+      "dep_delay": 2,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N640JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 25,
+      "dep_delay": -6,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N655JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -7,
+      "dep_delay": 0,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N5BSAA",
+      "task_sequence": 2,
+      "prev_arr_delay": 16,
+      "dep_delay": -5,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N318NB",
+      "task_sequence": 2,
+      "prev_arr_delay": -20,
+      "dep_delay": -3,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N387DA",
+      "task_sequence": 2,
+      "prev_arr_delay": -17,
+      "dep_delay": -4,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N249JB",
+      "task_sequence": 4,
+      "prev_arr_delay": -29,
+      "dep_delay": 217,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N522MQ",
+      "task_sequence": 3,
+      "prev_arr_delay": -26,
+      "dep_delay": 17,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N13995",
+      "task_sequence": 2,
+      "prev_arr_delay": -6,
+      "dep_delay": -1,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N8907A",
+      "task_sequence": 2,
+      "prev_arr_delay": 172,
+      "dep_delay": 204,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N736MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -2,
+      "dep_delay": 0,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N473AA",
+      "task_sequence": 2,
+      "prev_arr_delay": -15,
+      "dep_delay": 121,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N583JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -2,
+      "dep_delay": 0,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N722MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -8,
+      "dep_delay": 43,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N719EV",
+      "task_sequence": 2,
+      "prev_arr_delay": -19,
+      "dep_delay": -11,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N745VJ",
+      "task_sequence": 3,
+      "prev_arr_delay": -28,
+      "dep_delay": -3,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N14174",
+      "task_sequence": 2,
+      "prev_arr_delay": -9,
+      "dep_delay": -5,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N719MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -11,
+      "dep_delay": -9,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N602LR",
+      "task_sequence": 2,
+      "prev_arr_delay": -23,
+      "dep_delay": -4,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N16954",
+      "task_sequence": 3,
+      "prev_arr_delay": 25,
+      "dep_delay": -3,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N3EEAA",
+      "task_sequence": 2,
+      "prev_arr_delay": -39,
+      "dep_delay": 28,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N5PBMQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -6,
+      "dep_delay": -2,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N749US",
+      "task_sequence": 2,
+      "prev_arr_delay": 5,
+      "dep_delay": -6,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N517MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 110,
+      "dep_delay": 45,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N21537",
+      "task_sequence": 2,
+      "prev_arr_delay": -14,
+      "dep_delay": -3,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N11107",
+      "task_sequence": 2,
+      "prev_arr_delay": -29,
+      "dep_delay": 4,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N3FXAA",
+      "task_sequence": 2,
+      "prev_arr_delay": 16,
+      "dep_delay": -1,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N183JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 70,
+      "dep_delay": -5,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N3743H",
+      "task_sequence": 2,
+      "prev_arr_delay": -17,
+      "dep_delay": 7,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N339NB",
+      "task_sequence": 2,
+      "prev_arr_delay": 8,
+      "dep_delay": -3,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N815MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 29,
+      "dep_delay": 95,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N644JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 28,
+      "dep_delay": 56,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N336NB",
+      "task_sequence": 2,
+      "prev_arr_delay": 4,
       "dep_delay": -1,
       "carrier": "DL"
     },
     {
-      "tailnum": "N334JB",
+      "tailnum": "N585JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 5,
+      "dep_delay": 36,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N830MQ",
       "task_sequence": 2,
-      "prev_arr_delay": -24,
+      "prev_arr_delay": 50,
+      "dep_delay": 89,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N326US",
+      "task_sequence": 2,
+      "prev_arr_delay": 6,
+      "dep_delay": -5,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N513MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 8,
+      "dep_delay": -6,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N16147",
+      "task_sequence": 2,
+      "prev_arr_delay": -25,
+      "dep_delay": 8,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N638JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -26,
+      "dep_delay": -1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N957UW",
+      "task_sequence": 2,
+      "prev_arr_delay": -10,
+      "dep_delay": -5,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N294JB",
+      "task_sequence": 4,
+      "prev_arr_delay": -9,
+      "dep_delay": -6,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N236JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -2,
+      "dep_delay": -6,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N744P",
+      "task_sequence": 2,
+      "prev_arr_delay": -11,
+      "dep_delay": -7,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N552JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -13,
+      "dep_delay": 3,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N933AT",
+      "task_sequence": 3,
+      "prev_arr_delay": 12,
+      "dep_delay": -5,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N281JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -2,
+      "dep_delay": -6,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N511MQ",
+      "task_sequence": 3,
+      "prev_arr_delay": 68,
+      "dep_delay": 284,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N730MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 18,
+      "dep_delay": 42,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N632JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 20,
+      "dep_delay": -6,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N763JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -11,
+      "dep_delay": 132,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N14920",
+      "task_sequence": 3,
+      "prev_arr_delay": -13,
+      "dep_delay": -5,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N370NW",
+      "task_sequence": 2,
+      "prev_arr_delay": 2,
+      "dep_delay": 11,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N316JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -12,
+      "dep_delay": -7,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N16709",
+      "task_sequence": 2,
+      "prev_arr_delay": -35,
+      "dep_delay": 0,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N11140",
+      "task_sequence": 3,
+      "prev_arr_delay": -32,
+      "dep_delay": -11,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N759EV",
+      "task_sequence": 3,
+      "prev_arr_delay": -20,
+      "dep_delay": -3,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N756US",
+      "task_sequence": 4,
+      "prev_arr_delay": 35,
+      "dep_delay": 98,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N323JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -9,
+      "dep_delay": 22,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N744P",
+      "task_sequence": 3,
+      "prev_arr_delay": 10,
+      "dep_delay": 16,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N638JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -25,
+      "dep_delay": 125,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N13202",
+      "task_sequence": 2,
+      "prev_arr_delay": 19,
+      "dep_delay": 33,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N16951",
+      "task_sequence": 2,
+      "prev_arr_delay": 11,
+      "dep_delay": 0,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N724MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -28,
+      "dep_delay": -12,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N3FCAA",
+      "task_sequence": 2,
+      "prev_arr_delay": 3,
+      "dep_delay": -6,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N13538",
+      "task_sequence": 2,
+      "prev_arr_delay": -4,
+      "dep_delay": 27,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N945UW",
+      "task_sequence": 3,
+      "prev_arr_delay": -6,
+      "dep_delay": -6,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N14993",
+      "task_sequence": 2,
+      "prev_arr_delay": 52,
+      "dep_delay": 75,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N717MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 15,
+      "dep_delay": 8,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N274JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -10,
+      "dep_delay": -10,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N724MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 11,
+      "dep_delay": -10,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N593JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -15,
       "dep_delay": -8,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N14125",
+      "task_sequence": 2,
+      "prev_arr_delay": -10,
+      "dep_delay": 156,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N12221",
+      "task_sequence": 2,
+      "prev_arr_delay": -10,
+      "dep_delay": -3,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N902DE",
+      "task_sequence": 2,
+      "prev_arr_delay": -20,
+      "dep_delay": 156,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N281JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -6,
+      "dep_delay": 54,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N556JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -14,
+      "dep_delay": 58,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N738US",
+      "task_sequence": 4,
+      "prev_arr_delay": 11,
+      "dep_delay": -7,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N183JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 8,
+      "dep_delay": 1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N309JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -7,
+      "dep_delay": -6,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N323JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 33,
+      "dep_delay": 11,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N13124",
+      "task_sequence": 2,
+      "prev_arr_delay": -12,
+      "dep_delay": 86,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N914XJ",
+      "task_sequence": 2,
+      "prev_arr_delay": -6,
+      "dep_delay": 25,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N919XJ",
+      "task_sequence": 2,
+      "prev_arr_delay": 15,
+      "dep_delay": -9,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N516MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 10,
+      "dep_delay": -4,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N568JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 110,
+      "dep_delay": 52,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N229JB",
+      "task_sequence": 4,
+      "prev_arr_delay": 88,
+      "dep_delay": 29,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N916DE",
+      "task_sequence": 2,
+      "prev_arr_delay": 9,
+      "dep_delay": -3,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N570JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 12,
+      "dep_delay": -6,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N849MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 3,
+      "dep_delay": 39,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N969DL",
+      "task_sequence": 2,
+      "prev_arr_delay": -7,
+      "dep_delay": -6,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N318NB",
+      "task_sequence": 2,
+      "prev_arr_delay": -7,
+      "dep_delay": -5,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N3KEAA",
+      "task_sequence": 2,
+      "prev_arr_delay": -12,
+      "dep_delay": -2,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N435WN",
+      "task_sequence": 2,
+      "prev_arr_delay": -6,
+      "dep_delay": 5,
+      "carrier": "WN"
+    },
+    {
+      "tailnum": "N12166",
+      "task_sequence": 3,
+      "prev_arr_delay": -13,
+      "dep_delay": 50,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N641JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -12,
+      "dep_delay": 4,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N355JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 82,
+      "dep_delay": 99,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N29717",
+      "task_sequence": 2,
+      "prev_arr_delay": -22,
+      "dep_delay": -4,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N22971",
+      "task_sequence": 2,
+      "prev_arr_delay": 18,
+      "dep_delay": 88,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N13958",
+      "task_sequence": 2,
+      "prev_arr_delay": -3,
+      "dep_delay": 42,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N509MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 19,
+      "dep_delay": -2,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N747UW",
+      "task_sequence": 4,
+      "prev_arr_delay": -7,
+      "dep_delay": -9,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N8696C",
+      "task_sequence": 2,
+      "prev_arr_delay": 40,
+      "dep_delay": 241,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N506MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 11,
+      "dep_delay": -3,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N318NB",
+      "task_sequence": 2,
+      "prev_arr_delay": -5,
+      "dep_delay": 1,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N10575",
+      "task_sequence": 2,
+      "prev_arr_delay": -2,
+      "dep_delay": 31,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N746JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -20,
+      "dep_delay": -3,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N821JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -22,
+      "dep_delay": -4,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N593JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -19,
+      "dep_delay": -8,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N249JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -28,
+      "dep_delay": -2,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N529JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 21,
+      "dep_delay": -4,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N358JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -1,
+      "dep_delay": -9,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N323JB",
+      "task_sequence": 4,
+      "prev_arr_delay": 26,
+      "dep_delay": 34,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N327AA",
+      "task_sequence": 2,
+      "prev_arr_delay": -47,
+      "dep_delay": 8,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N821JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -14,
+      "dep_delay": 8,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N324NB",
+      "task_sequence": 2,
+      "prev_arr_delay": -11,
+      "dep_delay": -10,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N6EAMQ",
+      "task_sequence": 3,
+      "prev_arr_delay": -9,
+      "dep_delay": -7,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N665JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -7,
+      "dep_delay": -9,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N29906",
+      "task_sequence": 2,
+      "prev_arr_delay": -9,
+      "dep_delay": 12,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N917XJ",
+      "task_sequence": 2,
+      "prev_arr_delay": 118,
+      "dep_delay": 90,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N10575",
+      "task_sequence": 2,
+      "prev_arr_delay": 62,
+      "dep_delay": 61,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N3FEAA",
+      "task_sequence": 2,
+      "prev_arr_delay": -30,
+      "dep_delay": -3,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N14952",
+      "task_sequence": 3,
+      "prev_arr_delay": 27,
+      "dep_delay": 62,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N377NW",
+      "task_sequence": 2,
+      "prev_arr_delay": -5,
+      "dep_delay": 8,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N968DL",
+      "task_sequence": 2,
+      "prev_arr_delay": 5,
+      "dep_delay": 39,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N723MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -20,
+      "dep_delay": 31,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N3GFAA",
+      "task_sequence": 2,
+      "prev_arr_delay": -33,
+      "dep_delay": 15,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N744P",
+      "task_sequence": 2,
+      "prev_arr_delay": -2,
+      "dep_delay": -2,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N565JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 22,
+      "dep_delay": 24,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N715JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 13,
+      "dep_delay": -18,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N14570",
+      "task_sequence": 2,
+      "prev_arr_delay": 0,
+      "dep_delay": -6,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N535JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -28,
+      "dep_delay": 2,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N965UW",
+      "task_sequence": 2,
+      "prev_arr_delay": -18,
+      "dep_delay": -5,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N308DE",
+      "task_sequence": 2,
+      "prev_arr_delay": -29,
+      "dep_delay": -7,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N8905F",
+      "task_sequence": 2,
+      "prev_arr_delay": -32,
+      "dep_delay": 8,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N502MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 16,
+      "dep_delay": -5,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N346JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -12,
+      "dep_delay": -7,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N518MQ",
+      "task_sequence": 3,
+      "prev_arr_delay": 30,
+      "dep_delay": 24,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N505MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 1,
+      "dep_delay": 17,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N77296",
+      "task_sequence": 2,
+      "prev_arr_delay": -28,
+      "dep_delay": -4,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N814MQ",
+      "task_sequence": 3,
+      "prev_arr_delay": 7,
+      "dep_delay": -5,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N283JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 6,
+      "dep_delay": 3,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N532MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 8,
+      "dep_delay": 0,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N555UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -30,
+      "dep_delay": 98,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N509JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -13,
+      "dep_delay": 71,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N22971",
+      "task_sequence": 3,
+      "prev_arr_delay": 120,
+      "dep_delay": 178,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N17984",
+      "task_sequence": 2,
+      "prev_arr_delay": -23,
+      "dep_delay": 17,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N735MQ",
+      "task_sequence": 3,
+      "prev_arr_delay": -15,
+      "dep_delay": 4,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N947UW",
+      "task_sequence": 2,
+      "prev_arr_delay": 55,
+      "dep_delay": -7,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N8525B",
+      "task_sequence": 3,
+      "prev_arr_delay": 7,
+      "dep_delay": 84,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N639JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -4,
+      "dep_delay": -5,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N511MQ",
+      "task_sequence": 3,
+      "prev_arr_delay": -5,
+      "dep_delay": -5,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N4YJAA",
+      "task_sequence": 2,
+      "prev_arr_delay": -15,
+      "dep_delay": 124,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N593JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -9,
+      "dep_delay": -1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N924DL",
+      "task_sequence": 2,
+      "prev_arr_delay": -23,
+      "dep_delay": 11,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N721TW",
+      "task_sequence": 2,
+      "prev_arr_delay": -51,
+      "dep_delay": 14,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N514MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 26,
+      "dep_delay": 0,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N507MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -8,
+      "dep_delay": 11,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N736MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 32,
+      "dep_delay": 192,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N12957",
+      "task_sequence": 2,
+      "prev_arr_delay": -6,
+      "dep_delay": 116,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N18114",
+      "task_sequence": 2,
+      "prev_arr_delay": -13,
+      "dep_delay": 0,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N284JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 14,
+      "dep_delay": 20,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N902XJ",
+      "task_sequence": 2,
+      "prev_arr_delay": -20,
+      "dep_delay": -8,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N563JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 10,
+      "dep_delay": -1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N11551",
+      "task_sequence": 2,
+      "prev_arr_delay": -6,
+      "dep_delay": -8,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N705JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 9,
+      "dep_delay": -7,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N570JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 28,
+      "dep_delay": 1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N12564",
+      "task_sequence": 3,
+      "prev_arr_delay": -1,
+      "dep_delay": 39,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N342NB",
+      "task_sequence": 2,
+      "prev_arr_delay": -19,
+      "dep_delay": -1,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N324JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -3,
+      "dep_delay": -1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N503JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 0,
+      "dep_delay": 1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N800AY",
+      "task_sequence": 2,
+      "prev_arr_delay": -35,
+      "dep_delay": 8,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N586JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -8,
+      "dep_delay": 10,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N13908",
+      "task_sequence": 2,
+      "prev_arr_delay": 328,
+      "dep_delay": 1,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N323JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -11,
+      "dep_delay": -1,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N3FTAA",
+      "task_sequence": 2,
+      "prev_arr_delay": 4,
+      "dep_delay": -6,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N821UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -11,
+      "dep_delay": -7,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N8516C",
+      "task_sequence": 2,
+      "prev_arr_delay": 9,
+      "dep_delay": -7,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N14959",
+      "task_sequence": 2,
+      "prev_arr_delay": 7,
+      "dep_delay": -4,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N645JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -17,
+      "dep_delay": -16,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N371CA",
+      "task_sequence": 2,
+      "prev_arr_delay": -3,
+      "dep_delay": 13,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N22909",
+      "task_sequence": 3,
+      "prev_arr_delay": -3,
+      "dep_delay": 19,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N738MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -22,
+      "dep_delay": 48,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N13949",
+      "task_sequence": 3,
+      "prev_arr_delay": 181,
+      "dep_delay": 130,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N13914",
+      "task_sequence": 2,
+      "prev_arr_delay": -26,
+      "dep_delay": -9,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N13978",
+      "task_sequence": 2,
+      "prev_arr_delay": -12,
+      "dep_delay": -10,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N715JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 12,
+      "dep_delay": 9,
       "carrier": "B6"
     },
     {
@@ -1909,1642 +2987,564 @@
       "carrier": "AA"
     },
     {
-      "tailnum": "N922DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -19,
-      "dep_delay": -10,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N760JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 19,
+      "tailnum": "N337JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -27,
       "dep_delay": 7,
       "carrier": "B6"
     },
     {
-      "tailnum": "N653JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -23,
-      "dep_delay": 4,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N763JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -36,
-      "dep_delay": 152,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N266JB",
+      "tailnum": "N723MQ",
       "task_sequence": 3,
-      "prev_arr_delay": 77,
-      "dep_delay": 110,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N206JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 11,
-      "dep_delay": 1,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N24128",
-      "task_sequence": 2,
-      "prev_arr_delay": 42,
-      "dep_delay": 28,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N13989",
-      "task_sequence": 2,
-      "prev_arr_delay": -14,
-      "dep_delay": 2,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N3KFAA",
-      "task_sequence": 2,
-      "prev_arr_delay": -1,
-      "dep_delay": 3,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N725MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -17,
-      "dep_delay": -4,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N822UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -3,
-      "dep_delay": -11,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N228JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 3,
-      "dep_delay": 20,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N3AAAA",
-      "task_sequence": 2,
-      "prev_arr_delay": 81,
-      "dep_delay": 17,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N504MQ",
-      "task_sequence": 3,
-      "prev_arr_delay": 3,
-      "dep_delay": -8,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N585JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 22,
-      "dep_delay": -1,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N520MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -5,
-      "dep_delay": 70,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N17185",
-      "task_sequence": 2,
-      "prev_arr_delay": 16,
-      "dep_delay": 3,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N580JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 43,
-      "dep_delay": 45,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N37255",
-      "task_sequence": 2,
-      "prev_arr_delay": -19,
-      "dep_delay": 0,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N809JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 13,
-      "dep_delay": 23,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N836AY",
-      "task_sequence": 2,
-      "prev_arr_delay": 32,
-      "dep_delay": 10,
-      "carrier": "9E"
-    },
-    {
-      "tailnum": "N952DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -20,
-      "dep_delay": -6,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N329NB",
-      "task_sequence": 2,
-      "prev_arr_delay": 6,
-      "dep_delay": 22,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N13553",
-      "task_sequence": 2,
-      "prev_arr_delay": 4,
-      "dep_delay": 10,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N16911",
-      "task_sequence": 2,
-      "prev_arr_delay": 21,
-      "dep_delay": 116,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N187JB",
-      "task_sequence": 4,
-      "prev_arr_delay": 1,
-      "dep_delay": -5,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N828MQ",
-      "task_sequence": 3,
-      "prev_arr_delay": -11,
-      "dep_delay": 1,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N15912",
-      "task_sequence": 2,
-      "prev_arr_delay": 3,
-      "dep_delay": 3,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N959UW",
-      "task_sequence": 2,
-      "prev_arr_delay": -10,
-      "dep_delay": -3,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N15910",
-      "task_sequence": 3,
-      "prev_arr_delay": 20,
-      "dep_delay": 223,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N8828D",
-      "task_sequence": 2,
-      "prev_arr_delay": 1,
-      "dep_delay": -8,
-      "carrier": "9E"
-    },
-    {
-      "tailnum": "N340NB",
-      "task_sequence": 2,
-      "prev_arr_delay": 67,
-      "dep_delay": 55,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N11548",
-      "task_sequence": 2,
-      "prev_arr_delay": -5,
-      "dep_delay": 62,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N11176",
-      "task_sequence": 2,
-      "prev_arr_delay": 3,
-      "dep_delay": 63,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N954UW",
-      "task_sequence": 3,
-      "prev_arr_delay": -20,
-      "dep_delay": -9,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N15986",
-      "task_sequence": 3,
-      "prev_arr_delay": -13,
-      "dep_delay": -12,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N735MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -18,
-      "dep_delay": -6,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N206JB",
-      "task_sequence": 5,
-      "prev_arr_delay": 2,
-      "dep_delay": 8,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N475UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -26,
-      "dep_delay": -1,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N591JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -26,
-      "dep_delay": 8,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N940DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -5,
-      "dep_delay": -5,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N633JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -32,
-      "dep_delay": 4,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N18557",
-      "task_sequence": 2,
-      "prev_arr_delay": -5,
-      "dep_delay": -10,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N605QX",
-      "task_sequence": 2,
-      "prev_arr_delay": 78,
-      "dep_delay": 42,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N618JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 14,
-      "dep_delay": 18,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N12567",
-      "task_sequence": 3,
-      "prev_arr_delay": -2,
-      "dep_delay": 4,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N249JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 139,
-      "dep_delay": 41,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N187JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -18,
-      "dep_delay": -5,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N11565",
-      "task_sequence": 2,
-      "prev_arr_delay": -11,
-      "dep_delay": 22,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N961UW",
-      "task_sequence": 2,
-      "prev_arr_delay": -20,
-      "dep_delay": -4,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N265JB",
-      "task_sequence": 3,
-      "prev_arr_delay": -12,
-      "dep_delay": -1,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N3DMAA",
-      "task_sequence": 2,
-      "prev_arr_delay": 21,
-      "dep_delay": -5,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N17138",
-      "task_sequence": 2,
       "prev_arr_delay": -15,
-      "dep_delay": 1,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N507MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -4,
-      "dep_delay": -8,
+      "dep_delay": -3,
       "carrier": "MQ"
     },
     {
-      "tailnum": "N535MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -28,
-      "dep_delay": 74,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N358JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -1,
-      "dep_delay": -5,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N607JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 109,
-      "dep_delay": 16,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N568JB",
+      "tailnum": "N17169",
       "task_sequence": 2,
       "prev_arr_delay": -16,
-      "dep_delay": 0,
+      "dep_delay": -3,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N13903",
+      "task_sequence": 2,
+      "prev_arr_delay": -28,
+      "dep_delay": 20,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N371CA",
+      "task_sequence": 2,
+      "prev_arr_delay": -1,
+      "dep_delay": -4,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N721MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -9,
+      "dep_delay": -9,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N317JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 3,
+      "dep_delay": -7,
       "carrier": "B6"
     },
     {
-      "tailnum": "N521JB",
+      "tailnum": "N3BHAA",
       "task_sequence": 2,
-      "prev_arr_delay": -17,
-      "dep_delay": 5,
+      "prev_arr_delay": -1,
+      "dep_delay": -5,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N197JB",
+      "task_sequence": 2,
+      "prev_arr_delay": 13,
+      "dep_delay": -10,
       "carrier": "B6"
     },
     {
-      "tailnum": "N924XJ",
+      "tailnum": "N12900",
       "task_sequence": 2,
-      "prev_arr_delay": 8,
-      "dep_delay": 151,
+      "prev_arr_delay": 3,
+      "dep_delay": 3,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N937XJ",
+      "task_sequence": 2,
+      "prev_arr_delay": -8,
+      "dep_delay": -1,
       "carrier": "9E"
     },
     {
-      "tailnum": "N247JB",
+      "tailnum": "N590JB",
       "task_sequence": 2,
-      "prev_arr_delay": -12,
-      "dep_delay": -9,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N838MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -27,
-      "dep_delay": 118,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N236JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": -3,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N16961",
-      "task_sequence": 3,
-      "prev_arr_delay": 48,
-      "dep_delay": 22,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N323AA",
-      "task_sequence": 2,
-      "prev_arr_delay": 5,
-      "dep_delay": -2,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N565UW",
-      "task_sequence": 2,
-      "prev_arr_delay": 20,
-      "dep_delay": 22,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N354JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 29,
-      "dep_delay": 37,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N706JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -18,
-      "dep_delay": 13,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N14977",
-      "task_sequence": 3,
-      "prev_arr_delay": -12,
-      "dep_delay": 5,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N402UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -10,
-      "dep_delay": 0,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N954UW",
-      "task_sequence": 3,
-      "prev_arr_delay": 30,
-      "dep_delay": 54,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N273JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -14,
-      "dep_delay": 6,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N3KDAA",
-      "task_sequence": 2,
-      "prev_arr_delay": -36,
-      "dep_delay": -3,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N748UW",
-      "task_sequence": 2,
-      "prev_arr_delay": -12,
-      "dep_delay": 4,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N14998",
-      "task_sequence": 2,
-      "prev_arr_delay": 88,
-      "dep_delay": 39,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N503MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 37,
-      "dep_delay": 73,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N586JB",
-      "task_sequence": 3,
-      "prev_arr_delay": -29,
-      "dep_delay": -4,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N13538",
-      "task_sequence": 3,
-      "prev_arr_delay": 20,
-      "dep_delay": -1,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N760JB",
-      "task_sequence": 3,
-      "prev_arr_delay": -4,
-      "dep_delay": 6,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N29906",
-      "task_sequence": 2,
-      "prev_arr_delay": -6,
-      "dep_delay": 6,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N15985",
-      "task_sequence": 2,
-      "prev_arr_delay": -25,
-      "dep_delay": 15,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N296JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 7,
-      "dep_delay": 6,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N216JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": -2,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N639JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -7,
-      "dep_delay": -2,
+      "prev_arr_delay": -20,
+      "dep_delay": -7,
       "carrier": "B6"
     },
     {
       "tailnum": "N723MQ",
       "task_sequence": 2,
-      "prev_arr_delay": -22,
-      "dep_delay": 75,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N12924",
-      "task_sequence": 2,
-      "prev_arr_delay": -11,
-      "dep_delay": -2,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N190JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": 9,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N249JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -14,
-      "dep_delay": -1,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N599JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 20,
-      "dep_delay": 2,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N813MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -19,
-      "dep_delay": -3,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N336NW",
-      "task_sequence": 2,
-      "prev_arr_delay": -4,
-      "dep_delay": 14,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N13566",
-      "task_sequence": 2,
-      "prev_arr_delay": 78,
-      "dep_delay": -7,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N737MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -2,
-      "dep_delay": -5,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N523MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 11,
-      "dep_delay": -4,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N16112",
-      "task_sequence": 2,
-      "prev_arr_delay": 7,
-      "dep_delay": -1,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N371CA",
-      "task_sequence": 3,
-      "prev_arr_delay": 41,
-      "dep_delay": 5,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N14542",
-      "task_sequence": 2,
-      "prev_arr_delay": 8,
-      "dep_delay": 19,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N916DE",
-      "task_sequence": 2,
-      "prev_arr_delay": -19,
-      "dep_delay": 3,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N3KYAA",
-      "task_sequence": 2,
-      "prev_arr_delay": -21,
-      "dep_delay": -5,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N705JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 5,
-      "dep_delay": 0,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N927XJ",
-      "task_sequence": 2,
-      "prev_arr_delay": -36,
-      "dep_delay": -6,
-      "carrier": "9E"
-    },
-    {
-      "tailnum": "N3AMAA",
-      "task_sequence": 2,
-      "prev_arr_delay": -33,
-      "dep_delay": -3,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N636JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -19,
-      "dep_delay": -6,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N604DL",
-      "task_sequence": 2,
-      "prev_arr_delay": 15,
-      "dep_delay": -6,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N3DPAA",
-      "task_sequence": 2,
-      "prev_arr_delay": 3,
-      "dep_delay": -6,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N945DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": -4,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N712EV",
-      "task_sequence": 3,
-      "prev_arr_delay": 2,
-      "dep_delay": 69,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N15985",
-      "task_sequence": 2,
-      "prev_arr_delay": 62,
-      "dep_delay": 48,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N730MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 16,
+      "prev_arr_delay": 14,
       "dep_delay": -8,
       "carrier": "MQ"
     },
     {
-      "tailnum": "N421UA",
+      "tailnum": "N359NW",
       "task_sequence": 2,
-      "prev_arr_delay": -35,
-      "dep_delay": -6,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N971DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -9,
-      "dep_delay": -1,
+      "prev_arr_delay": -10,
+      "dep_delay": -8,
       "carrier": "DL"
     },
     {
-      "tailnum": "N12218",
+      "tailnum": "N368JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 5,
+      "dep_delay": -4,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N512MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": 56,
+      "dep_delay": -5,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N968DL",
+      "task_sequence": 2,
+      "prev_arr_delay": 29,
+      "dep_delay": 86,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N600LR",
+      "task_sequence": 2,
+      "prev_arr_delay": -26,
+      "dep_delay": 2,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N709UW",
+      "task_sequence": 2,
+      "prev_arr_delay": 2,
+      "dep_delay": 35,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N841UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -40,
+      "dep_delay": -2,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N14920",
+      "task_sequence": 3,
+      "prev_arr_delay": 8,
+      "dep_delay": -1,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N317JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -8,
+      "dep_delay": -5,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N762US",
+      "task_sequence": 3,
+      "prev_arr_delay": -19,
+      "dep_delay": -6,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N354JB",
+      "task_sequence": 2,
+      "prev_arr_delay": -19,
+      "dep_delay": 110,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N15985",
+      "task_sequence": 2,
+      "prev_arr_delay": -5,
+      "dep_delay": -8,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N26545",
+      "task_sequence": 3,
+      "prev_arr_delay": -7,
+      "dep_delay": 14,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N513MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -11,
+      "dep_delay": -8,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N753EV",
+      "task_sequence": 2,
+      "prev_arr_delay": -4,
+      "dep_delay": -8,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N274JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 63,
+      "dep_delay": 38,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N842UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -15,
+      "dep_delay": 59,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N8515F",
+      "task_sequence": 2,
+      "prev_arr_delay": -23,
+      "dep_delay": 2,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N336NW",
+      "task_sequence": 2,
+      "prev_arr_delay": -15,
+      "dep_delay": 19,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N719MQ",
+      "task_sequence": 3,
+      "prev_arr_delay": -13,
+      "dep_delay": -9,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N14952",
+      "task_sequence": 2,
+      "prev_arr_delay": 79,
+      "dep_delay": 87,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N5FKAA",
+      "task_sequence": 2,
+      "prev_arr_delay": -6,
+      "dep_delay": 215,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N722MQ",
+      "task_sequence": 2,
+      "prev_arr_delay": -10,
+      "dep_delay": -7,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N763US",
+      "task_sequence": 2,
+      "prev_arr_delay": 0,
+      "dep_delay": 0,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N76526",
       "task_sequence": 2,
       "prev_arr_delay": 14,
-      "dep_delay": 30,
+      "dep_delay": 91,
       "carrier": "UA"
+    },
+    {
+      "tailnum": "N630AA",
+      "task_sequence": 2,
+      "prev_arr_delay": 21,
+      "dep_delay": 79,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N87527",
+      "task_sequence": 2,
+      "prev_arr_delay": -5,
+      "dep_delay": 12,
+      "carrier": "UA"
+    },
+    {
+      "tailnum": "N757UW",
+      "task_sequence": 3,
+      "prev_arr_delay": -4,
+      "dep_delay": -5,
+      "carrier": "US"
+    },
+    {
+      "tailnum": "N520MQ",
+      "task_sequence": 3,
+      "prev_arr_delay": 11,
+      "dep_delay": 38,
+      "carrier": "MQ"
+    },
+    {
+      "tailnum": "N8923A",
+      "task_sequence": 2,
+      "prev_arr_delay": -18,
+      "dep_delay": -3,
+      "carrier": "9E"
     },
     {
       "tailnum": "N719MQ",
       "task_sequence": 2,
-      "prev_arr_delay": 4,
-      "dep_delay": -6,
+      "prev_arr_delay": -22,
+      "dep_delay": -7,
       "carrier": "MQ"
     },
     {
-      "tailnum": "N31131",
-      "task_sequence": 2,
-      "prev_arr_delay": -29,
-      "dep_delay": -3,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N13955",
-      "task_sequence": 2,
-      "prev_arr_delay": 2,
-      "dep_delay": 3,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N3CGAA",
-      "task_sequence": 2,
-      "prev_arr_delay": 2,
-      "dep_delay": -1,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N15710",
-      "task_sequence": 2,
-      "prev_arr_delay": -31,
-      "dep_delay": -5,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N706JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 187,
-      "dep_delay": 41,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N723EV",
-      "task_sequence": 2,
-      "prev_arr_delay": -12,
-      "dep_delay": -9,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N281JB",
+      "tailnum": "N19966",
       "task_sequence": 3,
-      "prev_arr_delay": 10,
-      "dep_delay": -6,
+      "prev_arr_delay": 16,
+      "dep_delay": 50,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N283JB",
+      "task_sequence": 3,
+      "prev_arr_delay": 8,
+      "dep_delay": -5,
       "carrier": "B6"
     },
     {
-      "tailnum": "N179JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 4,
-      "dep_delay": 27,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N3DVAA",
-      "task_sequence": 2,
-      "prev_arr_delay": -18,
-      "dep_delay": 1,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N14158",
+      "tailnum": "N14568",
       "task_sequence": 2,
       "prev_arr_delay": 1,
-      "dep_delay": 10,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N711MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -10,
-      "dep_delay": 173,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N353JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -9,
-      "dep_delay": 124,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N532MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 9,
-      "dep_delay": -9,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N314US",
-      "task_sequence": 2,
-      "prev_arr_delay": -17,
       "dep_delay": -11,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N198JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 20,
-      "dep_delay": 5,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N917DE",
-      "task_sequence": 2,
-      "prev_arr_delay": -10,
-      "dep_delay": -7,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N833UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -18,
-      "dep_delay": -1,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N21197",
-      "task_sequence": 2,
-      "prev_arr_delay": -21,
-      "dep_delay": -2,
       "carrier": "EV"
     },
     {
-      "tailnum": "N3FKAA",
+      "tailnum": "N15910",
       "task_sequence": 2,
-      "prev_arr_delay": -40,
-      "dep_delay": -4,
-      "carrier": "AA"
+      "prev_arr_delay": 49,
+      "dep_delay": 2,
+      "carrier": "EV"
     },
     {
-      "tailnum": "N855UA",
+      "tailnum": "N14250",
       "task_sequence": 2,
-      "prev_arr_delay": 34,
-      "dep_delay": 27,
+      "prev_arr_delay": -1,
+      "dep_delay": 12,
       "carrier": "UA"
     },
     {
-      "tailnum": "N934DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -20,
-      "dep_delay": -5,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N535JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -7,
-      "dep_delay": 90,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N615JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -35,
-      "dep_delay": 3,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N396DA",
-      "task_sequence": 2,
-      "prev_arr_delay": -27,
-      "dep_delay": -4,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N3EPAA",
-      "task_sequence": 2,
-      "prev_arr_delay": 4,
-      "dep_delay": -1,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N3DSAA",
-      "task_sequence": 2,
-      "prev_arr_delay": -25,
-      "dep_delay": -3,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N803UA",
+      "tailnum": "N655JB",
       "task_sequence": 2,
       "prev_arr_delay": -5,
-      "dep_delay": -5,
-      "carrier": "UA"
+      "dep_delay": -6,
+      "carrier": "B6"
     },
     {
-      "tailnum": "N713EV",
+      "tailnum": "N14972",
       "task_sequence": 2,
-      "prev_arr_delay": -37,
-      "dep_delay": -3,
+      "prev_arr_delay": 2,
+      "dep_delay": -9,
       "carrier": "EV"
     },
     {
-      "tailnum": "N318JB",
+      "tailnum": "N592JB",
       "task_sequence": 3,
-      "prev_arr_delay": 0,
+      "prev_arr_delay": 1,
+      "dep_delay": 37,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N384DA",
+      "task_sequence": 2,
+      "prev_arr_delay": -16,
       "dep_delay": -4,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N197JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 28,
-      "dep_delay": 5,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N676AW",
-      "task_sequence": 2,
-      "prev_arr_delay": 4,
-      "dep_delay": 8,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N844MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 45,
-      "dep_delay": 6,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N588JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -24,
-      "dep_delay": -10,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N3736C",
-      "task_sequence": 2,
-      "prev_arr_delay": -22,
-      "dep_delay": -5,
       "carrier": "DL"
     },
     {
-      "tailnum": "N14219",
-      "task_sequence": 2,
-      "prev_arr_delay": -17,
-      "dep_delay": 3,
-      "carrier": "UA"
+      "tailnum": "N354JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -6,
+      "dep_delay": -5,
+      "carrier": "B6"
     },
     {
-      "tailnum": "N8888D",
+      "tailnum": "N351JB",
       "task_sequence": 2,
-      "prev_arr_delay": -12,
+      "prev_arr_delay": -4,
+      "dep_delay": -3,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N8412F",
+      "task_sequence": 2,
+      "prev_arr_delay": -30,
       "dep_delay": -5,
       "carrier": "9E"
     },
     {
-      "tailnum": "N364NW",
+      "tailnum": "N73275",
       "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": -5,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N706JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 2,
-      "dep_delay": 6,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N624AG",
-      "task_sequence": 2,
-      "prev_arr_delay": -19,
-      "dep_delay": -3,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N13970",
-      "task_sequence": 3,
-      "prev_arr_delay": -15,
-      "dep_delay": -4,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N3GFAA",
-      "task_sequence": 2,
-      "prev_arr_delay": -20,
-      "dep_delay": -5,
-      "carrier": "AA"
-    },
-    {
-      "tailnum": "N812MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -1,
-      "dep_delay": -6,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N322NB",
-      "task_sequence": 2,
-      "prev_arr_delay": -22,
-      "dep_delay": -2,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N13979",
-      "task_sequence": 3,
-      "prev_arr_delay": -18,
-      "dep_delay": -5,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N462UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -37,
+      "prev_arr_delay": -5,
       "dep_delay": -4,
       "carrier": "UA"
     },
     {
-      "tailnum": "N760JB",
+      "tailnum": "N12157",
       "task_sequence": 2,
-      "prev_arr_delay": 13,
-      "dep_delay": 12,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N539MQ",
-      "task_sequence": 3,
-      "prev_arr_delay": 37,
-      "dep_delay": 47,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N6EAMQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -7,
-      "dep_delay": -3,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N11187",
-      "task_sequence": 2,
-      "prev_arr_delay": -3,
-      "dep_delay": -4,
+      "prev_arr_delay": -15,
+      "dep_delay": 40,
       "carrier": "EV"
     },
     {
-      "tailnum": "N16954",
+      "tailnum": "N13550",
+      "task_sequence": 3,
+      "prev_arr_delay": 44,
+      "dep_delay": 23,
+      "carrier": "EV"
+    },
+    {
+      "tailnum": "N959DL",
       "task_sequence": 2,
-      "prev_arr_delay": 14,
-      "dep_delay": 51,
+      "prev_arr_delay": 10,
+      "dep_delay": -9,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N13979",
+      "task_sequence": 2,
+      "prev_arr_delay": -20,
+      "dep_delay": 1,
       "carrier": "EV"
     },
     {
       "tailnum": "N258JB",
       "task_sequence": 2,
-      "prev_arr_delay": 198,
-      "dep_delay": 8,
+      "prev_arr_delay": -10,
+      "dep_delay": -7,
       "carrier": "B6"
     },
     {
-      "tailnum": "N603JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -11,
-      "dep_delay": -3,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N8968E",
-      "task_sequence": 2,
-      "prev_arr_delay": -24,
-      "dep_delay": 0,
-      "carrier": "9E"
-    },
-    {
-      "tailnum": "N18243",
-      "task_sequence": 2,
-      "prev_arr_delay": -3,
-      "dep_delay": 14,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N623DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -1,
-      "dep_delay": 19,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N932DL",
-      "task_sequence": 2,
-      "prev_arr_delay": -15,
-      "dep_delay": 6,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N502MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 62,
-      "dep_delay": 33,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N13538",
-      "task_sequence": 2,
-      "prev_arr_delay": 81,
-      "dep_delay": 156,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N3FSAA",
+      "tailnum": "N3HVAA",
       "task_sequence": 2,
       "prev_arr_delay": -13,
-      "dep_delay": 3,
+      "dep_delay": 45,
       "carrier": "AA"
     },
     {
-      "tailnum": "N292JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -8,
-      "dep_delay": -5,
-      "carrier": "B6"
+      "tailnum": "N946UW",
+      "task_sequence": 4,
+      "prev_arr_delay": -4,
+      "dep_delay": -9,
+      "carrier": "US"
     },
     {
-      "tailnum": "N603AT",
+      "tailnum": "N918XJ",
       "task_sequence": 2,
-      "prev_arr_delay": -11,
-      "dep_delay": -3,
-      "carrier": "FL"
+      "prev_arr_delay": -16,
+      "dep_delay": -5,
+      "carrier": "9E"
+    },
+    {
+      "tailnum": "N675DL",
+      "task_sequence": 2,
+      "prev_arr_delay": 7,
+      "dep_delay": -4,
+      "carrier": "DL"
+    },
+    {
+      "tailnum": "N422UA",
+      "task_sequence": 2,
+      "prev_arr_delay": -24,
+      "dep_delay": -4,
+      "carrier": "UA"
     },
     {
       "tailnum": "N14542",
       "task_sequence": 3,
-      "prev_arr_delay": 3,
-      "dep_delay": 0,
+      "prev_arr_delay": -24,
+      "dep_delay": 29,
       "carrier": "EV"
     },
     {
-      "tailnum": "N907XJ",
-      "task_sequence": 2,
-      "prev_arr_delay": 110,
-      "dep_delay": 117,
-      "carrier": "9E"
-    },
-    {
-      "tailnum": "N796JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": -4,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N76502",
-      "task_sequence": 2,
-      "prev_arr_delay": 9,
-      "dep_delay": -2,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N651JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -15,
-      "dep_delay": 91,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N372NW",
-      "task_sequence": 2,
-      "prev_arr_delay": -13,
-      "dep_delay": 10,
-      "carrier": "DL"
-    },
-    {
-      "tailnum": "N725MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -24,
-      "dep_delay": 88,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N216JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 1,
-      "dep_delay": -8,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N266WN",
-      "task_sequence": 2,
-      "prev_arr_delay": -15,
-      "dep_delay": 0,
-      "carrier": "WN"
-    },
-    {
-      "tailnum": "N10156",
+      "tailnum": "N334NB",
       "task_sequence": 2,
       "prev_arr_delay": 2,
-      "dep_delay": 48,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N37700",
-      "task_sequence": 2,
-      "prev_arr_delay": -15,
-      "dep_delay": -3,
+      "dep_delay": 37,
       "carrier": "DL"
-    },
-    {
-      "tailnum": "N919XJ",
-      "task_sequence": 3,
-      "prev_arr_delay": -30,
-      "dep_delay": -4,
-      "carrier": "9E"
-    },
-    {
-      "tailnum": "N735MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 10,
-      "dep_delay": -8,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N518MQ",
-      "task_sequence": 3,
-      "prev_arr_delay": 6,
-      "dep_delay": -2,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N922XJ",
-      "task_sequence": 2,
-      "prev_arr_delay": -21,
-      "dep_delay": 1,
-      "carrier": "9E"
-    },
-    {
-      "tailnum": "N724MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -21,
-      "dep_delay": -2,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N16981",
-      "task_sequence": 3,
-      "prev_arr_delay": -1,
-      "dep_delay": -2,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N738MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 161,
-      "dep_delay": -8,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N178JB",
-      "task_sequence": 3,
-      "prev_arr_delay": -4,
-      "dep_delay": -6,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N535MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 11,
-      "dep_delay": 19,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N3KNAA",
-      "task_sequence": 2,
-      "prev_arr_delay": -27,
-      "dep_delay": -2,
-      "carrier": "AA"
     },
     {
       "tailnum": "N184JB",
       "task_sequence": 2,
-      "prev_arr_delay": 0,
-      "dep_delay": -5,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N789JB",
-      "task_sequence": 3,
-      "prev_arr_delay": -10,
-      "dep_delay": -3,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N13978",
-      "task_sequence": 3,
-      "prev_arr_delay": -12,
-      "dep_delay": -7,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N538CA",
-      "task_sequence": 2,
-      "prev_arr_delay": -37,
-      "dep_delay": -1,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N951UW",
-      "task_sequence": 3,
       "prev_arr_delay": -14,
-      "dep_delay": -16,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N535MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -20,
-      "dep_delay": -3,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N720MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 32,
-      "dep_delay": -5,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N11189",
-      "task_sequence": 2,
-      "prev_arr_delay": -25,
-      "dep_delay": 39,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N779JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -10,
-      "dep_delay": 50,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N556JB",
-      "task_sequence": 3,
-      "prev_arr_delay": 12,
-      "dep_delay": -1,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N12924",
-      "task_sequence": 2,
-      "prev_arr_delay": 79,
-      "dep_delay": 69,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N595JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 2,
-      "dep_delay": -13,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N525MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 18,
-      "dep_delay": -5,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N13989",
-      "task_sequence": 3,
-      "prev_arr_delay": -3,
-      "dep_delay": 16,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N11194",
-      "task_sequence": 2,
-      "prev_arr_delay": -3,
       "dep_delay": -6,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N839AY",
-      "task_sequence": 2,
-      "prev_arr_delay": 12,
-      "dep_delay": -3,
-      "carrier": "9E"
-    },
-    {
-      "tailnum": "N10575",
-      "task_sequence": 2,
-      "prev_arr_delay": -5,
-      "dep_delay": -12,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N906XJ",
-      "task_sequence": 2,
-      "prev_arr_delay": -8,
-      "dep_delay": -4,
-      "carrier": "9E"
-    },
-    {
-      "tailnum": "N820UA",
-      "task_sequence": 2,
-      "prev_arr_delay": -21,
-      "dep_delay": 5,
-      "carrier": "UA"
-    },
-    {
-      "tailnum": "N705UW",
-      "task_sequence": 4,
-      "prev_arr_delay": -19,
-      "dep_delay": -6,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N955UW",
-      "task_sequence": 3,
-      "prev_arr_delay": -6,
-      "dep_delay": -5,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N820AS",
-      "task_sequence": 2,
-      "prev_arr_delay": 7,
-      "dep_delay": -9,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N934XJ",
-      "task_sequence": 2,
-      "prev_arr_delay": -22,
-      "dep_delay": 63,
-      "carrier": "9E"
-    },
-    {
-      "tailnum": "N317JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -18,
-      "dep_delay": -5,
       "carrier": "B6"
     },
     {
-      "tailnum": "N818MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 14,
-      "dep_delay": -2,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N12967",
-      "task_sequence": 2,
-      "prev_arr_delay": -35,
+      "tailnum": "N14907",
+      "task_sequence": 3,
+      "prev_arr_delay": 19,
       "dep_delay": -8,
       "carrier": "EV"
     },
     {
-      "tailnum": "N337JB",
-      "task_sequence": 4,
-      "prev_arr_delay": 18,
-      "dep_delay": 56,
+      "tailnum": "N216JB",
+      "task_sequence": 3,
+      "prev_arr_delay": -16,
+      "dep_delay": -3,
       "carrier": "B6"
     },
     {
-      "tailnum": "N966DL",
+      "tailnum": "N589JB",
       "task_sequence": 2,
-      "prev_arr_delay": 29,
-      "dep_delay": -3,
+      "prev_arr_delay": -7,
+      "dep_delay": 63,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N5EHAA",
+      "task_sequence": 2,
+      "prev_arr_delay": -1,
+      "dep_delay": 76,
+      "carrier": "AA"
+    },
+    {
+      "tailnum": "N352NW",
+      "task_sequence": 2,
+      "prev_arr_delay": -2,
+      "dep_delay": 35,
       "carrier": "DL"
     },
     {
-      "tailnum": "N623JB",
+      "tailnum": "N913DL",
       "task_sequence": 2,
-      "prev_arr_delay": -3,
-      "dep_delay": 9,
-      "carrier": "B6"
+      "prev_arr_delay": 41,
+      "dep_delay": 4,
+      "carrier": "DL"
     },
     {
-      "tailnum": "N13955",
+      "tailnum": "N3HSAA",
       "task_sequence": 3,
-      "prev_arr_delay": -7,
-      "dep_delay": 22,
-      "carrier": "EV"
-    },
-    {
-      "tailnum": "N3KKAA",
-      "task_sequence": 2,
-      "prev_arr_delay": -38,
-      "dep_delay": -6,
+      "prev_arr_delay": -28,
+      "dep_delay": 59,
       "carrier": "AA"
     },
     {
-      "tailnum": "N274JB",
-      "task_sequence": 2,
-      "prev_arr_delay": -25,
-      "dep_delay": -8,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N725MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": -16,
-      "dep_delay": -6,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N700UW",
-      "task_sequence": 2,
-      "prev_arr_delay": -8,
-      "dep_delay": -4,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N528MQ",
-      "task_sequence": 2,
-      "prev_arr_delay": 42,
-      "dep_delay": 74,
-      "carrier": "MQ"
-    },
-    {
-      "tailnum": "N3HMAA",
+      "tailnum": "N319US",
       "task_sequence": 2,
       "prev_arr_delay": -21,
-      "dep_delay": -2,
-      "carrier": "AA"
+      "dep_delay": -9,
+      "carrier": "DL"
     },
     {
-      "tailnum": "N750UW",
-      "task_sequence": 3,
+      "tailnum": "N789JB",
+      "task_sequence": 2,
       "prev_arr_delay": -7,
+      "dep_delay": -5,
+      "carrier": "B6"
+    },
+    {
+      "tailnum": "N936XJ",
+      "task_sequence": 2,
+      "prev_arr_delay": -3,
       "dep_delay": -3,
-      "carrier": "US"
-    },
-    {
-      "tailnum": "N323JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 26,
-      "dep_delay": 0,
-      "carrier": "B6"
-    },
-    {
-      "tailnum": "N526JB",
-      "task_sequence": 2,
-      "prev_arr_delay": 22,
-      "dep_delay": 16,
-      "carrier": "B6"
+      "carrier": "9E"
     }
   ],
   "sankeyNodes": [

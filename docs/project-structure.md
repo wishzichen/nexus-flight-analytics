@@ -1,256 +1,251 @@
-# 项目目录结构说明
+# Nexus Flight Analytics - 项目结构文档
 
-## 完整目录树
+<div align="center">
+
+![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat-square&logo=typescript)
+![R](https://img.shields.io/badge/R-4.x-276DC3?style=flat-square&logo=r)
+![ECharts](https://img.shields.io/badge/ECharts-6.0-AA344D?style=flat-square)
+![License](https://img.shields.io/badge/License-Apache--2.0-green?style=flat-square)
+
+**航班延误分析系统** | 航班数据可视化平台
+
+</div>
+
+---
+
+## 📁 项目目录结构
 
 ```
 nexus-flight-analytics/
 │
-├── .env.example                    # 环境变量示例
-├── .gitignore                      # Git 忽略配置
-├── package.json                    # 项目依赖配置
-├── tsconfig.json                   # TypeScript 配置
-├── vite.config.ts                  # Vite 构建配置
+├── 📂 .claude/                      # Claude AI 配置目录
 │
-├── index.html                      # 入口 HTML
-├── metadata.json                   # 项目元数据
+├── 📂 data/                         # 分析结果数据 (JSON)
+│   │
+│   ├── airlines_info.json           # 航司信息数据
+│   ├── airports_info.json           # 机场信息数据
+│   ├── flights_enriched.rds         # 原始航班数据 (RDS格式)
+│   │
+│   ├── 📂 module1/                  # 总览仪表板数据
+│   │   └── dashboard.json           # 仪表板统计数据
+│   │
+│   ├── 📂 module2/                  # 时间规律分析数据
+│   │   └── time_analysis.json       # 时间维度分析结果
+│   │
+│   ├── 📂 module3/                  # 航线分析数据
+│   │   └── route_analysis.json      # 航线延误排名数据
+│   │
+│   ├── 📂 module4/                  # 空中追回分析数据
+│   │   └── recovery_analysis.json   # 延误追回能力分析
+│   │
+│   ├── 📂 module5/                  # 航司表现分析数据
+│   │   └── airline_analysis.json    # 航司准点率分析
+│   │
+│   ├── 📂 module6/                  # 延误传导分析数据
+│   │   └── propagation_analysis.json # 延误传导效应分析
+│   │
+│   ├── 📂 module7/                  # 延误归因分析数据
+│   │   └── attribution_analysis.json # 延误因素归因分析
+│   │
+│   └── 📂 module8/                  # 数据探索数据
+│       ├── explorer_data.json       # 筛选选项和摘要数据
+│       └── page_*.json             # 分页航班数据 (10个文件)
 │
-├── README.md                       # 项目说明文档
-├── 使用说明.md                      # 中文使用说明
-│
-├── server.ts                       # Express 服务器 (TypeScript)
-├── simple-server.mjs               # Express 服务器 (JavaScript)
-├── start.ts                        # TypeScript 启动脚本
-├── start.mjs                       # JavaScript 启动脚本
-│
-├── data/                           # 📊 分析数据目录
-│   ├── airlines_info.json          # 航司信息
-│   ├── airports_info.json          # 机场信息
-│   ├── flights_enriched.rds        # 原始航班数据 (R格式)
+├── 📂 scripts/                      # R 语言数据分析脚本
 │   │
-│   ├── module1/                    # 模块1：总览仪表板数据
-│   │   └── dashboard.json
+│   ├── 01_data_preparation.R       # 数据准备脚本 (清洗、转换)
+│   ├── 02_module1_dashboard.R      # 总览仪表板分析
+│   ├── 03_module2_time.R           # 时间规律分析
+│   ├── 04_module3_routes.R         # 航线分析
+│   ├── 05_module4_recovery.R       # 空中追回分析
+│   ├── 06_module5_airlines.R        # 航司表现分析
+│   ├── 07_module6_propagation.R    # 延误传导分析
+│   ├── 08_module7_attribution.R    # 延误归因分析
+│   ├── 09_module8_explorer.R       # 数据探索预处理
+│   ├── run_all_analyses.R          # 一键运行全部脚本
 │   │
-│   ├── module2/                    # 模块2：时间规律分析数据
-│   │   └── time_analysis.json
-│   │
-│   ├── module3/                    # 模块3：航线分析数据
-│   │   └── route_analysis.json
-│   │
-│   ├── module4/                    # 模块4：空中追回分析数据
-│   │   └── recovery_analysis.json
-│   │
-│   ├── module5/                    # 模块5：航司表现分析数据
-│   │   └── airline_analysis.json
-│   │
-│   ├── module6/                    # 模块6：延误传导分析数据
-│   │   └── propagation_analysis.json
-│   │
-│   ├── module7/                    # 模块7：延误归因分析数据
-│   │   └── attribution_analysis.json
-│   │
-│   └── module8/                    # 模块8：数据探索数据
-│       ├── explorer_data.json     # 主数据文件 (搜索索引)
-│       ├── page_1.json           # 分页数据 1-10
-│       ├── page_2.json
-│       ├── page_3.json
-│       ├── page_4.json
-│       ├── page_5.json
-│       ├── page_6.json
-│       ├── page_7.json
-│       ├── page_8.json
-│       ├── page_9.json
-│       └── page_10.json
-│
-├── scripts/                        # 📝 R 语言分析脚本
-│   ├── 01_data_preparation.R       # 数据准备脚本
-│   ├── 02_module1_dashboard.R      # 模块1分析
-│   ├── 03_module2_time.R           # 模块2分析
-│   ├── 04_module3_routes.R         # 模块3分析
-│   ├── 05_module4_recovery.R       # 模块4分析
-│   ├── 06_module5_airlines.R       # 模块5分析
-│   ├── 07_module6_propagation.R    # 模块6分析
-│   ├── 08_module7_attribution.R     # 模块7分析
-│   ├── 08_module8_explorer.R       # 模块8分析
-│   ├── run_all_analyses.R          # 运行全部分析
-│   │
-│   └── data/                       # 脚本使用的数据副本
+│   └── 📂 data/                    # 脚本运行时使用的数据副本
 │       ├── airlines_info.json
 │       ├── airports_info.json
-│       └── flights_enriched.rds
+│       ├── flights_enriched.rds
+│       └── 📂 module*              # 各模块数据副本
 │
-├── docs/                           # 📚 项目文档
-│   └── project-structure.md         # 目录结构说明
+├── 📂 src/                         # React 前端源代码
+│   │
+│   ├── components/                  # 通用组件
+│   │   │
+│   │   ├── charts/                 # 图表组件
+│   │   │   └── KPICard.tsx         # KPI 指标卡片
+│   │   │
+│   │   ├── common/                 # 通用组件
+│   │   │   └── DataError.tsx       # 数据错误提示
+│   │   │
+│   │   └── layout/                 # 布局组件
+│   │       ├── FilterBar.tsx       # 筛选栏组件
+│   │       └── TabNav.tsx          # 导航标签组件
+│   │
+│   ├── hooks/                       # React Hooks
+│   │   └── useModuleData.ts        # 数据获取自定义 Hook
+│   │
+│   ├── modules/                     # 分析模块组件 (8个模块)
+│   │   │
+│   │   ├── Module1Dashboard.tsx    # 📊 总览仪表板
+│   │   ├── Module2TimeAnalysis.tsx # 🕐 时间规律分析
+│   │   ├── Module3RouteAnalysis.tsx # 🗺️ 航线分析
+│   │   ├── Module4AirRecovery.tsx  # ✈️ 空中追回分析
+│   │   ├── Module5AirlineAnalysis.tsx # 🏢 航司表现分析
+│   │   ├── Module6DelayPropagation.tsx # 🔗 延误传导分析
+│   │   ├── Module7Attribution.tsx  # 🎯 延误归因分析
+│   │   └── Module8DataExplorer.tsx  # 🔍 数据探索 (已优化 ✨)
+│   │
+│   ├── pages/                       # 页面组件
+│   │   ├── Dashboard.tsx            # 仪表板页面
+│   │   └── LandingPage.tsx         # 落地页
+│   │
+│   ├── types/                       # TypeScript 类型定义
+│   │   └── index.ts                # 全局类型声明
+│   │
+│   ├── App.tsx                      # React 根组件
+│   ├── main.tsx                     # 入口文件
+│   └── index.css                    # 全局样式 (TailwindCSS)
 │
-├── plans/                          # 📋 设计文档
-│   └── optimization-plan.md        # 优化方案设计
+├── 📂 docs/                        # 项目文档
+│   └── project-structure.md        # 项目结构说明
 │
-├── src/                            # 💻 前端源代码
-│   │
-│   ├── main.tsx                   # React 入口文件
-│   ├── App.tsx                    # 根组件
-│   ├── index.css                  # 全局样式
-│   │
-│   ├── components/                # 🎨 通用组件
-│   │   │
-│   │   ├── charts/               # 图表组件
-│   │   │   └── KPICard.tsx       # KPI 指标卡片
-│   │   │
-│   │   ├── common/               # 通用组件
-│   │   │   └── DataError.tsx     # 数据错误提示
-│   │   │
-│   │   ├── layout/               # 布局组件
-│   │   │   ├── FilterBar.tsx     # 筛选栏
-│   │   │   └── TabNav.tsx        # 标签导航
-│   │   │
-│   │   └── tables/               # 表格组件 (待扩展)
-│   │
-│   ├── hooks/                     # 🪝 React Hooks
-│   │   └── useModuleData.ts      # 数据获取 Hook
-│   │
-│   ├── modules/                   # 📊 分析模块组件
-│   │   ├── Module1Dashboard.tsx      # 总览仪表板
-│   │   ├── Module2TimeAnalysis.tsx   # 时间规律分析
-│   │   ├── Module3RouteAnalysis.tsx  # 航线分析
-│   │   ├── Module4AirRecovery.tsx    # 空中追回
-│   │   ├── Module5AirlineAnalysis.tsx # 航司表现
-│   │   ├── Module6DelayPropagation.tsx # 延误传导
-│   │   ├── Module7Attribution.tsx    # 延误归因
-│   │   └── Module8DataExplorer.tsx    # 数据探索 ✨ 已优化
-│   │
-│   ├── pages/                     # 📄 页面组件
-│   │   ├── Dashboard.tsx         # 主仪表板页面
-│   │   └── LandingPage.tsx       # 落地页
-│   │
-│   └── types/                     # 📋 TypeScript 类型
-│       └── index.ts              # 类型定义
+├── 📂 plans/                       # 设计文档
+│   └── optimization-plan.md        # 优化方案文档
 │
-└── dist/                          # 📦 构建输出目录
-    └── (构建生成的文件)
+├── .env.example                    # 环境变量示例
+├── .gitignore                      # Git 忽略规则
+├── index.html                      # HTML 入口
+├── metadata.json                   # 项目元数据
+├── package.json                    # 项目依赖配置
+├── package-lock.json               # 依赖锁定文件
+├── README.md                       # 项目说明文档
+├── server.ts                       # Express 服务器 (TypeScript)
+├── simple-server.mjs               # Express 服务器 (JavaScript)
+├── start.mjs                       # 启动脚本 (JavaScript)
+├── start.ts                        # 启动脚本 (TypeScript)
+├── tsconfig.json                   # TypeScript 配置
+└── vite.config.ts                  # Vite 构建配置
 ```
 
 ---
 
-## 模块说明
+## 📊 模块功能说明
 
-| 模块 | 名称 | 主要功能 | 数据文件 |
-|------|------|----------|----------|
-| Module1 | 总览仪表板 | 全局统计、KPI卡片、热力图 | dashboard.json |
-| Module2 | 时间规律 | 24小时趋势、月份分析、星期规律 | time_analysis.json |
-| Module3 | 航线分析 | 目的地排名、航线风险评估 | route_analysis.json |
-| Module4 | 空中追回 | 追回能力分析、速度与延误关系 | recovery_analysis.json |
-| Module5 | 航司表现 | 航司对比、机队规模 | airline_analysis.json |
-| Module6 | 延误传导 | 航班链延误传播分析 | propagation_analysis.json |
-| Module7 | 延误归因 | 延误原因归因分析 | attribution_analysis.json |
-| Module8 | 数据探索 | 原始数据查询、筛选与导出 | explorer_data.json + page_*.json |
+### 数据模块 (data/)
 
----
+| 模块 | 文件 | 功能描述 |
+|:---|:---|:---|
+| 模块1 | `dashboard.json` | 总览统计：总记录数、平均延误、航司数量、航线数量等 |
+| 模块2 | `time_analysis.json` | 时间规律：按小时/月份/星期分析延误趋势 |
+| 模块3 | `route_analysis.json` | 航线分析：目的地延误排名、热门航线统计 |
+| 模块4 | `recovery_analysis.json` | 空中追回：高延误航班到达延误恢复分析 |
+| 模块5 | `airline_analysis.json` | 航司表现：准点率、机队规模、延误分布 |
+| 模块6 | `propagation_analysis.json` | 延误传导：同飞机延误传导链式反应分析 |
+| 模块7 | `attribution_analysis.json` | 延误归因：机龄、天气、机场等影响因素权重 |
+| 模块8 | `explorer_data.json` + `page_*.json` | 数据探索：筛选选项、摘要统计、分页数据 |
 
-## 数据流向
+### 源码模块 (src/modules/)
 
-```
-R 脚本 (scripts/)
-    ↓
-生成 JSON 数据 (data/)
-    ↓
-Express 服务器 (server.ts)
-    ↓
-React 前端 (src/)
-    ↓
-用户浏览器
-```
-
----
-
-## 依赖关系
-
-```
-package.json
-    ├── react / react-dom       # React 框架
-    ├── react-router-dom         # 路由
-    ├── echarts / echarts-for-react  # 图表库
-    ├── lucide-react            # 图标库
-    ├── typescript              # 类型系统
-    ├── vite                    # 构建工具
-    └── tailwindcss             # 样式框架
-
-server.ts
-    └── express                 # 后端框架
-```
+| 组件 | 功能 |
+|:---|:---|
+| `Module1Dashboard` | 展示总览KPI指标、时间热力图、延误分布概览 |
+| `Module2TimeAnalysis` | 24小时延误趋势、月份延误热力、星期模式分析 |
+| `Module3RouteAnalysis` | 目的地延误排名、航线风险气泡图 |
+| `Module4AirRecovery` | 起飞延误 vs 到达延误散点图、追回能力箱线图 |
+| `Module5AirlineAnalysis` | 航司准点率对比、机队年龄分析 |
+| `Module6DelayPropagation` | Sankey图展示延误传导链路 |
+| `Module7Attribution` | 延误因素雷达图、特征重要性分析 |
+| `Module8DataExplorer` | 航班明细表、多条件筛选、智能搜索、数据导出 |
 
 ---
 
-## 启动流程
+## 🔧 技术栈
 
-1. **数据准备** (仅首次)
-   ```bash
-   cd scripts
-   Rscript run_all_analyses.R
-   ```
-
-2. **安装依赖**
-   ```bash
-   npm install
-   ```
-
-3. **启动开发服务器**
-   ```bash
-   npm run dev
-   # 访问 http://localhost:3000
-   ```
-
-4. **生产环境构建**
-   ```bash
-   npm run build
-   npm start
-   ```
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        前端层                                │
+│  ┌─────────┐  ┌───────────┐  ┌──────────┐  ┌─────────────┐  │
+│  │ React   │  │ TypeScript │  │ TailwindCSS │  │ ECharts     │  │
+│  │ 19.x    │  │ 5.8        │  │ 3.x        │  │ 6.x         │  │
+│  └─────────┘  └───────────┘  └──────────┘  └─────────────┘  │
+│                                                             │
+│                        API 层                               │
+│  ┌─────────────────┐    ┌─────────────────┐                 │
+│  │ Express.js      │    │ Vite Dev Server  │                 │
+│  │ (simple-server)  │    │ (开发服务器)      │                 │
+│  └─────────────────┘    └─────────────────┘                 │
+│                                                             │
+│                        数据层                               │
+│  ┌─────────┐    ┌───────────┐  ┌─────────────────────────┐ │
+│  │ R 4.x   │    │ nycflights13 │ │ JSON 数据文件            │ │
+│  │ (分析)   │    │ (数据源)     │ │ (data/ 模块)            │ │
+│  └─────────┘    └───────────┘  └─────────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ---
 
-## API 接口说明
+## 📋 API 接口
 
-### 模块8数据探索 API
+### Module8 数据探索接口
 
 | 接口 | 方法 | 参数 | 说明 |
-|------|------|------|------|
+|:---|:---:|:---|:---|
 | `/api/module8/summary` | GET | - | 获取统计摘要 |
-| `/api/module8/search` | GET | q, airline, destination, delayLevel, page, pageSize | 搜索筛选 |
-| `/api/module8/export` | GET | q, airline, destination, delayLevel, exportMode, startPage, endPage | 导出 CSV |
+| `/api/module8/search` | GET | q, airline, destination, delayLevel, page, pageSize | 搜索筛选航班 |
+| `/api/module8/export` | GET | q, airline, destination, delayLevel, exportMode | 导出 CSV |
 | `/api/module8/airline-options` | GET | - | 获取航司筛选选项 |
 | `/api/module8/dest-options` | GET | - | 获取目的地筛选选项 |
 | `/api/module8/delay-level-options` | GET | - | 获取延误等级选项 |
 
+### 其他模块接口
+
+| 接口 | 方法 | 说明 |
+|:---|:---:|:---|
+| `/api/module1/*` | GET | 总览仪表板数据 |
+| `/api/module2/*` | GET | 时间规律分析数据 |
+| `/api/module3/*` | GET | 航线分析数据 |
+| `/api/module4/*` | GET | 空中追回分析数据 |
+| `/api/module5/*` | GET | 航司表现分析数据 |
+| `/api/module6/*` | GET | 延误传导分析数据 |
+| `/api/module7/*` | GET | 延误归因分析数据 |
+
 ---
 
-## 重点文件说明
+## 🚀 快速启动
 
-| 文件路径 | 说明 | 状态 |
-|----------|------|------|
-| src/modules/Module8DataExplorer.tsx | 数据探索组件 - 已支持搜索、筛选确认按钮、导出选择菜单 | ✅ 已完成 |
-| server.ts | 后端 API - 支持筛选查询和多种导出模式 | ✅ 已完成 |
-| docs/project-structure.md | 项目目录结构文档 | ✅ 已完成 |
-| plans/optimization-plan.md | 优化方案设计文档 | ✅ 已完成 |
-| README.md | 项目主文档 | ✅ 已完成 |
+```bash
+# 1. 安装依赖
+npm install
+
+# 2. 生成分析数据 (需要 R 环境)
+cd scripts && Rscript run_all_analyses.R
+
+# 3. 启动开发服务器
+cd .. && npm run dev
+
+# 4. 访问 http://localhost:3000
+```
 
 ---
 
-## 优化日志
+## 📝 版本历史
 
-### v2.0 (最新)
+| 版本 | 日期 | 更新内容 |
+|:---|:---|:---|
+| v4.0 | 2026-04-23 | 数据探索全面优化：检索按钮、搜索增强、导出菜单优化 |
+| v3.0 | 2026-04-22 | UI体验优化：动态按钮、状态提示、加载动画 |
+| v2.0 | 2026-04-21 | 核心功能完善：搜索框、确认筛选、重置、灵活导出 |
+| v1.0 | 2026-04-20 | 初始版本：8个分析模块基础功能 |
 
-**Module8DataExplorer.tsx 优化：**
-- ✅ 添加搜索输入框，支持航班号、航司、航线关键词搜索
-- ✅ 添加"应用筛选"确认按钮，将临时筛选和已确认筛选分离
-- ✅ 添加"重置"按钮一键清除所有筛选条件
-- ✅ 显示当前筛选条件标签
-- ✅ 显示符合条件的记录总数
-- ✅ 添加导出选择菜单：
-  - 所有结果（导出所有筛选后的数据）
-  - 当前页结果（只导出当前页数据）
-  - 自定义范围（选择第X页到第Y页）
-- ✅ 优化UI交互反馈
+---
 
-**server.ts 优化：**
-- ✅ 新增 `/api/module8/search` 接口，支持筛选和分页
-- ✅ 新增 `/api/module8/export` 接口，支持多种导出模式
-- ✅ 新增 `/api/module8/summary` 接口，获取统计摘要
-- ✅ 新增 `/api/module8/airline-options`、`/api/module8/dest-options`、`/api/module8/delay-level-options` 接口
+<div align="center">
+
+**Made with ❤️ for flight delay analysis**
+
+</div>
