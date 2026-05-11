@@ -28,11 +28,14 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
       - name: Install dependencies
         run: npm ci
 
-      - name: Build static site
-        run: npm run build
+      - name: Build and validate static site
+        run: npm run deploy:check
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
@@ -46,6 +49,32 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Check Pages publishing source
+        id: pages-source
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          GH_API_URL: ${{ github.api_url }}
+        run: |
+          config="$(curl -fsSL \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "${GH_API_URL}/repos/${GH_REPO}/pages" || true)"
+          build_type="$(printf '%s' "$config" | jq -r '.build_type // empty' 2>/dev/null || true)"
+          echo "build_type=${build_type}" >> "$GITHUB_OUTPUT"
+          echo "Detected Pages build_type: ${build_type:-unknown}"
+
+      - name: Let legacy Pages build finish first
+        if: steps.pages-source.outputs.build_type != 'workflow'
+        env:
+          LEGACY_PAGES_WAIT_SECONDS: ${{ vars.LEGACY_PAGES_WAIT_SECONDS }}
+        run: |
+          seconds="${LEGACY_PAGES_WAIT_SECONDS:-75}"
+          if [ "$seconds" -gt 0 ]; then
+            echo "Waiting ${seconds}s so this Vite deployment is the final Pages deployment for this push."
+            sleep "$seconds"
+          fi
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

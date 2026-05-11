@@ -321,13 +321,22 @@ MIT License - 详见 LICENSE 文件
 
 ## GitHub Pages 部署
 
-项目已支持 GitHub Pages 静态部署：
+项目已支持 GitHub Pages 静态部署，发布前可先运行：
 
 ```bash
 npm run deploy:check
 ```
 
-推送到 `main` 分支后，`.github/workflows/deploy-pages.yml` 会自动构建并发布 `dist/`。首次使用时请在仓库 `Settings -> Pages` 中把 Source 设置为 `GitHub Actions`。
+推送到 `main` 分支后，`.github/workflows/deploy-pages.yml` 会自动构建并发布 `dist/`。首次使用或域名异常时，请在仓库 `Settings -> Pages` 中确认：
+
+- `Build and deployment -> Source` 设置为 `GitHub Actions`
+- `Custom domain` 设置为 `flight.cian.fun`
+
+线上排查可运行：
+
+```bash
+npm run deploy:diagnose
+```
 
 更完整说明见 [docs/deployment-github-pages.md](docs/deployment-github-pages.md)。
 
