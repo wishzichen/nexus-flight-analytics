@@ -319,6 +319,20 @@ MIT License - 详见 LICENSE 文件
 
 ---
 
+## GitHub Pages 部署
+
+项目已支持 GitHub Pages 静态部署：
+
+```bash
+npm run deploy:check
+```
+
+推送到 `main` 分支后，`.github/workflows/deploy-pages.yml` 会自动构建并发布 `dist/`。首次使用时请在仓库 `Settings -> Pages` 中把 Source 设置为 `GitHub Actions`。
+
+更完整说明见 [docs/deployment-github-pages.md](docs/deployment-github-pages.md)。
+
+---
+
 <div align="center">
 
 **Made with ❤️ for data analytics**
