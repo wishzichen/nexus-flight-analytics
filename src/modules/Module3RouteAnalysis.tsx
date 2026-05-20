@@ -25,7 +25,7 @@ const chartBaseOptions = {
   }
 };
 
-export default function Module3RouteAnalysis() {
+export default function Module3RouteAnalysis({ interactiveData }: { interactiveData?: any }) {
   const { data: topDestVolume } = useFetch('/api/module3/top-destinations-volume');
   const { data: topDestDelay } = useFetch('/api/module3/top-destinations-delay');
   const { data: bubbleData } = useFetch('/api/module3/bubble-data');
@@ -33,6 +33,11 @@ export default function Module3RouteAnalysis() {
   const { data: jfkRisky } = useFetch('/api/module3/jfk-risky-routes');
   const { data: ewrRisky } = useFetch('/api/module3/ewr-risky-routes');
   const { data: lgaRisky } = useFetch('/api/module3/lga-risky-routes');
+
+  const activeTopDestVolume = interactiveData?.topDestinationsVolume || topDestVolume;
+  const activeTopDestDelay = interactiveData?.topDestinationsDelay || topDestDelay;
+  const activeBubbleData = interactiveData?.bubbleData || bubbleData;
+  const activeRouteAnalysis = interactiveData?.routeAnalysis || routeAnalysis;
 
   // 最繁忙目的地条形图
   const volumeOption = {
@@ -42,11 +47,11 @@ export default function Module3RouteAnalysis() {
     yAxis: {
       ...chartBaseOptions.xAxis,
       type: 'category',
-      data: [...(topDestVolume || [])].reverse().map((d: any) => d.dest)
+      data: [...(activeTopDestVolume || [])].reverse().map((d: any) => d.dest)
     },
     series: [{
       type: 'bar',
-      data: [...(topDestVolume || [])].reverse().map((d: any) => d.flightCount),
+      data: [...(activeTopDestVolume || [])].reverse().map((d: any) => d.flightCount),
       itemStyle: {
         color: {
           type: 'linear', x: 0, y: 0, x2: 1, y2: 0,
@@ -68,11 +73,11 @@ export default function Module3RouteAnalysis() {
     yAxis: {
       ...chartBaseOptions.xAxis,
       type: 'category',
-      data: [...(topDestDelay || [])].reverse().map((d: any) => d.dest)
+      data: [...(activeTopDestDelay || [])].reverse().map((d: any) => d.dest)
     },
     series: [{
       type: 'bar',
-      data: [...(topDestDelay || [])].reverse().map((d: any) => d.avgArrDelay),
+      data: [...(activeTopDestDelay || [])].reverse().map((d: any) => d.avgArrDelay),
       itemStyle: {
         color: {
           type: 'linear', x: 0, y: 0, x2: 1, y2: 0,
@@ -101,7 +106,7 @@ export default function Module3RouteAnalysis() {
     series: [{
       type: 'scatter',
       symbolSize: (data: number[]) => Math.sqrt(data[2]) / 2,
-      data: bubbleData?.map((d: any) => [d.flightCount, d.avgArrDelay, d.avgDistance, d.dest_name]) || [],
+      data: activeBubbleData?.map((d: any) => [d.flightCount, d.avgArrDelay, d.avgDistance, d.dest_name]) || [],
       itemStyle: {
         color: (params: any) => {
           const delay = params.data[1];
@@ -119,27 +124,27 @@ export default function Module3RouteAnalysis() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <KPICard
           title="目的地总数"
-          value={bubbleData?.length || '--'}
+          value={activeBubbleData?.length || '--'}
           icon={MapPin}
           color="cyan"
         />
         <KPICard
           title="最繁忙目的地"
-          value={topDestVolume?.[0]?.dest || '--'}
-          subtitle={topDestVolume?.[0]?.dest_name}
+          value={activeTopDestVolume?.[0]?.dest || '--'}
+          subtitle={activeTopDestVolume?.[0]?.dest_name}
           icon={Navigation}
           color="purple"
         />
         <KPICard
           title="最易延误目的地"
-          value={topDestDelay?.[0]?.dest || '--'}
-          subtitle={`平均延误${topDestDelay?.[0]?.avgArrDelay || '--'}分钟`}
+          value={activeTopDestDelay?.[0]?.dest || '--'}
+          subtitle={`平均延误${activeTopDestDelay?.[0]?.avgArrDelay || '--'}分钟`}
           icon={AlertTriangle}
           color="red"
         />
         <KPICard
           title="航线总数"
-          value={routeAnalysis?.length || '--'}
+          value={activeRouteAnalysis?.length || '--'}
           icon={TrendingUp}
           color="green"
         />

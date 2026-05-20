@@ -1,12 +1,12 @@
 {
-  "totalRecords": 336776,
-  "avgDepDelay": 22.2,
-  "avgArrDelay": 23.2,
-  "avgFlightTime": 274.6,
-  "avgDistance": 1500.0,
-  "avgSpeed": 321.5,
-  "avgAircraftAge": 12.5,
+  "totalRecords": 590092,
+  "avgDepDelay": 12.6,
+  "avgArrDelay": 7.4,
+  "avgFlightTime": 153.3,
+  "avgDistance": 1065,
+  "avgSpeed": 396.5,
+  "avgAircraftAge": 11.8,
   "uniqueAirlines": 16,
-  "uniqueRoutes": 300,
-  "uniqueAircraft": 237132
+  "uniqueRoutes": 233,
+  "uniqueAircraft": 4373
 }

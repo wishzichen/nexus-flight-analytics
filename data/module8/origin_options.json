@@ -2,16 +2,16 @@
   {
     "departureAirport": "EWR",
     "departureAirportName": "Newark Liberty Intl",
-    "count": 120835
+    "count": 208235
   },
   {
     "departureAirport": "JFK",
     "departureAirportName": "John F Kennedy Intl",
-    "count": 111279
+    "count": 192762
   },
   {
     "departureAirport": "LGA",
     "departureAirportName": "La Guardia",
-    "count": 104662
+    "count": 189095
   }
 ]

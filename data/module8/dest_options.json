@@ -1,444 +1,469 @@
 [
   {
-    "arrivalAirport": "ORD",
-    "arrivalAirportName": "Chicago Ohare Intl",
-    "count": 17283
+    "arrivalAirport": "LAX",
+    "arrivalAirportName": "Los Angeles Intl",
+    "count": 30608
   },
   {
     "arrivalAirport": "ATL",
     "arrivalAirportName": "Hartsfield Jackson Atlanta Intl",
-    "count": 17215
+    "count": 30023
   },
   {
-    "arrivalAirport": "LAX",
-    "arrivalAirportName": "Los Angeles Intl",
-    "count": 16174
+    "arrivalAirport": "ORD",
+    "arrivalAirportName": "Chicago Ohare Intl",
+    "count": 28872
   },
   {
     "arrivalAirport": "BOS",
     "arrivalAirportName": "General Edward Lawrence Logan Intl",
-    "count": 15508
+    "count": 27117
   },
   {
     "arrivalAirport": "MCO",
     "arrivalAirportName": "Orlando Intl",
-    "count": 14082
-  },
-  {
-    "arrivalAirport": "CLT",
-    "arrivalAirportName": "Charlotte Douglas Intl",
-    "count": 14064
+    "count": 25791
   },
   {
     "arrivalAirport": "SFO",
     "arrivalAirportName": "San Francisco Intl",
-    "count": 13331
+    "count": 25238
   },
   {
-    "arrivalAirport": "FLL",
-    "arrivalAirportName": "Fort Lauderdale Hollywood Intl",
-    "count": 12055
+    "arrivalAirport": "CLT",
+    "arrivalAirportName": "Charlotte Douglas Intl",
+    "count": 23688
   },
   {
     "arrivalAirport": "MIA",
     "arrivalAirportName": "Miami Intl",
-    "count": 11728
+    "count": 21656
+  },
+  {
+    "arrivalAirport": "FLL",
+    "arrivalAirportName": "Fort Lauderdale Hollywood Intl",
+    "count": 21526
   },
   {
     "arrivalAirport": "DCA",
     "arrivalAirportName": "Ronald Reagan Washington Natl",
-    "count": 9705
+    "count": 16453
   },
   {
     "arrivalAirport": "DTW",
     "arrivalAirportName": "Detroit Metro Wayne Co",
-    "count": 9384
+    "count": 15394
   },
   {
     "arrivalAirport": "DFW",
     "arrivalAirportName": "Dallas Fort Worth Intl",
-    "count": 8738
+    "count": 15225
   },
   {
     "arrivalAirport": "RDU",
     "arrivalAirportName": "Raleigh Durham Intl",
-    "count": 8163
+    "count": 13173
   },
   {
     "arrivalAirport": "TPA",
     "arrivalAirportName": "Tampa Intl",
-    "count": 7466
+    "count": 13170
   },
   {
     "arrivalAirport": "DEN",
     "arrivalAirportName": "Denver Intl",
-    "count": 7266
+    "count": 13027
   },
   {
     "arrivalAirport": "IAH",
     "arrivalAirportName": "George Bush Intercontinental",
-    "count": 7198
-  },
-  {
-    "arrivalAirport": "MSP",
-    "arrivalAirportName": "Minneapolis St Paul Intl",
-    "count": 7185
+    "count": 12624
   },
   {
     "arrivalAirport": "PBI",
     "arrivalAirportName": "Palm Beach Intl",
-    "count": 6554
+    "count": 12097
+  },
+  {
+    "arrivalAirport": "MSP",
+    "arrivalAirportName": "Minneapolis St Paul Intl",
+    "count": 11348
   },
   {
     "arrivalAirport": "BNA",
     "arrivalAirportName": "Nashville Intl",
-    "count": 6333
+    "count": 11014
   },
   {
     "arrivalAirport": "LAS",
     "arrivalAirportName": "Mc Carran Intl",
-    "count": 5997
+    "count": 10907
   },
   {
     "arrivalAirport": "SJU",
-    "count": 5819
+    "count": 10795
   },
   {
     "arrivalAirport": "IAD",
     "arrivalAirportName": "Washington Dulles Intl",
-    "count": 5700
-  },
-  {
-    "arrivalAirport": "BUF",
-    "arrivalAirportName": "Buffalo Niagara Intl",
-    "count": 4681
+    "count": 9024
   },
   {
     "arrivalAirport": "PHX",
     "arrivalAirportName": "Phoenix Sky Harbor Intl",
-    "count": 4656
-  },
-  {
-    "arrivalAirport": "CLE",
-    "arrivalAirportName": "Cleveland Hopkins Intl",
-    "count": 4573
+    "count": 8442
   },
   {
     "arrivalAirport": "STL",
     "arrivalAirportName": "Lambert St Louis Intl",
-    "count": 4339
+    "count": 8144
+  },
+  {
+    "arrivalAirport": "CLE",
+    "arrivalAirportName": "Cleveland Hopkins Intl",
+    "count": 8135
   },
   {
     "arrivalAirport": "MDW",
     "arrivalAirportName": "Chicago Midway Intl",
-    "count": 4113
+    "count": 7587
   },
   {
-    "arrivalAirport": "CVG",
-    "arrivalAirportName": "Cincinnati Northern Kentucky Intl",
-    "count": 3941
+    "arrivalAirport": "BUF",
+    "arrivalAirportName": "Buffalo Niagara Intl",
+    "count": 7348
   },
   {
     "arrivalAirport": "SEA",
     "arrivalAirportName": "Seattle Tacoma Intl",
-    "count": 3923
-  },
-  {
-    "arrivalAirport": "MSY",
-    "arrivalAirportName": "Louis Armstrong New Orleans Intl",
-    "count": 3799
-  },
-  {
-    "arrivalAirport": "RSW",
-    "arrivalAirportName": "Southwest Florida Intl",
-    "count": 3537
+    "count": 7102
   },
   {
     "arrivalAirport": "CMH",
     "arrivalAirportName": "Port Columbus Intl",
-    "count": 3524
+    "count": 6679
+  },
+  {
+    "arrivalAirport": "MSY",
+    "arrivalAirportName": "Louis Armstrong New Orleans Intl",
+    "count": 6427
+  },
+  {
+    "arrivalAirport": "RSW",
+    "arrivalAirportName": "Southwest Florida Intl",
+    "count": 6122
+  },
+  {
+    "arrivalAirport": "CVG",
+    "arrivalAirportName": "Cincinnati Northern Kentucky Intl",
+    "count": 5488
   },
   {
     "arrivalAirport": "CHS",
     "arrivalAirportName": "Charleston Afb Intl",
-    "count": 2884
-  },
-  {
-    "arrivalAirport": "PIT",
-    "arrivalAirportName": "Pittsburgh Intl",
-    "count": 2875
-  },
-  {
-    "arrivalAirport": "MKE",
-    "arrivalAirportName": "General Mitchell Intl",
-    "count": 2802
+    "count": 5031
   },
   {
     "arrivalAirport": "SAN",
     "arrivalAirportName": "San Diego Intl",
-    "count": 2737
-  },
-  {
-    "arrivalAirport": "JAX",
-    "arrivalAirportName": "Jacksonville Intl",
-    "count": 2720
-  },
-  {
-    "arrivalAirport": "BTV",
-    "arrivalAirportName": "Burlington Intl",
-    "count": 2589
-  },
-  {
-    "arrivalAirport": "SLC",
-    "arrivalAirportName": "Salt Lake City Intl",
-    "count": 2467
+    "count": 5023
   },
   {
     "arrivalAirport": "RIC",
     "arrivalAirportName": "Richmond Intl",
-    "count": 2454
+    "count": 4772
+  },
+  {
+    "arrivalAirport": "MKE",
+    "arrivalAirportName": "General Mitchell Intl",
+    "count": 4654
+  },
+  {
+    "arrivalAirport": "JAX",
+    "arrivalAirportName": "Jacksonville Intl",
+    "count": 4628
+  },
+  {
+    "arrivalAirport": "SLC",
+    "arrivalAirportName": "Salt Lake City Intl",
+    "count": 4458
   },
   {
     "arrivalAirport": "AUS",
     "arrivalAirportName": "Austin Bergstrom Intl",
-    "count": 2439
-  },
-  {
-    "arrivalAirport": "ROC",
-    "arrivalAirportName": "Greater Rochester Intl",
-    "count": 2416
-  },
-  {
-    "arrivalAirport": "PWM",
-    "arrivalAirportName": "Portland Intl Jetport",
-    "count": 2352
+    "count": 4377
   },
   {
     "arrivalAirport": "HOU",
     "arrivalAirportName": "William P Hobby",
-    "count": 2115
+    "count": 4374
+  },
+  {
+    "arrivalAirport": "ROC",
+    "arrivalAirportName": "Greater Rochester Intl",
+    "count": 4210
+  },
+  {
+    "arrivalAirport": "BTV",
+    "arrivalAirportName": "Burlington Intl",
+    "count": 4122
+  },
+  {
+    "arrivalAirport": "PWM",
+    "arrivalAirportName": "Portland Intl Jetport",
+    "count": 3951
+  },
+  {
+    "arrivalAirport": "PIT",
+    "arrivalAirportName": "Pittsburgh Intl",
+    "count": 3874
   },
   {
     "arrivalAirport": "IND",
     "arrivalAirportName": "Indianapolis Intl",
-    "count": 2077
+    "count": 3643
   },
   {
     "arrivalAirport": "MCI",
     "arrivalAirportName": "Kansas City Intl",
-    "count": 2008
-  },
-  {
-    "arrivalAirport": "MEM",
-    "arrivalAirportName": "Memphis Intl",
-    "count": 1789
-  },
-  {
-    "arrivalAirport": "BWI",
-    "arrivalAirportName": "Baltimore Washington Intl",
-    "count": 1781
-  },
-  {
-    "arrivalAirport": "SYR",
-    "arrivalAirportName": "Syracuse Hancock Intl",
-    "count": 1761
-  },
-  {
-    "arrivalAirport": "PHL",
-    "arrivalAirportName": "Philadelphia Intl",
-    "count": 1632
+    "count": 3409
   },
   {
     "arrivalAirport": "GSO",
     "arrivalAirportName": "Piedmont Triad",
-    "count": 1606
+    "count": 3118
+  },
+  {
+    "arrivalAirport": "SYR",
+    "arrivalAirportName": "Syracuse Hancock Intl",
+    "count": 3116
   },
   {
     "arrivalAirport": "ORF",
     "arrivalAirportName": "Norfolk Intl",
-    "count": 1536
+    "count": 3043
   },
   {
     "arrivalAirport": "DAY",
     "arrivalAirportName": "James M Cox Dayton Intl",
-    "count": 1525
+    "count": 2581
   },
   {
     "arrivalAirport": "PDX",
     "arrivalAirportName": "Portland Intl",
-    "count": 1354
+    "count": 2497
   },
   {
-    "arrivalAirport": "SRQ",
-    "arrivalAirportName": "Sarasota Bradenton Intl",
-    "count": 1211
+    "arrivalAirport": "MEM",
+    "arrivalAirportName": "Memphis Intl",
+    "count": 2452
   },
   {
-    "arrivalAirport": "SDF",
-    "arrivalAirportName": "Louisville International Airport",
-    "count": 1157
+    "arrivalAirport": "PHL",
+    "arrivalAirportName": "Philadelphia Intl",
+    "count": 2342
   },
   {
-    "arrivalAirport": "XNA",
-    "arrivalAirportName": "NW Arkansas Regional",
-    "count": 1036
-  },
-  {
-    "arrivalAirport": "MHT",
-    "arrivalAirportName": "Manchester Regional Airport",
-    "count": 1009
-  },
-  {
-    "arrivalAirport": "BQN",
-    "count": 896
-  },
-  {
-    "arrivalAirport": "CAK",
-    "arrivalAirportName": "Akron Canton Regional Airport",
-    "count": 864
-  },
-  {
-    "arrivalAirport": "GSP",
-    "arrivalAirportName": "Greenville-Spartanburg International",
-    "count": 849
-  },
-  {
-    "arrivalAirport": "OMA",
-    "arrivalAirportName": "Eppley Afld",
-    "count": 849
-  },
-  {
-    "arrivalAirport": "SNA",
-    "arrivalAirportName": "John Wayne Arpt Orange Co",
-    "count": 825
+    "arrivalAirport": "BWI",
+    "arrivalAirportName": "Baltimore Washington Intl",
+    "count": 2248
   },
   {
     "arrivalAirport": "SAV",
     "arrivalAirportName": "Savannah Hilton Head Intl",
-    "count": 804
+    "count": 2243
+  },
+  {
+    "arrivalAirport": "SDF",
+    "arrivalAirportName": "Louisville International Airport",
+    "count": 2228
+  },
+  {
+    "arrivalAirport": "SRQ",
+    "arrivalAirportName": "Sarasota Bradenton Intl",
+    "count": 2077
+  },
+  {
+    "arrivalAirport": "BQN",
+    "count": 1682
+  },
+  {
+    "arrivalAirport": "XNA",
+    "arrivalAirportName": "NW Arkansas Regional",
+    "count": 1672
+  },
+  {
+    "arrivalAirport": "CAK",
+    "arrivalAirportName": "Akron Canton Regional Airport",
+    "count": 1572
   },
   {
     "arrivalAirport": "GRR",
     "arrivalAirportName": "Gerald R Ford Intl",
-    "count": 765
+    "count": 1521
+  },
+  {
+    "arrivalAirport": "SNA",
+    "arrivalAirportName": "John Wayne Arpt Orange Co",
+    "count": 1482
+  },
+  {
+    "arrivalAirport": "OMA",
+    "arrivalAirportName": "Eppley Afld",
+    "count": 1480
+  },
+  {
+    "arrivalAirport": "MHT",
+    "arrivalAirportName": "Manchester Regional Airport",
+    "count": 1479
+  },
+  {
+    "arrivalAirport": "GSP",
+    "arrivalAirportName": "Greenville-Spartanburg International",
+    "count": 1370
   },
   {
     "arrivalAirport": "HNL",
     "arrivalAirportName": "Honolulu Intl",
-    "count": 707
-  },
-  {
-    "arrivalAirport": "SAT",
-    "arrivalAirportName": "San Antonio Intl",
-    "count": 686
+    "count": 1268
   },
   {
     "arrivalAirport": "LGB",
     "arrivalAirportName": "Long Beach",
-    "count": 668
+    "count": 1194
   },
   {
-    "arrivalAirport": "TYS",
-    "arrivalAirportName": "Mc Ghee Tyson",
-    "count": 631
+    "arrivalAirport": "STT",
+    "count": 1146
+  },
+  {
+    "arrivalAirport": "SAT",
+    "arrivalAirportName": "San Antonio Intl",
+    "count": 1133
   },
   {
     "arrivalAirport": "MSN",
     "arrivalAirportName": "Dane Co Rgnl Truax Fld",
-    "count": 572
+    "count": 1040
+  },
+  {
+    "arrivalAirport": "TYS",
+    "arrivalAirportName": "Mc Ghee Tyson",
+    "count": 1036
   },
   {
     "arrivalAirport": "DSM",
     "arrivalAirportName": "Des Moines Intl",
-    "count": 569
-  },
-  {
-    "arrivalAirport": "STT",
-    "count": 522
-  },
-  {
-    "arrivalAirport": "BDL",
-    "arrivalAirportName": "Bradley Intl",
-    "count": 443
-  },
-  {
-    "arrivalAirport": "ALB",
-    "arrivalAirportName": "Albany Intl",
-    "count": 439
-  },
-  {
-    "arrivalAirport": "PVD",
-    "arrivalAirportName": "Theodore Francis Green State",
-    "count": 376
-  },
-  {
-    "arrivalAirport": "BGR",
-    "arrivalAirportName": "Bangor Intl",
-    "count": 375
+    "count": 749
   },
   {
     "arrivalAirport": "BUR",
     "arrivalAirportName": "Bob Hope",
-    "count": 371
+    "count": 660
   },
   {
     "arrivalAirport": "PSE",
-    "count": 365
+    "count": 654
   },
   {
-    "arrivalAirport": "OKC",
-    "arrivalAirportName": "Will Rogers World",
-    "count": 346
+    "arrivalAirport": "BDL",
+    "arrivalAirportName": "Bradley Intl",
+    "count": 653
+  },
+  {
+    "arrivalAirport": "BGR",
+    "arrivalAirportName": "Bangor Intl",
+    "count": 649
+  },
+  {
+    "arrivalAirport": "ALB",
+    "arrivalAirportName": "Albany Intl",
+    "count": 608
   },
   {
     "arrivalAirport": "SJC",
     "arrivalAirportName": "Norman Y Mineta San Jose Intl",
-    "count": 329
+    "count": 581
   },
   {
-    "arrivalAirport": "TUL",
-    "arrivalAirportName": "Tulsa Intl",
-    "count": 315
+    "arrivalAirport": "OKC",
+    "arrivalAirportName": "Will Rogers World",
+    "count": 569
   },
   {
     "arrivalAirport": "OAK",
     "arrivalAirportName": "Metropolitan Oakland Intl",
-    "count": 312
+    "count": 559
   },
   {
-    "arrivalAirport": "BHM",
-    "arrivalAirportName": "Birmingham Intl",
-    "count": 297
-  },
-  {
-    "arrivalAirport": "SMF",
-    "arrivalAirportName": "Sacramento Intl",
-    "count": 284
-  },
-  {
-    "arrivalAirport": "AVL",
-    "arrivalAirportName": "Asheville Regional Airport",
-    "count": 275
+    "arrivalAirport": "PVD",
+    "arrivalAirportName": "Theodore Francis Green State",
+    "count": 545
   },
   {
     "arrivalAirport": "ACK",
     "arrivalAirportName": "Nantucket Mem",
-    "count": 265
+    "count": 542
   },
   {
     "arrivalAirport": "ABQ",
     "arrivalAirportName": "Albuquerque International Sunport",
-    "count": 254
+    "count": 532
+  },
+  {
+    "arrivalAirport": "SMF",
+    "arrivalAirportName": "Sacramento Intl",
+    "count": 530
+  },
+  {
+    "arrivalAirport": "CAE",
+    "arrivalAirportName": "Columbia Metropolitan",
+    "count": 519
+  },
+  {
+    "arrivalAirport": "TUL",
+    "arrivalAirportName": "Tulsa Intl",
+    "count": 516
+  },
+  {
+    "arrivalAirport": "AVL",
+    "arrivalAirportName": "Asheville Regional Airport",
+    "count": 422
+  },
+  {
+    "arrivalAirport": "BHM",
+    "arrivalAirportName": "Birmingham Intl",
+    "count": 421
+  },
+  {
+    "arrivalAirport": "CHO",
+    "arrivalAirportName": "Charlottesville-Albemarle",
+    "count": 381
   },
   {
     "arrivalAirport": "MVY",
     "arrivalAirportName": "Martha\\\\'s Vineyard",
-    "count": 221
+    "count": 380
   },
   {
     "arrivalAirport": "EGE",
     "arrivalAirportName": "Eagle Co Rgnl",
-    "count": 213
+    "count": 378
+  },
+  {
+    "arrivalAirport": "ILM",
+    "arrivalAirportName": "Wilmington Intl",
+    "count": 333
+  },
+  {
+    "arrivalAirport": "LIT",
+    "arrivalAirportName": "Adams Fld",
+    "count": 204
+  },
+  {
+    "arrivalAirport": "TVC",
+    "arrivalAirportName": "Cherry Capital Airport",
+    "count": 157
   },
   {
     "arrivalAirport": "CRW",
@@ -446,69 +471,79 @@
     "count": 138
   },
   {
-    "arrivalAirport": "CAE",
-    "arrivalAirportName": "Columbia Metropolitan",
-    "count": 116
-  },
-  {
-    "arrivalAirport": "ILM",
-    "arrivalAirportName": "Wilmington Intl",
-    "count": 110
-  },
-  {
-    "arrivalAirport": "TVC",
-    "arrivalAirportName": "Cherry Capital Airport",
-    "count": 101
-  },
-  {
-    "arrivalAirport": "MYR",
-    "arrivalAirportName": "Myrtle Beach Intl",
-    "count": 59
-  },
-  {
-    "arrivalAirport": "CHO",
-    "arrivalAirportName": "Charlottesville-Albemarle",
-    "count": 52
+    "arrivalAirport": "ROA",
+    "arrivalAirportName": "Roanoke Regional",
+    "count": 125
   },
   {
     "arrivalAirport": "BZN",
     "arrivalAirportName": "Gallatin Field",
-    "count": 36
+    "count": 102
   },
   {
-    "arrivalAirport": "JAC",
-    "arrivalAirportName": "Jackson Hole Airport",
-    "count": 25
+    "arrivalAirport": "HYA",
+    "arrivalAirportName": "Barnstable Muni Boardman Polando Fld",
+    "count": 75
   },
   {
-    "arrivalAirport": "PSP",
-    "arrivalAirportName": "Palm Springs Intl",
-    "count": 19
+    "arrivalAirport": "MYR",
+    "arrivalAirportName": "Myrtle Beach Intl",
+    "count": 70
   },
   {
     "arrivalAirport": "EYW",
     "arrivalAirportName": "Key West Intl",
-    "count": 17
+    "count": 49
+  },
+  {
+    "arrivalAirport": "JAC",
+    "arrivalAirportName": "Jackson Hole Airport",
+    "count": 45
+  },
+  {
+    "arrivalAirport": "PSP",
+    "arrivalAirportName": "Palm Springs Intl",
+    "count": 36
   },
   {
     "arrivalAirport": "HDN",
     "arrivalAirportName": "Yampa Valley",
-    "count": 15
+    "count": 28
   },
   {
     "arrivalAirport": "MTJ",
     "arrivalAirportName": "Montrose Regional Airport",
-    "count": 15
-  },
-  {
-    "arrivalAirport": "SBN",
-    "arrivalAirportName": "South Bend Rgnl",
-    "count": 10
+    "count": 27
   },
   {
     "arrivalAirport": "ANC",
     "arrivalAirportName": "Ted Stevens Anchorage Intl",
-    "count": 8
+    "count": 21
+  },
+  {
+    "arrivalAirport": "SBN",
+    "arrivalAirportName": "South Bend Rgnl",
+    "count": 18
+  },
+  {
+    "arrivalAirport": "DAL",
+    "arrivalAirportName": "Dallas Love Fld",
+    "count": 15
+  },
+  {
+    "arrivalAirport": "MDT",
+    "arrivalAirportName": "Harrisburg Intl",
+    "count": 5
+  },
+  {
+    "arrivalAirport": "AGS",
+    "arrivalAirportName": "Augusta Rgnl At Bush Fld",
+    "count": 3
+  },
+  {
+    "arrivalAirport": "AVP",
+    "arrivalAirportName": "Wilkes Barre Scranton Intl",
+    "count": 1
   },
   {
     "arrivalAirport": "LEX",

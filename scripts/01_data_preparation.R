@@ -31,14 +31,97 @@ cat("当前工作目录:", getwd(), "\n")
 # 创建数据输出目录
 dir.create("data", showWarnings = FALSE)
 
-cat("正在加载 nycflights13 数据集...\n")
+cat("正在加载航班数据...\n")
 
-# 加载数据
-data(flights)
-data(planes)
-data(weather)
-data(airports)
-data(airlines)
+load_builtin_2013_data <- function() {
+  data(flights, package = "nycflights13")
+  data(planes, package = "nycflights13")
+  data(weather, package = "nycflights13")
+  data(airports, package = "nycflights13")
+  data(airlines, package = "nycflights13")
+  list(
+    flights = flights,
+    planes = planes,
+    weather = weather,
+    airports = airports,
+    airlines = airlines
+  )
+}
+
+extract_year_table <- function(year_data, table_name) {
+  if (is.data.frame(year_data) && table_name == "flights") {
+    return(year_data)
+  }
+  if (is.list(year_data) && table_name %in% names(year_data)) {
+    return(year_data[[table_name]])
+  }
+  if (is.environment(year_data) && exists(table_name, envir = year_data)) {
+    return(get(table_name, envir = year_data))
+  }
+  NULL
+}
+
+load_multi_year_data <- function(raw_dir = "data/raw_multi_year") {
+  files <- list.files(raw_dir, pattern = "\\.rds$", full.names = TRUE)
+  if (length(files) == 0) return(NULL)
+
+  cat(sprintf("检测到多年份原始数据：%d 个文件\n", length(files)))
+  yearly <- lapply(files, readRDS)
+  bind_year_tables <- function(table_name) {
+    tables <- Filter(Negate(is.null), lapply(yearly, extract_year_table, table_name))
+    if (length(tables) == 0) return(NULL)
+    bind_rows(tables)
+  }
+
+  tables <- list(
+    flights = bind_year_tables("flights"),
+    planes = bind_year_tables("planes"),
+    weather = bind_year_tables("weather"),
+    airports = bind_year_tables("airports"),
+    airlines = bind_year_tables("airlines")
+  )
+
+  if (is.null(tables$flights) || nrow(tables$flights) == 0) {
+    warning("多年份文件中没有可用 flights 表，回退到 nycflights13。")
+    return(NULL)
+  }
+
+  if (!is.null(tables$airports)) tables$airports <- tables$airports %>% distinct()
+  if (!is.null(tables$airlines)) tables$airlines <- tables$airlines %>% distinct()
+
+  tables
+}
+
+base_data <- load_builtin_2013_data()
+extra_data <- load_multi_year_data()
+
+if (is.null(extra_data)) {
+  cat("未检测到 data/raw_multi_year/*.rds，回退到 nycflights13 内置 2013 数据。\n")
+  loaded_data <- base_data
+} else {
+  extra_years <- sort(unique(extra_data$flights$year))
+  cat("正在合并 nycflights13 2013 基线数据与额外年份：", paste(extra_years, collapse = ", "), "\n")
+
+  base_flights <- base_data$flights
+  if (2013 %in% extra_years) {
+    base_flights <- base_flights %>% filter(year != 2013)
+  }
+
+  loaded_data <- list(
+    flights = bind_rows(base_flights, extra_data$flights) %>%
+      distinct(year, month, day, carrier, flight, tailnum, origin, dest, sched_dep_time, .keep_all = TRUE),
+    planes = bind_rows(base_data$planes, extra_data$planes) %>% distinct(tailnum, .keep_all = TRUE),
+    weather = bind_rows(base_data$weather, extra_data$weather) %>% distinct(),
+    airports = bind_rows(base_data$airports, extra_data$airports) %>% distinct(faa, .keep_all = TRUE),
+    airlines = bind_rows(base_data$airlines, extra_data$airlines) %>% distinct(carrier, .keep_all = TRUE)
+  )
+}
+
+flights <- loaded_data$flights
+planes <- loaded_data$planes
+weather <- loaded_data$weather
+airports <- loaded_data$airports
+airlines <- loaded_data$airlines
 
 cat("数据加载完成！\n")
 cat(sprintf("  - flights: %d 条记录\n", nrow(flights)))
@@ -114,8 +197,8 @@ flights_enriched <- flights_processed %>%
     flight_year = year
   ) %>%
   mutate(
-    # 机龄（以2013年为基准）
-    plane_age = 2013 - plane_year,
+    # 机龄（以航班年份为基准，适配多年份数据）
+    plane_age = flight_year - plane_year,
     # 机龄分组
     plane_age_group = case_when(
       is.na(plane_age) ~ "未知",

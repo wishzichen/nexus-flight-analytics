@@ -2,38 +2,38 @@
   "ageAnalysis": [
     {
       "plane_age_group": "新飞机 (0-5年)",
-      "flightCount": 46022,
+      "flightCount": 70639,
       "avgDepDelay": 11.8,
-      "avgArrDelay": 4.9,
-      "severeDelayRate": 7.4,
-      "onTimeRate": 79.2,
-      "avgPlaneAge": 3.2
+      "avgArrDelay": 5.7,
+      "severeDelayRate": 7.3,
+      "onTimeRate": 79.4,
+      "avgPlaneAge": 3
     },
     {
       "plane_age_group": "中年飞机 (5-10年)",
-      "flightCount": 72328,
-      "avgDepDelay": 14.9,
-      "avgArrDelay": 9.4,
-      "severeDelayRate": 9.6,
-      "onTimeRate": 75.7,
+      "flightCount": 124114,
+      "avgDepDelay": 13.9,
+      "avgArrDelay": 9.1,
+      "severeDelayRate": 8.8,
+      "onTimeRate": 76.8,
       "avgPlaneAge": 8
     },
     {
       "plane_age_group": "老飞机 (10-20年)",
-      "flightCount": 122659,
-      "avgDepDelay": 13.4,
-      "avgArrDelay": 7.3,
-      "severeDelayRate": 8.2,
-      "onTimeRate": 77.6,
-      "avgPlaneAge": 13.4
+      "flightCount": 225929,
+      "avgDepDelay": 13.8,
+      "avgArrDelay": 8,
+      "severeDelayRate": 8.3,
+      "onTimeRate": 77.2,
+      "avgPlaneAge": 13.7
     },
     {
       "plane_age_group": "超龄飞机 (>20年)",
-      "flightCount": 33787,
-      "avgDepDelay": 10.6,
-      "avgArrDelay": 3.9,
-      "severeDelayRate": 6.8,
-      "onTimeRate": 82.1,
+      "flightCount": 55569,
+      "avgDepDelay": 11.7,
+      "avgArrDelay": 5.6,
+      "severeDelayRate": 7.1,
+      "onTimeRate": 81,
       "avgPlaneAge": 24.1
     }
   ],
@@ -64,11 +64,11 @@
     },
     {
       "weather_condition": "数据缺失",
-      "flightCount": 1606,
-      "avgDepDelay": 13,
-      "avgArrDelay": 8.9,
-      "severeDelayRate": 8.3,
-      "onTimeRate": 77.2
+      "flightCount": 254922,
+      "avgDepDelay": 12.5,
+      "avgArrDelay": 8.2,
+      "severeDelayRate": 7.6,
+      "onTimeRate": 78.6
     },
     {
       "weather_condition": "正常",
@@ -127,9 +127,9 @@
     {
       "plane_age_group": "中年飞机 (5-10年)",
       "weather_condition": "数据缺失",
-      "flightCount": 393,
-      "avgDepDelay": 16,
-      "severeDelayRate": 10.5
+      "flightCount": 52179,
+      "avgDepDelay": 12.5,
+      "severeDelayRate": 7.8
     },
     {
       "plane_age_group": "中年飞机 (5-10年)",
@@ -162,9 +162,9 @@
     {
       "plane_age_group": "新飞机 (0-5年)",
       "weather_condition": "数据缺失",
-      "flightCount": 258,
-      "avgDepDelay": 11.7,
-      "severeDelayRate": 8.1
+      "flightCount": 24875,
+      "avgDepDelay": 11.8,
+      "severeDelayRate": 7.1
     },
     {
       "plane_age_group": "新飞机 (0-5年)",
@@ -197,9 +197,9 @@
     {
       "plane_age_group": "未知",
       "weather_condition": "数据缺失",
-      "flightCount": 250,
-      "avgDepDelay": 8.6,
-      "severeDelayRate": 6.4
+      "flightCount": 52111,
+      "avgDepDelay": 8.8,
+      "severeDelayRate": 6.2
     },
     {
       "plane_age_group": "未知",
@@ -232,9 +232,9 @@
     {
       "plane_age_group": "老飞机 (10-20年)",
       "weather_condition": "数据缺失",
-      "flightCount": 593,
-      "avgDepDelay": 15.1,
-      "severeDelayRate": 8.7
+      "flightCount": 103863,
+      "avgDepDelay": 14.3,
+      "severeDelayRate": 8.4
     },
     {
       "plane_age_group": "老飞机 (10-20年)",
@@ -267,9 +267,9 @@
     {
       "plane_age_group": "超龄飞机 (>20年)",
       "weather_condition": "数据缺失",
-      "flightCount": 140,
-      "avgDepDelay": 6.1,
-      "severeDelayRate": 4.3
+      "flightCount": 21922,
+      "avgDepDelay": 13.2,
+      "severeDelayRate": 7.5
     },
     {
       "plane_age_group": "超龄飞机 (>20年)",
@@ -427,7 +427,7 @@
     },
     {
       "feature": "机龄",
-      "importance": 1.5
+      "importance": 0.2
     }
   ],
   "weatherBoxplotStats": [
@@ -475,7 +475,7 @@
   "radarData": [
     {
       "factor": "机龄",
-      "value": 1.5
+      "value": 0.2
     },
     {
       "factor": "天气",
@@ -495,10 +495,10 @@
     }
   ],
   "conclusions": {
-    "ageCorrelation": -0.015,
+    "ageCorrelation": -0.002,
     "topWeatherFactor": "湿度",
     "topWeatherCorrelation": 0.118,
-    "oldPlaneDelayIncrease": -1.2,
+    "oldPlaneDelayIncrease": -0.1,
     "badWeatherDelayIncrease": 15.7
   }
 }

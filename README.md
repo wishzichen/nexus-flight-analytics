@@ -4,10 +4,10 @@
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Data](https://img.shields.io/badge/data-nycflights13-2013-orange)
+![Data](https://img.shields.io/badge/data-NYC%202013%2B2014-orange)
 ![R](https://img.shields.io/badge/R-4.0+-purple)
-![React](https://img.shields.io/badge/React-18-cyan)
-![ECharts](https://img.shields.io/badge/ECharts-5.0-orange)
+![React](https://img.shields.io/badge/React-19-cyan)
+![ECharts](https://img.shields.io/badge/ECharts-6.0-orange)
 
 **基于纽约航班数据的延误分析与可视化系统**
 
@@ -19,7 +19,7 @@
 
 ## 📋 项目概览
 
-本项目基于 `nycflights13` 数据集（2013年纽约三大机场出发航班数据），使用 R 语言进行数据处理与分析，React + ECharts 构建可视化界面。
+本项目基于纽约三大机场（EWR/JFK/LGA）出发航班数据，使用 R 语言生成默认分析结果，React + ECharts 构建可视化界面。本地开发服务优先读取 `data/flights.sqlite` 数据库；前端默认展示 2013 年基线结果，用户筛选年份/月份/航司/机场/延误等级后，由后端基于数据库重新聚合核心图表。
 
 ### ✨ 核心功能
 
@@ -38,21 +38,20 @@
 
 ## 📊 数据统计
 
-**基于真实的 nycflights13 数据集**
+**当前已纳入数据库的数据**
 
 | 指标 | 数值 |
 |------|------|
-| 总航班记录 | 336,776 条 |
+| 总航班记录 | 590,092 条 |
 | 数据字段数 | 60 个（预处理后） |
-| 原始字段数 | 19 个（nycflights13） |
-| 时间范围 | 2013年1月-12月 |
+| 本地数据库 | `data/flights.sqlite`（本地生成，不随 Git 发布） |
+| 默认展示基线 | 2013年1月-12月 |
+| 可筛选年份 | 2013 全年；2014 年1月-10月 |
 | 平均起飞延误 | 12.6 分钟 |
-| 平均到达延误 | 6.9 分钟 |
 | 参与航司 | 16 家 |
 | 出发机场 | 3 个（EWR, JFK, LGA） |
-| 目的地机场 | 105 个 |
-| 航线数量 | 224 条 |
-| 飞机数量 | 4,044 架 |
+
+> 说明：BTS TranStats 官方月度 zip 可继续补齐更近年份，但该站点在当前网络环境下容易超时或断流。项目已保留可续跑的数据库导入脚本；当前提交先固定可稳定复现的 2013 + 2014 数据。
 
 ### 数据真实性验证
 
@@ -81,6 +80,7 @@
 ```
 nexus-flight-analytics/
 ├── 📁 data/                          # 分析结果数据
+│   ├── flights.sqlite                # 本地生成的交互分析数据库（不入 Git）
 │   ├── module1/                      # 总览模块数据
 │   │   └── dashboard.json
 │   ├── module2/                      # 时间规律数据
@@ -96,18 +96,15 @@ nexus-flight-analytics/
 │   ├── module7/                      # 延误归因数据
 │   │   └── attribution_analysis.json
 │   └── module8/                      # 数据探索数据（完整数据集）
-│       ├── full_data_chunk_1.json   # 数据块1（50,000条）
-│       ├── full_data_chunk_2.json   # 数据块2（50,000条）
-│       ├── full_data_chunk_3.json   # 数据块3（50,000条）
-│       ├── full_data_chunk_4.json   # 数据块4（50,000条）
-│       ├── full_data_chunk_5.json   # 数据块5（50,000条）
-│       ├── full_data_chunk_6.json   # 数据块6（50,000条）
-│       ├── full_data_chunk_7.json   # 数据块7（36,776条）
+│       ├── full_data_chunk_1.json   # 静态发布数据块
+│       ├── ...
+│       ├── full_data_chunk_12.json  # 静态发布数据块
 │       ├── explorer_data.json        # 筛选选项和元数据
 │       ├── full_first_page.json     # 首页快速加载数据
 │       └── full_summary.json         # 统计摘要
 │
 ├── 📁 scripts/                       # R 语言分析脚本
+│   ├── 00_collect_multi_year_data.R  # 多年份数据采集
 │   ├── 01_data_preparation.R         # 数据预处理
 │   ├── 02_module1_dashboard.R         # 总览分析
 │   ├── 03_module2_time.R             # 时间规律分析
@@ -117,6 +114,7 @@ nexus-flight-analytics/
 │   ├── 07_module6_propagation.R     # 延误传导分析
 │   ├── 08_module7_attribution.R    # 延误归因分析
 │   ├── 09_module8_explorer_full.R  # 数据探索导出（完整数据）
+│   ├── build_flights_database.mjs    # SQLite 数据库构建/补数
 │   └── run_all_analyses.R           # 一键运行所有分析
 │
 ├── 📁 src/                           # React 前端源码
@@ -230,12 +228,28 @@ cd scripts
 Rscript run_all_analyses.R
 ```
 
-数据生成过程约需 2-5 分钟，将生成：
+数据生成过程约需数分钟，将生成：
 - `data/flights_enriched.rds` - 预处理后的完整数据集（60个字段）
 - `data/module1/` ~ `data/module7/` - 各分析模块的结果数据
-- `data/module8/` - 完整的 336,776 条真实航班数据（分7个块）
+- `data/module8/` - 静态发布用航班明细数据块
 
-### 3. 启动开发服务器
+### 3. 构建/补齐本地数据库
+
+本地开发服务会优先使用 `data/flights.sqlite` 完成筛选后的实时聚合；该文件超过 GitHub 单文件限制，因此不纳入版本管理。重新生成数据库：
+
+```bash
+npm run db:build
+```
+
+如需尝试从 BTS TranStats 补齐到最新可用月份：
+
+```bash
+npm run db:build:latest
+```
+
+`db:build:latest` 使用 `.part` 临时文件下载，失败月份默认跳过并打印清单，可稍后重复运行续补。由于 BTS 下载在部分网络环境下会长时间超时，当前推荐先使用 `npm run db:build` 生成稳定的 `2013 + 2014` 本地数据库版本。
+
+### 4. 启动开发服务器
 
 ```bash
 npm run dev

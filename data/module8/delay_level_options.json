@@ -1,19 +1,19 @@
 [
   {
     "delayLevel": "准点",
-    "count": 200089
+    "count": 353976
   },
   {
     "delayLevel": "轻微",
-    "count": 57658
+    "count": 102908
   },
   {
     "delayLevel": "中度",
-    "count": 44193
+    "count": 79082
   },
   {
     "delayLevel": "严重",
-    "count": 26581
+    "count": 45871
   },
   {
     "delayLevel": "数据缺失",

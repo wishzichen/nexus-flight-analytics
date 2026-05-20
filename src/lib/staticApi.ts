@@ -1,3 +1,5 @@
+import { buildInteractiveAnalysis, parseInteractiveFilters } from './interactiveAnalysis.js';
+
 type EndpointSpec = {
   file: string;
   key?: string;
@@ -81,10 +83,10 @@ const MODULE8_OPTION_FILES: Record<string, { file: string; key: string }> = {
   '/api/module8/origin-options': { file: 'module8/origin_options.json', key: 'originOptions' },
   '/api/module8/delay-level-options': { file: 'module8/delay_level_options.json', key: 'delayLevelOptions' },
   '/api/module8/month-options': { file: 'module8/month_options.json', key: 'monthOptions' },
+  '/api/module8/year-options': { file: 'module8/year_options.json', key: 'yearOptions' },
 };
 
-const CHUNK_SIZE = 50000;
-const CHUNK_COUNT = 7;
+const DEFAULT_CHUNK_SIZE = 50000;
 const jsonCache = new Map<string, Promise<unknown>>();
 
 declare global {
@@ -197,18 +199,37 @@ async function loadModule8Meta(nativeFetch: typeof fetch): Promise<Record<string
 }
 
 async function loadTotalRecords(nativeFetch: typeof fetch): Promise<number> {
-  const meta = await loadModule8Meta(nativeFetch);
-  const summary = (meta.summaryStats || meta) as Record<string, unknown>;
-  return Number(summary.totalRecords || meta.totalRecords || 336776);
+  const { totalRecords } = await loadModule8ChunkInfo(nativeFetch);
+  return totalRecords;
 }
 
 async function loadChunk(chunkNumber: number, nativeFetch: typeof fetch): Promise<FlightRecord[]> {
   return loadArray(`module8/full_data_chunk_${chunkNumber}.json`, nativeFetch);
 }
 
+async function loadFirstPage(nativeFetch: typeof fetch): Promise<FlightRecord[]> {
+  const fullFirstPage = await loadArray('module8/full_first_page.json', nativeFetch).catch(() => null);
+  if (fullFirstPage) return fullFirstPage;
+  return loadArray('module8/first_page.json', nativeFetch);
+}
+
+async function loadModule8ChunkInfo(nativeFetch: typeof fetch): Promise<{
+  chunkSize: number;
+  chunkCount: number;
+  totalRecords: number;
+}> {
+  const meta = await loadModule8Meta(nativeFetch);
+  const summary = (meta.summaryStats || meta) as Record<string, unknown>;
+  const totalRecords = Number(summary.totalRecords || meta.totalRecords || 336776);
+  const chunkSize = Number(meta.chunkSize || DEFAULT_CHUNK_SIZE) || DEFAULT_CHUNK_SIZE;
+  const chunkCount = Number(meta.chunkCount || Math.ceil(totalRecords / chunkSize)) || 1;
+  return { chunkSize, chunkCount, totalRecords };
+}
+
 async function loadAllFlights(nativeFetch: typeof fetch): Promise<FlightRecord[]> {
+  const { chunkCount } = await loadModule8ChunkInfo(nativeFetch);
   const chunks = await Promise.all(
-    Array.from({ length: CHUNK_COUNT }, (_, index) => loadChunk(index + 1, nativeFetch)),
+    Array.from({ length: chunkCount }, (_, index) => loadChunk(index + 1, nativeFetch)),
   );
   return chunks.flat();
 }
@@ -219,17 +240,18 @@ async function loadUnfilteredRange(
   nativeFetch: typeof fetch,
 ): Promise<FlightRecord[]> {
   if (startIndex === 0 && endIndex <= 100) {
-    const firstPage = await loadArray('module8/full_first_page.json', nativeFetch);
+    const firstPage = await loadFirstPage(nativeFetch);
     return firstPage.slice(startIndex, endIndex);
   }
 
-  const firstChunk = Math.floor(startIndex / CHUNK_SIZE) + 1;
-  const lastChunk = Math.floor((endIndex - 1) / CHUNK_SIZE) + 1;
+  const { chunkSize } = await loadModule8ChunkInfo(nativeFetch);
+  const firstChunk = Math.floor(startIndex / chunkSize) + 1;
+  const lastChunk = Math.floor((endIndex - 1) / chunkSize) + 1;
   const rows: FlightRecord[] = [];
 
   for (let chunkNumber = firstChunk; chunkNumber <= lastChunk; chunkNumber += 1) {
     const chunk = await loadChunk(chunkNumber, nativeFetch);
-    const chunkStart = (chunkNumber - 1) * CHUNK_SIZE;
+    const chunkStart = (chunkNumber - 1) * chunkSize;
     const localStart = Math.max(startIndex - chunkStart, 0);
     const localEnd = Math.min(endIndex - chunkStart, chunk.length);
     rows.push(...chunk.slice(localStart, localEnd));
@@ -373,6 +395,12 @@ async function handleModule8Export(url: URL, nativeFetch: typeof fetch): Promise
   return csvResponse(buildCsv(rows));
 }
 
+async function handleInteractiveAnalysis(url: URL, nativeFetch: typeof fetch): Promise<Response> {
+  const allFlights = await loadAllFlights(nativeFetch);
+  const filters = parseInteractiveFilters(url.searchParams);
+  return jsonResponse(buildInteractiveAnalysis(allFlights, filters));
+}
+
 async function handleApiRequest(url: URL, nativeFetch: typeof fetch): Promise<Response> {
   const pathname = getApiPath(url);
   if (!pathname) return jsonResponse({ error: 'Not an API request' }, { status: 404 });
@@ -383,6 +411,7 @@ async function handleApiRequest(url: URL, nativeFetch: typeof fetch): Promise<Re
     return handleModule8Search(url, nativeFetch);
   }
   if (pathname === '/api/module8/export') return handleModule8Export(url, nativeFetch);
+  if (pathname === '/api/interactive/analysis') return handleInteractiveAnalysis(url, nativeFetch);
 
   const optionResponse = await handleModule8Option(pathname, nativeFetch);
   if (optionResponse) return optionResponse;

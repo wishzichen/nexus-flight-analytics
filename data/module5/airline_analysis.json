@@ -3,121 +3,138 @@
     {
       "carrier": "UA",
       "carrier_name": "United Air Lines Inc.",
-      "flightCount": 58665,
-      "planeCount": 620,
-      "destCount": 47,
-      "routeCount": 53,
-      "avgDepDelay": 12.1,
-      "avgArrDelay": 3.6,
+      "flightCount": 104932,
+      "planeCount": 661,
+      "destCount": 49,
+      "routeCount": 56,
+      "avgDepDelay": 13.1,
+      "avgArrDelay": 5.3,
       "medianDepDelay": 0,
-      "maxDepDelay": 483,
-      "severeDelayRate": 6.6,
-      "extremeDelayRate": 2.4,
-      "onTimeRate": 79,
-      "avgDistance": 1529,
-      "avgAirTime": 211.8
+      "maxDepDelay": 618,
+      "severeDelayRate": 7,
+      "extremeDelayRate": 2.5,
+      "onTimeRate": 77.8,
+      "avgDistance": 1543,
+      "avgAirTime": 213.3
     },
     {
       "carrier": "B6",
       "carrier_name": "JetBlue Airways",
-      "flightCount": 54635,
-      "planeCount": 193,
-      "destCount": 42,
-      "routeCount": 55,
-      "avgDepDelay": 13,
-      "avgArrDelay": 9.5,
-      "medianDepDelay": -1,
-      "maxDepDelay": 502,
-      "severeDelayRate": 8.4,
-      "extremeDelayRate": 3,
-      "onTimeRate": 77.2,
+      "flightCount": 99114,
+      "planeCount": 200,
+      "destCount": 44,
+      "routeCount": 57,
+      "avgDepDelay": 12.6,
+      "avgArrDelay": 9.8,
+      "medianDepDelay": -2,
+      "maxDepDelay": 594,
+      "severeDelayRate": 8.1,
+      "extremeDelayRate": 2.9,
+      "onTimeRate": 78,
       "avgDistance": 1069,
-      "avgAirTime": 151.2
+      "avgAirTime": 151
     },
     {
       "carrier": "EV",
       "carrier_name": "ExpressJet Airlines Inc.",
-      "flightCount": 54173,
-      "planeCount": 316,
-      "destCount": 61,
-      "routeCount": 102,
-      "avgDepDelay": 20,
-      "avgArrDelay": 15.8,
+      "flightCount": 93992,
+      "planeCount": 373,
+      "destCount": 65,
+      "routeCount": 110,
+      "avgDepDelay": 18.9,
+      "avgArrDelay": 14.7,
       "medianDepDelay": -1,
-      "maxDepDelay": 548,
-      "severeDelayRate": 13.4,
-      "extremeDelayRate": 4.8,
-      "onTimeRate": 69.5,
-      "avgDistance": 563,
+      "maxDepDelay": 665,
+      "severeDelayRate": 12.6,
+      "extremeDelayRate": 4.4,
+      "onTimeRate": 70.4,
+      "avgDistance": 564,
       "avgAirTime": 90.1
     },
     {
       "carrier": "DL",
       "carrier_name": "Delta Air Lines Inc.",
-      "flightCount": 48110,
-      "planeCount": 629,
-      "destCount": 40,
-      "routeCount": 55,
-      "avgDepDelay": 9.3,
-      "avgArrDelay": 1.6,
+      "flightCount": 89793,
+      "planeCount": 732,
+      "destCount": 49,
+      "routeCount": 66,
+      "avgDepDelay": 10.6,
+      "avgArrDelay": 3.3,
       "medianDepDelay": -2,
-      "maxDepDelay": 960,
-      "severeDelayRate": 5.6,
-      "extremeDelayRate": 2.3,
-      "onTimeRate": 83.7,
-      "avgDistance": 1237,
-      "avgAirTime": 173.7
+      "maxDepDelay": 1087,
+      "severeDelayRate": 6,
+      "extremeDelayRate": 2.5,
+      "onTimeRate": 82.4,
+      "avgDistance": 1248,
+      "avgAirTime": 174.6
     },
     {
       "carrier": "AA",
       "carrier_name": "American Airlines Inc.",
-      "flightCount": 32729,
-      "planeCount": 600,
-      "destCount": 19,
-      "routeCount": 25,
+      "flightCount": 59031,
+      "planeCount": 635,
+      "destCount": 21,
+      "routeCount": 27,
       "avgDepDelay": 8.6,
-      "avgArrDelay": 0.4,
+      "avgArrDelay": 2.7,
       "medianDepDelay": -3,
-      "maxDepDelay": 1014,
-      "severeDelayRate": 6.2,
-      "extremeDelayRate": 2.2,
-      "onTimeRate": 84.1,
-      "avgDistance": 1340,
-      "avgAirTime": 188.8
+      "maxDepDelay": 1498,
+      "severeDelayRate": 6.1,
+      "extremeDelayRate": 2.3,
+      "onTimeRate": 84,
+      "avgDistance": 1360,
+      "avgAirTime": 191.3
     },
     {
       "carrier": "MQ",
       "carrier_name": "Envoy Air",
-      "flightCount": 26397,
-      "planeCount": 237,
-      "destCount": 20,
-      "routeCount": 24,
-      "avgDepDelay": 10.6,
-      "avgArrDelay": 10.8,
+      "flightCount": 44956,
+      "planeCount": 241,
+      "destCount": 29,
+      "routeCount": 34,
+      "avgDepDelay": 9.5,
+      "avgArrDelay": 10.2,
       "medianDepDelay": -3,
       "maxDepDelay": 1137,
-      "severeDelayRate": 7.9,
-      "extremeDelayRate": 2.4,
-      "onTimeRate": 78.9,
-      "avgDistance": 570,
-      "avgAirTime": 91.2
+      "severeDelayRate": 7.3,
+      "extremeDelayRate": 2.1,
+      "onTimeRate": 79.5,
+      "avgDistance": 557,
+      "avgAirTime": 89.1
     },
     {
       "carrier": "US",
       "carrier_name": "US Airways Inc.",
-      "flightCount": 20536,
-      "planeCount": 289,
-      "destCount": 6,
-      "routeCount": 10,
-      "avgDepDelay": 3.8,
-      "avgArrDelay": 2.1,
+      "flightCount": 37286,
+      "planeCount": 324,
+      "destCount": 8,
+      "routeCount": 14,
+      "avgDepDelay": 3.7,
+      "avgArrDelay": 1.6,
       "medianDepDelay": -4,
       "maxDepDelay": 500,
-      "severeDelayRate": 3.9,
+      "severeDelayRate": 3.8,
       "extremeDelayRate": 1.2,
-      "onTimeRate": 87.8,
-      "avgDistance": 553,
-      "avgAirTime": 88.6
+      "onTimeRate": 87.9,
+      "avgDistance": 551,
+      "avgAirTime": 87.8
+    },
+    {
+      "carrier": "WN",
+      "carrier_name": "Southwest Airlines Co.",
+      "flightCount": 24177,
+      "planeCount": 628,
+      "destCount": 12,
+      "routeCount": 18,
+      "avgDepDelay": 18.3,
+      "avgArrDelay": 10.4,
+      "medianDepDelay": 1,
+      "maxDepDelay": 570,
+      "severeDelayRate": 9.5,
+      "extremeDelayRate": 4,
+      "onTimeRate": 72.4,
+      "avgDistance": 990,
+      "avgAirTime": 146.4
     },
     {
       "carrier": "9E",
@@ -137,89 +154,89 @@
       "avgAirTime": 86.8
     },
     {
-      "carrier": "WN",
-      "carrier_name": "Southwest Airlines Co.",
-      "flightCount": 12275,
-      "planeCount": 582,
-      "destCount": 11,
-      "routeCount": 17,
-      "avgDepDelay": 17.7,
-      "avgArrDelay": 9.6,
-      "medianDepDelay": 1,
-      "maxDepDelay": 471,
-      "severeDelayRate": 8.8,
-      "extremeDelayRate": 3.7,
-      "onTimeRate": 73.1,
-      "avgDistance": 996,
-      "avgAirTime": 147.8
-    },
-    {
       "carrier": "VX",
       "carrier_name": "Virgin America",
-      "flightCount": 5162,
+      "flightCount": 9959,
       "planeCount": 53,
-      "destCount": 5,
-      "routeCount": 7,
-      "avgDepDelay": 12.9,
-      "avgArrDelay": 1.8,
-      "medianDepDelay": 0,
+      "destCount": 6,
+      "routeCount": 8,
+      "avgDepDelay": 11.7,
+      "avgArrDelay": 2.5,
+      "medianDepDelay": -1,
       "maxDepDelay": 653,
-      "severeDelayRate": 7.1,
-      "extremeDelayRate": 3.5,
-      "onTimeRate": 82.6,
+      "severeDelayRate": 6.7,
+      "extremeDelayRate": 3.3,
+      "onTimeRate": 84.1,
       "avgDistance": 2499,
-      "avgAirTime": 337
+      "avgAirTime": 337.3
     },
     {
       "carrier": "FL",
       "carrier_name": "AirTran Airways Corporation",
-      "flightCount": 3260,
+      "flightCount": 4511,
       "planeCount": 129,
       "destCount": 3,
       "routeCount": 3,
-      "avgDepDelay": 18.7,
-      "avgArrDelay": 20.1,
+      "avgDepDelay": 19.3,
+      "avgArrDelay": 18.3,
       "medianDepDelay": 1,
-      "maxDepDelay": 602,
-      "severeDelayRate": 9.9,
-      "extremeDelayRate": 4.7,
-      "onTimeRate": 73.3,
-      "avgDistance": 665,
+      "maxDepDelay": 632,
+      "severeDelayRate": 10.1,
+      "extremeDelayRate": 4.6,
+      "onTimeRate": 72.5,
+      "avgDistance": 664,
       "avgAirTime": 101.1
     },
     {
       "carrier": "AS",
       "carrier_name": "Alaska Airlines Inc.",
-      "flightCount": 714,
-      "planeCount": 84,
+      "flightCount": 1288,
+      "planeCount": 95,
       "destCount": 1,
       "routeCount": 1,
-      "avgDepDelay": 5.8,
-      "avgArrDelay": -9.9,
-      "medianDepDelay": -3,
-      "maxDepDelay": 225,
-      "severeDelayRate": 5.5,
-      "extremeDelayRate": 2.4,
-      "onTimeRate": 86.8,
+      "avgDepDelay": 7.2,
+      "avgArrDelay": -7.2,
+      "medianDepDelay": -4,
+      "maxDepDelay": 341,
+      "severeDelayRate": 5.8,
+      "extremeDelayRate": 3,
+      "onTimeRate": 85.3,
       "avgDistance": 2402,
-      "avgAirTime": 325.6
+      "avgAirTime": 325.4
     },
     {
       "carrier": "F9",
       "carrier_name": "Frontier Airlines Inc.",
-      "flightCount": 685,
-      "planeCount": 25,
+      "flightCount": 1158,
+      "planeCount": 28,
+      "destCount": 2,
+      "routeCount": 2,
+      "avgDepDelay": 22.1,
+      "avgArrDelay": 23.8,
+      "medianDepDelay": 4,
+      "maxDepDelay": 853,
+      "severeDelayRate": 11.7,
+      "extremeDelayRate": 5,
+      "onTimeRate": 66.8,
+      "avgDistance": 1614,
+      "avgAirTime": 228.1
+    },
+    {
+      "carrier": "HA",
+      "carrier_name": "Hawaiian Airlines Inc.",
+      "flightCount": 602,
+      "planeCount": 19,
       "destCount": 1,
       "routeCount": 1,
-      "avgDepDelay": 20.2,
-      "avgArrDelay": 21.9,
-      "medianDepDelay": 0.5,
-      "maxDepDelay": 853,
-      "severeDelayRate": 10.7,
-      "extremeDelayRate": 5,
-      "onTimeRate": 71.8,
-      "avgDistance": 1620,
-      "avgAirTime": 229.6
+      "avgDepDelay": 6.5,
+      "avgArrDelay": 1.4,
+      "medianDepDelay": -4,
+      "maxDepDelay": 1301,
+      "severeDelayRate": 3.7,
+      "extremeDelayRate": 1.7,
+      "onTimeRate": 92.4,
+      "avgDistance": 4983,
+      "avgAirTime": 623.9
     },
     {
       "carrier": "YV",
@@ -239,95 +256,86 @@
       "avgAirTime": 65.7
     },
     {
-      "carrier": "HA",
-      "carrier_name": "Hawaiian Airlines Inc.",
-      "flightCount": 342,
-      "planeCount": 14,
-      "destCount": 1,
-      "routeCount": 1,
-      "avgDepDelay": 4.9,
-      "avgArrDelay": -6.9,
-      "medianDepDelay": -4,
-      "maxDepDelay": 1301,
-      "severeDelayRate": 2.9,
-      "extremeDelayRate": 1.5,
-      "onTimeRate": 93,
-      "avgDistance": 4983,
-      "avgAirTime": 623.1
-    },
-    {
       "carrier": "OO",
       "carrier_name": "SkyWest Airlines Inc.",
-      "flightCount": 32,
-      "planeCount": 28,
+      "flightCount": 232,
+      "planeCount": 48,
       "destCount": 5,
       "routeCount": 5,
       "avgDepDelay": 12.6,
-      "avgArrDelay": 11.9,
-      "medianDepDelay": -6,
-      "maxDepDelay": 154,
-      "severeDelayRate": 13.8,
-      "extremeDelayRate": 6.9,
-      "onTimeRate": 79.3,
-      "avgDistance": 501,
-      "avgAirTime": 83.5
+      "avgArrDelay": 14.5,
+      "medianDepDelay": -2,
+      "maxDepDelay": 414,
+      "severeDelayRate": 8.7,
+      "extremeDelayRate": 3.5,
+      "onTimeRate": 82.5,
+      "avgDistance": 689,
+      "avgAirTime": 108.6
     }
   ],
   "fleetDelayScatter": [
     {
       "carrier": "UA",
       "carrier_name": "United Air Lines Inc.",
-      "planeCount": 620,
-      "avgDepDelay": 12.1,
-      "flightCount": 58665,
+      "planeCount": 661,
+      "avgDepDelay": 13.1,
+      "flightCount": 104932,
       "sizeCategory": "超大型"
     },
     {
       "carrier": "B6",
       "carrier_name": "JetBlue Airways",
-      "planeCount": 193,
-      "avgDepDelay": 13,
-      "flightCount": 54635,
-      "sizeCategory": "大型"
+      "planeCount": 200,
+      "avgDepDelay": 12.6,
+      "flightCount": 99114,
+      "sizeCategory": "超大型"
     },
     {
       "carrier": "EV",
       "carrier_name": "ExpressJet Airlines Inc.",
-      "planeCount": 316,
-      "avgDepDelay": 20,
-      "flightCount": 54173,
+      "planeCount": 373,
+      "avgDepDelay": 18.9,
+      "flightCount": 93992,
       "sizeCategory": "超大型"
     },
     {
       "carrier": "DL",
       "carrier_name": "Delta Air Lines Inc.",
-      "planeCount": 629,
-      "avgDepDelay": 9.3,
-      "flightCount": 48110,
+      "planeCount": 732,
+      "avgDepDelay": 10.6,
+      "flightCount": 89793,
       "sizeCategory": "超大型"
     },
     {
       "carrier": "AA",
       "carrier_name": "American Airlines Inc.",
-      "planeCount": 600,
+      "planeCount": 635,
       "avgDepDelay": 8.6,
-      "flightCount": 32729,
+      "flightCount": 59031,
       "sizeCategory": "超大型"
     },
     {
       "carrier": "MQ",
       "carrier_name": "Envoy Air",
-      "planeCount": 237,
-      "avgDepDelay": 10.6,
-      "flightCount": 26397,
+      "planeCount": 241,
+      "avgDepDelay": 9.5,
+      "flightCount": 44956,
       "sizeCategory": "超大型"
     },
     {
       "carrier": "US",
       "carrier_name": "US Airways Inc.",
-      "planeCount": 289,
-      "avgDepDelay": 3.8,
-      "flightCount": 20536,
+      "planeCount": 324,
+      "avgDepDelay": 3.7,
+      "flightCount": 37286,
+      "sizeCategory": "超大型"
+    },
+    {
+      "carrier": "WN",
+      "carrier_name": "Southwest Airlines Co.",
+      "planeCount": 628,
+      "avgDepDelay": 18.3,
+      "flightCount": 24177,
       "sizeCategory": "超大型"
     },
     {
@@ -339,43 +347,43 @@
       "sizeCategory": "超大型"
     },
     {
-      "carrier": "WN",
-      "carrier_name": "Southwest Airlines Co.",
-      "planeCount": 582,
-      "avgDepDelay": 17.7,
-      "flightCount": 12275,
-      "sizeCategory": "超大型"
-    },
-    {
       "carrier": "VX",
       "carrier_name": "Virgin America",
       "planeCount": 53,
-      "avgDepDelay": 12.9,
-      "flightCount": 5162,
+      "avgDepDelay": 11.7,
+      "flightCount": 9959,
       "sizeCategory": "中型"
     },
     {
       "carrier": "FL",
       "carrier_name": "AirTran Airways Corporation",
       "planeCount": 129,
-      "avgDepDelay": 18.7,
-      "flightCount": 3260,
+      "avgDepDelay": 19.3,
+      "flightCount": 4511,
       "sizeCategory": "大型"
     },
     {
       "carrier": "AS",
       "carrier_name": "Alaska Airlines Inc.",
-      "planeCount": 84,
-      "avgDepDelay": 5.8,
-      "flightCount": 714,
+      "planeCount": 95,
+      "avgDepDelay": 7.2,
+      "flightCount": 1288,
       "sizeCategory": "中型"
     },
     {
       "carrier": "F9",
       "carrier_name": "Frontier Airlines Inc.",
-      "planeCount": 25,
-      "avgDepDelay": 20.2,
-      "flightCount": 685,
+      "planeCount": 28,
+      "avgDepDelay": 22.1,
+      "flightCount": 1158,
+      "sizeCategory": "小型"
+    },
+    {
+      "carrier": "HA",
+      "carrier_name": "Hawaiian Airlines Inc.",
+      "planeCount": 19,
+      "avgDepDelay": 6.5,
+      "flightCount": 602,
       "sizeCategory": "小型"
     },
     {
@@ -387,11 +395,11 @@
       "sizeCategory": "中型"
     },
     {
-      "carrier": "HA",
-      "carrier_name": "Hawaiian Airlines Inc.",
-      "planeCount": 14,
-      "avgDepDelay": 4.9,
-      "flightCount": 342,
+      "carrier": "OO",
+      "carrier_name": "SkyWest Airlines Inc.",
+      "planeCount": 48,
+      "avgDepDelay": 12.6,
+      "flightCount": 232,
       "sizeCategory": "小型"
     }
   ],
@@ -399,74 +407,82 @@
     {
       "carrier": "HA",
       "carrier_name": "Hawaiian Airlines Inc.",
-      "flightCount": 342,
-      "onTimeRate": 93,
-      "planeCount": 14,
-      "avgDepDelay": 4.9
+      "flightCount": 602,
+      "onTimeRate": 92.4,
+      "planeCount": 19,
+      "avgDepDelay": 6.5
     },
     {
       "carrier": "US",
       "carrier_name": "US Airways Inc.",
-      "flightCount": 20536,
-      "onTimeRate": 87.8,
-      "planeCount": 289,
-      "avgDepDelay": 3.8
+      "flightCount": 37286,
+      "onTimeRate": 87.9,
+      "planeCount": 324,
+      "avgDepDelay": 3.7
     },
     {
       "carrier": "AS",
       "carrier_name": "Alaska Airlines Inc.",
-      "flightCount": 714,
-      "onTimeRate": 86.8,
-      "planeCount": 84,
-      "avgDepDelay": 5.8
-    },
-    {
-      "carrier": "AA",
-      "carrier_name": "American Airlines Inc.",
-      "flightCount": 32729,
-      "onTimeRate": 84.1,
-      "planeCount": 600,
-      "avgDepDelay": 8.6
-    },
-    {
-      "carrier": "DL",
-      "carrier_name": "Delta Air Lines Inc.",
-      "flightCount": 48110,
-      "onTimeRate": 83.7,
-      "planeCount": 629,
-      "avgDepDelay": 9.3
+      "flightCount": 1288,
+      "onTimeRate": 85.3,
+      "planeCount": 95,
+      "avgDepDelay": 7.2
     },
     {
       "carrier": "VX",
       "carrier_name": "Virgin America",
-      "flightCount": 5162,
-      "onTimeRate": 82.6,
+      "flightCount": 9959,
+      "onTimeRate": 84.1,
       "planeCount": 53,
-      "avgDepDelay": 12.9
+      "avgDepDelay": 11.7
     },
     {
-      "carrier": "UA",
-      "carrier_name": "United Air Lines Inc.",
-      "flightCount": 58665,
-      "onTimeRate": 79,
-      "planeCount": 620,
-      "avgDepDelay": 12.1
+      "carrier": "AA",
+      "carrier_name": "American Airlines Inc.",
+      "flightCount": 59031,
+      "onTimeRate": 84,
+      "planeCount": 635,
+      "avgDepDelay": 8.6
+    },
+    {
+      "carrier": "OO",
+      "carrier_name": "SkyWest Airlines Inc.",
+      "flightCount": 232,
+      "onTimeRate": 82.5,
+      "planeCount": 48,
+      "avgDepDelay": 12.6
+    },
+    {
+      "carrier": "DL",
+      "carrier_name": "Delta Air Lines Inc.",
+      "flightCount": 89793,
+      "onTimeRate": 82.4,
+      "planeCount": 732,
+      "avgDepDelay": 10.6
     },
     {
       "carrier": "MQ",
       "carrier_name": "Envoy Air",
-      "flightCount": 26397,
-      "onTimeRate": 78.9,
-      "planeCount": 237,
-      "avgDepDelay": 10.6
+      "flightCount": 44956,
+      "onTimeRate": 79.5,
+      "planeCount": 241,
+      "avgDepDelay": 9.5
     },
     {
       "carrier": "B6",
       "carrier_name": "JetBlue Airways",
-      "flightCount": 54635,
-      "onTimeRate": 77.2,
-      "planeCount": 193,
-      "avgDepDelay": 13
+      "flightCount": 99114,
+      "onTimeRate": 78,
+      "planeCount": 200,
+      "avgDepDelay": 12.6
+    },
+    {
+      "carrier": "UA",
+      "carrier_name": "United Air Lines Inc.",
+      "flightCount": 104932,
+      "onTimeRate": 77.8,
+      "planeCount": 661,
+      "avgDepDelay": 13.1
     },
     {
       "carrier": "9E",
@@ -479,26 +495,18 @@
     {
       "carrier": "FL",
       "carrier_name": "AirTran Airways Corporation",
-      "flightCount": 3260,
-      "onTimeRate": 73.3,
+      "flightCount": 4511,
+      "onTimeRate": 72.5,
       "planeCount": 129,
-      "avgDepDelay": 18.7
+      "avgDepDelay": 19.3
     },
     {
       "carrier": "WN",
       "carrier_name": "Southwest Airlines Co.",
-      "flightCount": 12275,
-      "onTimeRate": 73.1,
-      "planeCount": 582,
-      "avgDepDelay": 17.7
-    },
-    {
-      "carrier": "F9",
-      "carrier_name": "Frontier Airlines Inc.",
-      "flightCount": 685,
-      "onTimeRate": 71.8,
-      "planeCount": 25,
-      "avgDepDelay": 20.2
+      "flightCount": 24177,
+      "onTimeRate": 72.4,
+      "planeCount": 628,
+      "avgDepDelay": 18.3
     },
     {
       "carrier": "YV",
@@ -511,27 +519,35 @@
     {
       "carrier": "EV",
       "carrier_name": "ExpressJet Airlines Inc.",
-      "flightCount": 54173,
-      "onTimeRate": 69.5,
-      "planeCount": 316,
-      "avgDepDelay": 20
+      "flightCount": 93992,
+      "onTimeRate": 70.4,
+      "planeCount": 373,
+      "avgDepDelay": 18.9
+    },
+    {
+      "carrier": "F9",
+      "carrier_name": "Frontier Airlines Inc.",
+      "flightCount": 1158,
+      "onTimeRate": 66.8,
+      "planeCount": 28,
+      "avgDepDelay": 22.1
     }
   ],
   "airlineDelayRanking": [
     {
       "carrier": "F9",
       "carrier_name": "Frontier Airlines Inc.",
-      "avgDepDelay": 20.2,
-      "avgArrDelay": 21.9,
-      "flightCount": 685,
+      "avgDepDelay": 22.1,
+      "avgArrDelay": 23.8,
+      "flightCount": 1158,
       "rank": 1
     },
     {
-      "carrier": "EV",
-      "carrier_name": "ExpressJet Airlines Inc.",
-      "avgDepDelay": 20,
-      "avgArrDelay": 15.8,
-      "flightCount": 54173,
+      "carrier": "FL",
+      "carrier_name": "AirTran Airways Corporation",
+      "avgDepDelay": 19.3,
+      "avgArrDelay": 18.3,
+      "flightCount": 4511,
       "rank": 1
     },
     {
@@ -543,19 +559,19 @@
       "rank": 1
     },
     {
-      "carrier": "FL",
-      "carrier_name": "AirTran Airways Corporation",
-      "avgDepDelay": 18.7,
-      "avgArrDelay": 20.1,
-      "flightCount": 3260,
+      "carrier": "EV",
+      "carrier_name": "ExpressJet Airlines Inc.",
+      "avgDepDelay": 18.9,
+      "avgArrDelay": 14.7,
+      "flightCount": 93992,
       "rank": 1
     },
     {
       "carrier": "WN",
       "carrier_name": "Southwest Airlines Co.",
-      "avgDepDelay": 17.7,
-      "avgArrDelay": 9.6,
-      "flightCount": 12275,
+      "avgDepDelay": 18.3,
+      "avgArrDelay": 10.4,
+      "flightCount": 24177,
       "rank": 1
     },
     {
@@ -567,75 +583,83 @@
       "rank": 1
     },
     {
+      "carrier": "UA",
+      "carrier_name": "United Air Lines Inc.",
+      "avgDepDelay": 13.1,
+      "avgArrDelay": 5.3,
+      "flightCount": 104932,
+      "rank": 1
+    },
+    {
       "carrier": "B6",
       "carrier_name": "JetBlue Airways",
-      "avgDepDelay": 13,
-      "avgArrDelay": 9.5,
-      "flightCount": 54635,
+      "avgDepDelay": 12.6,
+      "avgArrDelay": 9.8,
+      "flightCount": 99114,
+      "rank": 1
+    },
+    {
+      "carrier": "OO",
+      "carrier_name": "SkyWest Airlines Inc.",
+      "avgDepDelay": 12.6,
+      "avgArrDelay": 14.5,
+      "flightCount": 232,
       "rank": 1
     },
     {
       "carrier": "VX",
       "carrier_name": "Virgin America",
-      "avgDepDelay": 12.9,
-      "avgArrDelay": 1.8,
-      "flightCount": 5162,
-      "rank": 1
-    },
-    {
-      "carrier": "UA",
-      "carrier_name": "United Air Lines Inc.",
-      "avgDepDelay": 12.1,
-      "avgArrDelay": 3.6,
-      "flightCount": 58665,
-      "rank": 1
-    },
-    {
-      "carrier": "MQ",
-      "carrier_name": "Envoy Air",
-      "avgDepDelay": 10.6,
-      "avgArrDelay": 10.8,
-      "flightCount": 26397,
+      "avgDepDelay": 11.7,
+      "avgArrDelay": 2.5,
+      "flightCount": 9959,
       "rank": 1
     },
     {
       "carrier": "DL",
       "carrier_name": "Delta Air Lines Inc.",
-      "avgDepDelay": 9.3,
-      "avgArrDelay": 1.6,
-      "flightCount": 48110,
+      "avgDepDelay": 10.6,
+      "avgArrDelay": 3.3,
+      "flightCount": 89793,
+      "rank": 1
+    },
+    {
+      "carrier": "MQ",
+      "carrier_name": "Envoy Air",
+      "avgDepDelay": 9.5,
+      "avgArrDelay": 10.2,
+      "flightCount": 44956,
       "rank": 1
     },
     {
       "carrier": "AA",
       "carrier_name": "American Airlines Inc.",
       "avgDepDelay": 8.6,
-      "avgArrDelay": 0.4,
-      "flightCount": 32729,
+      "avgArrDelay": 2.7,
+      "flightCount": 59031,
       "rank": 1
     },
     {
       "carrier": "AS",
       "carrier_name": "Alaska Airlines Inc.",
-      "avgDepDelay": 5.8,
-      "avgArrDelay": -9.9,
-      "flightCount": 714,
+      "avgDepDelay": 7.2,
+      "avgArrDelay": -7.2,
+      "flightCount": 1288,
       "rank": 1
     },
     {
       "carrier": "HA",
       "carrier_name": "Hawaiian Airlines Inc.",
-      "avgDepDelay": 4.9,
-      "avgArrDelay": -6.9,
-      "flightCount": 342,
+      "avgDepDelay": 6.5,
+      "avgArrDelay": 1.4,
+      "flightCount": 602,
       "rank": 1
     },
     {
       "carrier": "US",
       "carrier_name": "US Airways Inc.",
-      "avgDepDelay": 3.8,
-      "avgArrDelay": 2.1,
-      "flightCount": 20536,
+      "avgDepDelay": 3.7,
+      "avgArrDelay": 1.6,
+      "flightCount": 37286,
       "rank": 1
     }
   ],
@@ -643,73 +667,81 @@
     {
       "carrier": "HA",
       "carrier_name": "Hawaiian Airlines Inc.",
-      "onTimeRate": 93,
-      "severeDelayRate": 2.9,
-      "flightCount": 342,
+      "onTimeRate": 92.4,
+      "severeDelayRate": 3.7,
+      "flightCount": 602,
       "rank": 1
     },
     {
       "carrier": "US",
       "carrier_name": "US Airways Inc.",
-      "onTimeRate": 87.8,
-      "severeDelayRate": 3.9,
-      "flightCount": 20536,
+      "onTimeRate": 87.9,
+      "severeDelayRate": 3.8,
+      "flightCount": 37286,
       "rank": 1
     },
     {
       "carrier": "AS",
       "carrier_name": "Alaska Airlines Inc.",
-      "onTimeRate": 86.8,
-      "severeDelayRate": 5.5,
-      "flightCount": 714,
-      "rank": 1
-    },
-    {
-      "carrier": "AA",
-      "carrier_name": "American Airlines Inc.",
-      "onTimeRate": 84.1,
-      "severeDelayRate": 6.2,
-      "flightCount": 32729,
-      "rank": 1
-    },
-    {
-      "carrier": "DL",
-      "carrier_name": "Delta Air Lines Inc.",
-      "onTimeRate": 83.7,
-      "severeDelayRate": 5.6,
-      "flightCount": 48110,
+      "onTimeRate": 85.3,
+      "severeDelayRate": 5.8,
+      "flightCount": 1288,
       "rank": 1
     },
     {
       "carrier": "VX",
       "carrier_name": "Virgin America",
-      "onTimeRate": 82.6,
-      "severeDelayRate": 7.1,
-      "flightCount": 5162,
+      "onTimeRate": 84.1,
+      "severeDelayRate": 6.7,
+      "flightCount": 9959,
       "rank": 1
     },
     {
-      "carrier": "UA",
-      "carrier_name": "United Air Lines Inc.",
-      "onTimeRate": 79,
-      "severeDelayRate": 6.6,
-      "flightCount": 58665,
+      "carrier": "AA",
+      "carrier_name": "American Airlines Inc.",
+      "onTimeRate": 84,
+      "severeDelayRate": 6.1,
+      "flightCount": 59031,
+      "rank": 1
+    },
+    {
+      "carrier": "OO",
+      "carrier_name": "SkyWest Airlines Inc.",
+      "onTimeRate": 82.5,
+      "severeDelayRate": 8.7,
+      "flightCount": 232,
+      "rank": 1
+    },
+    {
+      "carrier": "DL",
+      "carrier_name": "Delta Air Lines Inc.",
+      "onTimeRate": 82.4,
+      "severeDelayRate": 6,
+      "flightCount": 89793,
       "rank": 1
     },
     {
       "carrier": "MQ",
       "carrier_name": "Envoy Air",
-      "onTimeRate": 78.9,
-      "severeDelayRate": 7.9,
-      "flightCount": 26397,
+      "onTimeRate": 79.5,
+      "severeDelayRate": 7.3,
+      "flightCount": 44956,
       "rank": 1
     },
     {
       "carrier": "B6",
       "carrier_name": "JetBlue Airways",
-      "onTimeRate": 77.2,
-      "severeDelayRate": 8.4,
-      "flightCount": 54635,
+      "onTimeRate": 78,
+      "severeDelayRate": 8.1,
+      "flightCount": 99114,
+      "rank": 1
+    },
+    {
+      "carrier": "UA",
+      "carrier_name": "United Air Lines Inc.",
+      "onTimeRate": 77.8,
+      "severeDelayRate": 7,
+      "flightCount": 104932,
       "rank": 1
     },
     {
@@ -723,25 +755,17 @@
     {
       "carrier": "FL",
       "carrier_name": "AirTran Airways Corporation",
-      "onTimeRate": 73.3,
-      "severeDelayRate": 9.9,
-      "flightCount": 3260,
+      "onTimeRate": 72.5,
+      "severeDelayRate": 10.1,
+      "flightCount": 4511,
       "rank": 1
     },
     {
       "carrier": "WN",
       "carrier_name": "Southwest Airlines Co.",
-      "onTimeRate": 73.1,
-      "severeDelayRate": 8.8,
-      "flightCount": 12275,
-      "rank": 1
-    },
-    {
-      "carrier": "F9",
-      "carrier_name": "Frontier Airlines Inc.",
-      "onTimeRate": 71.8,
-      "severeDelayRate": 10.7,
-      "flightCount": 685,
+      "onTimeRate": 72.4,
+      "severeDelayRate": 9.5,
+      "flightCount": 24177,
       "rank": 1
     },
     {
@@ -755,9 +779,17 @@
     {
       "carrier": "EV",
       "carrier_name": "ExpressJet Airlines Inc.",
-      "onTimeRate": 69.5,
-      "severeDelayRate": 13.4,
-      "flightCount": 54173,
+      "onTimeRate": 70.4,
+      "severeDelayRate": 12.6,
+      "flightCount": 93992,
+      "rank": 1
+    },
+    {
+      "carrier": "F9",
+      "carrier_name": "Frontier Airlines Inc.",
+      "onTimeRate": 66.8,
+      "severeDelayRate": 11.7,
+      "flightCount": 1158,
       "rank": 1
     }
   ],
@@ -765,58 +797,66 @@
     {
       "carrier": "UA",
       "carrier_name": "United Air Lines Inc.",
-      "planeCount": 620,
-      "onTimeRate": 79,
-      "flightCount": 58665,
-      "quadrant": "大规模高准点"
+      "planeCount": 661,
+      "onTimeRate": 77.8,
+      "flightCount": 104932,
+      "quadrant": "大规模低准点"
     },
     {
       "carrier": "B6",
       "carrier_name": "JetBlue Airways",
-      "planeCount": 193,
-      "onTimeRate": 77.2,
-      "flightCount": 54635,
+      "planeCount": 200,
+      "onTimeRate": 78,
+      "flightCount": 99114,
       "quadrant": "小规模低准点"
     },
     {
       "carrier": "EV",
       "carrier_name": "ExpressJet Airlines Inc.",
-      "planeCount": 316,
-      "onTimeRate": 69.5,
-      "flightCount": 54173,
+      "planeCount": 373,
+      "onTimeRate": 70.4,
+      "flightCount": 93992,
       "quadrant": "大规模低准点"
     },
     {
       "carrier": "DL",
       "carrier_name": "Delta Air Lines Inc.",
-      "planeCount": 629,
-      "onTimeRate": 83.7,
-      "flightCount": 48110,
+      "planeCount": 732,
+      "onTimeRate": 82.4,
+      "flightCount": 89793,
       "quadrant": "大规模高准点"
     },
     {
       "carrier": "AA",
       "carrier_name": "American Airlines Inc.",
-      "planeCount": 600,
-      "onTimeRate": 84.1,
-      "flightCount": 32729,
+      "planeCount": 635,
+      "onTimeRate": 84,
+      "flightCount": 59031,
       "quadrant": "大规模高准点"
     },
     {
       "carrier": "MQ",
       "carrier_name": "Envoy Air",
-      "planeCount": 237,
-      "onTimeRate": 78.9,
-      "flightCount": 26397,
+      "planeCount": 241,
+      "onTimeRate": 79.5,
+      "flightCount": 44956,
       "quadrant": "大规模高准点"
     },
     {
       "carrier": "US",
       "carrier_name": "US Airways Inc.",
-      "planeCount": 289,
-      "onTimeRate": 87.8,
-      "flightCount": 20536,
+      "planeCount": 324,
+      "onTimeRate": 87.9,
+      "flightCount": 37286,
       "quadrant": "大规模高准点"
+    },
+    {
+      "carrier": "WN",
+      "carrier_name": "Southwest Airlines Co.",
+      "planeCount": 628,
+      "onTimeRate": 72.4,
+      "flightCount": 24177,
+      "quadrant": "大规模低准点"
     },
     {
       "carrier": "9E",
@@ -827,44 +867,44 @@
       "quadrant": "大规模低准点"
     },
     {
-      "carrier": "WN",
-      "carrier_name": "Southwest Airlines Co.",
-      "planeCount": 582,
-      "onTimeRate": 73.1,
-      "flightCount": 12275,
-      "quadrant": "大规模低准点"
-    },
-    {
       "carrier": "VX",
       "carrier_name": "Virgin America",
       "planeCount": 53,
-      "onTimeRate": 82.6,
-      "flightCount": 5162,
+      "onTimeRate": 84.1,
+      "flightCount": 9959,
       "quadrant": "小规模高准点"
     },
     {
       "carrier": "FL",
       "carrier_name": "AirTran Airways Corporation",
       "planeCount": 129,
-      "onTimeRate": 73.3,
-      "flightCount": 3260,
+      "onTimeRate": 72.5,
+      "flightCount": 4511,
       "quadrant": "小规模低准点"
     },
     {
       "carrier": "AS",
       "carrier_name": "Alaska Airlines Inc.",
-      "planeCount": 84,
-      "onTimeRate": 86.8,
-      "flightCount": 714,
+      "planeCount": 95,
+      "onTimeRate": 85.3,
+      "flightCount": 1288,
       "quadrant": "小规模高准点"
     },
     {
       "carrier": "F9",
       "carrier_name": "Frontier Airlines Inc.",
-      "planeCount": 25,
-      "onTimeRate": 71.8,
-      "flightCount": 685,
+      "planeCount": 28,
+      "onTimeRate": 66.8,
+      "flightCount": 1158,
       "quadrant": "小规模低准点"
+    },
+    {
+      "carrier": "HA",
+      "carrier_name": "Hawaiian Airlines Inc.",
+      "planeCount": 19,
+      "onTimeRate": 92.4,
+      "flightCount": 602,
+      "quadrant": "小规模高准点"
     },
     {
       "carrier": "YV",
@@ -875,34 +915,34 @@
       "quadrant": "小规模低准点"
     },
     {
-      "carrier": "HA",
-      "carrier_name": "Hawaiian Airlines Inc.",
-      "planeCount": 14,
-      "onTimeRate": 93,
-      "flightCount": 342,
+      "carrier": "OO",
+      "carrier_name": "SkyWest Airlines Inc.",
+      "planeCount": 48,
+      "onTimeRate": 82.5,
+      "flightCount": 232,
       "quadrant": "小规模高准点"
     }
   ],
   "quadrantSummary": [
     {
       "quadrant": "大规模低准点",
-      "count": 3,
-      "avgOnTimeRate": 72.3
+      "count": 4,
+      "avgOnTimeRate": 73.7
     },
     {
       "quadrant": "大规模高准点",
-      "count": 5,
-      "avgOnTimeRate": 82.7
+      "count": 4,
+      "avgOnTimeRate": 83.4
     },
     {
       "quadrant": "小规模低准点",
       "count": 4,
-      "avgOnTimeRate": 73.4
+      "avgOnTimeRate": 72.2
     },
     {
       "quadrant": "小规模高准点",
-      "count": 3,
-      "avgOnTimeRate": 87.5
+      "count": 4,
+      "avgOnTimeRate": 86.1
     }
   ],
   "airlineMonthly": [
@@ -1005,81 +1045,81 @@
     {
       "carrier": "AA",
       "month": 1,
-      "flightCount": 2794,
-      "avgDepDelay": 6.9,
-      "onTimeRate": 85.1,
+      "flightCount": 5309,
+      "avgDepDelay": 9.7,
+      "onTimeRate": 81.5,
       "monthName": "1月"
     },
     {
       "carrier": "AA",
       "month": 2,
-      "flightCount": 2517,
-      "avgDepDelay": 8.3,
-      "onTimeRate": 82.6,
+      "flightCount": 4784,
+      "avgDepDelay": 10.5,
+      "onTimeRate": 81.8,
       "monthName": "2月"
     },
     {
       "carrier": "AA",
       "month": 3,
-      "flightCount": 2787,
-      "avgDepDelay": 8.7,
-      "onTimeRate": 84.5,
+      "flightCount": 5421,
+      "avgDepDelay": 6.6,
+      "onTimeRate": 86.5,
       "monthName": "3月"
     },
     {
       "carrier": "AA",
       "month": 4,
-      "flightCount": 2722,
-      "avgDepDelay": 11.7,
-      "onTimeRate": 81.6,
+      "flightCount": 5339,
+      "avgDepDelay": 7.9,
+      "onTimeRate": 85.1,
       "monthName": "4月"
     },
     {
       "carrier": "AA",
       "month": 5,
-      "flightCount": 2803,
-      "avgDepDelay": 9.7,
-      "onTimeRate": 83.1,
+      "flightCount": 5420,
+      "avgDepDelay": 9.2,
+      "onTimeRate": 83.2,
       "monthName": "5月"
     },
     {
       "carrier": "AA",
       "month": 6,
-      "flightCount": 2757,
-      "avgDepDelay": 14.6,
-      "onTimeRate": 79,
+      "flightCount": 5435,
+      "avgDepDelay": 13.1,
+      "onTimeRate": 80.7,
       "monthName": "6月"
     },
     {
       "carrier": "AA",
       "month": 7,
-      "flightCount": 2882,
-      "avgDepDelay": 12.1,
-      "onTimeRate": 81.1,
+      "flightCount": 5684,
+      "avgDepDelay": 11.9,
+      "onTimeRate": 81.7,
       "monthName": "7月"
     },
     {
       "carrier": "AA",
       "month": 8,
-      "flightCount": 2856,
-      "avgDepDelay": 7.2,
-      "onTimeRate": 86,
+      "flightCount": 5695,
+      "avgDepDelay": 8,
+      "onTimeRate": 84.7,
       "monthName": "8月"
     },
     {
       "carrier": "AA",
       "month": 9,
-      "flightCount": 2614,
-      "avgDepDelay": 5.7,
-      "onTimeRate": 86.9,
+      "flightCount": 5242,
+      "avgDepDelay": 4.5,
+      "onTimeRate": 87.6,
       "monthName": "9月"
     },
     {
       "carrier": "AA",
       "month": 10,
-      "flightCount": 2715,
-      "avgDepDelay": 3,
-      "onTimeRate": 89.3,
+      "flightCount": 5420,
+      "avgDepDelay": 5.3,
+      "onTimeRate": 86.7,
       "monthName": "10月"
     },
     {
@@ -1101,81 +1141,81 @@
     {
       "carrier": "AS",
       "month": 1,
-      "flightCount": 62,
-      "avgDepDelay": 7.4,
-      "onTimeRate": 85.5,
+      "flightCount": 111,
+      "avgDepDelay": 6.2,
+      "onTimeRate": 84.7,
       "monthName": "1月"
     },
     {
       "carrier": "AS",
       "month": 2,
-      "flightCount": 56,
-      "avgDepDelay": 0.7,
-      "onTimeRate": 87,
+      "flightCount": 100,
+      "avgDepDelay": 7.3,
+      "onTimeRate": 82.7,
       "monthName": "2月"
     },
     {
       "carrier": "AS",
       "month": 3,
-      "flightCount": 62,
-      "avgDepDelay": 8.4,
-      "onTimeRate": 90.3,
+      "flightCount": 119,
+      "avgDepDelay": 3.7,
+      "onTimeRate": 90.8,
       "monthName": "3月"
     },
     {
       "carrier": "AS",
       "month": 4,
-      "flightCount": 60,
-      "avgDepDelay": 11.3,
-      "onTimeRate": 80,
+      "flightCount": 120,
+      "avgDepDelay": 19.7,
+      "onTimeRate": 74.2,
       "monthName": "4月"
     },
     {
       "carrier": "AS",
       "month": 5,
-      "flightCount": 62,
-      "avgDepDelay": 6.8,
-      "onTimeRate": 87.1,
+      "flightCount": 124,
+      "avgDepDelay": 13.7,
+      "onTimeRate": 82.3,
       "monthName": "5月"
     },
     {
       "carrier": "AS",
       "month": 6,
-      "flightCount": 60,
-      "avgDepDelay": 13.1,
-      "onTimeRate": 83.3,
+      "flightCount": 119,
+      "avgDepDelay": 10.9,
+      "onTimeRate": 82.4,
       "monthName": "6月"
     },
     {
       "carrier": "AS",
       "month": 7,
-      "flightCount": 62,
-      "avgDepDelay": 2.4,
-      "onTimeRate": 90.3,
+      "flightCount": 121,
+      "avgDepDelay": 7.5,
+      "onTimeRate": 86.8,
       "monthName": "7月"
     },
     {
       "carrier": "AS",
       "month": 8,
-      "flightCount": 62,
-      "avgDepDelay": 2.9,
-      "onTimeRate": 90.3,
+      "flightCount": 124,
+      "avgDepDelay": 2.1,
+      "onTimeRate": 91.1,
       "monthName": "8月"
     },
     {
       "carrier": "AS",
       "month": 9,
-      "flightCount": 60,
-      "avgDepDelay": -4.5,
-      "onTimeRate": 95,
+      "flightCount": 120,
+      "avgDepDelay": -2,
+      "onTimeRate": 91.7,
       "monthName": "9月"
     },
     {
       "carrier": "AS",
       "month": 10,
-      "flightCount": 62,
-      "avgDepDelay": 0.7,
-      "onTimeRate": 95.2,
+      "flightCount": 124,
+      "avgDepDelay": -0.5,
+      "onTimeRate": 92.7,
       "monthName": "10月"
     },
     {
@@ -1197,81 +1237,81 @@
     {
       "carrier": "B6",
       "month": 1,
-      "flightCount": 4427,
-      "avgDepDelay": 9.5,
-      "onTimeRate": 80.5,
+      "flightCount": 8346,
+      "avgDepDelay": 19.5,
+      "onTimeRate": 74.2,
       "monthName": "1月"
     },
     {
       "carrier": "B6",
       "month": 2,
-      "flightCount": 4103,
-      "avgDepDelay": 13.8,
-      "onTimeRate": 75,
+      "flightCount": 7992,
+      "avgDepDelay": 15.7,
+      "onTimeRate": 73.9,
       "monthName": "2月"
     },
     {
       "carrier": "B6",
       "month": 3,
-      "flightCount": 4772,
-      "avgDepDelay": 14.2,
-      "onTimeRate": 75.1,
+      "flightCount": 9460,
+      "avgDepDelay": 11.1,
+      "onTimeRate": 78.3,
       "monthName": "3月"
     },
     {
       "carrier": "B6",
       "month": 4,
-      "flightCount": 4517,
-      "avgDepDelay": 15.2,
-      "onTimeRate": 74.1,
+      "flightCount": 9049,
+      "avgDepDelay": 12.2,
+      "onTimeRate": 77.7,
       "monthName": "4月"
     },
     {
       "carrier": "B6",
       "month": 5,
-      "flightCount": 4576,
-      "avgDepDelay": 9.8,
-      "onTimeRate": 81.2,
+      "flightCount": 9060,
+      "avgDepDelay": 10.6,
+      "onTimeRate": 79.9,
       "monthName": "5月"
     },
     {
       "carrier": "B6",
       "month": 6,
-      "flightCount": 4622,
-      "avgDepDelay": 20.4,
-      "onTimeRate": 71.7,
+      "flightCount": 9147,
+      "avgDepDelay": 15.2,
+      "onTimeRate": 76,
       "monthName": "6月"
     },
     {
       "carrier": "B6",
       "month": 7,
-      "flightCount": 4984,
-      "avgDepDelay": 24.9,
-      "onTimeRate": 65.6,
+      "flightCount": 9665,
+      "avgDepDelay": 23,
+      "onTimeRate": 68,
       "monthName": "7月"
     },
     {
       "carrier": "B6",
       "month": 8,
-      "flightCount": 4952,
-      "avgDepDelay": 15.7,
-      "onTimeRate": 73.1,
+      "flightCount": 9860,
+      "avgDepDelay": 12.6,
+      "onTimeRate": 76.2,
       "monthName": "8月"
     },
     {
       "carrier": "B6",
       "month": 9,
-      "flightCount": 4291,
-      "avgDepDelay": 6.6,
-      "onTimeRate": 86.1,
+      "flightCount": 8637,
+      "avgDepDelay": 3.9,
+      "onTimeRate": 88.4,
       "monthName": "9月"
     },
     {
       "carrier": "B6",
       "month": 10,
-      "flightCount": 4361,
-      "avgDepDelay": 3,
-      "onTimeRate": 89.3,
+      "flightCount": 8868,
+      "avgDepDelay": 3.7,
+      "onTimeRate": 88,
       "monthName": "10月"
     },
     {
@@ -1293,81 +1333,81 @@
     {
       "carrier": "DL",
       "month": 1,
-      "flightCount": 3690,
-      "avgDepDelay": 3.8,
-      "onTimeRate": 89.6,
+      "flightCount": 7229,
+      "avgDepDelay": 16.5,
+      "onTimeRate": 79,
       "monthName": "1月"
     },
     {
       "carrier": "DL",
       "month": 2,
-      "flightCount": 3444,
-      "avgDepDelay": 5.5,
-      "onTimeRate": 87.7,
+      "flightCount": 6731,
+      "avgDepDelay": 13.1,
+      "onTimeRate": 81.4,
       "monthName": "2月"
     },
     {
       "carrier": "DL",
       "month": 3,
-      "flightCount": 4189,
-      "avgDepDelay": 9.9,
+      "flightCount": 8593,
+      "avgDepDelay": 9,
       "onTimeRate": 83.6,
       "monthName": "3月"
     },
     {
       "carrier": "DL",
       "month": 4,
-      "flightCount": 4092,
+      "flightCount": 8426,
       "avgDepDelay": 8.2,
-      "onTimeRate": 85.2,
+      "onTimeRate": 84.9,
       "monthName": "4月"
     },
     {
       "carrier": "DL",
       "month": 5,
-      "flightCount": 4082,
-      "avgDepDelay": 9.7,
-      "onTimeRate": 82.2,
+      "flightCount": 8475,
+      "avgDepDelay": 11.1,
+      "onTimeRate": 80.6,
       "monthName": "5月"
     },
     {
       "carrier": "DL",
       "month": 6,
-      "flightCount": 4126,
-      "avgDepDelay": 18.7,
-      "onTimeRate": 73.9,
+      "flightCount": 8441,
+      "avgDepDelay": 15.8,
+      "onTimeRate": 76.1,
       "monthName": "6月"
     },
     {
       "carrier": "DL",
       "month": 7,
-      "flightCount": 4251,
-      "avgDepDelay": 20.6,
-      "onTimeRate": 72.1,
+      "flightCount": 8680,
+      "avgDepDelay": 18.4,
+      "onTimeRate": 75.9,
       "monthName": "7月"
     },
     {
       "carrier": "DL",
       "month": 8,
-      "flightCount": 4318,
-      "avgDepDelay": 9.8,
-      "onTimeRate": 82.1,
+      "flightCount": 8745,
+      "avgDepDelay": 8.8,
+      "onTimeRate": 83.3,
       "monthName": "8月"
     },
     {
       "carrier": "DL",
       "month": 9,
-      "flightCount": 3883,
-      "avgDepDelay": 5.5,
-      "onTimeRate": 89.9,
+      "flightCount": 7983,
+      "avgDepDelay": 5,
+      "onTimeRate": 89,
       "monthName": "9月"
     },
     {
       "carrier": "DL",
       "month": 10,
-      "flightCount": 4093,
-      "avgDepDelay": 3.4,
-      "onTimeRate": 89.1,
+      "flightCount": 8548,
+      "avgDepDelay": 5.1,
+      "onTimeRate": 87.1,
       "monthName": "10月"
     },
     {
@@ -1389,81 +1429,81 @@
     {
       "carrier": "EV",
       "month": 1,
-      "flightCount": 4171,
-      "avgDepDelay": 24.2,
-      "onTimeRate": 64.2,
+      "flightCount": 7739,
+      "avgDepDelay": 27.2,
+      "onTimeRate": 61.4,
       "monthName": "1月"
     },
     {
       "carrier": "EV",
       "month": 2,
-      "flightCount": 3827,
-      "avgDepDelay": 21.5,
-      "onTimeRate": 66.2,
+      "flightCount": 6932,
+      "avgDepDelay": 22.9,
+      "onTimeRate": 64.7,
       "monthName": "2月"
     },
     {
       "carrier": "EV",
       "month": 3,
-      "flightCount": 4726,
-      "avgDepDelay": 26.2,
-      "onTimeRate": 63.2,
+      "flightCount": 9031,
+      "avgDepDelay": 20.8,
+      "onTimeRate": 67.4,
       "monthName": "3月"
     },
     {
       "carrier": "EV",
       "month": 4,
-      "flightCount": 4561,
-      "avgDepDelay": 22.8,
-      "onTimeRate": 67,
+      "flightCount": 8447,
+      "avgDepDelay": 21.3,
+      "onTimeRate": 68.3,
       "monthName": "4月"
     },
     {
       "carrier": "EV",
       "month": 5,
-      "flightCount": 4817,
-      "avgDepDelay": 20.2,
-      "onTimeRate": 65.9,
+      "flightCount": 8418,
+      "avgDepDelay": 20.4,
+      "onTimeRate": 68.3,
       "monthName": "5月"
     },
     {
       "carrier": "EV",
       "month": 6,
-      "flightCount": 4456,
-      "avgDepDelay": 25.5,
-      "onTimeRate": 65.5,
+      "flightCount": 8882,
+      "avgDepDelay": 23.3,
+      "onTimeRate": 66.7,
       "monthName": "6月"
     },
     {
       "carrier": "EV",
       "month": 7,
-      "flightCount": 4641,
-      "avgDepDelay": 26.5,
-      "onTimeRate": 65.7,
+      "flightCount": 9048,
+      "avgDepDelay": 22.1,
+      "onTimeRate": 69.6,
       "monthName": "7月"
     },
     {
       "carrier": "EV",
       "month": 8,
-      "flightCount": 4563,
-      "avgDepDelay": 16.3,
-      "onTimeRate": 74,
+      "flightCount": 9113,
+      "avgDepDelay": 14.9,
+      "onTimeRate": 74.6,
       "monthName": "8月"
     },
     {
       "carrier": "EV",
       "month": 9,
-      "flightCount": 4725,
-      "avgDepDelay": 8.2,
-      "onTimeRate": 82.8,
+      "flightCount": 8896,
+      "avgDepDelay": 8.1,
+      "onTimeRate": 81.8,
       "monthName": "9月"
     },
     {
       "carrier": "EV",
       "month": 10,
-      "flightCount": 4908,
-      "avgDepDelay": 13.4,
-      "onTimeRate": 75.4,
+      "flightCount": 8708,
+      "avgDepDelay": 11,
+      "onTimeRate": 78.2,
       "monthName": "10月"
     },
     {
@@ -1485,81 +1525,81 @@
     {
       "carrier": "F9",
       "month": 1,
-      "flightCount": 59,
-      "avgDepDelay": 10,
-      "onTimeRate": 89.8,
+      "flightCount": 91,
+      "avgDepDelay": 14.5,
+      "onTimeRate": 75.8,
       "monthName": "1月"
     },
     {
       "carrier": "F9",
       "month": 2,
-      "flightCount": 49,
-      "avgDepDelay": 29.8,
-      "onTimeRate": 81.2,
+      "flightCount": 79,
+      "avgDepDelay": 28.5,
+      "onTimeRate": 76.9,
       "monthName": "2月"
     },
     {
       "carrier": "F9",
       "month": 3,
-      "flightCount": 57,
-      "avgDepDelay": 16.8,
-      "onTimeRate": 80.7,
+      "flightCount": 89,
+      "avgDepDelay": 12.8,
+      "onTimeRate": 77.5,
       "monthName": "3月"
     },
     {
       "carrier": "F9",
       "month": 4,
-      "flightCount": 57,
-      "avgDepDelay": 24.6,
-      "onTimeRate": 77.2,
+      "flightCount": 89,
+      "avgDepDelay": 27.6,
+      "onTimeRate": 73,
       "monthName": "4月"
     },
     {
       "carrier": "F9",
       "month": 5,
-      "flightCount": 58,
-      "avgDepDelay": 35.9,
-      "onTimeRate": 51.7,
+      "flightCount": 114,
+      "avgDepDelay": 32.7,
+      "onTimeRate": 54.4,
       "monthName": "5月"
     },
     {
       "carrier": "F9",
       "month": 6,
-      "flightCount": 55,
-      "avgDepDelay": 29.4,
-      "onTimeRate": 52.7,
+      "flightCount": 111,
+      "avgDepDelay": 27.1,
+      "onTimeRate": 53.2,
       "monthName": "6月"
     },
     {
       "carrier": "F9",
       "month": 7,
-      "flightCount": 58,
-      "avgDepDelay": 31.8,
-      "onTimeRate": 44.8,
+      "flightCount": 119,
+      "avgDepDelay": 31.7,
+      "onTimeRate": 50.4,
       "monthName": "7月"
     },
     {
       "carrier": "F9",
       "month": 8,
-      "flightCount": 55,
-      "avgDepDelay": 22.2,
-      "onTimeRate": 63.6,
+      "flightCount": 115,
+      "avgDepDelay": 28.8,
+      "onTimeRate": 57.4,
       "monthName": "8月"
     },
     {
       "carrier": "F9",
       "month": 9,
-      "flightCount": 58,
-      "avgDepDelay": 8.3,
-      "onTimeRate": 80.7,
+      "flightCount": 114,
+      "avgDepDelay": 10.7,
+      "onTimeRate": 74.3,
       "monthName": "9月"
     },
     {
       "carrier": "F9",
       "month": 10,
-      "flightCount": 57,
-      "avgDepDelay": 9.7,
-      "onTimeRate": 78.9,
+      "flightCount": 115,
+      "avgDepDelay": 14.7,
+      "onTimeRate": 70.4,
       "monthName": "10月"
     },
     {
@@ -1581,65 +1621,65 @@
     {
       "carrier": "FL",
       "month": 1,
-      "flightCount": 328,
-      "avgDepDelay": 2,
-      "onTimeRate": 89.8,
+      "flightCount": 514,
+      "avgDepDelay": 9.8,
+      "onTimeRate": 78.2,
       "monthName": "1月"
     },
     {
       "carrier": "FL",
       "month": 2,
-      "flightCount": 296,
-      "avgDepDelay": 5.2,
-      "onTimeRate": 84.4,
+      "flightCount": 455,
+      "avgDepDelay": 11,
+      "onTimeRate": 81,
       "monthName": "2月"
     },
     {
       "carrier": "FL",
       "month": 3,
-      "flightCount": 316,
-      "avgDepDelay": 17.3,
-      "onTimeRate": 75.4,
+      "flightCount": 525,
+      "avgDepDelay": 16.2,
+      "onTimeRate": 75.1,
       "monthName": "3月"
     },
     {
       "carrier": "FL",
       "month": 4,
-      "flightCount": 311,
-      "avgDepDelay": 13.1,
-      "onTimeRate": 77,
+      "flightCount": 511,
+      "avgDepDelay": 12.6,
+      "onTimeRate": 78.8,
       "monthName": "4月"
     },
     {
       "carrier": "FL",
       "month": 5,
-      "flightCount": 325,
-      "avgDepDelay": 19.2,
-      "onTimeRate": 69.9,
+      "flightCount": 529,
+      "avgDepDelay": 22.9,
+      "onTimeRate": 68.1,
       "monthName": "5月"
     },
     {
       "carrier": "FL",
       "month": 6,
-      "flightCount": 252,
-      "avgDepDelay": 38.8,
-      "onTimeRate": 57.2,
+      "flightCount": 389,
+      "avgDepDelay": 31.7,
+      "onTimeRate": 60.3,
       "monthName": "6月"
     },
     {
       "carrier": "FL",
       "month": 7,
-      "flightCount": 263,
-      "avgDepDelay": 41.2,
-      "onTimeRate": 63.9,
+      "flightCount": 384,
+      "avgDepDelay": 36.8,
+      "onTimeRate": 65.4,
       "monthName": "7月"
     },
     {
       "carrier": "FL",
       "month": 8,
-      "flightCount": 263,
-      "avgDepDelay": 23.4,
-      "onTimeRate": 66.8,
+      "flightCount": 298,
+      "avgDepDelay": 23.3,
+      "onTimeRate": 68.7,
       "monthName": "8月"
     },
     {
@@ -1677,81 +1717,81 @@
     {
       "carrier": "HA",
       "month": 1,
-      "flightCount": 31,
-      "avgDepDelay": 54.4,
-      "onTimeRate": 80.6,
+      "flightCount": 60,
+      "avgDepDelay": 48,
+      "onTimeRate": 78.3,
       "monthName": "1月"
     },
     {
       "carrier": "HA",
       "month": 2,
-      "flightCount": 28,
-      "avgDepDelay": 17.4,
-      "onTimeRate": 78.6,
+      "flightCount": 50,
+      "avgDepDelay": 33,
+      "onTimeRate": 82,
       "monthName": "2月"
     },
     {
       "carrier": "HA",
       "month": 3,
-      "flightCount": 31,
-      "avgDepDelay": 1.2,
-      "onTimeRate": 87.1,
+      "flightCount": 54,
+      "avgDepDelay": 0.6,
+      "onTimeRate": 90.7,
       "monthName": "3月"
     },
     {
       "carrier": "HA",
       "month": 4,
-      "flightCount": 30,
-      "avgDepDelay": -2.1,
-      "onTimeRate": 96.7,
+      "flightCount": 52,
+      "avgDepDelay": -3.1,
+      "onTimeRate": 96.2,
       "monthName": "4月"
     },
     {
       "carrier": "HA",
       "month": 5,
-      "flightCount": 31,
-      "avgDepDelay": -1.5,
-      "onTimeRate": 96.8,
+      "flightCount": 58,
+      "avgDepDelay": -2.4,
+      "onTimeRate": 98.3,
       "monthName": "5月"
     },
     {
       "carrier": "HA",
       "month": 6,
-      "flightCount": 30,
-      "avgDepDelay": 1.5,
-      "onTimeRate": 93.3,
+      "flightCount": 59,
+      "avgDepDelay": -0.1,
+      "onTimeRate": 94.9,
       "monthName": "6月"
     },
     {
       "carrier": "HA",
       "month": 7,
-      "flightCount": 31,
-      "avgDepDelay": -1.7,
-      "onTimeRate": 96.8,
+      "flightCount": 62,
+      "avgDepDelay": 0.4,
+      "onTimeRate": 91.9,
       "monthName": "7月"
     },
     {
       "carrier": "HA",
       "month": 8,
-      "flightCount": 31,
-      "avgDepDelay": 1.7,
-      "onTimeRate": 93.5,
+      "flightCount": 61,
+      "avgDepDelay": 1.4,
+      "onTimeRate": 93.4,
       "monthName": "8月"
     },
     {
       "carrier": "HA",
       "month": 9,
-      "flightCount": 25,
-      "avgDepDelay": -5.4,
-      "onTimeRate": 100,
+      "flightCount": 50,
+      "avgDepDelay": -2.2,
+      "onTimeRate": 96,
       "monthName": "9月"
     },
     {
       "carrier": "HA",
       "month": 10,
-      "flightCount": 21,
-      "avgDepDelay": -5.1,
-      "onTimeRate": 100,
+      "flightCount": 43,
+      "avgDepDelay": -3.4,
+      "onTimeRate": 97.7,
       "monthName": "10月"
     },
     {
@@ -1773,81 +1813,81 @@
     {
       "carrier": "MQ",
       "month": 1,
-      "flightCount": 2271,
-      "avgDepDelay": 6.5,
-      "onTimeRate": 83.9,
+      "flightCount": 4059,
+      "avgDepDelay": 11.6,
+      "onTimeRate": 78.9,
       "monthName": "1月"
     },
     {
       "carrier": "MQ",
       "month": 2,
-      "flightCount": 2044,
-      "avgDepDelay": 8.1,
-      "onTimeRate": 81.1,
+      "flightCount": 3655,
+      "avgDepDelay": 8.5,
+      "onTimeRate": 80,
       "monthName": "2月"
     },
     {
       "carrier": "MQ",
       "month": 3,
-      "flightCount": 2256,
-      "avgDepDelay": 7.2,
-      "onTimeRate": 82,
+      "flightCount": 4218,
+      "avgDepDelay": 6.6,
+      "onTimeRate": 82.2,
       "monthName": "3月"
     },
     {
       "carrier": "MQ",
       "month": 4,
-      "flightCount": 2211,
-      "avgDepDelay": 13.7,
-      "onTimeRate": 76.8,
+      "flightCount": 4239,
+      "avgDepDelay": 9,
+      "onTimeRate": 80.7,
       "monthName": "4月"
     },
     {
       "carrier": "MQ",
       "month": 5,
-      "flightCount": 2284,
-      "avgDepDelay": 13.9,
-      "onTimeRate": 75.9,
+      "flightCount": 4237,
+      "avgDepDelay": 11.8,
+      "onTimeRate": 77.6,
       "monthName": "5月"
     },
     {
       "carrier": "MQ",
       "month": 6,
-      "flightCount": 2178,
-      "avgDepDelay": 20.8,
-      "onTimeRate": 70.1,
+      "flightCount": 4075,
+      "avgDepDelay": 15,
+      "onTimeRate": 74,
       "monthName": "6月"
     },
     {
       "carrier": "MQ",
       "month": 7,
-      "flightCount": 2261,
-      "avgDepDelay": 20.7,
-      "onTimeRate": 68.8,
+      "flightCount": 4130,
+      "avgDepDelay": 14,
+      "onTimeRate": 75,
       "monthName": "7月"
     },
     {
       "carrier": "MQ",
       "month": 8,
-      "flightCount": 2263,
-      "avgDepDelay": 10.1,
-      "onTimeRate": 78.4,
+      "flightCount": 4245,
+      "avgDepDelay": 8.3,
+      "onTimeRate": 79.6,
       "monthName": "8月"
     },
     {
       "carrier": "MQ",
       "month": 9,
-      "flightCount": 2206,
-      "avgDepDelay": 5.4,
-      "onTimeRate": 83.8,
+      "flightCount": 3923,
+      "avgDepDelay": 4.8,
+      "onTimeRate": 84.2,
       "monthName": "9月"
     },
     {
       "carrier": "MQ",
       "month": 10,
-      "flightCount": 2228,
-      "avgDepDelay": 4.5,
-      "onTimeRate": 84.4,
+      "flightCount": 3980,
+      "avgDepDelay": 6.6,
+      "onTimeRate": 81.4,
       "monthName": "10月"
     },
     {
@@ -1876,27 +1916,51 @@
     },
     {
       "carrier": "OO",
+      "month": 3,
+      "flightCount": 10,
+      "avgDepDelay": 6.4,
+      "onTimeRate": 90,
+      "monthName": "3月"
+    },
+    {
+      "carrier": "OO",
       "month": 6,
-      "flightCount": 2,
-      "avgDepDelay": 61,
-      "onTimeRate": 50,
+      "flightCount": 11,
+      "avgDepDelay": 14.2,
+      "onTimeRate": 81.8,
       "monthName": "6月"
     },
     {
       "carrier": "OO",
+      "month": 7,
+      "flightCount": 40,
+      "avgDepDelay": 5.3,
+      "onTimeRate": 92.5,
+      "monthName": "7月"
+    },
+    {
+      "carrier": "OO",
       "month": 8,
-      "flightCount": 4,
-      "avgDepDelay": 64,
-      "onTimeRate": 25,
+      "flightCount": 60,
+      "avgDepDelay": 21.6,
+      "onTimeRate": 76.7,
       "monthName": "8月"
     },
     {
       "carrier": "OO",
       "month": 9,
-      "flightCount": 20,
-      "avgDepDelay": -4.9,
-      "onTimeRate": 94.1,
+      "flightCount": 68,
+      "avgDepDelay": 8.6,
+      "onTimeRate": 86.2,
       "monthName": "9月"
+    },
+    {
+      "carrier": "OO",
+      "month": 10,
+      "flightCount": 37,
+      "avgDepDelay": 14.1,
+      "onTimeRate": 73,
+      "monthName": "10月"
     },
     {
       "carrier": "OO",
@@ -1909,81 +1973,81 @@
     {
       "carrier": "UA",
       "month": 1,
-      "flightCount": 4637,
-      "avgDepDelay": 8.3,
-      "onTimeRate": 84,
+      "flightCount": 8866,
+      "avgDepDelay": 13.7,
+      "onTimeRate": 78,
       "monthName": "1月"
     },
     {
       "carrier": "UA",
       "month": 2,
-      "flightCount": 4346,
-      "avgDepDelay": 7.7,
-      "onTimeRate": 83.9,
+      "flightCount": 8164,
+      "avgDepDelay": 13.9,
+      "onTimeRate": 77.2,
       "monthName": "2月"
     },
     {
       "carrier": "UA",
       "month": 3,
-      "flightCount": 4971,
-      "avgDepDelay": 11.7,
+      "flightCount": 9828,
+      "avgDepDelay": 11.4,
       "onTimeRate": 79.3,
       "monthName": "3月"
     },
     {
       "carrier": "UA",
       "month": 4,
-      "flightCount": 5047,
-      "avgDepDelay": 13.7,
-      "onTimeRate": 78.1,
+      "flightCount": 9700,
+      "avgDepDelay": 12.4,
+      "onTimeRate": 78.2,
       "monthName": "4月"
     },
     {
       "carrier": "UA",
       "month": 5,
-      "flightCount": 4960,
-      "avgDepDelay": 12.3,
-      "onTimeRate": 77.6,
+      "flightCount": 9724,
+      "avgDepDelay": 13.2,
+      "onTimeRate": 77.4,
       "monthName": "5月"
     },
     {
       "carrier": "UA",
       "month": 6,
-      "flightCount": 4975,
-      "avgDepDelay": 20.3,
-      "onTimeRate": 70.5,
+      "flightCount": 9846,
+      "avgDepDelay": 18.7,
+      "onTimeRate": 71.3,
       "monthName": "6月"
     },
     {
       "carrier": "UA",
       "month": 7,
-      "flightCount": 5066,
-      "avgDepDelay": 20.1,
-      "onTimeRate": 71.5,
+      "flightCount": 10006,
+      "avgDepDelay": 19.7,
+      "onTimeRate": 72.2,
       "monthName": "7月"
     },
     {
       "carrier": "UA",
       "month": 8,
-      "flightCount": 5124,
+      "flightCount": 9990,
       "avgDepDelay": 12.4,
-      "onTimeRate": 77.3,
+      "onTimeRate": 77.4,
       "monthName": "8月"
     },
     {
       "carrier": "UA",
       "month": 9,
-      "flightCount": 4694,
+      "flightCount": 9137,
       "avgDepDelay": 6.9,
-      "onTimeRate": 87.7,
+      "onTimeRate": 86.1,
       "monthName": "9月"
     },
     {
       "carrier": "UA",
       "month": 10,
-      "flightCount": 5060,
-      "avgDepDelay": 6.6,
-      "onTimeRate": 85.9,
+      "flightCount": 9886,
+      "avgDepDelay": 9.1,
+      "onTimeRate": 82.4,
       "monthName": "10月"
     },
     {
@@ -2005,81 +2069,81 @@
     {
       "carrier": "US",
       "month": 1,
-      "flightCount": 1602,
-      "avgDepDelay": 1.8,
-      "onTimeRate": 89.8,
+      "flightCount": 3162,
+      "avgDepDelay": 2.4,
+      "onTimeRate": 89.1,
       "monthName": "1月"
     },
     {
       "carrier": "US",
       "month": 2,
-      "flightCount": 1552,
-      "avgDepDelay": 1,
-      "onTimeRate": 90.6,
+      "flightCount": 2936,
+      "avgDepDelay": 2.3,
+      "onTimeRate": 89.7,
       "monthName": "2月"
     },
     {
       "carrier": "US",
       "month": 3,
-      "flightCount": 1721,
-      "avgDepDelay": 2.7,
-      "onTimeRate": 88.1,
+      "flightCount": 3439,
+      "avgDepDelay": 1.8,
+      "onTimeRate": 89,
       "monthName": "3月"
     },
     {
       "carrier": "US",
       "month": 4,
-      "flightCount": 1727,
-      "avgDepDelay": 4.1,
-      "onTimeRate": 86.5,
+      "flightCount": 3437,
+      "avgDepDelay": 3.7,
+      "onTimeRate": 87.2,
       "monthName": "4月"
     },
     {
       "carrier": "US",
       "month": 5,
-      "flightCount": 1785,
-      "avgDepDelay": 3.2,
-      "onTimeRate": 87.9,
+      "flightCount": 3473,
+      "avgDepDelay": 4.8,
+      "onTimeRate": 86.5,
       "monthName": "5月"
     },
     {
       "carrier": "US",
       "month": 6,
-      "flightCount": 1736,
-      "avgDepDelay": 10.4,
-      "onTimeRate": 82.1,
+      "flightCount": 3424,
+      "avgDepDelay": 7.9,
+      "onTimeRate": 83.8,
       "monthName": "6月"
     },
     {
       "carrier": "US",
       "month": 7,
-      "flightCount": 1786,
-      "avgDepDelay": 9.4,
-      "onTimeRate": 82.9,
+      "flightCount": 3458,
+      "avgDepDelay": 7.6,
+      "onTimeRate": 84.6,
       "monthName": "7月"
     },
     {
       "carrier": "US",
       "month": 8,
-      "flightCount": 1779,
-      "avgDepDelay": 5,
-      "onTimeRate": 87.4,
+      "flightCount": 3483,
+      "avgDepDelay": 4.1,
+      "onTimeRate": 88.4,
       "monthName": "8月"
     },
     {
       "carrier": "US",
       "month": 9,
-      "flightCount": 1698,
-      "avgDepDelay": 2,
-      "onTimeRate": 90.2,
+      "flightCount": 3448,
+      "avgDepDelay": 1.3,
+      "onTimeRate": 90.8,
       "monthName": "9月"
     },
     {
       "carrier": "US",
       "month": 10,
-      "flightCount": 1846,
-      "avgDepDelay": 0.1,
-      "onTimeRate": 91.9,
+      "flightCount": 3722,
+      "avgDepDelay": 1.6,
+      "onTimeRate": 89.8,
       "monthName": "10月"
     },
     {
@@ -2101,81 +2165,81 @@
     {
       "carrier": "VX",
       "month": 1,
-      "flightCount": 316,
-      "avgDepDelay": 1.1,
-      "onTimeRate": 93.7,
+      "flightCount": 747,
+      "avgDepDelay": 9,
+      "onTimeRate": 83.8,
       "monthName": "1月"
     },
     {
       "carrier": "VX",
       "month": 2,
-      "flightCount": 271,
-      "avgDepDelay": 6.6,
-      "onTimeRate": 87.4,
+      "flightCount": 643,
+      "avgDepDelay": 16.7,
+      "onTimeRate": 82.1,
       "monthName": "2月"
     },
     {
       "carrier": "VX",
       "month": 3,
-      "flightCount": 303,
-      "avgDepDelay": 9.7,
-      "onTimeRate": 81.8,
+      "flightCount": 755,
+      "avgDepDelay": 7.9,
+      "onTimeRate": 85.6,
       "monthName": "3月"
     },
     {
       "carrier": "VX",
       "month": 4,
-      "flightCount": 466,
-      "avgDepDelay": 14.6,
-      "onTimeRate": 79.6,
+      "flightCount": 923,
+      "avgDepDelay": 13.9,
+      "onTimeRate": 82.9,
       "monthName": "4月"
     },
     {
       "carrier": "VX",
       "month": 5,
-      "flightCount": 496,
-      "avgDepDelay": 17.8,
-      "onTimeRate": 73.2,
+      "flightCount": 985,
+      "avgDepDelay": 13.9,
+      "onTimeRate": 80.1,
       "monthName": "5月"
     },
     {
       "carrier": "VX",
       "month": 6,
-      "flightCount": 480,
-      "avgDepDelay": 28.4,
-      "onTimeRate": 71.2,
+      "flightCount": 991,
+      "avgDepDelay": 16.7,
+      "onTimeRate": 79.1,
       "monthName": "6月"
     },
     {
       "carrier": "VX",
       "month": 7,
-      "flightCount": 489,
-      "avgDepDelay": 35.3,
-      "onTimeRate": 69.5,
+      "flightCount": 1029,
+      "avgDepDelay": 23.8,
+      "onTimeRate": 77.5,
       "monthName": "7月"
     },
     {
       "carrier": "VX",
       "month": 8,
-      "flightCount": 489,
-      "avgDepDelay": 6.6,
-      "onTimeRate": 87.1,
+      "flightCount": 1027,
+      "avgDepDelay": 3.8,
+      "onTimeRate": 90.3,
       "monthName": "8月"
     },
     {
       "carrier": "VX",
       "month": 9,
-      "flightCount": 453,
-      "avgDepDelay": 7,
-      "onTimeRate": 89.4,
+      "flightCount": 940,
+      "avgDepDelay": 5.6,
+      "onTimeRate": 89.7,
       "monthName": "9月"
     },
     {
       "carrier": "VX",
       "month": 10,
-      "flightCount": 472,
-      "avgDepDelay": 4,
-      "onTimeRate": 91.5,
+      "flightCount": 992,
+      "avgDepDelay": 9.8,
+      "onTimeRate": 87.5,
       "monthName": "10月"
     },
     {
@@ -2197,81 +2261,81 @@
     {
       "carrier": "WN",
       "month": 1,
-      "flightCount": 996,
-      "avgDepDelay": 9.1,
-      "onTimeRate": 83.2,
+      "flightCount": 1947,
+      "avgDepDelay": 17.3,
+      "onTimeRate": 73.7,
       "monthName": "1月"
     },
     {
       "carrier": "WN",
       "month": 2,
-      "flightCount": 911,
-      "avgDepDelay": 11.8,
-      "onTimeRate": 79.8,
+      "flightCount": 1736,
+      "avgDepDelay": 15.1,
+      "onTimeRate": 77.5,
       "monthName": "2月"
     },
     {
       "carrier": "WN",
       "month": 3,
-      "flightCount": 998,
-      "avgDepDelay": 15.2,
-      "onTimeRate": 75.5,
+      "flightCount": 2070,
+      "avgDepDelay": 13.2,
+      "onTimeRate": 77.4,
       "monthName": "3月"
     },
     {
       "carrier": "WN",
       "month": 4,
-      "flightCount": 980,
-      "avgDepDelay": 18.2,
-      "onTimeRate": 75.9,
+      "flightCount": 2037,
+      "avgDepDelay": 19.3,
+      "onTimeRate": 72.7,
       "monthName": "4月"
     },
     {
       "carrier": "WN",
       "month": 5,
-      "flightCount": 1006,
-      "avgDepDelay": 16.9,
-      "onTimeRate": 73.1,
+      "flightCount": 2190,
+      "avgDepDelay": 24.4,
+      "onTimeRate": 66.1,
       "monthName": "5月"
     },
     {
       "carrier": "WN",
       "month": 6,
-      "flightCount": 1028,
-      "avgDepDelay": 30.5,
-      "onTimeRate": 61.6,
+      "flightCount": 2315,
+      "avgDepDelay": 27,
+      "onTimeRate": 62.6,
       "monthName": "6月"
     },
     {
       "carrier": "WN",
       "month": 7,
-      "flightCount": 1076,
-      "avgDepDelay": 24.6,
-      "onTimeRate": 67.2,
+      "flightCount": 2427,
+      "avgDepDelay": 24.1,
+      "onTimeRate": 68.3,
       "monthName": "7月"
     },
     {
       "carrier": "WN",
       "month": 8,
-      "flightCount": 1047,
-      "avgDepDelay": 21.8,
-      "onTimeRate": 69.1,
+      "flightCount": 2440,
+      "avgDepDelay": 19.1,
+      "onTimeRate": 72.6,
       "monthName": "8月"
     },
     {
       "carrier": "WN",
       "month": 9,
-      "flightCount": 1010,
-      "avgDepDelay": 14.2,
-      "onTimeRate": 79.4,
+      "flightCount": 2369,
+      "avgDepDelay": 11,
+      "onTimeRate": 81.4,
       "monthName": "9月"
     },
     {
       "carrier": "WN",
       "month": 10,
-      "flightCount": 1091,
-      "avgDepDelay": 12.5,
-      "onTimeRate": 77.6,
+      "flightCount": 2514,
+      "avgDepDelay": 12.3,
+      "onTimeRate": 76.8,
       "monthName": "10月"
     },
     {
@@ -2510,541 +2574,618 @@
     {
       "carrier": "AA",
       "hour": 5,
-      "flightCount": 365,
-      "avgDepDelay": 0.7,
-      "onTimeRate": 96.4
+      "flightCount": 1607,
+      "avgDepDelay": -3.1,
+      "onTimeRate": 98.9
     },
     {
       "carrier": "AA",
       "hour": 6,
-      "flightCount": 2553,
-      "avgDepDelay": -1,
-      "onTimeRate": 95.5
+      "flightCount": 4634,
+      "avgDepDelay": -1.5,
+      "onTimeRate": 96
     },
     {
       "carrier": "AA",
       "hour": 7,
-      "flightCount": 3348,
-      "avgDepDelay": -0.5,
-      "onTimeRate": 94.7
+      "flightCount": 5840,
+      "avgDepDelay": -0.3,
+      "onTimeRate": 94.8
     },
     {
       "carrier": "AA",
       "hour": 8,
-      "flightCount": 1934,
-      "avgDepDelay": 2.1,
-      "onTimeRate": 92.1
+      "flightCount": 3794,
+      "avgDepDelay": 3.1,
+      "onTimeRate": 90.6
     },
     {
       "carrier": "AA",
       "hour": 9,
-      "flightCount": 2467,
-      "avgDepDelay": 2.8,
-      "onTimeRate": 90.7
+      "flightCount": 3803,
+      "avgDepDelay": 3.9,
+      "onTimeRate": 89.4
     },
     {
       "carrier": "AA",
       "hour": 10,
-      "flightCount": 1408,
-      "avgDepDelay": 5.9,
-      "onTimeRate": 87.7
+      "flightCount": 2878,
+      "avgDepDelay": 5,
+      "onTimeRate": 87.6
     },
     {
       "carrier": "AA",
       "hour": 11,
-      "flightCount": 1373,
-      "avgDepDelay": 5.1,
-      "onTimeRate": 87.1
+      "flightCount": 2516,
+      "avgDepDelay": 6.8,
+      "onTimeRate": 86
     },
     {
       "carrier": "AA",
       "hour": 12,
-      "flightCount": 2315,
-      "avgDepDelay": 4.9,
-      "onTimeRate": 87.3
+      "flightCount": 3973,
+      "avgDepDelay": 4,
+      "onTimeRate": 88.3
     },
     {
       "carrier": "AA",
       "hour": 13,
-      "flightCount": 1728,
-      "avgDepDelay": 7.4,
-      "onTimeRate": 84.7
+      "flightCount": 2784,
+      "avgDepDelay": 7.5,
+      "onTimeRate": 84.5
     },
     {
       "carrier": "AA",
       "hour": 14,
-      "flightCount": 1624,
-      "avgDepDelay": 7.8,
+      "flightCount": 3158,
+      "avgDepDelay": 5.3,
+      "onTimeRate": 87.6
+    },
+    {
+      "carrier": "AA",
+      "hour": 15,
+      "flightCount": 4310,
+      "avgDepDelay": 10.5,
+      "onTimeRate": 80.2
+    },
+    {
+      "carrier": "AA",
+      "hour": 16,
+      "flightCount": 4162,
+      "avgDepDelay": 9.3,
+      "onTimeRate": 80.4
+    },
+    {
+      "carrier": "AA",
+      "hour": 17,
+      "flightCount": 6753,
+      "avgDepDelay": 15.5,
+      "onTimeRate": 75.3
+    },
+    {
+      "carrier": "AA",
+      "hour": 18,
+      "flightCount": 3190,
+      "avgDepDelay": 17.5,
+      "onTimeRate": 72
+    },
+    {
+      "carrier": "AA",
+      "hour": 19,
+      "flightCount": 3490,
+      "avgDepDelay": 19.4,
+      "onTimeRate": 71.4
+    },
+    {
+      "carrier": "AA",
+      "hour": 20,
+      "flightCount": 1248,
+      "avgDepDelay": 27.5,
+      "onTimeRate": 64
+    },
+    {
+      "carrier": "AA",
+      "hour": 21,
+      "flightCount": 739,
+      "avgDepDelay": 45.4,
+      "onTimeRate": 52.6
+    },
+    {
+      "carrier": "AA",
+      "hour": 22,
+      "flightCount": 100,
+      "avgDepDelay": 146.5,
+      "onTimeRate": 6
+    },
+    {
+      "carrier": "AA",
+      "hour": 23,
+      "flightCount": 40,
+      "avgDepDelay": 243,
+      "onTimeRate": 0
+    },
+    {
+      "carrier": "AS",
+      "hour": 7,
+      "flightCount": 605,
+      "avgDepDelay": -2.2,
+      "onTimeRate": 95.2
+    },
+    {
+      "carrier": "AS",
+      "hour": 18,
+      "flightCount": 610,
+      "avgDepDelay": 6.6,
       "onTimeRate": 84.4
     },
     {
-      "carrier": "AA",
-      "hour": 15,
-      "flightCount": 2687,
-      "avgDepDelay": 12.3,
-      "onTimeRate": 79
-    },
-    {
-      "carrier": "AA",
-      "hour": 16,
-      "flightCount": 2115,
-      "avgDepDelay": 12,
-      "onTimeRate": 77.8
-    },
-    {
-      "carrier": "AA",
-      "hour": 17,
-      "flightCount": 4099,
-      "avgDepDelay": 19.9,
-      "onTimeRate": 73
-    },
-    {
-      "carrier": "AA",
-      "hour": 18,
-      "flightCount": 1777,
-      "avgDepDelay": 14.4,
-      "onTimeRate": 77.3
-    },
-    {
-      "carrier": "AA",
+      "carrier": "AS",
       "hour": 19,
-      "flightCount": 2008,
-      "avgDepDelay": 21.3,
-      "onTimeRate": 70.1
+      "flightCount": 32,
+      "avgDepDelay": 48.9,
+      "onTimeRate": 0
     },
     {
-      "carrier": "AA",
+      "carrier": "AS",
       "hour": 20,
-      "flightCount": 510,
-      "avgDepDelay": 12.3,
-      "onTimeRate": 77.3
-    },
-    {
-      "carrier": "AA",
-      "hour": 21,
-      "flightCount": 418,
-      "avgDepDelay": 18.5,
-      "onTimeRate": 72.1
-    },
-    {
-      "carrier": "AS",
-      "hour": 7,
-      "flightCount": 349,
-      "avgDepDelay": -1.6,
-      "onTimeRate": 95.1
-    },
-    {
-      "carrier": "AS",
-      "hour": 18,
-      "flightCount": 365,
-      "avgDepDelay": 12.9,
-      "onTimeRate": 78.8
+      "flightCount": 10,
+      "avgDepDelay": 120.5,
+      "onTimeRate": 0
     },
     {
       "carrier": "B6",
       "hour": 5,
-      "flightCount": 376,
-      "avgDepDelay": 0,
-      "onTimeRate": 93.1
+      "flightCount": 1737,
+      "avgDepDelay": -3.4,
+      "onTimeRate": 98.5
     },
     {
       "carrier": "B6",
       "hour": 6,
-      "flightCount": 4716,
-      "avgDepDelay": 0.5,
-      "onTimeRate": 92.8
+      "flightCount": 7820,
+      "avgDepDelay": -0.3,
+      "onTimeRate": 93.9
     },
     {
       "carrier": "B6",
       "hour": 7,
-      "flightCount": 3588,
-      "avgDepDelay": 1.4,
-      "onTimeRate": 91.4
+      "flightCount": 6985,
+      "avgDepDelay": 0.1,
+      "onTimeRate": 92.9
     },
     {
       "carrier": "B6",
       "hour": 8,
-      "flightCount": 3610,
-      "avgDepDelay": 2.6,
-      "onTimeRate": 89.9
+      "flightCount": 6533,
+      "avgDepDelay": 1.9,
+      "onTimeRate": 90.7
     },
     {
       "carrier": "B6",
       "hour": 9,
-      "flightCount": 4624,
-      "avgDepDelay": 3.5,
-      "onTimeRate": 87.9
-    },
-    {
-      "carrier": "B6",
-      "hour": 10,
-      "flightCount": 2176,
-      "avgDepDelay": 6.6,
-      "onTimeRate": 84.7
-    },
-    {
-      "carrier": "B6",
-      "hour": 11,
-      "flightCount": 1642,
-      "avgDepDelay": 6,
-      "onTimeRate": 84.3
-    },
-    {
-      "carrier": "B6",
-      "hour": 12,
-      "flightCount": 2412,
-      "avgDepDelay": 9,
-      "onTimeRate": 80.1
-    },
-    {
-      "carrier": "B6",
-      "hour": 13,
-      "flightCount": 3505,
-      "avgDepDelay": 12.5,
-      "onTimeRate": 75.6
-    },
-    {
-      "carrier": "B6",
-      "hour": 14,
-      "flightCount": 3847,
-      "avgDepDelay": 14.7,
-      "onTimeRate": 73.6
-    },
-    {
-      "carrier": "B6",
-      "hour": 15,
-      "flightCount": 1569,
-      "avgDepDelay": 19.9,
-      "onTimeRate": 69.4
-    },
-    {
-      "carrier": "B6",
-      "hour": 16,
-      "flightCount": 3331,
-      "avgDepDelay": 19.2,
-      "onTimeRate": 71.6
-    },
-    {
-      "carrier": "B6",
-      "hour": 17,
-      "flightCount": 3996,
-      "avgDepDelay": 22,
-      "onTimeRate": 69.3
-    },
-    {
-      "carrier": "B6",
-      "hour": 18,
-      "flightCount": 2776,
-      "avgDepDelay": 21.1,
-      "onTimeRate": 68.6
-    },
-    {
-      "carrier": "B6",
-      "hour": 19,
-      "flightCount": 1958,
-      "avgDepDelay": 24.6,
-      "onTimeRate": 64.4
-    },
-    {
-      "carrier": "B6",
-      "hour": 20,
-      "flightCount": 3747,
-      "avgDepDelay": 22.8,
-      "onTimeRate": 64.8
-    },
-    {
-      "carrier": "B6",
-      "hour": 21,
-      "flightCount": 3375,
-      "avgDepDelay": 29.8,
-      "onTimeRate": 58.8
-    },
-    {
-      "carrier": "B6",
-      "hour": 22,
-      "flightCount": 2348,
-      "avgDepDelay": 18,
-      "onTimeRate": 69.1
-    },
-    {
-      "carrier": "B6",
-      "hour": 23,
-      "flightCount": 1039,
-      "avgDepDelay": 14.1,
-      "onTimeRate": 74
-    },
-    {
-      "carrier": "DL",
-      "hour": 6,
-      "flightCount": 2253,
-      "avgDepDelay": -0.5,
-      "onTimeRate": 96.6
-    },
-    {
-      "carrier": "DL",
-      "hour": 7,
-      "flightCount": 3787,
-      "avgDepDelay": -0.1,
-      "onTimeRate": 95.9
-    },
-    {
-      "carrier": "DL",
-      "hour": 8,
-      "flightCount": 4867,
-      "avgDepDelay": 1,
-      "onTimeRate": 94
-    },
-    {
-      "carrier": "DL",
-      "hour": 9,
-      "flightCount": 2569,
+      "flightCount": 7631,
       "avgDepDelay": 2.6,
-      "onTimeRate": 92
+      "onTimeRate": 88.9
     },
     {
-      "carrier": "DL",
+      "carrier": "B6",
       "hour": 10,
-      "flightCount": 2322,
-      "avgDepDelay": 3.2,
-      "onTimeRate": 91.7
+      "flightCount": 3929,
+      "avgDepDelay": 6.7,
+      "onTimeRate": 84.4
     },
     {
-      "carrier": "DL",
+      "carrier": "B6",
       "hour": 11,
-      "flightCount": 3420,
-      "avgDepDelay": 5.6,
-      "onTimeRate": 87.1
-    },
-    {
-      "carrier": "DL",
-      "hour": 12,
-      "flightCount": 2172,
-      "avgDepDelay": 5.5,
-      "onTimeRate": 87.3
-    },
-    {
-      "carrier": "DL",
-      "hour": 13,
-      "flightCount": 1674,
-      "avgDepDelay": 7.6,
-      "onTimeRate": 85.2
-    },
-    {
-      "carrier": "DL",
-      "hour": 14,
-      "flightCount": 2803,
-      "avgDepDelay": 11.3,
-      "onTimeRate": 82.1
-    },
-    {
-      "carrier": "DL",
-      "hour": 15,
-      "flightCount": 4090,
-      "avgDepDelay": 13,
-      "onTimeRate": 76.8
-    },
-    {
-      "carrier": "DL",
-      "hour": 16,
-      "flightCount": 3618,
-      "avgDepDelay": 13.6,
-      "onTimeRate": 79
-    },
-    {
-      "carrier": "DL",
-      "hour": 17,
-      "flightCount": 3657,
-      "avgDepDelay": 14.5,
-      "onTimeRate": 77
-    },
-    {
-      "carrier": "DL",
-      "hour": 18,
-      "flightCount": 3977,
-      "avgDepDelay": 16.8,
-      "onTimeRate": 74.7
-    },
-    {
-      "carrier": "DL",
-      "hour": 19,
-      "flightCount": 5010,
-      "avgDepDelay": 18.7,
-      "onTimeRate": 73.4
-    },
-    {
-      "carrier": "DL",
-      "hour": 20,
-      "flightCount": 1013,
-      "avgDepDelay": 18.3,
-      "onTimeRate": 74.4
-    },
-    {
-      "carrier": "DL",
-      "hour": 21,
-      "flightCount": 832,
-      "avgDepDelay": 22,
-      "onTimeRate": 64.8
-    },
-    {
-      "carrier": "DL",
-      "hour": 22,
-      "flightCount": 33,
-      "avgDepDelay": 16.4,
-      "onTimeRate": 63.6
-    },
-    {
-      "carrier": "DL",
-      "hour": 23,
-      "flightCount": 13,
-      "avgDepDelay": 0,
-      "onTimeRate": 84.6
-    },
-    {
-      "carrier": "EV",
-      "hour": 5,
-      "flightCount": 31,
-      "avgDepDelay": 11.3,
-      "onTimeRate": 80.6
-    },
-    {
-      "carrier": "EV",
-      "hour": 6,
-      "flightCount": 4895,
-      "avgDepDelay": 5.4,
-      "onTimeRate": 88.5
-    },
-    {
-      "carrier": "EV",
-      "hour": 7,
-      "flightCount": 2370,
+      "flightCount": 3180,
       "avgDepDelay": 6.8,
-      "onTimeRate": 82.6
+      "onTimeRate": 84.1
     },
     {
-      "carrier": "EV",
-      "hour": 8,
-      "flightCount": 5101,
-      "avgDepDelay": 7.8,
-      "onTimeRate": 82.7
-    },
-    {
-      "carrier": "EV",
-      "hour": 9,
-      "flightCount": 2545,
-      "avgDepDelay": 9.9,
-      "onTimeRate": 81
-    },
-    {
-      "carrier": "EV",
-      "hour": 10,
-      "flightCount": 3383,
-      "avgDepDelay": 11.6,
-      "onTimeRate": 79.2
-    },
-    {
-      "carrier": "EV",
-      "hour": 11,
-      "flightCount": 2420,
-      "avgDepDelay": 12.9,
-      "onTimeRate": 76.9
-    },
-    {
-      "carrier": "EV",
+      "carrier": "B6",
       "hour": 12,
-      "flightCount": 3062,
-      "avgDepDelay": 15.9,
-      "onTimeRate": 72.2
+      "flightCount": 3905,
+      "avgDepDelay": 8,
+      "onTimeRate": 82.8
     },
     {
-      "carrier": "EV",
+      "carrier": "B6",
       "hour": 13,
-      "flightCount": 3763,
-      "avgDepDelay": 18.2,
-      "onTimeRate": 70.3
+      "flightCount": 6476,
+      "avgDepDelay": 9.3,
+      "onTimeRate": 79.7
     },
     {
-      "carrier": "EV",
+      "carrier": "B6",
       "hour": 14,
-      "flightCount": 3924,
-      "avgDepDelay": 24.4,
+      "flightCount": 6427,
+      "avgDepDelay": 12.9,
+      "onTimeRate": 75.2
+    },
+    {
+      "carrier": "B6",
+      "hour": 15,
+      "flightCount": 3444,
+      "avgDepDelay": 18.9,
+      "onTimeRate": 66.7
+    },
+    {
+      "carrier": "B6",
+      "hour": 16,
+      "flightCount": 5928,
+      "avgDepDelay": 16.6,
+      "onTimeRate": 74.1
+    },
+    {
+      "carrier": "B6",
+      "hour": 17,
+      "flightCount": 6905,
+      "avgDepDelay": 18.4,
+      "onTimeRate": 71.4
+    },
+    {
+      "carrier": "B6",
+      "hour": 18,
+      "flightCount": 4853,
+      "avgDepDelay": 19.9,
+      "onTimeRate": 69.8
+    },
+    {
+      "carrier": "B6",
+      "hour": 19,
+      "flightCount": 3939,
+      "avgDepDelay": 24.8,
       "onTimeRate": 63.5
     },
     {
+      "carrier": "B6",
+      "hour": 20,
+      "flightCount": 6484,
+      "avgDepDelay": 20.5,
+      "onTimeRate": 68.3
+    },
+    {
+      "carrier": "B6",
+      "hour": 21,
+      "flightCount": 5772,
+      "avgDepDelay": 26.7,
+      "onTimeRate": 61.6
+    },
+    {
+      "carrier": "B6",
+      "hour": 22,
+      "flightCount": 4342,
+      "avgDepDelay": 22.3,
+      "onTimeRate": 66.1
+    },
+    {
+      "carrier": "B6",
+      "hour": 23,
+      "flightCount": 2203,
+      "avgDepDelay": 29.9,
+      "onTimeRate": 60.2
+    },
+    {
+      "carrier": "DL",
+      "hour": 5,
+      "flightCount": 622,
+      "avgDepDelay": -4,
+      "onTimeRate": 100
+    },
+    {
+      "carrier": "DL",
+      "hour": 6,
+      "flightCount": 4535,
+      "avgDepDelay": -1.3,
+      "onTimeRate": 97.4
+    },
+    {
+      "carrier": "DL",
+      "hour": 7,
+      "flightCount": 6302,
+      "avgDepDelay": 0.2,
+      "onTimeRate": 95.2
+    },
+    {
+      "carrier": "DL",
+      "hour": 8,
+      "flightCount": 10017,
+      "avgDepDelay": 1,
+      "onTimeRate": 94.2
+    },
+    {
+      "carrier": "DL",
+      "hour": 9,
+      "flightCount": 4571,
+      "avgDepDelay": 5.2,
+      "onTimeRate": 88
+    },
+    {
+      "carrier": "DL",
+      "hour": 10,
+      "flightCount": 4640,
+      "avgDepDelay": 5,
+      "onTimeRate": 90.3
+    },
+    {
+      "carrier": "DL",
+      "hour": 11,
+      "flightCount": 6542,
+      "avgDepDelay": 5.4,
+      "onTimeRate": 88.2
+    },
+    {
+      "carrier": "DL",
+      "hour": 12,
+      "flightCount": 3901,
+      "avgDepDelay": 9.6,
+      "onTimeRate": 82.9
+    },
+    {
+      "carrier": "DL",
+      "hour": 13,
+      "flightCount": 3164,
+      "avgDepDelay": 10.8,
+      "onTimeRate": 81.5
+    },
+    {
+      "carrier": "DL",
+      "hour": 14,
+      "flightCount": 4858,
+      "avgDepDelay": 9.9,
+      "onTimeRate": 84.7
+    },
+    {
+      "carrier": "DL",
+      "hour": 15,
+      "flightCount": 7108,
+      "avgDepDelay": 11.5,
+      "onTimeRate": 78.9
+    },
+    {
+      "carrier": "DL",
+      "hour": 16,
+      "flightCount": 6783,
+      "avgDepDelay": 12.7,
+      "onTimeRate": 77.9
+    },
+    {
+      "carrier": "DL",
+      "hour": 17,
+      "flightCount": 6057,
+      "avgDepDelay": 14.9,
+      "onTimeRate": 74.6
+    },
+    {
+      "carrier": "DL",
+      "hour": 18,
+      "flightCount": 7660,
+      "avgDepDelay": 14.4,
+      "onTimeRate": 76.3
+    },
+    {
+      "carrier": "DL",
+      "hour": 19,
+      "flightCount": 7970,
+      "avgDepDelay": 18.7,
+      "onTimeRate": 70.8
+    },
+    {
+      "carrier": "DL",
+      "hour": 20,
+      "flightCount": 2629,
+      "avgDepDelay": 27.5,
+      "onTimeRate": 61.6
+    },
+    {
+      "carrier": "DL",
+      "hour": 21,
+      "flightCount": 1723,
+      "avgDepDelay": 42.2,
+      "onTimeRate": 51
+    },
+    {
+      "carrier": "DL",
+      "hour": 22,
+      "flightCount": 328,
+      "avgDepDelay": 119.5,
+      "onTimeRate": 16.5
+    },
+    {
+      "carrier": "DL",
+      "hour": 23,
+      "flightCount": 236,
+      "avgDepDelay": 84,
+      "onTimeRate": 55.5
+    },
+    {
+      "carrier": "EV",
+      "hour": 5,
+      "flightCount": 788,
+      "avgDepDelay": -4.3,
+      "onTimeRate": 99.1
+    },
+    {
+      "carrier": "EV",
+      "hour": 6,
+      "flightCount": 7314,
+      "avgDepDelay": 2.9,
+      "onTimeRate": 91
+    },
+    {
+      "carrier": "EV",
+      "hour": 7,
+      "flightCount": 3908,
+      "avgDepDelay": 5.6,
+      "onTimeRate": 83.8
+    },
+    {
+      "carrier": "EV",
+      "hour": 8,
+      "flightCount": 8554,
+      "avgDepDelay": 5.5,
+      "onTimeRate": 85.1
+    },
+    {
+      "carrier": "EV",
+      "hour": 9,
+      "flightCount": 5249,
+      "avgDepDelay": 8.4,
+      "onTimeRate": 81.2
+    },
+    {
+      "carrier": "EV",
+      "hour": 10,
+      "flightCount": 5844,
+      "avgDepDelay": 11.1,
+      "onTimeRate": 78.9
+    },
+    {
+      "carrier": "EV",
+      "hour": 11,
+      "flightCount": 3949,
+      "avgDepDelay": 13.8,
+      "onTimeRate": 75.6
+    },
+    {
+      "carrier": "EV",
+      "hour": 12,
+      "flightCount": 5026,
+      "avgDepDelay": 14.1,
+      "onTimeRate": 75.4
+    },
+    {
+      "carrier": "EV",
+      "hour": 13,
+      "flightCount": 6081,
+      "avgDepDelay": 16.5,
+      "onTimeRate": 71.6
+    },
+    {
+      "carrier": "EV",
+      "hour": 14,
+      "flightCount": 6605,
+      "avgDepDelay": 19.4,
+      "onTimeRate": 68.7
+    },
+    {
       "carrier": "EV",
       "hour": 15,
-      "flightCount": 3767,
-      "avgDepDelay": 26.8,
-      "onTimeRate": 60.8
+      "flightCount": 6891,
+      "avgDepDelay": 22.2,
+      "onTimeRate": 63.6
     },
     {
       "carrier": "EV",
       "hour": 16,
-      "flightCount": 4018,
-      "avgDepDelay": 29.3,
-      "onTimeRate": 60.2
+      "flightCount": 6558,
+      "avgDepDelay": 25.9,
+      "onTimeRate": 61.6
     },
     {
       "carrier": "EV",
       "hour": 17,
-      "flightCount": 2478,
-      "avgDepDelay": 33.1,
-      "onTimeRate": 55.3
+      "flightCount": 4696,
+      "avgDepDelay": 30.9,
+      "onTimeRate": 56.2
     },
     {
       "carrier": "EV",
       "hour": 18,
-      "flightCount": 1384,
-      "avgDepDelay": 32.5,
-      "onTimeRate": 58.4
+      "flightCount": 2918,
+      "avgDepDelay": 33.4,
+      "onTimeRate": 57.1
     },
     {
       "carrier": "EV",
       "hour": 19,
-      "flightCount": 4507,
-      "avgDepDelay": 36,
-      "onTimeRate": 54.1
+      "flightCount": 7040,
+      "avgDepDelay": 29,
+      "onTimeRate": 61.3
     },
     {
       "carrier": "EV",
       "hour": 20,
-      "flightCount": 3401,
-      "avgDepDelay": 31.8,
-      "onTimeRate": 56
-    },
-    {
-      "carrier": "EV",
-      "hour": 21,
-      "flightCount": 2902,
-      "avgDepDelay": 27.8,
+      "flightCount": 5925,
+      "avgDepDelay": 28.5,
       "onTimeRate": 58.1
     },
     {
       "carrier": "EV",
+      "hour": 21,
+      "flightCount": 5100,
+      "avgDepDelay": 32.4,
+      "onTimeRate": 54.1
+    },
+    {
+      "carrier": "EV",
       "hour": 22,
-      "flightCount": 222,
-      "avgDepDelay": 28.2,
-      "onTimeRate": 58
+      "flightCount": 1189,
+      "avgDepDelay": 65.1,
+      "onTimeRate": 27.3
+    },
+    {
+      "carrier": "EV",
+      "hour": 23,
+      "flightCount": 275,
+      "avgDepDelay": 137.6,
+      "onTimeRate": 0.7
+    },
+    {
+      "carrier": "F9",
+      "hour": 6,
+      "flightCount": 30,
+      "avgDepDelay": -1.1,
+      "onTimeRate": 100
+    },
+    {
+      "carrier": "F9",
+      "hour": 7,
+      "flightCount": 93,
+      "avgDepDelay": 18,
+      "onTimeRate": 62.4
     },
     {
       "carrier": "F9",
       "hour": 8,
-      "flightCount": 175,
-      "avgDepDelay": 6.6,
-      "onTimeRate": 93.1
+      "flightCount": 200,
+      "avgDepDelay": 7.5,
+      "onTimeRate": 91
     },
     {
       "carrier": "F9",
       "hour": 13,
-      "flightCount": 153,
-      "avgDepDelay": 14.6,
-      "onTimeRate": 69.3
+      "flightCount": 179,
+      "avgDepDelay": 11.9,
+      "onTimeRate": 72.6
+    },
+    {
+      "carrier": "F9",
+      "hour": 16,
+      "flightCount": 86,
+      "avgDepDelay": 3.9,
+      "onTimeRate": 79.1
     },
     {
       "carrier": "F9",
       "hour": 17,
-      "flightCount": 355,
-      "avgDepDelay": 29.4,
-      "onTimeRate": 62.6
+      "flightCount": 491,
+      "avgDepDelay": 25.1,
+      "onTimeRate": 62.2
+    },
+    {
+      "carrier": "F9",
+      "hour": 18,
+      "flightCount": 39,
+      "avgDepDelay": 58.2,
+      "onTimeRate": 0
+    },
+    {
+      "carrier": "F9",
+      "hour": 19,
+      "flightCount": 13,
+      "avgDepDelay": 131.4,
+      "onTimeRate": 0
     },
     {
       "carrier": "FL",
@@ -3063,205 +3204,296 @@
     {
       "carrier": "FL",
       "hour": 8,
-      "flightCount": 235,
-      "avgDepDelay": 3,
-      "onTimeRate": 91.4
+      "flightCount": 299,
+      "avgDepDelay": 1.3,
+      "onTimeRate": 93.3
     },
     {
       "carrier": "FL",
       "hour": 9,
-      "flightCount": 123,
-      "avgDepDelay": 18.9,
-      "onTimeRate": 82.9
+      "flightCount": 295,
+      "avgDepDelay": 7.9,
+      "onTimeRate": 88.5
     },
     {
       "carrier": "FL",
       "hour": 10,
-      "flightCount": 223,
-      "avgDepDelay": 5.7,
-      "onTimeRate": 86.2
+      "flightCount": 319,
+      "avgDepDelay": 7,
+      "onTimeRate": 83.1
     },
     {
       "carrier": "FL",
       "hour": 11,
-      "flightCount": 218,
-      "avgDepDelay": 7.7,
-      "onTimeRate": 75.5
+      "flightCount": 316,
+      "avgDepDelay": 6.5,
+      "onTimeRate": 80
+    },
+    {
+      "carrier": "FL",
+      "hour": 12,
+      "flightCount": 41,
+      "avgDepDelay": 25.7,
+      "onTimeRate": 43.9
     },
     {
       "carrier": "FL",
       "hour": 13,
-      "flightCount": 321,
-      "avgDepDelay": 17.3,
-      "onTimeRate": 73.8
+      "flightCount": 400,
+      "avgDepDelay": 17.7,
+      "onTimeRate": 74.2
     },
     {
       "carrier": "FL",
       "hour": 14,
-      "flightCount": 542,
-      "avgDepDelay": 22.2,
-      "onTimeRate": 69.1
+      "flightCount": 658,
+      "avgDepDelay": 19.8,
+      "onTimeRate": 71
+    },
+    {
+      "carrier": "FL",
+      "hour": 15,
+      "flightCount": 25,
+      "avgDepDelay": 47.6,
+      "onTimeRate": 20
     },
     {
       "carrier": "FL",
       "hour": 16,
-      "flightCount": 152,
-      "avgDepDelay": 11.8,
-      "onTimeRate": 78.4
+      "flightCount": 214,
+      "avgDepDelay": 12.6,
+      "onTimeRate": 80.5
     },
     {
       "carrier": "FL",
       "hour": 17,
-      "flightCount": 372,
-      "avgDepDelay": 34.8,
-      "onTimeRate": 54.4
+      "flightCount": 508,
+      "avgDepDelay": 28.7,
+      "onTimeRate": 57.6
     },
     {
       "carrier": "FL",
       "hour": 18,
-      "flightCount": 225,
-      "avgDepDelay": 38.6,
-      "onTimeRate": 60.9
+      "flightCount": 294,
+      "avgDepDelay": 41.6,
+      "onTimeRate": 48.8
     },
     {
       "carrier": "FL",
       "hour": 19,
-      "flightCount": 143,
-      "avgDepDelay": 14.4,
-      "onTimeRate": 72.7
+      "flightCount": 255,
+      "avgDepDelay": 14.1,
+      "onTimeRate": 77.3
     },
     {
       "carrier": "FL",
       "hour": 20,
-      "flightCount": 337,
-      "avgDepDelay": 32.6,
-      "onTimeRate": 59.4
+      "flightCount": 463,
+      "avgDepDelay": 28.5,
+      "onTimeRate": 61.2
+    },
+    {
+      "carrier": "FL",
+      "hour": 21,
+      "flightCount": 36,
+      "avgDepDelay": 88.3,
+      "onTimeRate": 0
+    },
+    {
+      "carrier": "FL",
+      "hour": 22,
+      "flightCount": 10,
+      "avgDepDelay": 259.9,
+      "onTimeRate": 0
+    },
+    {
+      "carrier": "HA",
+      "hour": 8,
+      "flightCount": 29,
+      "avgDepDelay": -5,
+      "onTimeRate": 100
     },
     {
       "carrier": "HA",
       "hour": 9,
-      "flightCount": 96,
-      "avgDepDelay": 22.5,
-      "onTimeRate": 84.4
+      "flightCount": 277,
+      "avgDepDelay": 4.9,
+      "onTimeRate": 93.5
     },
     {
       "carrier": "HA",
       "hour": 10,
-      "flightCount": 246,
-      "avgDepDelay": -2,
-      "onTimeRate": 96.3
+      "flightCount": 287,
+      "avgDepDelay": 0.9,
+      "onTimeRate": 93.4
     },
     {
       "carrier": "MQ",
       "hour": 6,
-      "flightCount": 1432,
-      "avgDepDelay": -0.3,
-      "onTimeRate": 93.5
+      "flightCount": 2089,
+      "avgDepDelay": -1.7,
+      "onTimeRate": 94.9
     },
     {
       "carrier": "MQ",
       "hour": 7,
-      "flightCount": 992,
-      "avgDepDelay": 3.1,
-      "onTimeRate": 89.7
+      "flightCount": 1662,
+      "avgDepDelay": 0,
+      "onTimeRate": 92.5
     },
     {
       "carrier": "MQ",
       "hour": 8,
-      "flightCount": 2410,
-      "avgDepDelay": 2.6,
-      "onTimeRate": 88
+      "flightCount": 4101,
+      "avgDepDelay": 0.8,
+      "onTimeRate": 90.1
     },
     {
       "carrier": "MQ",
       "hour": 9,
-      "flightCount": 868,
-      "avgDepDelay": 4.7,
-      "onTimeRate": 84.9
-    },
-    {
-      "carrier": "MQ",
-      "hour": 10,
-      "flightCount": 1171,
-      "avgDepDelay": 5.7,
-      "onTimeRate": 84.3
-    },
-    {
-      "carrier": "MQ",
-      "hour": 11,
-      "flightCount": 1909,
-      "avgDepDelay": 8,
-      "onTimeRate": 82.4
-    },
-    {
-      "carrier": "MQ",
-      "hour": 12,
-      "flightCount": 1701,
-      "avgDepDelay": 6.2,
-      "onTimeRate": 83.2
-    },
-    {
-      "carrier": "MQ",
-      "hour": 13,
-      "flightCount": 1730,
-      "avgDepDelay": 9.6,
-      "onTimeRate": 77.6
-    },
-    {
-      "carrier": "MQ",
-      "hour": 14,
-      "flightCount": 2089,
-      "avgDepDelay": 7.2,
+      "flightCount": 1629,
+      "avgDepDelay": 4.8,
       "onTimeRate": 83.5
     },
     {
       "carrier": "MQ",
+      "hour": 10,
+      "flightCount": 2001,
+      "avgDepDelay": 4.7,
+      "onTimeRate": 85
+    },
+    {
+      "carrier": "MQ",
+      "hour": 11,
+      "flightCount": 2974,
+      "avgDepDelay": 6.9,
+      "onTimeRate": 81.9
+    },
+    {
+      "carrier": "MQ",
+      "hour": 12,
+      "flightCount": 2983,
+      "avgDepDelay": 5.5,
+      "onTimeRate": 83.9
+    },
+    {
+      "carrier": "MQ",
+      "hour": 13,
+      "flightCount": 2749,
+      "avgDepDelay": 8.3,
+      "onTimeRate": 79.2
+    },
+    {
+      "carrier": "MQ",
+      "hour": 14,
+      "flightCount": 4126,
+      "avgDepDelay": 3.5,
+      "onTimeRate": 88
+    },
+    {
+      "carrier": "MQ",
       "hour": 15,
-      "flightCount": 2981,
-      "avgDepDelay": 13.3,
-      "onTimeRate": 74.7
+      "flightCount": 4779,
+      "avgDepDelay": 11,
+      "onTimeRate": 76
     },
     {
       "carrier": "MQ",
       "hour": 16,
-      "flightCount": 1790,
-      "avgDepDelay": 16.7,
-      "onTimeRate": 72.8
+      "flightCount": 3669,
+      "avgDepDelay": 13.2,
+      "onTimeRate": 74.7
     },
     {
       "carrier": "MQ",
       "hour": 17,
-      "flightCount": 1475,
-      "avgDepDelay": 16.6,
-      "onTimeRate": 72.9
+      "flightCount": 2510,
+      "avgDepDelay": 17.7,
+      "onTimeRate": 69
     },
     {
       "carrier": "MQ",
       "hour": 18,
-      "flightCount": 2167,
-      "avgDepDelay": 19.4,
-      "onTimeRate": 68.6
+      "flightCount": 3201,
+      "avgDepDelay": 17.4,
+      "onTimeRate": 70.9
     },
     {
       "carrier": "MQ",
       "hour": 19,
-      "flightCount": 1247,
-      "avgDepDelay": 19.9,
-      "onTimeRate": 68.7
+      "flightCount": 2321,
+      "avgDepDelay": 16.1,
+      "onTimeRate": 72.6
     },
     {
       "carrier": "MQ",
       "hour": 20,
-      "flightCount": 970,
-      "avgDepDelay": 20.7,
-      "onTimeRate": 67.9
+      "flightCount": 1846,
+      "avgDepDelay": 21.1,
+      "onTimeRate": 63.8
     },
     {
       "carrier": "MQ",
       "hour": 21,
-      "flightCount": 1465,
-      "avgDepDelay": 15.7,
-      "onTimeRate": 70.1
+      "flightCount": 2137,
+      "avgDepDelay": 19.3,
+      "onTimeRate": 66.7
+    },
+    {
+      "carrier": "MQ",
+      "hour": 22,
+      "flightCount": 144,
+      "avgDepDelay": 98.1,
+      "onTimeRate": 0.7
+    },
+    {
+      "carrier": "MQ",
+      "hour": 23,
+      "flightCount": 25,
+      "avgDepDelay": 149.2,
+      "onTimeRate": 0
+    },
+    {
+      "carrier": "OO",
+      "hour": 7,
+      "flightCount": 55,
+      "avgDepDelay": -0.9,
+      "onTimeRate": 94.5
+    },
+    {
+      "carrier": "OO",
+      "hour": 8,
+      "flightCount": 14,
+      "avgDepDelay": 0.3,
+      "onTimeRate": 100
+    },
+    {
+      "carrier": "OO",
+      "hour": 9,
+      "flightCount": 11,
+      "avgDepDelay": 17.4,
+      "onTimeRate": 81.8
+    },
+    {
+      "carrier": "OO",
+      "hour": 12,
+      "flightCount": 30,
+      "avgDepDelay": -3.2,
+      "onTimeRate": 100
+    },
+    {
+      "carrier": "OO",
+      "hour": 13,
+      "flightCount": 47,
+      "avgDepDelay": 1.7,
+      "onTimeRate": 93.6
+    },
+    {
+      "carrier": "OO",
+      "hour": 14,
+      "flightCount": 25,
+      "avgDepDelay": 25.2,
+      "onTimeRate": 44
     },
     {
       "carrier": "OO",
@@ -3273,415 +3505,513 @@
     {
       "carrier": "UA",
       "hour": 5,
-      "flightCount": 840,
-      "avgDepDelay": 2.2,
-      "onTimeRate": 92.7
+      "flightCount": 1970,
+      "avgDepDelay": -0.7,
+      "onTimeRate": 96.6
     },
     {
       "carrier": "UA",
       "hour": 6,
-      "flightCount": 5399,
-      "avgDepDelay": 2.7,
-      "onTimeRate": 91.3
+      "flightCount": 9144,
+      "avgDepDelay": 1.5,
+      "onTimeRate": 93
     },
     {
       "carrier": "UA",
       "hour": 7,
-      "flightCount": 4460,
-      "avgDepDelay": 3.3,
-      "onTimeRate": 90.5
+      "flightCount": 7852,
+      "avgDepDelay": 2.7,
+      "onTimeRate": 90.7
     },
     {
       "carrier": "UA",
       "hour": 8,
-      "flightCount": 4468,
-      "avgDepDelay": 4.8,
-      "onTimeRate": 88.4
+      "flightCount": 8378,
+      "avgDepDelay": 3.8,
+      "onTimeRate": 89.4
     },
     {
       "carrier": "UA",
       "hour": 9,
-      "flightCount": 3145,
-      "avgDepDelay": 6.1,
-      "onTimeRate": 86
+      "flightCount": 5702,
+      "avgDepDelay": 6.8,
+      "onTimeRate": 83.8
     },
     {
       "carrier": "UA",
       "hour": 10,
-      "flightCount": 3025,
-      "avgDepDelay": 7.2,
-      "onTimeRate": 85.7
+      "flightCount": 5117,
+      "avgDepDelay": 8,
+      "onTimeRate": 84.6
     },
     {
       "carrier": "UA",
       "hour": 11,
-      "flightCount": 2681,
-      "avgDepDelay": 6.5,
+      "flightCount": 4935,
+      "avgDepDelay": 7.3,
       "onTimeRate": 86.5
     },
     {
       "carrier": "UA",
       "hour": 12,
-      "flightCount": 3083,
-      "avgDepDelay": 8,
-      "onTimeRate": 84.8
+      "flightCount": 5143,
+      "avgDepDelay": 8.7,
+      "onTimeRate": 83.8
     },
     {
       "carrier": "UA",
       "hour": 13,
-      "flightCount": 3301,
-      "avgDepDelay": 11.6,
-      "onTimeRate": 78.9
+      "flightCount": 5380,
+      "avgDepDelay": 12,
+      "onTimeRate": 78.4
     },
     {
       "carrier": "UA",
       "hour": 14,
-      "flightCount": 3937,
-      "avgDepDelay": 12.6,
-      "onTimeRate": 78.1
+      "flightCount": 6842,
+      "avgDepDelay": 11.5,
+      "onTimeRate": 79.1
     },
     {
       "carrier": "UA",
       "hour": 15,
-      "flightCount": 4685,
-      "avgDepDelay": 15.9,
-      "onTimeRate": 75.3
-    },
-    {
-      "carrier": "UA",
-      "hour": 16,
-      "flightCount": 2764,
-      "avgDepDelay": 16.5,
+      "flightCount": 8315,
+      "avgDepDelay": 14.6,
       "onTimeRate": 74.2
     },
     {
       "carrier": "UA",
+      "hour": 16,
+      "flightCount": 5246,
+      "avgDepDelay": 17.9,
+      "onTimeRate": 71.7
+    },
+    {
+      "carrier": "UA",
       "hour": 17,
-      "flightCount": 4903,
-      "avgDepDelay": 19.3,
-      "onTimeRate": 70
+      "flightCount": 8427,
+      "avgDepDelay": 17.5,
+      "onTimeRate": 70.5
     },
     {
       "carrier": "UA",
       "hour": 18,
-      "flightCount": 3978,
-      "avgDepDelay": 22.6,
-      "onTimeRate": 65.1
+      "flightCount": 7066,
+      "avgDepDelay": 21.7,
+      "onTimeRate": 64.5
     },
     {
       "carrier": "UA",
       "hour": 19,
-      "flightCount": 2845,
-      "avgDepDelay": 23.3,
-      "onTimeRate": 63.7
+      "flightCount": 5400,
+      "avgDepDelay": 24.7,
+      "onTimeRate": 60.5
     },
     {
       "carrier": "UA",
       "hour": 20,
-      "flightCount": 3931,
-      "avgDepDelay": 23.1,
-      "onTimeRate": 64.3
+      "flightCount": 6464,
+      "avgDepDelay": 24.6,
+      "onTimeRate": 62.8
     },
     {
       "carrier": "UA",
       "hour": 21,
-      "flightCount": 1199,
-      "avgDepDelay": 21,
-      "onTimeRate": 63.8
+      "flightCount": 2766,
+      "avgDepDelay": 35.3,
+      "onTimeRate": 51.9
     },
     {
       "carrier": "UA",
       "hour": 22,
-      "flightCount": 12,
-      "avgDepDelay": 31.7,
-      "onTimeRate": 45.5
+      "flightCount": 534,
+      "avgDepDelay": 96.1,
+      "onTimeRate": 13.7
+    },
+    {
+      "carrier": "UA",
+      "hour": 23,
+      "flightCount": 174,
+      "avgDepDelay": 154.4,
+      "onTimeRate": 4.6
     },
     {
       "carrier": "US",
       "hour": 5,
-      "flightCount": 341,
-      "avgDepDelay": -3.1,
-      "onTimeRate": 97.1
+      "flightCount": 993,
+      "avgDepDelay": -4.4,
+      "onTimeRate": 98.1
     },
     {
       "carrier": "US",
       "hour": 6,
-      "flightCount": 2645,
-      "avgDepDelay": -1.2,
-      "onTimeRate": 94.7
+      "flightCount": 4447,
+      "avgDepDelay": -2.1,
+      "onTimeRate": 96
     },
     {
       "carrier": "US",
       "hour": 7,
-      "flightCount": 912,
-      "avgDepDelay": -2.5,
-      "onTimeRate": 95.8
+      "flightCount": 1709,
+      "avgDepDelay": -2,
+      "onTimeRate": 94.3
     },
     {
       "carrier": "US",
       "hour": 8,
-      "flightCount": 1525,
-      "avgDepDelay": -0.6,
-      "onTimeRate": 93.3
+      "flightCount": 2796,
+      "avgDepDelay": -1.4,
+      "onTimeRate": 94.1
     },
     {
       "carrier": "US",
       "hour": 9,
-      "flightCount": 948,
-      "avgDepDelay": -2.5,
-      "onTimeRate": 94.8
+      "flightCount": 1657,
+      "avgDepDelay": -1.9,
+      "onTimeRate": 93.9
     },
     {
       "carrier": "US",
       "hour": 10,
-      "flightCount": 1944,
-      "avgDepDelay": 0.3,
-      "onTimeRate": 92.7
+      "flightCount": 3329,
+      "avgDepDelay": -0.1,
+      "onTimeRate": 93.2
     },
     {
       "carrier": "US",
       "hour": 11,
-      "flightCount": 966,
-      "avgDepDelay": 0.7,
-      "onTimeRate": 90.5
+      "flightCount": 2033,
+      "avgDepDelay": 1.9,
+      "onTimeRate": 88.7
     },
     {
       "carrier": "US",
       "hour": 12,
-      "flightCount": 1350,
-      "avgDepDelay": 2.2,
+      "flightCount": 2247,
+      "avgDepDelay": 2.4,
+      "onTimeRate": 88.6
+    },
+    {
+      "carrier": "US",
+      "hour": 13,
+      "flightCount": 2828,
+      "avgDepDelay": 2.6,
+      "onTimeRate": 90
+    },
+    {
+      "carrier": "US",
+      "hour": 14,
+      "flightCount": 1952,
+      "avgDepDelay": 2.6,
       "onTimeRate": 88.3
     },
     {
       "carrier": "US",
-      "hour": 13,
-      "flightCount": 1577,
-      "avgDepDelay": 3.3,
-      "onTimeRate": 88.4
-    },
-    {
-      "carrier": "US",
-      "hour": 14,
-      "flightCount": 965,
-      "avgDepDelay": 1.3,
-      "onTimeRate": 90.7
-    },
-    {
-      "carrier": "US",
       "hour": 15,
-      "flightCount": 1529,
-      "avgDepDelay": 9.8,
-      "onTimeRate": 79.7
+      "flightCount": 2609,
+      "avgDepDelay": 7.6,
+      "onTimeRate": 82
     },
     {
       "carrier": "US",
       "hour": 16,
-      "flightCount": 1257,
-      "avgDepDelay": 9.7,
-      "onTimeRate": 81.8
+      "flightCount": 2313,
+      "avgDepDelay": 7.6,
+      "onTimeRate": 83.6
     },
     {
       "carrier": "US",
       "hour": 17,
-      "flightCount": 1267,
-      "avgDepDelay": 12.5,
-      "onTimeRate": 77.6
+      "flightCount": 2396,
+      "avgDepDelay": 11.1,
+      "onTimeRate": 77.7
     },
     {
       "carrier": "US",
       "hour": 18,
-      "flightCount": 1589,
-      "avgDepDelay": 10.1,
-      "onTimeRate": 81.2
+      "flightCount": 2732,
+      "avgDepDelay": 8.5,
+      "onTimeRate": 82.1
     },
     {
       "carrier": "US",
       "hour": 19,
-      "flightCount": 550,
-      "avgDepDelay": 13.9,
-      "onTimeRate": 74.2
+      "flightCount": 1226,
+      "avgDepDelay": 16.5,
+      "onTimeRate": 69.8
     },
     {
       "carrier": "US",
       "hour": 20,
-      "flightCount": 582,
-      "avgDepDelay": 10.1,
-      "onTimeRate": 78.9
+      "flightCount": 1025,
+      "avgDepDelay": 15.6,
+      "onTimeRate": 74.5
     },
     {
       "carrier": "US",
       "hour": 21,
-      "flightCount": 588,
-      "avgDepDelay": 9.1,
-      "onTimeRate": 79
+      "flightCount": 726,
+      "avgDepDelay": 17.1,
+      "onTimeRate": 72.4
+    },
+    {
+      "carrier": "US",
+      "hour": 22,
+      "flightCount": 30,
+      "avgDepDelay": 125.3,
+      "onTimeRate": 0
+    },
+    {
+      "carrier": "VX",
+      "hour": 6,
+      "flightCount": 168,
+      "avgDepDelay": -4.3,
+      "onTimeRate": 100
     },
     {
       "carrier": "VX",
       "hour": 7,
-      "flightCount": 973,
-      "avgDepDelay": 0.9,
-      "onTimeRate": 95.2
+      "flightCount": 1590,
+      "avgDepDelay": 0.1,
+      "onTimeRate": 95.4
+    },
+    {
+      "carrier": "VX",
+      "hour": 8,
+      "flightCount": 105,
+      "avgDepDelay": 4.1,
+      "onTimeRate": 83.8
     },
     {
       "carrier": "VX",
       "hour": 9,
-      "flightCount": 984,
-      "avgDepDelay": 2.1,
-      "onTimeRate": 92.6
+      "flightCount": 1716,
+      "avgDepDelay": 0.5,
+      "onTimeRate": 94.4
     },
     {
       "carrier": "VX",
       "hour": 10,
-      "flightCount": 638,
-      "avgDepDelay": 13.6,
-      "onTimeRate": 83.5
+      "flightCount": 1158,
+      "avgDepDelay": 8.7,
+      "onTimeRate": 86.5
+    },
+    {
+      "carrier": "VX",
+      "hour": 11,
+      "flightCount": 291,
+      "avgDepDelay": 11.1,
+      "onTimeRate": 79.7
+    },
+    {
+      "carrier": "VX",
+      "hour": 12,
+      "flightCount": 484,
+      "avgDepDelay": 6.4,
+      "onTimeRate": 90.5
     },
     {
       "carrier": "VX",
       "hour": 13,
-      "flightCount": 637,
-      "avgDepDelay": 4.8,
-      "onTimeRate": 92.7
+      "flightCount": 833,
+      "avgDepDelay": 9.2,
+      "onTimeRate": 88.4
+    },
+    {
+      "carrier": "VX",
+      "hour": 14,
+      "flightCount": 18,
+      "avgDepDelay": 176.9,
+      "onTimeRate": 5.6
     },
     {
       "carrier": "VX",
       "hour": 16,
-      "flightCount": 729,
-      "avgDepDelay": 22.8,
-      "onTimeRate": 68.4
+      "flightCount": 1207,
+      "avgDepDelay": 15.2,
+      "onTimeRate": 78.7
     },
     {
       "carrier": "VX",
       "hour": 17,
-      "flightCount": 312,
-      "avgDepDelay": 29.6,
-      "onTimeRate": 66.7
+      "flightCount": 855,
+      "avgDepDelay": 16.8,
+      "onTimeRate": 74.3
     },
     {
       "carrier": "VX",
       "hour": 18,
-      "flightCount": 533,
-      "avgDepDelay": 30.2,
-      "onTimeRate": 68.4
+      "flightCount": 760,
+      "avgDepDelay": 26,
+      "onTimeRate": 69.8
+    },
+    {
+      "carrier": "VX",
+      "hour": 19,
+      "flightCount": 126,
+      "avgDepDelay": 38.4,
+      "onTimeRate": 54
     },
     {
       "carrier": "VX",
       "hour": 20,
-      "flightCount": 340,
-      "avgDepDelay": 28.7,
-      "onTimeRate": 63.6
+      "flightCount": 570,
+      "avgDepDelay": 27.6,
+      "onTimeRate": 68.3
+    },
+    {
+      "carrier": "VX",
+      "hour": 21,
+      "flightCount": 44,
+      "avgDepDelay": 169.6,
+      "onTimeRate": 0
+    },
+    {
+      "carrier": "VX",
+      "hour": 22,
+      "flightCount": 10,
+      "avgDepDelay": 208.3,
+      "onTimeRate": 0
+    },
+    {
+      "carrier": "VX",
+      "hour": 23,
+      "flightCount": 14,
+      "avgDepDelay": 275.2,
+      "onTimeRate": 0
+    },
+    {
+      "carrier": "WN",
+      "hour": 5,
+      "flightCount": 264,
+      "avgDepDelay": -3.6,
+      "onTimeRate": 100
     },
     {
       "carrier": "WN",
       "hour": 6,
-      "flightCount": 1526,
-      "avgDepDelay": 3.5,
-      "onTimeRate": 92.5
+      "flightCount": 2722,
+      "avgDepDelay": 1.4,
+      "onTimeRate": 94.8
     },
     {
       "carrier": "WN",
       "hour": 7,
-      "flightCount": 1351,
-      "avgDepDelay": 4.2,
-      "onTimeRate": 91
+      "flightCount": 2480,
+      "avgDepDelay": 2.4,
+      "onTimeRate": 92.6
     },
     {
       "carrier": "WN",
       "hour": 8,
-      "flightCount": 180,
-      "avgDepDelay": 1.9,
-      "onTimeRate": 94.7
+      "flightCount": 492,
+      "avgDepDelay": 3.6,
+      "onTimeRate": 90.7
     },
     {
       "carrier": "WN",
       "hour": 9,
-      "flightCount": 989,
-      "avgDepDelay": 5.3,
-      "onTimeRate": 89.2
+      "flightCount": 1705,
+      "avgDepDelay": 4.1,
+      "onTimeRate": 90.3
     },
     {
       "carrier": "WN",
       "hour": 10,
-      "flightCount": 34,
-      "avgDepDelay": 6.1,
-      "onTimeRate": 88.2
+      "flightCount": 516,
+      "avgDepDelay": 6.9,
+      "onTimeRate": 82.4
     },
     {
       "carrier": "WN",
       "hour": 11,
-      "flightCount": 920,
-      "avgDepDelay": 10.1,
-      "onTimeRate": 81.1
+      "flightCount": 1741,
+      "avgDepDelay": 8.9,
+      "onTimeRate": 81.2
     },
     {
       "carrier": "WN",
       "hour": 12,
-      "flightCount": 1611,
-      "avgDepDelay": 12.8,
-      "onTimeRate": 76
+      "flightCount": 2730,
+      "avgDepDelay": 11,
+      "onTimeRate": 78.8
     },
     {
       "carrier": "WN",
       "hour": 13,
-      "flightCount": 1119,
-      "avgDepDelay": 16.8,
-      "onTimeRate": 70.1
+      "flightCount": 2028,
+      "avgDepDelay": 15.8,
+      "onTimeRate": 69.2
     },
     {
       "carrier": "WN",
       "hour": 14,
-      "flightCount": 74,
-      "avgDepDelay": 11.8,
-      "onTimeRate": 73
+      "flightCount": 408,
+      "avgDepDelay": 29.2,
+      "onTimeRate": 53.2
     },
     {
       "carrier": "WN",
       "hour": 15,
-      "flightCount": 981,
-      "avgDepDelay": 25.4,
-      "onTimeRate": 62.4
+      "flightCount": 1495,
+      "avgDepDelay": 21.8,
+      "onTimeRate": 68.9
     },
     {
       "carrier": "WN",
       "hour": 16,
-      "flightCount": 583,
-      "avgDepDelay": 29.6,
-      "onTimeRate": 51.7
+      "flightCount": 1403,
+      "avgDepDelay": 24.1,
+      "onTimeRate": 57.5
     },
     {
       "carrier": "WN",
       "hour": 17,
-      "flightCount": 970,
-      "avgDepDelay": 34.6,
-      "onTimeRate": 54.4
+      "flightCount": 1850,
+      "avgDepDelay": 29.1,
+      "onTimeRate": 54
     },
     {
       "carrier": "WN",
       "hour": 18,
-      "flightCount": 951,
-      "avgDepDelay": 38.7,
-      "onTimeRate": 50.5
+      "flightCount": 1802,
+      "avgDepDelay": 35.6,
+      "onTimeRate": 48.4
     },
     {
       "carrier": "WN",
       "hour": 19,
-      "flightCount": 392,
-      "avgDepDelay": 39.6,
-      "onTimeRate": 52.3
+      "flightCount": 842,
+      "avgDepDelay": 45.8,
+      "onTimeRate": 45.6
     },
     {
       "carrier": "WN",
       "hour": 20,
-      "flightCount": 536,
-      "avgDepDelay": 40.8,
-      "onTimeRate": 49.8
+      "flightCount": 1076,
+      "avgDepDelay": 37.9,
+      "onTimeRate": 54
     },
     {
       "carrier": "WN",
       "hour": 21,
-      "flightCount": 58,
-      "avgDepDelay": 18.5,
-      "onTimeRate": 76.4
+      "flightCount": 405,
+      "avgDepDelay": 68.5,
+      "onTimeRate": 23.4
+    },
+    {
+      "carrier": "WN",
+      "hour": 22,
+      "flightCount": 127,
+      "avgDepDelay": 147.8,
+      "onTimeRate": 0
+    },
+    {
+      "carrier": "WN",
+      "hour": 23,
+      "flightCount": 63,
+      "avgDepDelay": 209.5,
+      "onTimeRate": 0
     },
     {
       "carrier": "YV",
@@ -3723,86 +4053,98 @@
     {
       "carrier": "UA",
       "carrier_name": "United Air Lines Inc.",
-      "flightCount": 58665,
-      "planeCount": 620,
-      "avgDepDelay": 12.1,
-      "avgArrDelay": 3.6,
-      "onTimeRate": 79,
-      "severeDelayRate": 6.6,
-      "avgDistance": 1529,
-      "destCount": 47
+      "flightCount": 104932,
+      "planeCount": 661,
+      "avgDepDelay": 13.1,
+      "avgArrDelay": 5.3,
+      "onTimeRate": 77.8,
+      "severeDelayRate": 7,
+      "avgDistance": 1543,
+      "destCount": 49
     },
     {
       "carrier": "B6",
       "carrier_name": "JetBlue Airways",
-      "flightCount": 54635,
-      "planeCount": 193,
-      "avgDepDelay": 13,
-      "avgArrDelay": 9.5,
-      "onTimeRate": 77.2,
-      "severeDelayRate": 8.4,
+      "flightCount": 99114,
+      "planeCount": 200,
+      "avgDepDelay": 12.6,
+      "avgArrDelay": 9.8,
+      "onTimeRate": 78,
+      "severeDelayRate": 8.1,
       "avgDistance": 1069,
-      "destCount": 42
+      "destCount": 44
     },
     {
       "carrier": "EV",
       "carrier_name": "ExpressJet Airlines Inc.",
-      "flightCount": 54173,
-      "planeCount": 316,
-      "avgDepDelay": 20,
-      "avgArrDelay": 15.8,
-      "onTimeRate": 69.5,
-      "severeDelayRate": 13.4,
-      "avgDistance": 563,
-      "destCount": 61
+      "flightCount": 93992,
+      "planeCount": 373,
+      "avgDepDelay": 18.9,
+      "avgArrDelay": 14.7,
+      "onTimeRate": 70.4,
+      "severeDelayRate": 12.6,
+      "avgDistance": 564,
+      "destCount": 65
     },
     {
       "carrier": "DL",
       "carrier_name": "Delta Air Lines Inc.",
-      "flightCount": 48110,
-      "planeCount": 629,
-      "avgDepDelay": 9.3,
-      "avgArrDelay": 1.6,
-      "onTimeRate": 83.7,
-      "severeDelayRate": 5.6,
-      "avgDistance": 1237,
-      "destCount": 40
+      "flightCount": 89793,
+      "planeCount": 732,
+      "avgDepDelay": 10.6,
+      "avgArrDelay": 3.3,
+      "onTimeRate": 82.4,
+      "severeDelayRate": 6,
+      "avgDistance": 1248,
+      "destCount": 49
     },
     {
       "carrier": "AA",
       "carrier_name": "American Airlines Inc.",
-      "flightCount": 32729,
-      "planeCount": 600,
+      "flightCount": 59031,
+      "planeCount": 635,
       "avgDepDelay": 8.6,
-      "avgArrDelay": 0.4,
-      "onTimeRate": 84.1,
-      "severeDelayRate": 6.2,
-      "avgDistance": 1340,
-      "destCount": 19
+      "avgArrDelay": 2.7,
+      "onTimeRate": 84,
+      "severeDelayRate": 6.1,
+      "avgDistance": 1360,
+      "destCount": 21
     },
     {
       "carrier": "MQ",
       "carrier_name": "Envoy Air",
-      "flightCount": 26397,
-      "planeCount": 237,
-      "avgDepDelay": 10.6,
-      "avgArrDelay": 10.8,
-      "onTimeRate": 78.9,
-      "severeDelayRate": 7.9,
-      "avgDistance": 570,
-      "destCount": 20
+      "flightCount": 44956,
+      "planeCount": 241,
+      "avgDepDelay": 9.5,
+      "avgArrDelay": 10.2,
+      "onTimeRate": 79.5,
+      "severeDelayRate": 7.3,
+      "avgDistance": 557,
+      "destCount": 29
     },
     {
       "carrier": "US",
       "carrier_name": "US Airways Inc.",
-      "flightCount": 20536,
-      "planeCount": 289,
-      "avgDepDelay": 3.8,
-      "avgArrDelay": 2.1,
-      "onTimeRate": 87.8,
-      "severeDelayRate": 3.9,
-      "avgDistance": 553,
-      "destCount": 6
+      "flightCount": 37286,
+      "planeCount": 324,
+      "avgDepDelay": 3.7,
+      "avgArrDelay": 1.6,
+      "onTimeRate": 87.9,
+      "severeDelayRate": 3.8,
+      "avgDistance": 551,
+      "destCount": 8
+    },
+    {
+      "carrier": "WN",
+      "carrier_name": "Southwest Airlines Co.",
+      "flightCount": 24177,
+      "planeCount": 628,
+      "avgDepDelay": 18.3,
+      "avgArrDelay": 10.4,
+      "onTimeRate": 72.4,
+      "severeDelayRate": 9.5,
+      "avgDistance": 990,
+      "destCount": 12
     },
     {
       "carrier": "9E",
@@ -3817,63 +4159,63 @@
       "destCount": 49
     },
     {
-      "carrier": "WN",
-      "carrier_name": "Southwest Airlines Co.",
-      "flightCount": 12275,
-      "planeCount": 582,
-      "avgDepDelay": 17.7,
-      "avgArrDelay": 9.6,
-      "onTimeRate": 73.1,
-      "severeDelayRate": 8.8,
-      "avgDistance": 996,
-      "destCount": 11
-    },
-    {
       "carrier": "VX",
       "carrier_name": "Virgin America",
-      "flightCount": 5162,
+      "flightCount": 9959,
       "planeCount": 53,
-      "avgDepDelay": 12.9,
-      "avgArrDelay": 1.8,
-      "onTimeRate": 82.6,
-      "severeDelayRate": 7.1,
+      "avgDepDelay": 11.7,
+      "avgArrDelay": 2.5,
+      "onTimeRate": 84.1,
+      "severeDelayRate": 6.7,
       "avgDistance": 2499,
-      "destCount": 5
+      "destCount": 6
     },
     {
       "carrier": "FL",
       "carrier_name": "AirTran Airways Corporation",
-      "flightCount": 3260,
+      "flightCount": 4511,
       "planeCount": 129,
-      "avgDepDelay": 18.7,
-      "avgArrDelay": 20.1,
-      "onTimeRate": 73.3,
-      "severeDelayRate": 9.9,
-      "avgDistance": 665,
+      "avgDepDelay": 19.3,
+      "avgArrDelay": 18.3,
+      "onTimeRate": 72.5,
+      "severeDelayRate": 10.1,
+      "avgDistance": 664,
       "destCount": 3
     },
     {
       "carrier": "AS",
       "carrier_name": "Alaska Airlines Inc.",
-      "flightCount": 714,
-      "planeCount": 84,
-      "avgDepDelay": 5.8,
-      "avgArrDelay": -9.9,
-      "onTimeRate": 86.8,
-      "severeDelayRate": 5.5,
+      "flightCount": 1288,
+      "planeCount": 95,
+      "avgDepDelay": 7.2,
+      "avgArrDelay": -7.2,
+      "onTimeRate": 85.3,
+      "severeDelayRate": 5.8,
       "avgDistance": 2402,
       "destCount": 1
     },
     {
       "carrier": "F9",
       "carrier_name": "Frontier Airlines Inc.",
-      "flightCount": 685,
-      "planeCount": 25,
-      "avgDepDelay": 20.2,
-      "avgArrDelay": 21.9,
-      "onTimeRate": 71.8,
-      "severeDelayRate": 10.7,
-      "avgDistance": 1620,
+      "flightCount": 1158,
+      "planeCount": 28,
+      "avgDepDelay": 22.1,
+      "avgArrDelay": 23.8,
+      "onTimeRate": 66.8,
+      "severeDelayRate": 11.7,
+      "avgDistance": 1614,
+      "destCount": 2
+    },
+    {
+      "carrier": "HA",
+      "carrier_name": "Hawaiian Airlines Inc.",
+      "flightCount": 602,
+      "planeCount": 19,
+      "avgDepDelay": 6.5,
+      "avgArrDelay": 1.4,
+      "onTimeRate": 92.4,
+      "severeDelayRate": 3.7,
+      "avgDistance": 4983,
       "destCount": 1
     },
     {
@@ -3889,16 +4231,16 @@
       "destCount": 3
     },
     {
-      "carrier": "HA",
-      "carrier_name": "Hawaiian Airlines Inc.",
-      "flightCount": 342,
-      "planeCount": 14,
-      "avgDepDelay": 4.9,
-      "avgArrDelay": -6.9,
-      "onTimeRate": 93,
-      "severeDelayRate": 2.9,
-      "avgDistance": 4983,
-      "destCount": 1
+      "carrier": "OO",
+      "carrier_name": "SkyWest Airlines Inc.",
+      "flightCount": 232,
+      "planeCount": 48,
+      "avgDepDelay": 12.6,
+      "avgArrDelay": 14.5,
+      "onTimeRate": 82.5,
+      "severeDelayRate": 8.7,
+      "avgDistance": 689,
+      "destCount": 5
     }
   ]
 }

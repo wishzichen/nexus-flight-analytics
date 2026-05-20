@@ -141,6 +141,13 @@ month_options <- detail_table %>%
                        "7月", "8月", "9月", "10月", "11月", "12月")[month]) %>%
   arrange(month)
 
+# 年份列表
+year_options <- detail_table %>%
+  group_by(year) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  mutate(label = as.character(year)) %>%
+  arrange(year)
+
 # ==============================================================================
 # 4. 按日期排序并收集所有数据
 # ==============================================================================
@@ -163,17 +170,23 @@ metadata <- list(
   originOptions = origin_options,
   delayLevelOptions = delay_level_options,
   monthOptions = month_options,
-  totalRecords = nrow(detail_table_sorted)
+  yearOptions = year_options,
+  totalRecords = nrow(detail_table_sorted),
+  chunkSize = 50000,
+  chunkCount = ceiling(nrow(detail_table_sorted) / 50000)
 )
 
 # 保存元数据
 write_json(metadata, "data/module8/explorer_metadata.json", auto_unbox = TRUE, pretty = TRUE)
+write_json(metadata, "data/module8/explorer_data.json", auto_unbox = TRUE, pretty = TRUE)
+write_json(summary_stats, "data/module8/full_summary.json", auto_unbox = TRUE, pretty = TRUE)
 cat("元数据保存完成\n")
 
 # 分块保存完整数据（每块50000条）
 chunk_size <- 50000
 total_records <- nrow(detail_table_sorted)
 num_chunks <- ceiling(total_records / chunk_size)
+unlink(list.files("data/module8", pattern = "^full_data_chunk_\\d+\\.json$", full.names = TRUE))
 
 for (i in 1:num_chunks) {
   start_idx <- (i - 1) * chunk_size + 1
@@ -189,6 +202,7 @@ for (i in 1:num_chunks) {
 # 保存第一页数据用于快速加载
 first_page <- detail_table_sorted[1:100, ]
 write_json(first_page, "data/module8/first_page.json", auto_unbox = TRUE, pretty = TRUE)
+write_json(first_page, "data/module8/full_first_page.json", auto_unbox = TRUE, pretty = TRUE)
 cat("第一页数据保存完成\n")
 
 # ==============================================================================
@@ -200,6 +214,7 @@ write_json(dest_options, "data/module8/dest_options.json", auto_unbox = TRUE, pr
 write_json(origin_options, "data/module8/origin_options.json", auto_unbox = TRUE, pretty = TRUE)
 write_json(delay_level_options, "data/module8/delay_level_options.json", auto_unbox = TRUE, pretty = TRUE)
 write_json(month_options, "data/module8/month_options.json", auto_unbox = TRUE, pretty = TRUE)
+write_json(year_options, "data/module8/year_options.json", auto_unbox = TRUE, pretty = TRUE)
 
 cat("筛选器选项保存完成\n")
 

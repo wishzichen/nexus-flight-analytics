@@ -6,3 +6,8 @@ coverage/
 *.log
 .env*
 !.env.example
+data/flights.sqlite-shm
+data/flights.sqlite-wal
+data/flights.sqlite
+data/raw_multi_year/bts_cache/*.zip
+data/raw_multi_year/bts_cache/*.part

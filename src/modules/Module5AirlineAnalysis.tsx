@@ -25,13 +25,19 @@ const chartBaseOptions = {
   }
 };
 
-export default function Module5AirlineAnalysis() {
+export default function Module5AirlineAnalysis({ interactiveData }: { interactiveData?: any }) {
   const { data: airlineStats } = useFetch('/api/module5/airline-stats');
   const { data: fleetScatter } = useFetch('/api/module5/fleet-scatter');
   const { data: ontimeBubble } = useFetch('/api/module5/ontime-bubble');
   const { data: delayRanking } = useFetch('/api/module5/delay-ranking');
   const { data: ontimeRanking } = useFetch('/api/module5/ontime-ranking');
   const { data: quadrantData } = useFetch('/api/module5/quadrant-data');
+
+  const activeAirlineStats = interactiveData?.airlineStats || airlineStats;
+  const activeFleetScatter = interactiveData?.fleetScatter || fleetScatter;
+  const activeOntimeBubble = interactiveData?.ontimeBubble || ontimeBubble;
+  const activeDelayRanking = interactiveData?.delayRanking || delayRanking;
+  const activeOntimeRanking = interactiveData?.ontimeRanking || ontimeRanking;
 
   // 机队规模 vs 延误散点图
   const fleetOption = {
@@ -46,7 +52,7 @@ export default function Module5AirlineAnalysis() {
     series: [{
       type: 'scatter',
       symbolSize: (data: number[]) => Math.sqrt(data[2]) / 5,
-      data: fleetScatter?.map((d: any) => [d.planeCount, d.avgDepDelay, d.flightCount, d.carrier_name]) || [],
+      data: activeFleetScatter?.map((d: any) => [d.planeCount, d.avgDepDelay, d.flightCount, d.carrier_name]) || [],
       itemStyle: { color: 'rgba(139, 92, 246, 0.6)' }
     }]
   };
@@ -64,7 +70,7 @@ export default function Module5AirlineAnalysis() {
     series: [{
       type: 'scatter',
       symbolSize: (data: number[]) => Math.sqrt(data[2]) / 3,
-      data: ontimeBubble?.map((d: any) => [d.flightCount, d.onTimeRate, d.planeCount, d.carrier_name]) || [],
+      data: activeOntimeBubble?.map((d: any) => [d.flightCount, d.onTimeRate, d.planeCount, d.carrier_name]) || [],
       itemStyle: {
         color: (params: any) => {
           const rate = params.data[1];
@@ -83,12 +89,12 @@ export default function Module5AirlineAnalysis() {
     xAxis: {
       ...chartBaseOptions.xAxis,
       type: 'category',
-      data: delayRanking?.slice(0, 10).map((d: any) => d.carrier) || []
+      data: activeDelayRanking?.slice(0, 10).map((d: any) => d.carrier) || []
     },
     yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: '平均延误(分钟)' },
     series: [{
       type: 'bar',
-      data: delayRanking?.slice(0, 10).map((d: any) => ({
+      data: activeDelayRanking?.slice(0, 10).map((d: any) => ({
         value: d.avgDepDelay,
         itemStyle: { color: d.avgDepDelay > 15 ? '#ef4444' : '#fbbf24' }
       })) || []
@@ -102,12 +108,12 @@ export default function Module5AirlineAnalysis() {
     xAxis: {
       ...chartBaseOptions.xAxis,
       type: 'category',
-      data: ontimeRanking?.slice(0, 10).map((d: any) => d.carrier) || []
+      data: activeOntimeRanking?.slice(0, 10).map((d: any) => d.carrier) || []
     },
     yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: '准点率(%)', max: 100 },
     series: [{
       type: 'bar',
-      data: ontimeRanking?.slice(0, 10).map((d: any) => ({
+      data: activeOntimeRanking?.slice(0, 10).map((d: any) => ({
         value: d.onTimeRate,
         itemStyle: { color: d.onTimeRate >= 80 ? '#10b981' : '#06b6d4' }
       })) || []
@@ -115,8 +121,8 @@ export default function Module5AirlineAnalysis() {
   };
 
   // 象限分析
-  const bestAirline = ontimeRanking?.[0];
-  const worstAirline = delayRanking?.[0];
+  const bestAirline = activeOntimeRanking?.[0];
+  const worstAirline = activeDelayRanking?.[0];
 
   return (
     <div className="space-y-6">
@@ -124,7 +130,7 @@ export default function Module5AirlineAnalysis() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <KPICard
           title="航司总数"
-          value={airlineStats?.length || '--'}
+          value={activeAirlineStats?.length || '--'}
           icon={Building}
           color="cyan"
         />
@@ -144,7 +150,7 @@ export default function Module5AirlineAnalysis() {
         />
         <KPICard
           title="平均机队"
-          value={`${Math.round(airlineStats?.reduce((a: number, b: any) => a + b.planeCount, 0) / (airlineStats?.length || 1)) || '--'}架`}
+          value={`${Math.round(activeAirlineStats?.reduce((a: number, b: any) => a + b.planeCount, 0) / (activeAirlineStats?.length || 1)) || '--'}架`}
           icon={Plane}
           color="purple"
         />

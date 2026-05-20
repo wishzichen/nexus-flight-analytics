@@ -1,185 +1,185 @@
 {
   "topDestinationsVolume": [
     {
-      "dest": "ORD",
-      "dest_name": "Chicago Ohare Intl",
-      "flightCount": 17283,
-      "avgDistance": 729,
-      "avgAirTime": 115.6,
+      "dest": "LAX",
+      "dest_name": "Los Angeles Intl",
+      "flightCount": 30608,
+      "avgDistance": 2469,
+      "avgAirTime": 328.4,
       "rank": 1
     },
     {
       "dest": "ATL",
       "dest_name": "Hartsfield Jackson Atlanta Intl",
-      "flightCount": 17215,
+      "flightCount": 30023,
       "avgDistance": 757,
-      "avgAirTime": 112.9,
+      "avgAirTime": 112.5,
       "rank": 1
     },
     {
-      "dest": "LAX",
-      "dest_name": "Los Angeles Intl",
-      "flightCount": 16174,
-      "avgDistance": 2469,
-      "avgAirTime": 328.1,
+      "dest": "ORD",
+      "dest_name": "Chicago Ohare Intl",
+      "flightCount": 28872,
+      "avgDistance": 729,
+      "avgAirTime": 115.7,
       "rank": 1
     },
     {
       "dest": "BOS",
       "dest_name": "General Edward Lawrence Logan Intl",
-      "flightCount": 15508,
+      "flightCount": 27117,
       "avgDistance": 191,
-      "avgAirTime": 39,
+      "avgAirTime": 38.8,
       "rank": 1
     },
     {
       "dest": "MCO",
       "dest_name": "Orlando Intl",
-      "flightCount": 14082,
+      "flightCount": 25791,
       "avgDistance": 943,
-      "avgAirTime": 134.8,
-      "rank": 1
-    },
-    {
-      "dest": "CLT",
-      "dest_name": "Charlotte Douglas Intl",
-      "flightCount": 14064,
-      "avgDistance": 538,
-      "avgAirTime": 86.2,
+      "avgAirTime": 134.6,
       "rank": 1
     },
     {
       "dest": "SFO",
       "dest_name": "San Francisco Intl",
-      "flightCount": 13331,
+      "flightCount": 25238,
       "avgDistance": 2578,
-      "avgAirTime": 345.7,
+      "avgAirTime": 346.9,
       "rank": 1
     },
     {
-      "dest": "FLL",
-      "dest_name": "Fort Lauderdale Hollywood Intl",
-      "flightCount": 12055,
-      "avgDistance": 1070,
-      "avgAirTime": 152.2,
+      "dest": "CLT",
+      "dest_name": "Charlotte Douglas Intl",
+      "flightCount": 23688,
+      "avgDistance": 538,
+      "avgAirTime": 86.1,
       "rank": 1
     },
     {
       "dest": "MIA",
       "dest_name": "Miami Intl",
-      "flightCount": 11728,
+      "flightCount": 21656,
       "avgDistance": 1092,
-      "avgAirTime": 153.1,
+      "avgAirTime": 153.5,
+      "rank": 1
+    },
+    {
+      "dest": "FLL",
+      "dest_name": "Fort Lauderdale Hollywood Intl",
+      "flightCount": 21526,
+      "avgDistance": 1070,
+      "avgAirTime": 152.3,
       "rank": 1
     },
     {
       "dest": "DCA",
       "dest_name": "Ronald Reagan Washington Natl",
-      "flightCount": 9705,
+      "flightCount": 16453,
       "avgDistance": 211,
-      "avgAirTime": 45.9,
+      "avgAirTime": 45.7,
       "rank": 1
     }
   ],
   "topDestinationsDelay": [
     {
-      "dest": "CAE",
-      "dest_name": "Columbia Metropolitan",
-      "flightCount": 116,
-      "avgArrDelay": 41.8,
-      "avgDepDelay": 35.6,
-      "severeDelayRate": 25.5,
-      "onTimeRate": 36.8,
+      "dest": "LIT",
+      "dest_name": "Adams Fld",
+      "flightCount": 204,
+      "avgArrDelay": 31.7,
+      "avgDepDelay": 15.4,
+      "severeDelayRate": 17.6,
+      "onTimeRate": 50.5,
       "rank": 1
     },
     {
       "dest": "TUL",
       "dest_name": "Tulsa Intl",
-      "flightCount": 315,
-      "avgArrDelay": 33.7,
-      "avgDepDelay": 34.9,
-      "severeDelayRate": 24.5,
-      "onTimeRate": 52,
+      "flightCount": 516,
+      "avgArrDelay": 31.2,
+      "avgDepDelay": 32.5,
+      "severeDelayRate": 23.4,
+      "onTimeRate": 54.7,
       "rank": 1
     },
     {
       "dest": "OKC",
       "dest_name": "Will Rogers World",
-      "flightCount": 346,
-      "avgArrDelay": 30.6,
-      "avgDepDelay": 30.6,
-      "severeDelayRate": 21.6,
-      "onTimeRate": 49.8,
+      "flightCount": 569,
+      "avgArrDelay": 28,
+      "avgDepDelay": 28.8,
+      "severeDelayRate": 20.4,
+      "onTimeRate": 52.2,
       "rank": 1
     },
     {
       "dest": "TYS",
       "dest_name": "Mc Ghee Tyson",
-      "flightCount": 631,
-      "avgArrDelay": 24.1,
-      "avgDepDelay": 28.5,
-      "severeDelayRate": 20.6,
-      "onTimeRate": 61.2,
+      "flightCount": 1036,
+      "avgArrDelay": 24.5,
+      "avgDepDelay": 25.7,
+      "severeDelayRate": 19.3,
+      "onTimeRate": 59.4,
       "rank": 1
     },
     {
       "dest": "MSN",
       "dest_name": "Dane Co Rgnl Truax Fld",
-      "flightCount": 572,
-      "avgArrDelay": 20.2,
-      "avgDepDelay": 23.6,
-      "severeDelayRate": 14.6,
-      "onTimeRate": 65.3,
-      "rank": 1
-    },
-    {
-      "dest": "RIC",
-      "dest_name": "Richmond Intl",
-      "flightCount": 2454,
-      "avgArrDelay": 20.1,
-      "avgDepDelay": 23.6,
-      "severeDelayRate": 16.4,
+      "flightCount": 1040,
+      "avgArrDelay": 21.6,
+      "avgDepDelay": 25.4,
+      "severeDelayRate": 15.7,
       "onTimeRate": 64.6,
       "rank": 1
     },
     {
       "dest": "CAK",
       "dest_name": "Akron Canton Regional Airport",
-      "flightCount": 864,
-      "avgArrDelay": 19.7,
-      "avgDepDelay": 20.8,
-      "severeDelayRate": 11.9,
-      "onTimeRate": 68.4,
+      "flightCount": 1572,
+      "avgArrDelay": 21,
+      "avgDepDelay": 23.6,
+      "severeDelayRate": 13.3,
+      "onTimeRate": 67.3,
       "rank": 1
     },
     {
       "dest": "DSM",
       "dest_name": "Des Moines Intl",
-      "flightCount": 569,
-      "avgArrDelay": 19,
-      "avgDepDelay": 26.2,
-      "severeDelayRate": 17,
-      "onTimeRate": 65.4,
+      "flightCount": 749,
+      "avgArrDelay": 19.2,
+      "avgDepDelay": 24.8,
+      "severeDelayRate": 16.8,
+      "onTimeRate": 64.7,
       "rank": 1
     },
     {
-      "dest": "GRR",
-      "dest_name": "Gerald R Ford Intl",
-      "flightCount": 765,
+      "dest": "RIC",
+      "dest_name": "Richmond Intl",
+      "flightCount": 4772,
       "avgArrDelay": 18.2,
-      "avgDepDelay": 19.5,
-      "severeDelayRate": 12.4,
-      "onTimeRate": 66.2,
+      "avgDepDelay": 21.7,
+      "severeDelayRate": 14.7,
+      "onTimeRate": 66,
       "rank": 1
     },
     {
       "dest": "BHM",
       "dest_name": "Birmingham Intl",
-      "flightCount": 297,
+      "flightCount": 421,
+      "avgArrDelay": 17.7,
+      "avgDepDelay": 28.5,
+      "severeDelayRate": 17,
+      "onTimeRate": 65.1,
+      "rank": 1
+    },
+    {
+      "dest": "TVC",
+      "dest_name": "Cherry Capital Airport",
+      "flightCount": 157,
       "avgArrDelay": 16.9,
-      "avgDepDelay": 29.7,
-      "severeDelayRate": 17.1,
-      "onTimeRate": 67.7,
+      "avgDepDelay": 23.6,
+      "severeDelayRate": 13.9,
+      "onTimeRate": 70.2,
       "rank": 1
     }
   ],
@@ -188,229 +188,193 @@
       "origin": "EWR",
       "dest": "TYS",
       "route": "EWR → TYS",
-      "flightCount": 323,
-      "avgDepDelay": 41.8,
-      "avgArrDelay": 41.2,
+      "flightCount": 561,
+      "avgDepDelay": 37.9,
+      "avgArrDelay": 38.3,
       "avgDistance": 631,
-      "avgAirTime": 97.6,
-      "severeDelayRate": 30.9,
-      "onTimeRate": 55.1
+      "avgAirTime": 97.9,
+      "severeDelayRate": 28.4,
+      "onTimeRate": 54.7
     },
     {
       "origin": "EWR",
       "dest": "CAE",
       "route": "EWR → CAE",
-      "flightCount": 104,
+      "flightCount": 125,
       "avgDepDelay": 36.3,
-      "avgArrDelay": 44.6,
+      "avgArrDelay": 44.7,
       "avgDistance": 602,
-      "avgAirTime": 92.1,
-      "severeDelayRate": 22.1,
-      "onTimeRate": 52.6
+      "avgAirTime": 93,
+      "severeDelayRate": 21.6,
+      "onTimeRate": 51.7
     },
     {
       "origin": "EWR",
       "dest": "TUL",
       "route": "EWR → TUL",
-      "flightCount": 315,
-      "avgDepDelay": 34.9,
-      "avgArrDelay": 33.7,
+      "flightCount": 516,
+      "avgDepDelay": 32.5,
+      "avgArrDelay": 31.2,
       "avgDistance": 1215,
-      "avgAirTime": 178.3,
-      "severeDelayRate": 22.4,
-      "onTimeRate": 55.5
-    },
-    {
-      "origin": "EWR",
-      "dest": "OKC",
-      "route": "EWR → OKC",
-      "flightCount": 346,
-      "avgDepDelay": 30.6,
-      "avgArrDelay": 30.6,
-      "avgDistance": 1325,
-      "avgAirTime": 193,
-      "severeDelayRate": 19.6,
-      "onTimeRate": 55.4
-    },
-    {
-      "origin": "LGA",
-      "dest": "BHM",
-      "route": "LGA → BHM",
-      "flightCount": 296,
-      "avgDepDelay": 29.8,
-      "avgArrDelay": 17,
-      "avgDistance": 866,
-      "avgAirTime": 122.8,
-      "severeDelayRate": 18.5,
-      "onTimeRate": 60.5
-    },
-    {
-      "origin": "EWR",
-      "dest": "DSM",
-      "route": "EWR → DSM",
-      "flightCount": 411,
-      "avgDepDelay": 29.3,
-      "avgArrDelay": 23.5,
-      "avgDistance": 1017,
-      "avgAirTime": 149.5,
-      "severeDelayRate": 20.1,
-      "onTimeRate": 61.3
-    },
-    {
-      "origin": "EWR",
-      "dest": "ROC",
-      "route": "EWR → ROC",
-      "flightCount": 513,
-      "avgDepDelay": 27.9,
-      "avgArrDelay": 20.7,
-      "avgDistance": 246,
-      "avgAirTime": 45.3,
-      "severeDelayRate": 15.5,
-      "onTimeRate": 61.6
-    },
-    {
-      "origin": "JFK",
-      "dest": "CVG",
-      "route": "JFK → CVG",
-      "flightCount": 997,
-      "avgDepDelay": 27.4,
-      "avgArrDelay": 19.1,
-      "avgDistance": 589,
-      "avgAirTime": 96,
-      "severeDelayRate": 16.8,
-      "onTimeRate": 64
-    },
-    {
-      "origin": "LGA",
-      "dest": "OMA",
-      "route": "LGA → OMA",
-      "flightCount": 95,
-      "avgDepDelay": 27.4,
-      "avgArrDelay": 13.7,
-      "avgDistance": 1148,
-      "avgAirTime": 161.6,
-      "severeDelayRate": 18.5,
-      "onTimeRate": 65.2
-    },
-    {
-      "origin": "LGA",
-      "dest": "MSN",
-      "route": "LGA → MSN",
-      "flightCount": 218,
-      "avgDepDelay": 27.1,
-      "avgArrDelay": 15.3,
-      "avgDistance": 812,
-      "avgAirTime": 120.4,
-      "severeDelayRate": 17.9,
-      "onTimeRate": 64.6
-    },
-    {
-      "origin": "EWR",
-      "dest": "RIC",
-      "route": "EWR → RIC",
-      "flightCount": 1667,
-      "avgDepDelay": 26.5,
-      "avgArrDelay": 25.8,
-      "avgDistance": 277,
-      "avgAirTime": 53.5,
-      "severeDelayRate": 17.6,
-      "onTimeRate": 63.6
-    },
-    {
-      "origin": "EWR",
-      "dest": "PWM",
-      "route": "EWR → PWM",
-      "flightCount": 770,
-      "avgDepDelay": 25.7,
-      "avgArrDelay": 23,
-      "avgDistance": 284,
-      "avgAirTime": 48.7,
-      "severeDelayRate": 17.3,
-      "onTimeRate": 64.1
-    },
-    {
-      "origin": "LGA",
-      "dest": "MHT",
-      "route": "LGA → MHT",
-      "flightCount": 142,
-      "avgDepDelay": 24,
-      "avgArrDelay": 17.5,
-      "avgDistance": 195,
-      "avgAirTime": 35.4,
-      "severeDelayRate": 18.5,
-      "onTimeRate": 63
-    },
-    {
-      "origin": "EWR",
-      "dest": "BQN",
-      "route": "EWR → BQN",
-      "flightCount": 297,
-      "avgDepDelay": 23.9,
-      "avgArrDelay": 10.9,
-      "avgDistance": 1585,
-      "avgAirTime": 196.2,
-      "severeDelayRate": 11.5,
-      "onTimeRate": 61.5
-    },
-    {
-      "origin": "EWR",
-      "dest": "ALB",
-      "route": "EWR → ALB",
-      "flightCount": 439,
-      "avgDepDelay": 23.6,
-      "avgArrDelay": 14.4,
-      "avgDistance": 143,
-      "avgAirTime": 31.8,
-      "severeDelayRate": 15.5,
-      "onTimeRate": 64.4
-    },
-    {
-      "origin": "EWR",
-      "dest": "MKE",
-      "route": "EWR → MKE",
-      "flightCount": 1094,
-      "avgDepDelay": 23.6,
-      "avgArrDelay": 24,
-      "avgDistance": 725,
-      "avgAirTime": 115.4,
-      "severeDelayRate": 15.1,
-      "onTimeRate": 66.3
+      "avgAirTime": 177.5,
+      "severeDelayRate": 21.8,
+      "onTimeRate": 57.6
     },
     {
       "origin": "JFK",
       "dest": "EGE",
       "route": "JFK → EGE",
-      "flightCount": 103,
-      "avgDepDelay": 23.4,
-      "avgArrDelay": 18.5,
-      "avgDistance": 1747,
-      "avgAirTime": 256.4,
-      "severeDelayRate": 11.9,
-      "onTimeRate": 64.4
+      "flightCount": 188,
+      "avgDepDelay": 32.5,
+      "avgArrDelay": 26.3,
+      "avgDistance": 1746,
+      "avgAirTime": 256.6,
+      "severeDelayRate": 13.4,
+      "onTimeRate": 68.3
     },
     {
-      "origin": "JFK",
-      "dest": "SAT",
-      "route": "JFK → SAT",
-      "flightCount": 356,
-      "avgDepDelay": 23.4,
-      "avgArrDelay": 6.2,
-      "avgDistance": 1587,
-      "avgAirTime": 217.6,
-      "severeDelayRate": 13,
-      "onTimeRate": 68.8
+      "origin": "EWR",
+      "dest": "OKC",
+      "route": "EWR → OKC",
+      "flightCount": 569,
+      "avgDepDelay": 28.8,
+      "avgArrDelay": 28,
+      "avgDistance": 1325,
+      "avgAirTime": 192.3,
+      "severeDelayRate": 18.9,
+      "onTimeRate": 57.3
+    },
+    {
+      "origin": "LGA",
+      "dest": "BHM",
+      "route": "LGA → BHM",
+      "flightCount": 420,
+      "avgDepDelay": 28.6,
+      "avgArrDelay": 17.8,
+      "avgDistance": 866,
+      "avgAirTime": 124.2,
+      "severeDelayRate": 18.7,
+      "onTimeRate": 60.8
+    },
+    {
+      "origin": "LGA",
+      "dest": "MSN",
+      "route": "LGA → MSN",
+      "flightCount": 406,
+      "avgDepDelay": 28.2,
+      "avgArrDelay": 17.9,
+      "avgDistance": 812,
+      "avgAirTime": 119.5,
+      "severeDelayRate": 19,
+      "onTimeRate": 62.3
     },
     {
       "origin": "LGA",
       "dest": "TVC",
       "route": "LGA → TVC",
-      "flightCount": 77,
-      "avgDepDelay": 23.4,
-      "avgArrDelay": 16,
+      "flightCount": 113,
+      "avgDepDelay": 28.2,
+      "avgArrDelay": 21.8,
       "avgDistance": 655,
-      "avgAirTime": 94.6,
-      "severeDelayRate": 13.7,
-      "onTimeRate": 67.1
+      "avgAirTime": 93.8,
+      "severeDelayRate": 16.5,
+      "onTimeRate": 67.9
+    },
+    {
+      "origin": "EWR",
+      "dest": "DSM",
+      "route": "EWR → DSM",
+      "flightCount": 590,
+      "avgDepDelay": 26.4,
+      "avgArrDelay": 22.2,
+      "avgDistance": 1017,
+      "avgAirTime": 150.1,
+      "severeDelayRate": 18.5,
+      "onTimeRate": 62.4
+    },
+    {
+      "origin": "LGA",
+      "dest": "OMA",
+      "route": "LGA → OMA",
+      "flightCount": 182,
+      "avgDepDelay": 25.7,
+      "avgArrDelay": 13.8,
+      "avgDistance": 1148,
+      "avgAirTime": 161.9,
+      "severeDelayRate": 19.6,
+      "onTimeRate": 64.8
+    },
+    {
+      "origin": "EWR",
+      "dest": "RIC",
+      "route": "EWR → RIC",
+      "flightCount": 2850,
+      "avgDepDelay": 25.3,
+      "avgArrDelay": 24.1,
+      "avgDistance": 277,
+      "avgAirTime": 53.4,
+      "severeDelayRate": 16.5,
+      "onTimeRate": 64.7
+    },
+    {
+      "origin": "EWR",
+      "dest": "BQN",
+      "route": "EWR → BQN",
+      "flightCount": 548,
+      "avgDepDelay": 25,
+      "avgArrDelay": 12.6,
+      "avgDistance": 1585,
+      "avgAirTime": 196.7,
+      "severeDelayRate": 13.5,
+      "onTimeRate": 60.5
+    },
+    {
+      "origin": "EWR",
+      "dest": "PWM",
+      "route": "EWR → PWM",
+      "flightCount": 1162,
+      "avgDepDelay": 24.2,
+      "avgArrDelay": 21.7,
+      "avgDistance": 284,
+      "avgAirTime": 48.8,
+      "severeDelayRate": 16.2,
+      "onTimeRate": 64.3
+    },
+    {
+      "origin": "JFK",
+      "dest": "CVG",
+      "route": "JFK → CVG",
+      "flightCount": 1279,
+      "avgDepDelay": 24.1,
+      "avgArrDelay": 18.2,
+      "avgDistance": 589,
+      "avgAirTime": 96.4,
+      "severeDelayRate": 14.7,
+      "onTimeRate": 65.8
+    },
+    {
+      "origin": "EWR",
+      "dest": "MSN",
+      "route": "EWR → MSN",
+      "flightCount": 634,
+      "avgDepDelay": 23.6,
+      "avgArrDelay": 24,
+      "avgDistance": 799,
+      "avgAirTime": 123.4,
+      "severeDelayRate": 13.8,
+      "onTimeRate": 66.8
+    },
+    {
+      "origin": "LGA",
+      "dest": "CAK",
+      "route": "LGA → CAK",
+      "flightCount": 1572,
+      "avgDepDelay": 23.6,
+      "avgArrDelay": 21,
+      "avgDistance": 397,
+      "avgAirTime": 64.4,
+      "severeDelayRate": 13,
+      "onTimeRate": 69.8
     },
     {
       "origin": "JFK",
@@ -423,637 +387,673 @@
       "avgAirTime": 157.7,
       "severeDelayRate": 16.4,
       "onTimeRate": 65.6
+    },
+    {
+      "origin": "EWR",
+      "dest": "ALB",
+      "route": "EWR → ALB",
+      "flightCount": 608,
+      "avgDepDelay": 23,
+      "avgArrDelay": 14.2,
+      "avgDistance": 143,
+      "avgAirTime": 31.7,
+      "severeDelayRate": 15,
+      "onTimeRate": 65.3
+    },
+    {
+      "origin": "JFK",
+      "dest": "SAT",
+      "route": "JFK → SAT",
+      "flightCount": 598,
+      "avgDepDelay": 22.7,
+      "avgArrDelay": 7.9,
+      "avgDistance": 1587,
+      "avgAirTime": 215.2,
+      "severeDelayRate": 11.4,
+      "onTimeRate": 68.4
+    },
+    {
+      "origin": "EWR",
+      "dest": "ROC",
+      "route": "EWR → ROC",
+      "flightCount": 1017,
+      "avgDepDelay": 22.3,
+      "avgArrDelay": 15.3,
+      "avgDistance": 246,
+      "avgAirTime": 45.3,
+      "severeDelayRate": 13.7,
+      "onTimeRate": 67.2
     }
   ],
   "bubbleData": [
     {
-      "dest": "ORD",
-      "dest_name": "Chicago Ohare Intl",
-      "dest_lat": 41.9786,
-      "dest_lon": -87.9048,
-      "flightCount": 17283,
-      "avgArrDelay": 5.9,
-      "avgDistance": 729,
-      "severeDelayRate": 9.3
+      "dest": "LAX",
+      "dest_name": "Los Angeles Intl",
+      "dest_lat": 33.9425,
+      "dest_lon": -118.4081,
+      "flightCount": 30608,
+      "avgArrDelay": 2.6,
+      "avgDistance": 2469,
+      "severeDelayRate": 6.2
     },
     {
       "dest": "ATL",
       "dest_name": "Hartsfield Jackson Atlanta Intl",
       "dest_lat": 33.6367,
       "dest_lon": -84.4281,
-      "flightCount": 17215,
-      "avgArrDelay": 11.3,
+      "flightCount": 30023,
+      "avgArrDelay": 10.9,
       "avgDistance": 757,
-      "severeDelayRate": 8.5
+      "severeDelayRate": 8.4
     },
     {
-      "dest": "LAX",
-      "dest_name": "Los Angeles Intl",
-      "dest_lat": 33.9425,
-      "dest_lon": -118.4081,
-      "flightCount": 16174,
-      "avgArrDelay": 0.5,
-      "avgDistance": 2469,
-      "severeDelayRate": 6
+      "dest": "ORD",
+      "dest_name": "Chicago Ohare Intl",
+      "dest_lat": 41.9786,
+      "dest_lon": -87.9048,
+      "flightCount": 28872,
+      "avgArrDelay": 9.1,
+      "avgDistance": 729,
+      "severeDelayRate": 9.8
     },
     {
       "dest": "BOS",
       "dest_name": "General Edward Lawrence Logan Intl",
       "dest_lat": 42.3643,
       "dest_lon": -71.0052,
-      "flightCount": 15508,
-      "avgArrDelay": 2.9,
+      "flightCount": 27117,
+      "avgArrDelay": 3.5,
       "avgDistance": 191,
-      "severeDelayRate": 7
+      "severeDelayRate": 6.8
     },
     {
       "dest": "MCO",
       "dest_name": "Orlando Intl",
       "dest_lat": 28.4294,
       "dest_lon": -81.309,
-      "flightCount": 14082,
-      "avgArrDelay": 5.5,
+      "flightCount": 25791,
+      "avgArrDelay": 6.5,
       "avgDistance": 943,
-      "severeDelayRate": 7.2
-    },
-    {
-      "dest": "CLT",
-      "dest_name": "Charlotte Douglas Intl",
-      "dest_lat": 35.214,
-      "dest_lon": -80.9431,
-      "flightCount": 14064,
-      "avgArrDelay": 7.4,
-      "avgDistance": 538,
-      "severeDelayRate": 7.2
+      "severeDelayRate": 7.4
     },
     {
       "dest": "SFO",
       "dest_name": "San Francisco Intl",
       "dest_lat": 37.619,
       "dest_lon": -122.3749,
-      "flightCount": 13331,
-      "avgArrDelay": 2.7,
+      "flightCount": 25238,
+      "avgArrDelay": 4.5,
       "avgDistance": 2578,
-      "severeDelayRate": 7.9
+      "severeDelayRate": 8.1
     },
     {
-      "dest": "FLL",
-      "dest_name": "Fort Lauderdale Hollywood Intl",
-      "dest_lat": 26.0726,
-      "dest_lon": -80.1527,
-      "flightCount": 12055,
-      "avgArrDelay": 8.1,
-      "avgDistance": 1070,
-      "severeDelayRate": 8.3
+      "dest": "CLT",
+      "dest_name": "Charlotte Douglas Intl",
+      "dest_lat": 35.214,
+      "dest_lon": -80.9431,
+      "flightCount": 23688,
+      "avgArrDelay": 5.5,
+      "avgDistance": 538,
+      "severeDelayRate": 6.5
     },
     {
       "dest": "MIA",
       "dest_name": "Miami Intl",
       "dest_lat": 25.7933,
       "dest_lon": -80.2906,
-      "flightCount": 11728,
-      "avgArrDelay": 0.3,
+      "flightCount": 21656,
+      "avgArrDelay": 1,
       "avgDistance": 1092,
-      "severeDelayRate": 5.9
+      "severeDelayRate": 6
+    },
+    {
+      "dest": "FLL",
+      "dest_name": "Fort Lauderdale Hollywood Intl",
+      "dest_lat": 26.0726,
+      "dest_lon": -80.1527,
+      "flightCount": 21526,
+      "avgArrDelay": 9.4,
+      "avgDistance": 1070,
+      "severeDelayRate": 9
     },
     {
       "dest": "DCA",
       "dest_name": "Ronald Reagan Washington Natl",
       "dest_lat": 38.8521,
       "dest_lon": -77.0377,
-      "flightCount": 9705,
-      "avgArrDelay": 9.1,
+      "flightCount": 16453,
+      "avgArrDelay": 7.6,
       "avgDistance": 211,
-      "severeDelayRate": 8.9
+      "severeDelayRate": 7.6
     },
     {
       "dest": "DTW",
       "dest_name": "Detroit Metro Wayne Co",
       "dest_lat": 42.2124,
       "dest_lon": -83.3534,
-      "flightCount": 9384,
-      "avgArrDelay": 5.4,
+      "flightCount": 15394,
+      "avgArrDelay": 5.7,
       "avgDistance": 498,
-      "severeDelayRate": 8.2
+      "severeDelayRate": 7.8
     },
     {
       "dest": "DFW",
       "dest_name": "Dallas Fort Worth Intl",
       "dest_lat": 32.8968,
       "dest_lon": -97.038,
-      "flightCount": 8738,
-      "avgArrDelay": 0.3,
+      "flightCount": 15225,
+      "avgArrDelay": 2.5,
       "avgDistance": 1383,
-      "severeDelayRate": 6.5
+      "severeDelayRate": 6.6
     },
     {
       "dest": "RDU",
       "dest_name": "Raleigh Durham Intl",
       "dest_lat": 35.8776,
       "dest_lon": -78.7875,
-      "flightCount": 8163,
-      "avgArrDelay": 10.1,
+      "flightCount": 13173,
+      "avgArrDelay": 9.5,
       "avgDistance": 427,
-      "severeDelayRate": 9.5
+      "severeDelayRate": 8.7
     },
     {
       "dest": "TPA",
       "dest_name": "Tampa Intl",
       "dest_lat": 27.9755,
       "dest_lon": -82.5332,
-      "flightCount": 7466,
-      "avgArrDelay": 7.4,
+      "flightCount": 13170,
+      "avgArrDelay": 8.3,
       "avgDistance": 1004,
-      "severeDelayRate": 7.9
+      "severeDelayRate": 8
     },
     {
       "dest": "DEN",
       "dest_name": "Denver Intl",
       "dest_lat": 39.8617,
       "dest_lon": -104.6732,
-      "flightCount": 7266,
-      "avgArrDelay": 8.6,
+      "flightCount": 13027,
+      "avgArrDelay": 9.3,
       "avgDistance": 1615,
-      "severeDelayRate": 8.6
+      "severeDelayRate": 8.7
     },
     {
       "dest": "IAH",
       "dest_name": "George Bush Intercontinental",
       "dest_lat": 29.9844,
       "dest_lon": -95.3414,
-      "flightCount": 7198,
-      "avgArrDelay": 4.2,
+      "flightCount": 12624,
+      "avgArrDelay": 5.1,
       "avgDistance": 1407,
       "severeDelayRate": 6.5
-    },
-    {
-      "dest": "MSP",
-      "dest_name": "Minneapolis St Paul Intl",
-      "dest_lat": 44.882,
-      "dest_lon": -93.2218,
-      "flightCount": 7185,
-      "avgArrDelay": 7.3,
-      "avgDistance": 1017,
-      "severeDelayRate": 8.4
     },
     {
       "dest": "PBI",
       "dest_name": "Palm Beach Intl",
       "dest_lat": 26.6832,
       "dest_lon": -80.0956,
-      "flightCount": 6554,
-      "avgArrDelay": 8.6,
+      "flightCount": 12097,
+      "avgArrDelay": 8.7,
       "avgDistance": 1029,
-      "severeDelayRate": 8.3
+      "severeDelayRate": 8.5
+    },
+    {
+      "dest": "MSP",
+      "dest_name": "Minneapolis St Paul Intl",
+      "dest_lat": 44.882,
+      "dest_lon": -93.2218,
+      "flightCount": 11348,
+      "avgArrDelay": 7.4,
+      "avgDistance": 1017,
+      "severeDelayRate": 8
     },
     {
       "dest": "BNA",
       "dest_name": "Nashville Intl",
       "dest_lat": 36.1245,
       "dest_lon": -86.6782,
-      "flightCount": 6333,
-      "avgArrDelay": 11.8,
+      "flightCount": 11014,
+      "avgArrDelay": 11.7,
       "avgDistance": 758,
-      "severeDelayRate": 10.6
+      "severeDelayRate": 10.1
     },
     {
       "dest": "LAS",
       "dest_name": "Mc Carran Intl",
       "dest_lat": 36.0801,
       "dest_lon": -115.1522,
-      "flightCount": 5997,
-      "avgArrDelay": 0.3,
+      "flightCount": 10907,
+      "avgArrDelay": 2.2,
       "avgDistance": 2241,
-      "severeDelayRate": 5.5
+      "severeDelayRate": 5.8
     },
     {
       "dest": "IAD",
       "dest_name": "Washington Dulles Intl",
       "dest_lat": 38.9445,
       "dest_lon": -77.4558,
-      "flightCount": 5700,
-      "avgArrDelay": 13.9,
+      "flightCount": 9024,
+      "avgArrDelay": 14.2,
       "avgDistance": 225,
       "severeDelayRate": 11.9
-    },
-    {
-      "dest": "BUF",
-      "dest_name": "Buffalo Niagara Intl",
-      "dest_lat": 42.9405,
-      "dest_lon": -78.7322,
-      "flightCount": 4681,
-      "avgArrDelay": 8.9,
-      "avgDistance": 297,
-      "severeDelayRate": 9.8
     },
     {
       "dest": "PHX",
       "dest_name": "Phoenix Sky Harbor Intl",
       "dest_lat": 33.4343,
       "dest_lon": -112.0116,
-      "flightCount": 4656,
-      "avgArrDelay": 2.1,
-      "avgDistance": 2141,
-      "severeDelayRate": 6.4
-    },
-    {
-      "dest": "CLE",
-      "dest_name": "Cleveland Hopkins Intl",
-      "dest_lat": 41.4117,
-      "dest_lon": -81.8498,
-      "flightCount": 4573,
-      "avgArrDelay": 9.2,
-      "avgDistance": 414,
-      "severeDelayRate": 9.9
+      "flightCount": 8442,
+      "avgArrDelay": 4.1,
+      "avgDistance": 2142,
+      "severeDelayRate": 6.7
     },
     {
       "dest": "STL",
       "dest_name": "Lambert St Louis Intl",
       "dest_lat": 38.7487,
       "dest_lon": -90.37,
-      "flightCount": 4339,
-      "avgArrDelay": 11.1,
-      "avgDistance": 879,
-      "severeDelayRate": 10.1
+      "flightCount": 8144,
+      "avgArrDelay": 11.8,
+      "avgDistance": 880,
+      "severeDelayRate": 9.9
+    },
+    {
+      "dest": "CLE",
+      "dest_name": "Cleveland Hopkins Intl",
+      "dest_lat": 41.4117,
+      "dest_lon": -81.8498,
+      "flightCount": 8135,
+      "avgArrDelay": 8,
+      "avgDistance": 414,
+      "severeDelayRate": 9.5
     },
     {
       "dest": "MDW",
       "dest_name": "Chicago Midway Intl",
       "dest_lat": 41.786,
       "dest_lon": -87.7524,
-      "flightCount": 4113,
-      "avgArrDelay": 12.4,
+      "flightCount": 7587,
+      "avgArrDelay": 12.7,
       "avgDistance": 718,
-      "severeDelayRate": 10.3
+      "severeDelayRate": 10.5
     },
     {
-      "dest": "CVG",
-      "dest_name": "Cincinnati Northern Kentucky Intl",
-      "dest_lat": 39.0488,
-      "dest_lon": -84.6678,
-      "flightCount": 3941,
-      "avgArrDelay": 15.4,
-      "avgDistance": 575,
-      "severeDelayRate": 13.6
+      "dest": "BUF",
+      "dest_name": "Buffalo Niagara Intl",
+      "dest_lat": 42.9405,
+      "dest_lon": -78.7322,
+      "flightCount": 7348,
+      "avgArrDelay": 8.8,
+      "avgDistance": 297,
+      "severeDelayRate": 9
     },
     {
       "dest": "SEA",
       "dest_name": "Seattle Tacoma Intl",
       "dest_lat": 47.449,
       "dest_lon": -122.3093,
-      "flightCount": 3923,
-      "avgArrDelay": -1.1,
+      "flightCount": 7102,
+      "avgArrDelay": 1.1,
       "avgDistance": 2413,
-      "severeDelayRate": 6.5
-    },
-    {
-      "dest": "MSY",
-      "dest_name": "Louis Armstrong New Orleans Intl",
-      "dest_lat": 29.9934,
-      "dest_lon": -90.258,
-      "flightCount": 3799,
-      "avgArrDelay": 6.5,
-      "avgDistance": 1178,
-      "severeDelayRate": 9.5
-    },
-    {
-      "dest": "RSW",
-      "dest_name": "Southwest Florida Intl",
-      "dest_lat": 26.5362,
-      "dest_lon": -81.7552,
-      "flightCount": 3537,
-      "avgArrDelay": 3.2,
-      "avgDistance": 1073,
-      "severeDelayRate": 5.7
+      "severeDelayRate": 6.8
     },
     {
       "dest": "CMH",
       "dest_name": "Port Columbus Intl",
       "dest_lat": 39.998,
       "dest_lon": -82.8919,
-      "flightCount": 3524,
-      "avgArrDelay": 10.6,
-      "avgDistance": 477,
-      "severeDelayRate": 9.8
+      "flightCount": 6679,
+      "avgArrDelay": 10.7,
+      "avgDistance": 476,
+      "severeDelayRate": 9.3
+    },
+    {
+      "dest": "MSY",
+      "dest_name": "Louis Armstrong New Orleans Intl",
+      "dest_lat": 29.9934,
+      "dest_lon": -90.258,
+      "flightCount": 6427,
+      "avgArrDelay": 6.9,
+      "avgDistance": 1177,
+      "severeDelayRate": 9
+    },
+    {
+      "dest": "RSW",
+      "dest_name": "Southwest Florida Intl",
+      "dest_lat": 26.5362,
+      "dest_lon": -81.7552,
+      "flightCount": 6122,
+      "avgArrDelay": 4.6,
+      "avgDistance": 1073,
+      "severeDelayRate": 6
+    },
+    {
+      "dest": "CVG",
+      "dest_name": "Cincinnati Northern Kentucky Intl",
+      "dest_lat": 39.0488,
+      "dest_lon": -84.6678,
+      "flightCount": 5488,
+      "avgArrDelay": 15.6,
+      "avgDistance": 575,
+      "severeDelayRate": 13.2
     },
     {
       "dest": "CHS",
       "dest_name": "Charleston Afb Intl",
       "dest_lat": 32.8986,
       "dest_lon": -80.0405,
-      "flightCount": 2884,
-      "avgArrDelay": 10.6,
+      "flightCount": 5031,
+      "avgArrDelay": 10.4,
       "avgDistance": 633,
-      "severeDelayRate": 11.1
-    },
-    {
-      "dest": "PIT",
-      "dest_name": "Pittsburgh Intl",
-      "dest_lat": 40.4915,
-      "dest_lon": -80.2329,
-      "flightCount": 2875,
-      "avgArrDelay": 7.7,
-      "avgDistance": 334,
-      "severeDelayRate": 8.4
-    },
-    {
-      "dest": "MKE",
-      "dest_name": "General Mitchell Intl",
-      "dest_lat": 42.9472,
-      "dest_lon": -87.8966,
-      "flightCount": 2802,
-      "avgArrDelay": 14.2,
-      "avgDistance": 733,
-      "severeDelayRate": 11.3
+      "severeDelayRate": 9.9
     },
     {
       "dest": "SAN",
       "dest_name": "San Diego Intl",
       "dest_lat": 32.7336,
       "dest_lon": -117.1897,
-      "flightCount": 2737,
-      "avgArrDelay": 3.1,
-      "avgDistance": 2437,
-      "severeDelayRate": 6.7
-    },
-    {
-      "dest": "JAX",
-      "dest_name": "Jacksonville Intl",
-      "dest_lat": 30.4941,
-      "dest_lon": -81.6879,
-      "flightCount": 2720,
-      "avgArrDelay": 11.8,
-      "avgDistance": 825,
-      "severeDelayRate": 10.7
-    },
-    {
-      "dest": "BTV",
-      "dest_name": "Burlington Intl",
-      "dest_lat": 44.4719,
-      "dest_lon": -73.1533,
-      "flightCount": 2589,
-      "avgArrDelay": 9,
-      "avgDistance": 265,
-      "severeDelayRate": 9.1
-    },
-    {
-      "dest": "SLC",
-      "dest_name": "Salt Lake City Intl",
-      "dest_lat": 40.7884,
-      "dest_lon": -111.9778,
-      "flightCount": 2467,
-      "avgArrDelay": 0.2,
-      "avgDistance": 1987,
-      "severeDelayRate": 5.4
+      "flightCount": 5023,
+      "avgArrDelay": 4.5,
+      "avgDistance": 2438,
+      "severeDelayRate": 6.9
     },
     {
       "dest": "RIC",
       "dest_name": "Richmond Intl",
       "dest_lat": 37.5052,
       "dest_lon": -77.3197,
-      "flightCount": 2454,
-      "avgArrDelay": 20.1,
-      "avgDistance": 281,
-      "severeDelayRate": 16.4
+      "flightCount": 4772,
+      "avgArrDelay": 18.2,
+      "avgDistance": 283,
+      "severeDelayRate": 14.7
+    },
+    {
+      "dest": "MKE",
+      "dest_name": "General Mitchell Intl",
+      "dest_lat": 42.9472,
+      "dest_lon": -87.8966,
+      "flightCount": 4654,
+      "avgArrDelay": 13.2,
+      "avgDistance": 733,
+      "severeDelayRate": 11.3
+    },
+    {
+      "dest": "JAX",
+      "dest_name": "Jacksonville Intl",
+      "dest_lat": 30.4941,
+      "dest_lon": -81.6879,
+      "flightCount": 4628,
+      "avgArrDelay": 12,
+      "avgDistance": 824,
+      "severeDelayRate": 10.3
+    },
+    {
+      "dest": "SLC",
+      "dest_name": "Salt Lake City Intl",
+      "dest_lat": 40.7884,
+      "dest_lon": -111.9778,
+      "flightCount": 4458,
+      "avgArrDelay": 2.5,
+      "avgDistance": 1987,
+      "severeDelayRate": 5.8
     },
     {
       "dest": "AUS",
       "dest_name": "Austin Bergstrom Intl",
       "dest_lat": 30.1945,
       "dest_lon": -97.6699,
-      "flightCount": 2439,
-      "avgArrDelay": 6,
-      "avgDistance": 1514,
-      "severeDelayRate": 9.1
-    },
-    {
-      "dest": "ROC",
-      "dest_name": "Greater Rochester Intl",
-      "dest_lat": 43.1189,
-      "dest_lon": -77.6724,
-      "flightCount": 2416,
-      "avgArrDelay": 11.6,
-      "avgDistance": 259,
-      "severeDelayRate": 10.6
-    },
-    {
-      "dest": "PWM",
-      "dest_name": "Portland Intl Jetport",
-      "dest_lat": 43.6462,
-      "dest_lon": -70.3093,
-      "flightCount": 2352,
-      "avgArrDelay": 11.7,
-      "avgDistance": 276,
-      "severeDelayRate": 10.8
+      "flightCount": 4377,
+      "avgArrDelay": 5.5,
+      "avgDistance": 1515,
+      "severeDelayRate": 7.8
     },
     {
       "dest": "HOU",
       "dest_name": "William P Hobby",
       "dest_lat": 29.6454,
       "dest_lon": -95.2789,
-      "flightCount": 2115,
-      "avgArrDelay": 7.2,
-      "avgDistance": 1420,
+      "flightCount": 4374,
+      "avgArrDelay": 7.8,
+      "avgDistance": 1421,
       "severeDelayRate": 7.8
+    },
+    {
+      "dest": "ROC",
+      "dest_name": "Greater Rochester Intl",
+      "dest_lat": 43.1189,
+      "dest_lon": -77.6724,
+      "flightCount": 4210,
+      "avgArrDelay": 11.6,
+      "avgDistance": 259,
+      "severeDelayRate": 10.2
+    },
+    {
+      "dest": "BTV",
+      "dest_name": "Burlington Intl",
+      "dest_lat": 44.4719,
+      "dest_lon": -73.1533,
+      "flightCount": 4122,
+      "avgArrDelay": 8.7,
+      "avgDistance": 265,
+      "severeDelayRate": 8.7
+    },
+    {
+      "dest": "PWM",
+      "dest_name": "Portland Intl Jetport",
+      "dest_lat": 43.6462,
+      "dest_lon": -70.3093,
+      "flightCount": 3951,
+      "avgArrDelay": 11,
+      "avgDistance": 276,
+      "severeDelayRate": 10
+    },
+    {
+      "dest": "PIT",
+      "dest_name": "Pittsburgh Intl",
+      "dest_lat": 40.4915,
+      "dest_lon": -80.2329,
+      "flightCount": 3874,
+      "avgArrDelay": 8.7,
+      "avgDistance": 333,
+      "severeDelayRate": 8.9
     },
     {
       "dest": "IND",
       "dest_name": "Indianapolis Intl",
       "dest_lat": 39.7173,
       "dest_lon": -86.2944,
-      "flightCount": 2077,
-      "avgArrDelay": 9.9,
-      "avgDistance": 652,
-      "severeDelayRate": 9.2
+      "flightCount": 3643,
+      "avgArrDelay": 9.7,
+      "avgDistance": 651,
+      "severeDelayRate": 9.4
     },
     {
       "dest": "MCI",
       "dest_name": "Kansas City Intl",
       "dest_lat": 39.2976,
       "dest_lon": -94.7139,
-      "flightCount": 2008,
-      "avgArrDelay": 14.5,
-      "avgDistance": 1098,
-      "severeDelayRate": 13.9
-    },
-    {
-      "dest": "MEM",
-      "dest_name": "Memphis Intl",
-      "dest_lat": 35.0424,
-      "dest_lon": -89.9767,
-      "flightCount": 1789,
-      "avgArrDelay": 10.6,
-      "avgDistance": 954,
-      "severeDelayRate": 11.2
-    },
-    {
-      "dest": "BWI",
-      "dest_name": "Baltimore Washington Intl",
-      "dest_lat": 39.1754,
-      "dest_lon": -76.6683,
-      "flightCount": 1781,
-      "avgArrDelay": 10.7,
-      "avgDistance": 179,
-      "severeDelayRate": 11.5
-    },
-    {
-      "dest": "SYR",
-      "dest_name": "Syracuse Hancock Intl",
-      "dest_lat": 43.1112,
-      "dest_lon": -76.1063,
-      "flightCount": 1761,
-      "avgArrDelay": 8.9,
-      "avgDistance": 206,
-      "severeDelayRate": 9.2
-    },
-    {
-      "dest": "PHL",
-      "dest_name": "Philadelphia Intl",
-      "dest_lat": 39.8719,
-      "dest_lon": -75.2411,
-      "flightCount": 1632,
-      "avgArrDelay": 10.1,
-      "avgDistance": 94,
-      "severeDelayRate": 9.3
+      "flightCount": 3409,
+      "avgArrDelay": 14.2,
+      "avgDistance": 1097,
+      "severeDelayRate": 13.6
     },
     {
       "dest": "GSO",
       "dest_name": "Piedmont Triad",
       "dest_lat": 36.0977,
       "dest_lon": -79.9373,
-      "flightCount": 1606,
-      "avgArrDelay": 14.1,
-      "avgDistance": 450,
-      "severeDelayRate": 12.9
+      "flightCount": 3118,
+      "avgArrDelay": 12.5,
+      "avgDistance": 452,
+      "severeDelayRate": 11.6
+    },
+    {
+      "dest": "SYR",
+      "dest_name": "Syracuse Hancock Intl",
+      "dest_lat": 43.1112,
+      "dest_lon": -76.1063,
+      "flightCount": 3116,
+      "avgArrDelay": 9.1,
+      "avgDistance": 206,
+      "severeDelayRate": 8.9
     },
     {
       "dest": "ORF",
       "dest_name": "Norfolk Intl",
       "dest_lat": 36.8946,
       "dest_lon": -76.2012,
-      "flightCount": 1536,
-      "avgArrDelay": 10.9,
-      "avgDistance": 289,
-      "severeDelayRate": 11.5
+      "flightCount": 3043,
+      "avgArrDelay": 10.5,
+      "avgDistance": 291,
+      "severeDelayRate": 11.2
     },
     {
       "dest": "DAY",
       "dest_name": "James M Cox Dayton Intl",
       "dest_lat": 39.9024,
       "dest_lon": -84.2194,
-      "flightCount": 1525,
-      "avgArrDelay": 12.7,
-      "avgDistance": 537,
-      "severeDelayRate": 13.2
+      "flightCount": 2581,
+      "avgArrDelay": 12.6,
+      "avgDistance": 538,
+      "severeDelayRate": 12.4
     },
     {
       "dest": "PDX",
       "dest_name": "Portland Intl",
       "dest_lat": 45.5887,
       "dest_lon": -122.5975,
-      "flightCount": 1354,
-      "avgArrDelay": 5.1,
+      "flightCount": 2497,
+      "avgArrDelay": 6.5,
       "avgDistance": 2446,
-      "severeDelayRate": 7.7
+      "severeDelayRate": 8.3
     },
     {
-      "dest": "SRQ",
-      "dest_name": "Sarasota Bradenton Intl",
-      "dest_lat": 27.3954,
-      "dest_lon": -82.5544,
-      "flightCount": 1211,
-      "avgArrDelay": 3.1,
-      "avgDistance": 1045,
-      "severeDelayRate": 6.4
+      "dest": "MEM",
+      "dest_name": "Memphis Intl",
+      "dest_lat": 35.0424,
+      "dest_lon": -89.9767,
+      "flightCount": 2452,
+      "avgArrDelay": 12.2,
+      "avgDistance": 952,
+      "severeDelayRate": 11.6
     },
     {
-      "dest": "SDF",
-      "dest_name": "Louisville International Airport",
-      "dest_lat": 38.1741,
-      "dest_lon": -85.7365,
-      "flightCount": 1157,
-      "avgArrDelay": 12.7,
-      "avgDistance": 646,
-      "severeDelayRate": 12
+      "dest": "PHL",
+      "dest_name": "Philadelphia Intl",
+      "dest_lat": 39.8719,
+      "dest_lon": -75.2411,
+      "flightCount": 2342,
+      "avgArrDelay": 7.1,
+      "avgDistance": 95,
+      "severeDelayRate": 7.8
     },
     {
-      "dest": "XNA",
-      "dest_name": "NW Arkansas Regional",
-      "dest_lat": 36.2819,
-      "dest_lon": -94.3068,
-      "flightCount": 1036,
-      "avgArrDelay": 7.5,
-      "avgDistance": 1143,
-      "severeDelayRate": 7.6
-    },
-    {
-      "dest": "MHT",
-      "dest_name": "Manchester Regional Airport",
-      "dest_lat": 42.9326,
-      "dest_lon": -71.4357,
-      "flightCount": 1009,
-      "avgArrDelay": 14.8,
-      "avgDistance": 207,
-      "severeDelayRate": 13.5
-    },
-    {
-      "dest": "CAK",
-      "dest_name": "Akron Canton Regional Airport",
-      "dest_lat": 40.9161,
-      "dest_lon": -81.4422,
-      "flightCount": 864,
-      "avgArrDelay": 19.7,
-      "avgDistance": 397,
-      "severeDelayRate": 11.9
-    },
-    {
-      "dest": "GSP",
-      "dest_name": "Greenville-Spartanburg International",
-      "dest_lat": 34.8956,
-      "dest_lon": -82.2189,
-      "flightCount": 849,
-      "avgArrDelay": 15.9,
-      "avgDistance": 596,
-      "severeDelayRate": 14.2
-    },
-    {
-      "dest": "OMA",
-      "dest_name": "Eppley Afld",
-      "dest_lat": 41.3032,
-      "dest_lon": -95.8941,
-      "flightCount": 849,
-      "avgArrDelay": 14.7,
-      "avgDistance": 1136,
-      "severeDelayRate": 14.2
-    },
-    {
-      "dest": "SNA",
-      "dest_name": "John Wayne Arpt Orange Co",
-      "dest_lat": 33.6757,
-      "dest_lon": -117.8682,
-      "flightCount": 825,
-      "avgArrDelay": -7.9,
-      "avgDistance": 2434,
-      "severeDelayRate": 2.8
+      "dest": "BWI",
+      "dest_name": "Baltimore Washington Intl",
+      "dest_lat": 39.1754,
+      "dest_lon": -76.6683,
+      "flightCount": 2248,
+      "avgArrDelay": 10.8,
+      "avgDistance": 179,
+      "severeDelayRate": 11
     },
     {
       "dest": "SAV",
       "dest_name": "Savannah Hilton Head Intl",
       "dest_lat": 32.1276,
       "dest_lon": -81.2021,
-      "flightCount": 804,
-      "avgArrDelay": 15.1,
-      "avgDistance": 709,
-      "severeDelayRate": 13
+      "flightCount": 2243,
+      "avgArrDelay": 11.4,
+      "avgDistance": 713,
+      "severeDelayRate": 10.4
+    },
+    {
+      "dest": "SDF",
+      "dest_name": "Louisville International Airport",
+      "dest_lat": 38.1741,
+      "dest_lon": -85.7365,
+      "flightCount": 2228,
+      "avgArrDelay": 14.5,
+      "avgDistance": 648,
+      "severeDelayRate": 12
+    },
+    {
+      "dest": "SRQ",
+      "dest_name": "Sarasota Bradenton Intl",
+      "dest_lat": 27.3954,
+      "dest_lon": -82.5544,
+      "flightCount": 2077,
+      "avgArrDelay": 4.1,
+      "avgDistance": 1045,
+      "severeDelayRate": 6.6
+    },
+    {
+      "dest": "XNA",
+      "dest_name": "NW Arkansas Regional",
+      "dest_lat": 36.2819,
+      "dest_lon": -94.3068,
+      "flightCount": 1672,
+      "avgArrDelay": 5.1,
+      "avgDistance": 1142,
+      "severeDelayRate": 7.2
+    },
+    {
+      "dest": "CAK",
+      "dest_name": "Akron Canton Regional Airport",
+      "dest_lat": 40.9161,
+      "dest_lon": -81.4422,
+      "flightCount": 1572,
+      "avgArrDelay": 21,
+      "avgDistance": 397,
+      "severeDelayRate": 13.3
     },
     {
       "dest": "GRR",
       "dest_name": "Gerald R Ford Intl",
       "dest_lat": 42.8808,
       "dest_lon": -85.5228,
-      "flightCount": 765,
-      "avgArrDelay": 18.2,
-      "avgDistance": 606,
+      "flightCount": 1521,
+      "avgArrDelay": 15.6,
+      "avgDistance": 608,
+      "severeDelayRate": 11.1
+    },
+    {
+      "dest": "SNA",
+      "dest_name": "John Wayne Arpt Orange Co",
+      "dest_lat": 33.6757,
+      "dest_lon": -117.8682,
+      "flightCount": 1482,
+      "avgArrDelay": -6.8,
+      "avgDistance": 2434,
+      "severeDelayRate": 3.1
+    },
+    {
+      "dest": "OMA",
+      "dest_name": "Eppley Afld",
+      "dest_lat": 41.3032,
+      "dest_lon": -95.8941,
+      "flightCount": 1480,
+      "avgArrDelay": 14.4,
+      "avgDistance": 1136,
+      "severeDelayRate": 13.1
+    },
+    {
+      "dest": "MHT",
+      "dest_name": "Manchester Regional Airport",
+      "dest_lat": 42.9326,
+      "dest_lon": -71.4357,
+      "flightCount": 1479,
+      "avgArrDelay": 12.5,
+      "avgDistance": 206,
+      "severeDelayRate": 12.2
+    },
+    {
+      "dest": "GSP",
+      "dest_name": "Greenville-Spartanburg International",
+      "dest_lat": 34.8956,
+      "dest_lon": -82.2189,
+      "flightCount": 1370,
+      "avgArrDelay": 15.6,
+      "avgDistance": 595,
       "severeDelayRate": 12.4
     },
     {
@@ -1061,149 +1061,199 @@
       "dest_name": "Honolulu Intl",
       "dest_lat": 21.3187,
       "dest_lon": -157.9224,
-      "flightCount": 707,
-      "avgArrDelay": -1.4,
-      "avgDistance": 4973,
-      "severeDelayRate": 4.4
-    },
-    {
-      "dest": "SAT",
-      "dest_name": "San Antonio Intl",
-      "dest_lat": 29.5337,
-      "dest_lon": -98.4698,
-      "flightCount": 686,
-      "avgArrDelay": 6.9,
-      "avgDistance": 1578,
-      "severeDelayRate": 11.2
+      "flightCount": 1268,
+      "avgArrDelay": 4.8,
+      "avgDistance": 4972,
+      "severeDelayRate": 5.8
     },
     {
       "dest": "LGB",
       "dest_name": "Long Beach",
       "dest_lat": 33.8177,
       "dest_lon": -118.1516,
-      "flightCount": 668,
-      "avgArrDelay": -0.1,
+      "flightCount": 1194,
+      "avgArrDelay": 1.6,
       "avgDistance": 2465,
-      "severeDelayRate": 6.8
+      "severeDelayRate": 7
     },
     {
-      "dest": "TYS",
-      "dest_name": "Mc Ghee Tyson",
-      "dest_lat": 35.811,
-      "dest_lon": -83.994,
-      "flightCount": 631,
-      "avgArrDelay": 24.1,
-      "avgDistance": 639,
-      "severeDelayRate": 20.6
+      "dest": "SAT",
+      "dest_name": "San Antonio Intl",
+      "dest_lat": 29.5337,
+      "dest_lon": -98.4698,
+      "flightCount": 1133,
+      "avgArrDelay": 9.6,
+      "avgDistance": 1579,
+      "severeDelayRate": 11.9
     },
     {
       "dest": "MSN",
       "dest_name": "Dane Co Rgnl Truax Fld",
       "dest_lat": 43.1399,
       "dest_lon": -89.3375,
-      "flightCount": 572,
-      "avgArrDelay": 20.2,
+      "flightCount": 1040,
+      "avgArrDelay": 21.6,
       "avgDistance": 804,
-      "severeDelayRate": 14.6
+      "severeDelayRate": 15.7
+    },
+    {
+      "dest": "TYS",
+      "dest_name": "Mc Ghee Tyson",
+      "dest_lat": 35.811,
+      "dest_lon": -83.994,
+      "flightCount": 1036,
+      "avgArrDelay": 24.5,
+      "avgDistance": 638,
+      "severeDelayRate": 19.3
     },
     {
       "dest": "DSM",
       "dest_name": "Des Moines Intl",
       "dest_lat": 41.534,
       "dest_lon": -93.6631,
-      "flightCount": 569,
-      "avgArrDelay": 19,
-      "avgDistance": 1021,
-      "severeDelayRate": 17
-    },
-    {
-      "dest": "BDL",
-      "dest_name": "Bradley Intl",
-      "dest_lat": 41.9389,
-      "dest_lon": -72.6832,
-      "flightCount": 443,
-      "avgArrDelay": 7,
-      "avgDistance": 116,
-      "severeDelayRate": 10
-    },
-    {
-      "dest": "ALB",
-      "dest_name": "Albany Intl",
-      "dest_lat": 42.7483,
-      "dest_lon": -73.8017,
-      "flightCount": 439,
-      "avgArrDelay": 14.4,
-      "avgDistance": 143,
-      "severeDelayRate": 14.1
-    },
-    {
-      "dest": "PVD",
-      "dest_name": "Theodore Francis Green State",
-      "dest_lat": 41.7326,
-      "dest_lon": -71.4204,
-      "flightCount": 376,
-      "avgArrDelay": 16.2,
-      "avgDistance": 160,
-      "severeDelayRate": 13.1
-    },
-    {
-      "dest": "BGR",
-      "dest_name": "Bangor Intl",
-      "dest_lat": 44.8074,
-      "dest_lon": -68.8281,
-      "flightCount": 375,
-      "avgArrDelay": 8,
-      "avgDistance": 378,
-      "severeDelayRate": 12.3
+      "flightCount": 749,
+      "avgArrDelay": 19.2,
+      "avgDistance": 1020,
+      "severeDelayRate": 16.8
     },
     {
       "dest": "BUR",
       "dest_name": "Bob Hope",
       "dest_lat": 34.2007,
       "dest_lon": -118.3587,
-      "flightCount": 371,
-      "avgArrDelay": 8.2,
+      "flightCount": 660,
+      "avgArrDelay": 11.6,
       "avgDistance": 2465,
-      "severeDelayRate": 10
+      "severeDelayRate": 11.2
     },
     {
-      "dest": "OKC",
-      "dest_name": "Will Rogers World",
-      "dest_lat": 35.3931,
-      "dest_lon": -97.6007,
-      "flightCount": 346,
-      "avgArrDelay": 30.6,
-      "avgDistance": 1325,
-      "severeDelayRate": 21.6
+      "dest": "BDL",
+      "dest_name": "Bradley Intl",
+      "dest_lat": 41.9389,
+      "dest_lon": -72.6832,
+      "flightCount": 653,
+      "avgArrDelay": 10,
+      "avgDistance": 116,
+      "severeDelayRate": 11.1
+    },
+    {
+      "dest": "BGR",
+      "dest_name": "Bangor Intl",
+      "dest_lat": 44.8074,
+      "dest_lon": -68.8281,
+      "flightCount": 649,
+      "avgArrDelay": 9.5,
+      "avgDistance": 378,
+      "severeDelayRate": 12.8
+    },
+    {
+      "dest": "ALB",
+      "dest_name": "Albany Intl",
+      "dest_lat": 42.7483,
+      "dest_lon": -73.8017,
+      "flightCount": 608,
+      "avgArrDelay": 14.2,
+      "avgDistance": 143,
+      "severeDelayRate": 13.8
     },
     {
       "dest": "SJC",
       "dest_name": "Norman Y Mineta San Jose Intl",
       "dest_lat": 37.3626,
       "dest_lon": -121.929,
-      "flightCount": 329,
-      "avgArrDelay": 3.4,
+      "flightCount": 581,
+      "avgArrDelay": 7.3,
       "avgDistance": 2569,
-      "severeDelayRate": 9.1
+      "severeDelayRate": 10.3
     },
     {
-      "dest": "TUL",
-      "dest_name": "Tulsa Intl",
-      "dest_lat": 36.1984,
-      "dest_lon": -95.8881,
-      "flightCount": 315,
-      "avgArrDelay": 33.7,
-      "avgDistance": 1215,
-      "severeDelayRate": 24.5
+      "dest": "OKC",
+      "dest_name": "Will Rogers World",
+      "dest_lat": 35.3931,
+      "dest_lon": -97.6007,
+      "flightCount": 569,
+      "avgArrDelay": 28,
+      "avgDistance": 1325,
+      "severeDelayRate": 20.4
     },
     {
       "dest": "OAK",
       "dest_name": "Metropolitan Oakland Intl",
       "dest_lat": 37.7213,
       "dest_lon": -122.2207,
-      "flightCount": 312,
-      "avgArrDelay": 3.1,
+      "flightCount": 559,
+      "avgArrDelay": 8.1,
       "avgDistance": 2576,
+      "severeDelayRate": 8.1
+    },
+    {
+      "dest": "PVD",
+      "dest_name": "Theodore Francis Green State",
+      "dest_lat": 41.7326,
+      "dest_lon": -71.4204,
+      "flightCount": 545,
+      "avgArrDelay": 15.3,
+      "avgDistance": 160,
+      "severeDelayRate": 12.3
+    },
+    {
+      "dest": "ACK",
+      "dest_name": "Nantucket Mem",
+      "dest_lat": 41.2531,
+      "dest_lon": -70.0602,
+      "flightCount": 542,
+      "avgArrDelay": 3.1,
+      "avgDistance": 199,
+      "severeDelayRate": 4.4
+    },
+    {
+      "dest": "ABQ",
+      "dest_name": "Albuquerque International Sunport",
+      "dest_lat": 35.0402,
+      "dest_lon": -106.6092,
+      "flightCount": 532,
+      "avgArrDelay": 3.9,
+      "avgDistance": 1826,
+      "severeDelayRate": 9
+    },
+    {
+      "dest": "SMF",
+      "dest_name": "Sacramento Intl",
+      "dest_lat": 38.6954,
+      "dest_lon": -121.5908,
+      "flightCount": 530,
+      "avgArrDelay": 11.8,
+      "avgDistance": 2521,
+      "severeDelayRate": 10.4
+    },
+    {
+      "dest": "CAE",
+      "dest_name": "Columbia Metropolitan",
+      "dest_lat": 33.9388,
+      "dest_lon": -81.1195,
+      "flightCount": 519,
+      "avgArrDelay": 14.7,
+      "avgDistance": 613,
+      "severeDelayRate": 13.9
+    },
+    {
+      "dest": "TUL",
+      "dest_name": "Tulsa Intl",
+      "dest_lat": 36.1984,
+      "dest_lon": -95.8881,
+      "flightCount": 516,
+      "avgArrDelay": 31.2,
+      "avgDistance": 1215,
+      "severeDelayRate": 23.4
+    },
+    {
+      "dest": "AVL",
+      "dest_name": "Asheville Regional Airport",
+      "dest_lat": 35.4362,
+      "dest_lon": -82.5418,
+      "flightCount": 422,
+      "avgArrDelay": 8.8,
+      "avgDistance": 583,
       "severeDelayRate": 7.8
     },
     {
@@ -1211,70 +1261,70 @@
       "dest_name": "Birmingham Intl",
       "dest_lat": 33.5629,
       "dest_lon": -86.7536,
-      "flightCount": 297,
-      "avgArrDelay": 16.9,
+      "flightCount": 421,
+      "avgArrDelay": 17.7,
       "avgDistance": 866,
-      "severeDelayRate": 17.1
+      "severeDelayRate": 17
     },
     {
-      "dest": "SMF",
-      "dest_name": "Sacramento Intl",
-      "dest_lat": 38.6954,
-      "dest_lon": -121.5908,
-      "flightCount": 284,
-      "avgArrDelay": 12.1,
-      "avgDistance": 2521,
-      "severeDelayRate": 11
-    },
-    {
-      "dest": "AVL",
-      "dest_name": "Asheville Regional Airport",
-      "dest_lat": 35.4362,
-      "dest_lon": -82.5418,
-      "flightCount": 275,
-      "avgArrDelay": 8,
-      "avgDistance": 584,
-      "severeDelayRate": 8
-    },
-    {
-      "dest": "ACK",
-      "dest_name": "Nantucket Mem",
-      "dest_lat": 41.2531,
-      "dest_lon": -70.0602,
-      "flightCount": 265,
-      "avgArrDelay": 4.9,
-      "avgDistance": 199,
-      "severeDelayRate": 4.5
-    },
-    {
-      "dest": "ABQ",
-      "dest_name": "Albuquerque International Sunport",
-      "dest_lat": 35.0402,
-      "dest_lon": -106.6092,
-      "flightCount": 254,
-      "avgArrDelay": 4.4,
-      "avgDistance": 1826,
-      "severeDelayRate": 9.8
+      "dest": "CHO",
+      "dest_name": "Charlottesville-Albemarle",
+      "dest_lat": 38.1386,
+      "dest_lon": -78.4529,
+      "flightCount": 381,
+      "avgArrDelay": 5,
+      "avgDistance": 305,
+      "severeDelayRate": 8.3
     },
     {
       "dest": "MVY",
       "dest_name": "Martha\\\\'s Vineyard",
       "dest_lat": 41.3917,
       "dest_lon": -70.6153,
-      "flightCount": 221,
-      "avgArrDelay": -0.3,
+      "flightCount": 380,
+      "avgArrDelay": 1,
       "avgDistance": 173,
-      "severeDelayRate": 5.2
+      "severeDelayRate": 5.1
     },
     {
       "dest": "EGE",
       "dest_name": "Eagle Co Rgnl",
       "dest_lat": 39.6426,
       "dest_lon": -106.9177,
-      "flightCount": 213,
-      "avgArrDelay": 6.3,
+      "flightCount": 378,
+      "avgArrDelay": 12.6,
       "avgDistance": 1736,
-      "severeDelayRate": 9.2
+      "severeDelayRate": 10.8
+    },
+    {
+      "dest": "ILM",
+      "dest_name": "Wilmington Intl",
+      "dest_lat": 34.2706,
+      "dest_lon": -77.9026,
+      "flightCount": 333,
+      "avgArrDelay": 3.1,
+      "avgDistance": 500,
+      "severeDelayRate": 5.8
+    },
+    {
+      "dest": "LIT",
+      "dest_name": "Adams Fld",
+      "dest_lat": 34.7294,
+      "dest_lon": -92.2243,
+      "flightCount": 204,
+      "avgArrDelay": 31.7,
+      "avgDistance": 1085,
+      "severeDelayRate": 17.6
+    },
+    {
+      "dest": "TVC",
+      "dest_name": "Cherry Capital Airport",
+      "dest_lat": 44.7414,
+      "dest_lon": -85.5822,
+      "flightCount": 157,
+      "avgArrDelay": 16.9,
+      "avgDistance": 652,
+      "severeDelayRate": 13.9
     },
     {
       "dest": "CRW",
@@ -1287,312 +1337,308 @@
       "severeDelayRate": 14.9
     },
     {
-      "dest": "CAE",
-      "dest_name": "Columbia Metropolitan",
-      "dest_lat": 33.9388,
-      "dest_lon": -81.1195,
-      "flightCount": 116,
-      "avgArrDelay": 41.8,
-      "avgDistance": 604,
-      "severeDelayRate": 25.5
+      "dest": "ROA",
+      "dest_name": "Roanoke Regional",
+      "dest_lat": 37.3255,
+      "dest_lon": -79.9754,
+      "flightCount": 125,
+      "avgArrDelay": 6.7,
+      "avgDistance": 405,
+      "severeDelayRate": 6.4
     },
     {
-      "dest": "ILM",
-      "dest_name": "Wilmington Intl",
-      "dest_lat": 34.2706,
-      "dest_lon": -77.9026,
-      "flightCount": 110,
-      "avgArrDelay": 4.6,
-      "avgDistance": 500,
-      "severeDelayRate": 11.2
-    },
-    {
-      "dest": "TVC",
-      "dest_name": "Cherry Capital Airport",
-      "dest_lat": 44.7414,
-      "dest_lon": -85.5822,
-      "flightCount": 101,
-      "avgArrDelay": 13,
-      "avgDistance": 652,
-      "severeDelayRate": 13.7
+      "dest": "BZN",
+      "dest_name": "Gallatin Field",
+      "dest_lat": 45.7776,
+      "dest_lon": -111.1602,
+      "flightCount": 102,
+      "avgArrDelay": 4.3,
+      "avgDistance": 1884,
+      "severeDelayRate": 4
     }
   ],
   "originDestHeatmap": [
     {
       "origin": "EWR",
       "dest": "ALB",
-      "avgDelay": 23.6,
-      "flightCount": 439
+      "avgDelay": 23,
+      "flightCount": 608
     },
     {
       "origin": "EWR",
       "dest": "ATL",
-      "avgDelay": 15.5,
-      "flightCount": 5022
+      "avgDelay": 16.5,
+      "flightCount": 9204
     },
     {
       "origin": "EWR",
       "dest": "AUS",
-      "avgDelay": 11.5,
-      "flightCount": 968
+      "avgDelay": 10.1,
+      "flightCount": 1536
     },
     {
       "origin": "EWR",
       "dest": "AVL",
-      "avgDelay": 8.6,
-      "flightCount": 265
+      "avgDelay": 10.6,
+      "flightCount": 410
     },
     {
       "origin": "EWR",
       "dest": "BDL",
-      "avgDelay": 17.7,
-      "flightCount": 443
+      "avgDelay": 19.5,
+      "flightCount": 653
     },
     {
       "origin": "EWR",
       "dest": "BNA",
-      "avgDelay": 17.7,
-      "flightCount": 2336
+      "avgDelay": 17.1,
+      "flightCount": 4133
     },
     {
       "origin": "EWR",
       "dest": "BOS",
-      "avgDelay": 12.5,
-      "flightCount": 5327
+      "avgDelay": 12,
+      "flightCount": 9595
     },
     {
       "origin": "EWR",
       "dest": "BQN",
-      "avgDelay": 23.9,
-      "flightCount": 297
+      "avgDelay": 25,
+      "flightCount": 548
     },
     {
       "origin": "EWR",
       "dest": "BTV",
-      "avgDelay": 17.8,
-      "flightCount": 931
+      "avgDelay": 17.3,
+      "flightCount": 1231
     },
     {
       "origin": "EWR",
       "dest": "BUF",
-      "avgDelay": 14.4,
-      "flightCount": 973
+      "avgDelay": 13.5,
+      "flightCount": 1307
     },
     {
       "origin": "EWR",
       "dest": "BWI",
-      "avgDelay": 18.5,
-      "flightCount": 545
+      "avgDelay": 17.7,
+      "flightCount": 730
+    },
+    {
+      "origin": "EWR",
+      "dest": "BZN",
+      "avgDelay": 14.1,
+      "flightCount": 87
     },
     {
       "origin": "EWR",
       "dest": "CAE",
       "avgDelay": 36.3,
-      "flightCount": 104
+      "flightCount": 125
     },
     {
       "origin": "EWR",
       "dest": "CHS",
-      "avgDelay": 17.6,
-      "flightCount": 1424
+      "avgDelay": 16.4,
+      "flightCount": 2410
     },
     {
       "origin": "EWR",
       "dest": "CLE",
-      "avgDelay": 11.8,
-      "flightCount": 1754
+      "avgDelay": 12.6,
+      "flightCount": 2925
     },
     {
       "origin": "EWR",
       "dest": "CLT",
-      "avgDelay": 9.9,
-      "flightCount": 5026
+      "avgDelay": 9.2,
+      "flightCount": 8947
     },
     {
       "origin": "EWR",
       "dest": "CMH",
-      "avgDelay": 13.4,
-      "flightCount": 724
+      "avgDelay": 12.9,
+      "flightCount": 1487
     },
     {
       "origin": "EWR",
       "dest": "CVG",
-      "avgDelay": 17.3,
-      "flightCount": 2673
+      "avgDelay": 17.7,
+      "flightCount": 3860
     },
     {
       "origin": "EWR",
       "dest": "DAY",
-      "avgDelay": 21.2,
-      "flightCount": 1134
+      "avgDelay": 20,
+      "flightCount": 1700
     },
     {
       "origin": "EWR",
       "dest": "DCA",
-      "avgDelay": 21.3,
-      "flightCount": 1719
+      "avgDelay": 18.3,
+      "flightCount": 3028
     },
     {
       "origin": "EWR",
       "dest": "DEN",
-      "avgDelay": 16.5,
-      "flightCount": 2859
+      "avgDelay": 16.9,
+      "flightCount": 5102
     },
     {
       "origin": "EWR",
       "dest": "DFW",
-      "avgDelay": 11.8,
-      "flightCount": 3148
+      "avgDelay": 13.8,
+      "flightCount": 5372
     },
     {
       "origin": "EWR",
       "dest": "DSM",
-      "avgDelay": 29.3,
-      "flightCount": 411
+      "avgDelay": 26.4,
+      "flightCount": 590
     },
     {
       "origin": "EWR",
       "dest": "DTW",
-      "avgDelay": 16.3,
-      "flightCount": 3178
+      "avgDelay": 15.4,
+      "flightCount": 5327
     },
     {
       "origin": "EWR",
       "dest": "EGE",
-      "avgDelay": 8,
-      "flightCount": 110
+      "avgDelay": 10.9,
+      "flightCount": 190
     },
     {
       "origin": "EWR",
       "dest": "FLL",
-      "avgDelay": 13.5,
-      "flightCount": 3793
+      "avgDelay": 14.5,
+      "flightCount": 6702
     },
     {
       "origin": "EWR",
       "dest": "GRR",
-      "avgDelay": 20.6,
-      "flightCount": 719
+      "avgDelay": 19.3,
+      "flightCount": 1209
     },
     {
       "origin": "EWR",
       "dest": "GSO",
-      "avgDelay": 19.4,
-      "flightCount": 1120
+      "avgDelay": 18.4,
+      "flightCount": 1764
     },
     {
       "origin": "EWR",
       "dest": "GSP",
-      "avgDelay": 20.8,
-      "flightCount": 745
+      "avgDelay": 18.3,
+      "flightCount": 1263
     },
     {
       "origin": "EWR",
       "dest": "HNL",
-      "avgDelay": 13.4,
-      "flightCount": 365
+      "avgDelay": 14,
+      "flightCount": 666
     },
     {
       "origin": "EWR",
       "dest": "HOU",
-      "avgDelay": 18.9,
-      "flightCount": 976
+      "avgDelay": 17.5,
+      "flightCount": 1760
     },
     {
       "origin": "EWR",
       "dest": "IAD",
-      "avgDelay": 18.6,
-      "flightCount": 1236
+      "avgDelay": 19.3,
+      "flightCount": 1865
     },
     {
       "origin": "EWR",
       "dest": "IAH",
-      "avgDelay": 11.8,
-      "flightCount": 3973
+      "avgDelay": 13,
+      "flightCount": 7046
     },
     {
       "origin": "EWR",
       "dest": "IND",
-      "avgDelay": 14.3,
-      "flightCount": 1301
+      "avgDelay": 13.7,
+      "flightCount": 2540
     },
     {
       "origin": "EWR",
       "dest": "JAX",
-      "avgDelay": 19.2,
-      "flightCount": 1242
+      "avgDelay": 17.4,
+      "flightCount": 2240
     },
     {
       "origin": "EWR",
       "dest": "LAS",
-      "avgDelay": 11.2,
-      "flightCount": 2010
+      "avgDelay": 11.7,
+      "flightCount": 3565
     },
     {
       "origin": "EWR",
       "dest": "LAX",
-      "avgDelay": 11.4,
-      "flightCount": 4912
+      "avgDelay": 13.5,
+      "flightCount": 9138
     },
     {
       "origin": "EWR",
       "dest": "MCI",
-      "avgDelay": 21.7,
-      "flightCount": 1356
+      "avgDelay": 20.9,
+      "flightCount": 2351
     },
     {
       "origin": "EWR",
       "dest": "MCO",
-      "avgDelay": 11,
-      "flightCount": 4941
+      "avgDelay": 11.3,
+      "flightCount": 9105
     },
     {
       "origin": "EWR",
       "dest": "MDW",
-      "avgDelay": 17.3,
-      "flightCount": 2043
+      "avgDelay": 19.4,
+      "flightCount": 3580
     },
     {
       "origin": "EWR",
       "dest": "MEM",
-      "avgDelay": 19.4,
-      "flightCount": 926
+      "avgDelay": 18.8,
+      "flightCount": 1586
     },
     {
       "origin": "EWR",
       "dest": "MHT",
-      "avgDelay": 20.6,
-      "flightCount": 867
+      "avgDelay": 18.2,
+      "flightCount": 1191
     },
     {
       "origin": "EWR",
       "dest": "MIA",
-      "avgDelay": 11.6,
-      "flightCount": 2633
+      "avgDelay": 11.7,
+      "flightCount": 4727
     },
     {
       "origin": "EWR",
       "dest": "MKE",
-      "avgDelay": 23.6,
-      "flightCount": 1094
+      "avgDelay": 21,
+      "flightCount": 1770
     },
     {
       "origin": "EWR",
       "dest": "MSN",
-      "avgDelay": 21.4,
-      "flightCount": 354
+      "avgDelay": 23.6,
+      "flightCount": 634
     },
     {
       "origin": "EWR",
       "dest": "MSP",
-      "avgDelay": 15.3,
-      "flightCount": 2377
+      "avgDelay": 15.7,
+      "flightCount": 3862
     },
     {
       "origin": "EWR",
       "dest": "MSY",
-      "avgDelay": 19.3,
-      "flightCount": 1155
+      "avgDelay": 19,
+      "flightCount": 2137
     },
     {
       "origin": "EWR",
@@ -1603,368 +1649,380 @@
     {
       "origin": "EWR",
       "dest": "OKC",
-      "avgDelay": 30.6,
-      "flightCount": 346
+      "avgDelay": 28.8,
+      "flightCount": 569
     },
     {
       "origin": "EWR",
       "dest": "OMA",
-      "avgDelay": 19.3,
-      "flightCount": 754
+      "avgDelay": 18.6,
+      "flightCount": 1298
     },
     {
       "origin": "EWR",
       "dest": "ORD",
-      "avgDelay": 14.6,
-      "flightCount": 6100
+      "avgDelay": 15.6,
+      "flightCount": 9372
     },
     {
       "origin": "EWR",
       "dest": "ORF",
-      "avgDelay": 17.4,
-      "flightCount": 584
+      "avgDelay": 18.8,
+      "flightCount": 795
     },
     {
       "origin": "EWR",
       "dest": "PBI",
-      "avgDelay": 14,
-      "flightCount": 2351
+      "avgDelay": 14.4,
+      "flightCount": 4225
     },
     {
       "origin": "EWR",
       "dest": "PDX",
-      "avgDelay": 16.6,
-      "flightCount": 571
+      "avgDelay": 19.2,
+      "flightCount": 989
+    },
+    {
+      "origin": "EWR",
+      "dest": "PHL",
+      "avgDelay": 16.5,
+      "flightCount": 56
     },
     {
       "origin": "EWR",
       "dest": "PHX",
-      "avgDelay": 10.6,
-      "flightCount": 2723
+      "avgDelay": 12.1,
+      "flightCount": 4725
     },
     {
       "origin": "EWR",
       "dest": "PIT",
-      "avgDelay": 10.6,
-      "flightCount": 559
+      "avgDelay": 10.8,
+      "flightCount": 912
     },
     {
       "origin": "EWR",
       "dest": "PVD",
-      "avgDelay": 21.8,
-      "flightCount": 376
+      "avgDelay": 21.6,
+      "flightCount": 545
     },
     {
       "origin": "EWR",
       "dest": "PWM",
-      "avgDelay": 25.7,
-      "flightCount": 770
+      "avgDelay": 24.2,
+      "flightCount": 1162
     },
     {
       "origin": "EWR",
       "dest": "RDU",
-      "avgDelay": 15.9,
-      "flightCount": 1482
+      "avgDelay": 13.9,
+      "flightCount": 2223
     },
     {
       "origin": "EWR",
       "dest": "RIC",
-      "avgDelay": 26.5,
-      "flightCount": 1667
+      "avgDelay": 25.3,
+      "flightCount": 2850
     },
     {
       "origin": "EWR",
       "dest": "ROC",
-      "avgDelay": 27.9,
-      "flightCount": 513
+      "avgDelay": 22.3,
+      "flightCount": 1017
     },
     {
       "origin": "EWR",
       "dest": "RSW",
-      "avgDelay": 5.9,
-      "flightCount": 1437
+      "avgDelay": 6.3,
+      "flightCount": 2597
     },
     {
       "origin": "EWR",
       "dest": "SAN",
-      "avgDelay": 12.9,
-      "flightCount": 1134
+      "avgDelay": 14,
+      "flightCount": 2018
     },
     {
       "origin": "EWR",
       "dest": "SAT",
-      "avgDelay": 17.8,
-      "flightCount": 330
+      "avgDelay": 21.3,
+      "flightCount": 535
     },
     {
       "origin": "EWR",
       "dest": "SAV",
-      "avgDelay": 19.8,
-      "flightCount": 736
+      "avgDelay": 18,
+      "flightCount": 1293
     },
     {
       "origin": "EWR",
       "dest": "SDF",
-      "avgDelay": 19.1,
-      "flightCount": 894
+      "avgDelay": 18.1,
+      "flightCount": 1423
     },
     {
       "origin": "EWR",
       "dest": "SEA",
-      "avgDelay": 12.8,
-      "flightCount": 1831
+      "avgDelay": 13.7,
+      "flightCount": 3195
     },
     {
       "origin": "EWR",
       "dest": "SFO",
-      "avgDelay": 14.3,
-      "flightCount": 5127
+      "avgDelay": 15.4,
+      "flightCount": 9666
     },
     {
       "origin": "EWR",
       "dest": "SJU",
-      "avgDelay": 7.5,
-      "flightCount": 1067
+      "avgDelay": 8.6,
+      "flightCount": 2016
     },
     {
       "origin": "EWR",
       "dest": "SLC",
-      "avgDelay": 16.8,
-      "flightCount": 354
+      "avgDelay": 17,
+      "flightCount": 639
     },
     {
       "origin": "EWR",
       "dest": "SNA",
-      "avgDelay": 7.8,
-      "flightCount": 825
+      "avgDelay": 8.3,
+      "flightCount": 1482
     },
     {
       "origin": "EWR",
       "dest": "STL",
-      "avgDelay": 20.8,
-      "flightCount": 2516
+      "avgDelay": 19.7,
+      "flightCount": 4256
     },
     {
       "origin": "EWR",
       "dest": "STT",
-      "avgDelay": 6.1,
-      "flightCount": 189
+      "avgDelay": 7.4,
+      "flightCount": 363
     },
     {
       "origin": "EWR",
       "dest": "SYR",
-      "avgDelay": 12.7,
-      "flightCount": 157
+      "avgDelay": 16.2,
+      "flightCount": 243
     },
     {
       "origin": "EWR",
       "dest": "TPA",
-      "avgDelay": 13.1,
-      "flightCount": 2334
+      "avgDelay": 13.5,
+      "flightCount": 4167
     },
     {
       "origin": "EWR",
       "dest": "TUL",
-      "avgDelay": 34.9,
-      "flightCount": 315
+      "avgDelay": 32.5,
+      "flightCount": 516
     },
     {
       "origin": "EWR",
       "dest": "TYS",
-      "avgDelay": 41.8,
-      "flightCount": 323
+      "avgDelay": 37.9,
+      "flightCount": 561
     },
     {
       "origin": "EWR",
       "dest": "XNA",
-      "avgDelay": 7.8,
-      "flightCount": 291
+      "avgDelay": 7,
+      "flightCount": 486
     },
     {
       "origin": "JFK",
       "dest": "ABQ",
-      "avgDelay": 13.7,
-      "flightCount": 254
+      "avgDelay": 14.6,
+      "flightCount": 532
     },
     {
       "origin": "JFK",
       "dest": "ACK",
-      "avgDelay": 6.5,
-      "flightCount": 265
+      "avgDelay": 5.3,
+      "flightCount": 542
     },
     {
       "origin": "JFK",
       "dest": "ATL",
-      "avgDelay": 10.5,
-      "flightCount": 1930
+      "avgDelay": 13.6,
+      "flightCount": 3631
     },
     {
       "origin": "JFK",
       "dest": "AUS",
-      "avgDelay": 14,
-      "flightCount": 1471
+      "avgDelay": 13.3,
+      "flightCount": 2841
     },
     {
       "origin": "JFK",
       "dest": "BNA",
-      "avgDelay": 18.9,
-      "flightCount": 730
+      "avgDelay": 17.2,
+      "flightCount": 1014
     },
     {
       "origin": "JFK",
       "dest": "BOS",
-      "avgDelay": 11.7,
-      "flightCount": 5898
+      "avgDelay": 11.6,
+      "flightCount": 10009
     },
     {
       "origin": "JFK",
       "dest": "BQN",
-      "avgDelay": 6.7,
-      "flightCount": 599
+      "avgDelay": 6.8,
+      "flightCount": 1134
     },
     {
       "origin": "JFK",
       "dest": "BTV",
-      "avgDelay": 10.4,
-      "flightCount": 1364
+      "avgDelay": 10,
+      "flightCount": 2368
     },
     {
       "origin": "JFK",
       "dest": "BUF",
-      "avgDelay": 13.3,
-      "flightCount": 3582
+      "avgDelay": 12.6,
+      "flightCount": 5746
     },
     {
       "origin": "JFK",
       "dest": "BUR",
-      "avgDelay": 13.5,
-      "flightCount": 371
+      "avgDelay": 15,
+      "flightCount": 660
     },
     {
       "origin": "JFK",
       "dest": "BWI",
-      "avgDelay": 15.6,
-      "flightCount": 1221
+      "avgDelay": 14.7,
+      "flightCount": 1503
     },
     {
       "origin": "JFK",
       "dest": "CHS",
-      "avgDelay": 8.7,
-      "flightCount": 960
+      "avgDelay": 7.6,
+      "flightCount": 1547
     },
     {
       "origin": "JFK",
       "dest": "CLE",
-      "avgDelay": 17,
-      "flightCount": 707
+      "avgDelay": 15.4,
+      "flightCount": 987
     },
     {
       "origin": "JFK",
       "dest": "CLT",
-      "avgDelay": 8.6,
-      "flightCount": 2870
+      "avgDelay": 8.4,
+      "flightCount": 5142
     },
     {
       "origin": "JFK",
       "dest": "CMH",
-      "avgDelay": 22,
-      "flightCount": 742
+      "avgDelay": 17.9,
+      "flightCount": 1318
     },
     {
       "origin": "JFK",
       "dest": "CVG",
-      "avgDelay": 27.4,
-      "flightCount": 997
+      "avgDelay": 24.1,
+      "flightCount": 1279
     },
     {
       "origin": "JFK",
       "dest": "DCA",
-      "avgDelay": 12.4,
-      "flightCount": 3270
+      "avgDelay": 10.7,
+      "flightCount": 4956
     },
     {
       "origin": "JFK",
       "dest": "DEN",
-      "avgDelay": 20.1,
-      "flightCount": 703
+      "avgDelay": 19.2,
+      "flightCount": 1282
     },
     {
       "origin": "JFK",
       "dest": "DFW",
-      "avgDelay": 14.4,
-      "flightCount": 732
+      "avgDelay": 11.1,
+      "flightCount": 1206
     },
     {
       "origin": "JFK",
       "dest": "DTW",
-      "avgDelay": 17.5,
-      "flightCount": 1166
+      "avgDelay": 18.1,
+      "flightCount": 1364
     },
     {
       "origin": "JFK",
       "dest": "EGE",
-      "avgDelay": 23.4,
-      "flightCount": 103
+      "avgDelay": 32.5,
+      "flightCount": 188
     },
     {
       "origin": "JFK",
       "dest": "FLL",
-      "avgDelay": 11.9,
-      "flightCount": 4254
+      "avgDelay": 13.4,
+      "flightCount": 7512
     },
     {
       "origin": "JFK",
       "dest": "HNL",
-      "avgDelay": 4.9,
-      "flightCount": 342
+      "avgDelay": 6.5,
+      "flightCount": 602
     },
     {
       "origin": "JFK",
       "dest": "HOU",
-      "avgDelay": 10.5,
-      "flightCount": 714
+      "avgDelay": 8.4,
+      "flightCount": 1284
+    },
+    {
+      "origin": "JFK",
+      "dest": "HYA",
+      "avgDelay": 3.8,
+      "flightCount": 75
     },
     {
       "origin": "JFK",
       "dest": "IAD",
-      "avgDelay": 16.4,
-      "flightCount": 2661
+      "avgDelay": 16.3,
+      "flightCount": 4265
     },
     {
       "origin": "JFK",
       "dest": "IAH",
       "avgDelay": 15.6,
-      "flightCount": 274
+      "flightCount": 281
     },
     {
       "origin": "JFK",
       "dest": "IND",
-      "avgDelay": 14.9,
-      "flightCount": 689
+      "avgDelay": 12.6,
+      "flightCount": 967
     },
     {
       "origin": "JFK",
       "dest": "JAX",
-      "avgDelay": 15,
-      "flightCount": 1299
+      "avgDelay": 14.6,
+      "flightCount": 2142
     },
     {
       "origin": "JFK",
       "dest": "LAS",
-      "avgDelay": 8.5,
-      "flightCount": 3987
+      "avgDelay": 9.2,
+      "flightCount": 7342
     },
     {
       "origin": "JFK",
       "dest": "LAX",
-      "avgDelay": 8.5,
-      "flightCount": 11262
+      "avgDelay": 8.4,
+      "flightCount": 21470
     },
     {
       "origin": "JFK",
       "dest": "LGB",
-      "avgDelay": 11.2,
-      "flightCount": 668
+      "avgDelay": 11.1,
+      "flightCount": 1194
     },
     {
       "origin": "JFK",
@@ -1975,14 +2033,14 @@
     {
       "origin": "JFK",
       "dest": "MCO",
-      "avgDelay": 10.6,
-      "flightCount": 5464
+      "avgDelay": 11.9,
+      "flightCount": 9931
     },
     {
       "origin": "JFK",
       "dest": "MIA",
-      "avgDelay": 9.3,
-      "flightCount": 3314
+      "avgDelay": 9.6,
+      "flightCount": 6064
     },
     {
       "origin": "JFK",
@@ -1993,86 +2051,86 @@
     {
       "origin": "JFK",
       "dest": "MSP",
-      "avgDelay": 21.3,
-      "flightCount": 1095
+      "avgDelay": 18.5,
+      "flightCount": 1553
     },
     {
       "origin": "JFK",
       "dest": "MSY",
-      "avgDelay": 14,
-      "flightCount": 1633
+      "avgDelay": 12.9,
+      "flightCount": 2541
     },
     {
       "origin": "JFK",
       "dest": "MVY",
-      "avgDelay": 7.1,
-      "flightCount": 221
+      "avgDelay": 6.8,
+      "flightCount": 380
     },
     {
       "origin": "JFK",
       "dest": "OAK",
-      "avgDelay": 13.3,
-      "flightCount": 312
+      "avgDelay": 14.5,
+      "flightCount": 559
     },
     {
       "origin": "JFK",
       "dest": "ORD",
-      "avgDelay": 21.6,
-      "flightCount": 2326
+      "avgDelay": 19.7,
+      "flightCount": 3591
     },
     {
       "origin": "JFK",
       "dest": "ORF",
-      "avgDelay": 18,
-      "flightCount": 746
+      "avgDelay": 16.9,
+      "flightCount": 1028
     },
     {
       "origin": "JFK",
       "dest": "PBI",
-      "avgDelay": 14.4,
-      "flightCount": 1739
+      "avgDelay": 14,
+      "flightCount": 3101
     },
     {
       "origin": "JFK",
       "dest": "PDX",
-      "avgDelay": 16,
-      "flightCount": 783
+      "avgDelay": 14.6,
+      "flightCount": 1508
     },
     {
       "origin": "JFK",
       "dest": "PHL",
       "avgDelay": 17.5,
-      "flightCount": 976
+      "flightCount": 977
     },
     {
       "origin": "JFK",
       "dest": "PHX",
-      "avgDelay": 10.1,
-      "flightCount": 1933
+      "avgDelay": 11.1,
+      "flightCount": 3717
     },
     {
       "origin": "JFK",
       "dest": "PIT",
-      "avgDelay": 12.1,
-      "flightCount": 1249
+      "avgDelay": 11.1,
+      "flightCount": 1633
     },
     {
       "origin": "JFK",
       "dest": "PSE",
-      "avgDelay": 10.1,
-      "flightCount": 365
+      "avgDelay": 11.8,
+      "flightCount": 654
     },
     {
       "origin": "JFK",
       "dest": "PWM",
-      "avgDelay": 11.6,
-      "flightCount": 1304
+      "avgDelay": 10.3,
+      "flightCount": 2380
     },
     {
       "origin": "JFK",
       "dest": "RDU",
-      "avgDelay": 15,
-      "flightCount": 3100
+      "avgDelay": 12.6,
+      "flightCount": 4870
     },
     {
       "origin": "JFK",
@@ -2083,164 +2141,176 @@
     {
       "origin": "JFK",
       "dest": "ROC",
-      "avgDelay": 13.3,
-      "flightCount": 1679
+      "avgDelay": 13.2,
+      "flightCount": 2715
     },
     {
       "origin": "JFK",
       "dest": "RSW",
-      "avgDelay": 10.1,
-      "flightCount": 1339
+      "avgDelay": 11.4,
+      "flightCount": 2195
     },
     {
       "origin": "JFK",
       "dest": "SAN",
-      "avgDelay": 9.8,
-      "flightCount": 1603
+      "avgDelay": 10.5,
+      "flightCount": 3005
     },
     {
       "origin": "JFK",
       "dest": "SAT",
-      "avgDelay": 23.4,
-      "flightCount": 356
+      "avgDelay": 22.7,
+      "flightCount": 598
+    },
+    {
+      "origin": "JFK",
+      "dest": "SAV",
+      "avgDelay": 6.4,
+      "flightCount": 514
     },
     {
       "origin": "JFK",
       "dest": "SEA",
-      "avgDelay": 8.9,
-      "flightCount": 2092
+      "avgDelay": 9.8,
+      "flightCount": 3907
     },
     {
       "origin": "JFK",
       "dest": "SFO",
-      "avgDelay": 12,
-      "flightCount": 8204
+      "avgDelay": 11.9,
+      "flightCount": 15572
     },
     {
       "origin": "JFK",
       "dest": "SJC",
-      "avgDelay": 10.1,
-      "flightCount": 329
+      "avgDelay": 13,
+      "flightCount": 581
     },
     {
       "origin": "JFK",
       "dest": "SJU",
-      "avgDelay": 10.3,
-      "flightCount": 4752
+      "avgDelay": 11.2,
+      "flightCount": 8779
     },
     {
       "origin": "JFK",
       "dest": "SLC",
-      "avgDelay": 7.7,
-      "flightCount": 2113
+      "avgDelay": 9.5,
+      "flightCount": 3819
     },
     {
       "origin": "JFK",
       "dest": "SMF",
-      "avgDelay": 18.7,
-      "flightCount": 284
+      "avgDelay": 17.9,
+      "flightCount": 530
     },
     {
       "origin": "JFK",
       "dest": "SRQ",
-      "avgDelay": 4.4,
-      "flightCount": 474
+      "avgDelay": 5.4,
+      "flightCount": 844
     },
     {
       "origin": "JFK",
       "dest": "STT",
-      "avgDelay": 3.7,
-      "flightCount": 333
+      "avgDelay": 5.7,
+      "flightCount": 783
     },
     {
       "origin": "JFK",
       "dest": "SYR",
-      "avgDelay": 13.7,
-      "flightCount": 1311
+      "avgDelay": 12.3,
+      "flightCount": 2248
     },
     {
       "origin": "JFK",
       "dest": "TPA",
-      "avgDelay": 12,
-      "flightCount": 2987
+      "avgDelay": 13.1,
+      "flightCount": 5006
     },
     {
       "origin": "LGA",
       "dest": "ATL",
-      "avgDelay": 11.4,
-      "flightCount": 10263
+      "avgDelay": 12.4,
+      "flightCount": 17188
     },
     {
       "origin": "LGA",
       "dest": "BGR",
-      "avgDelay": 19.5,
-      "flightCount": 375
+      "avgDelay": 20.8,
+      "flightCount": 649
     },
     {
       "origin": "LGA",
       "dest": "BHM",
-      "avgDelay": 29.8,
-      "flightCount": 296
+      "avgDelay": 28.6,
+      "flightCount": 420
     },
     {
       "origin": "LGA",
       "dest": "BNA",
-      "avgDelay": 14.1,
-      "flightCount": 3267
+      "avgDelay": 13.4,
+      "flightCount": 5867
     },
     {
       "origin": "LGA",
       "dest": "BOS",
-      "avgDelay": -0.5,
-      "flightCount": 4283
+      "avgDelay": -0.4,
+      "flightCount": 7513
     },
     {
       "origin": "LGA",
       "dest": "BTV",
-      "avgDelay": 15.8,
-      "flightCount": 294
+      "avgDelay": 16.7,
+      "flightCount": 523
     },
     {
       "origin": "LGA",
       "dest": "BUF",
-      "avgDelay": 10.7,
-      "flightCount": 126
+      "avgDelay": 14.9,
+      "flightCount": 295
+    },
+    {
+      "origin": "LGA",
+      "dest": "CAE",
+      "avgDelay": 13.8,
+      "flightCount": 394
     },
     {
       "origin": "LGA",
       "dest": "CAK",
-      "avgDelay": 20.8,
-      "flightCount": 864
+      "avgDelay": 23.6,
+      "flightCount": 1572
     },
     {
       "origin": "LGA",
       "dest": "CHO",
-      "avgDelay": 21.4,
-      "flightCount": 52
+      "avgDelay": 11.6,
+      "flightCount": 381
     },
     {
       "origin": "LGA",
       "dest": "CHS",
-      "avgDelay": 18.4,
-      "flightCount": 500
+      "avgDelay": 15.8,
+      "flightCount": 1074
     },
     {
       "origin": "LGA",
       "dest": "CLE",
-      "avgDelay": 13.6,
-      "flightCount": 2112
+      "avgDelay": 13.3,
+      "flightCount": 4223
     },
     {
       "origin": "LGA",
       "dest": "CLT",
-      "avgDelay": 9,
-      "flightCount": 6168
+      "avgDelay": 7.4,
+      "flightCount": 9599
     },
     {
       "origin": "LGA",
       "dest": "CMH",
-      "avgDelay": 8.2,
-      "flightCount": 2058
+      "avgDelay": 8.9,
+      "flightCount": 3874
     },
     {
       "origin": "LGA",
@@ -2251,304 +2321,314 @@
     {
       "origin": "LGA",
       "dest": "CVG",
-      "avgDelay": 12.2,
-      "flightCount": 271
+      "avgDelay": 14.6,
+      "flightCount": 349
     },
     {
       "origin": "LGA",
       "dest": "DAY",
-      "avgDelay": 6.1,
-      "flightCount": 391
+      "avgDelay": 6.5,
+      "flightCount": 881
     },
     {
       "origin": "LGA",
       "dest": "DCA",
-      "avgDelay": 5,
-      "flightCount": 4716
+      "avgDelay": 3.4,
+      "flightCount": 8469
     },
     {
       "origin": "LGA",
       "dest": "DEN",
-      "avgDelay": 13.1,
-      "flightCount": 3704
+      "avgDelay": 13.7,
+      "flightCount": 6643
     },
     {
       "origin": "LGA",
       "dest": "DFW",
-      "avgDelay": 5.8,
-      "flightCount": 4858
+      "avgDelay": 5.2,
+      "flightCount": 8647
     },
     {
       "origin": "LGA",
       "dest": "DSM",
-      "avgDelay": 17.2,
-      "flightCount": 158
+      "avgDelay": 18,
+      "flightCount": 159
     },
     {
       "origin": "LGA",
       "dest": "DTW",
       "avgDelay": 7.8,
-      "flightCount": 5040
+      "flightCount": 8703
     },
     {
       "origin": "LGA",
       "dest": "FLL",
-      "avgDelay": 12.9,
-      "flightCount": 4008
+      "avgDelay": 12.1,
+      "flightCount": 7312
+    },
+    {
+      "origin": "LGA",
+      "dest": "GRR",
+      "avgDelay": 16.9,
+      "flightCount": 312
     },
     {
       "origin": "LGA",
       "dest": "GSO",
-      "avgDelay": 19.4,
-      "flightCount": 486
+      "avgDelay": 14.2,
+      "flightCount": 1354
     },
     {
       "origin": "LGA",
       "dest": "GSP",
       "avgDelay": 8.2,
-      "flightCount": 104
+      "flightCount": 107
     },
     {
       "origin": "LGA",
       "dest": "HOU",
-      "avgDelay": 10.4,
-      "flightCount": 425
+      "avgDelay": 15.3,
+      "flightCount": 1330
     },
     {
       "origin": "LGA",
       "dest": "IAD",
-      "avgDelay": 16.7,
-      "flightCount": 1803
+      "avgDelay": 16.8,
+      "flightCount": 2894
     },
     {
       "origin": "LGA",
       "dest": "IAH",
-      "avgDelay": 9.1,
-      "flightCount": 2951
+      "avgDelay": 9.4,
+      "flightCount": 5297
     },
     {
       "origin": "LGA",
       "dest": "ILM",
-      "avgDelay": 19.4,
-      "flightCount": 110
+      "avgDelay": 9.2,
+      "flightCount": 333
     },
     {
       "origin": "LGA",
       "dest": "IND",
-      "avgDelay": 3.6,
-      "flightCount": 87
+      "avgDelay": 6,
+      "flightCount": 136
     },
     {
       "origin": "LGA",
       "dest": "JAX",
-      "avgDelay": 8.7,
-      "flightCount": 179
+      "avgDelay": 13.6,
+      "flightCount": 246
+    },
+    {
+      "origin": "LGA",
+      "dest": "LIT",
+      "avgDelay": 15.4,
+      "flightCount": 204
     },
     {
       "origin": "LGA",
       "dest": "MCI",
-      "avgDelay": 13.4,
-      "flightCount": 376
+      "avgDelay": 16.5,
+      "flightCount": 782
     },
     {
       "origin": "LGA",
       "dest": "MCO",
-      "avgDelay": 12.7,
-      "flightCount": 3677
+      "avgDelay": 12.1,
+      "flightCount": 6755
     },
     {
       "origin": "LGA",
       "dest": "MDW",
-      "avgDelay": 19.8,
-      "flightCount": 2070
+      "avgDelay": 19.6,
+      "flightCount": 4007
     },
     {
       "origin": "LGA",
       "dest": "MEM",
-      "avgDelay": 11.8,
-      "flightCount": 862
+      "avgDelay": 12,
+      "flightCount": 865
     },
     {
       "origin": "LGA",
       "dest": "MHT",
-      "avgDelay": 24,
-      "flightCount": 142
+      "avgDelay": 21.3,
+      "flightCount": 288
     },
     {
       "origin": "LGA",
       "dest": "MIA",
-      "avgDelay": 7.4,
-      "flightCount": 5781
+      "avgDelay": 6.7,
+      "flightCount": 10865
     },
     {
       "origin": "LGA",
       "dest": "MKE",
-      "avgDelay": 15.2,
-      "flightCount": 1525
+      "avgDelay": 17,
+      "flightCount": 2701
     },
     {
       "origin": "LGA",
       "dest": "MSN",
-      "avgDelay": 27.1,
-      "flightCount": 218
+      "avgDelay": 28.2,
+      "flightCount": 406
     },
     {
       "origin": "LGA",
       "dest": "MSP",
-      "avgDelay": 9.8,
-      "flightCount": 3713
+      "avgDelay": 10.5,
+      "flightCount": 5933
     },
     {
       "origin": "LGA",
       "dest": "MSY",
-      "avgDelay": 9,
-      "flightCount": 1011
+      "avgDelay": 9.2,
+      "flightCount": 1749
     },
     {
       "origin": "LGA",
       "dest": "OMA",
-      "avgDelay": 27.4,
-      "flightCount": 95
+      "avgDelay": 25.7,
+      "flightCount": 182
     },
     {
       "origin": "LGA",
       "dest": "ORD",
-      "avgDelay": 10.7,
-      "flightCount": 8857
+      "avgDelay": 11.6,
+      "flightCount": 15909
     },
     {
       "origin": "LGA",
       "dest": "ORF",
-      "avgDelay": 16.6,
-      "flightCount": 206
+      "avgDelay": 15,
+      "flightCount": 1220
     },
     {
       "origin": "LGA",
       "dest": "PBI",
-      "avgDelay": 11.1,
-      "flightCount": 2464
+      "avgDelay": 10.6,
+      "flightCount": 4771
     },
     {
       "origin": "LGA",
       "dest": "PHL",
-      "avgDelay": 3.2,
-      "flightCount": 607
+      "avgDelay": 2.8,
+      "flightCount": 1309
     },
     {
       "origin": "LGA",
       "dest": "PIT",
-      "avgDelay": 17.2,
-      "flightCount": 1067
+      "avgDelay": 18,
+      "flightCount": 1329
     },
     {
       "origin": "LGA",
       "dest": "PWM",
-      "avgDelay": 14.2,
-      "flightCount": 278
+      "avgDelay": 15.8,
+      "flightCount": 409
     },
     {
       "origin": "LGA",
       "dest": "RDU",
-      "avgDelay": 8.7,
-      "flightCount": 3581
+      "avgDelay": 8.9,
+      "flightCount": 6080
     },
     {
       "origin": "LGA",
       "dest": "RIC",
-      "avgDelay": 17.4,
-      "flightCount": 538
+      "avgDelay": 16,
+      "flightCount": 1673
+    },
+    {
+      "origin": "LGA",
+      "dest": "ROA",
+      "avgDelay": 6.4,
+      "flightCount": 125
     },
     {
       "origin": "LGA",
       "dest": "ROC",
-      "avgDelay": 12.8,
-      "flightCount": 224
+      "avgDelay": 17.8,
+      "flightCount": 478
     },
     {
       "origin": "LGA",
       "dest": "RSW",
-      "avgDelay": 9.5,
-      "flightCount": 761
+      "avgDelay": 12.3,
+      "flightCount": 1330
     },
     {
       "origin": "LGA",
       "dest": "SAV",
-      "avgDelay": 3.1,
-      "flightCount": 68
+      "avgDelay": 12.8,
+      "flightCount": 436
     },
     {
       "origin": "LGA",
       "dest": "SDF",
-      "avgDelay": 4.2,
-      "flightCount": 217
+      "avgDelay": 8,
+      "flightCount": 759
     },
     {
       "origin": "LGA",
       "dest": "SRQ",
       "avgDelay": 9.1,
-      "flightCount": 737
+      "flightCount": 1233
     },
     {
       "origin": "LGA",
       "dest": "STL",
-      "avgDelay": 9.5,
-      "flightCount": 1822
+      "avgDelay": 11,
+      "flightCount": 3887
     },
     {
       "origin": "LGA",
       "dest": "SYR",
-      "avgDelay": 19.1,
-      "flightCount": 293
+      "avgDelay": 17.3,
+      "flightCount": 625
     },
     {
       "origin": "LGA",
       "dest": "TPA",
-      "avgDelay": 11.3,
-      "flightCount": 2145
+      "avgDelay": 10.8,
+      "flightCount": 3997
     },
     {
       "origin": "LGA",
       "dest": "TVC",
-      "avgDelay": 23.4,
-      "flightCount": 77
+      "avgDelay": 28.2,
+      "flightCount": 113
     },
     {
       "origin": "LGA",
       "dest": "TYS",
-      "avgDelay": 12.7,
-      "flightCount": 308
+      "avgDelay": 10,
+      "flightCount": 475
     },
     {
       "origin": "LGA",
       "dest": "XNA",
-      "avgDelay": 5.9,
-      "flightCount": 745
+      "avgDelay": 5.3,
+      "flightCount": 1186
     }
   ],
   "jfkRiskyRoutes": [
     {
-      "dest": "CVG",
-      "dest_name": "Cincinnati Northern Kentucky Intl",
-      "flightCount": 997,
-      "avgDepDelay": 27.4,
-      "avgArrDelay": 19.1,
-      "severeDelayRate": 16.8
-    },
-    {
       "dest": "EGE",
       "dest_name": "Eagle Co Rgnl",
-      "flightCount": 103,
-      "avgDepDelay": 23.4,
-      "avgArrDelay": 18.5,
-      "severeDelayRate": 11.9
+      "flightCount": 188,
+      "avgDepDelay": 32.5,
+      "avgArrDelay": 26.3,
+      "severeDelayRate": 13.4
     },
     {
-      "dest": "SAT",
-      "dest_name": "San Antonio Intl",
-      "flightCount": 356,
-      "avgDepDelay": 23.4,
-      "avgArrDelay": 6.2,
-      "severeDelayRate": 13
+      "dest": "CVG",
+      "dest_name": "Cincinnati Northern Kentucky Intl",
+      "flightCount": 1279,
+      "avgDepDelay": 24.1,
+      "avgArrDelay": 18.2,
+      "severeDelayRate": 14.7
     },
     {
       "dest": "MCI",
@@ -2559,163 +2639,171 @@
       "severeDelayRate": 16.4
     },
     {
-      "dest": "CMH",
-      "dest_name": "Port Columbus Intl",
-      "flightCount": 742,
-      "avgDepDelay": 22,
-      "avgArrDelay": 22.9,
-      "severeDelayRate": 13.6
+      "dest": "SAT",
+      "dest_name": "San Antonio Intl",
+      "flightCount": 598,
+      "avgDepDelay": 22.7,
+      "avgArrDelay": 7.9,
+      "severeDelayRate": 11.4
+    },
+    {
+      "dest": "MKE",
+      "dest_name": "General Mitchell Intl",
+      "flightCount": 183,
+      "avgDepDelay": 19.9,
+      "avgArrDelay": 13.1,
+      "severeDelayRate": 11.6
     }
   ],
   "ewrRiskyRoutes": [
     {
       "dest": "TYS",
       "dest_name": "Mc Ghee Tyson",
-      "flightCount": 323,
-      "avgDepDelay": 41.8,
-      "avgArrDelay": 41.2,
-      "severeDelayRate": 30.9
+      "flightCount": 561,
+      "avgDepDelay": 37.9,
+      "avgArrDelay": 38.3,
+      "severeDelayRate": 28.4
     },
     {
       "dest": "CAE",
       "dest_name": "Columbia Metropolitan",
-      "flightCount": 104,
+      "flightCount": 125,
       "avgDepDelay": 36.3,
-      "avgArrDelay": 44.6,
-      "severeDelayRate": 22.1
+      "avgArrDelay": 44.7,
+      "severeDelayRate": 21.6
     },
     {
       "dest": "TUL",
       "dest_name": "Tulsa Intl",
-      "flightCount": 315,
-      "avgDepDelay": 34.9,
-      "avgArrDelay": 33.7,
-      "severeDelayRate": 22.4
+      "flightCount": 516,
+      "avgDepDelay": 32.5,
+      "avgArrDelay": 31.2,
+      "severeDelayRate": 21.8
     },
     {
       "dest": "OKC",
       "dest_name": "Will Rogers World",
-      "flightCount": 346,
-      "avgDepDelay": 30.6,
-      "avgArrDelay": 30.6,
-      "severeDelayRate": 19.6
+      "flightCount": 569,
+      "avgDepDelay": 28.8,
+      "avgArrDelay": 28,
+      "severeDelayRate": 18.9
     },
     {
       "dest": "DSM",
       "dest_name": "Des Moines Intl",
-      "flightCount": 411,
-      "avgDepDelay": 29.3,
-      "avgArrDelay": 23.5,
-      "severeDelayRate": 20.1
+      "flightCount": 590,
+      "avgDepDelay": 26.4,
+      "avgArrDelay": 22.2,
+      "severeDelayRate": 18.5
     }
   ],
   "lgaRiskyRoutes": [
     {
       "dest": "BHM",
       "dest_name": "Birmingham Intl",
-      "flightCount": 296,
-      "avgDepDelay": 29.8,
-      "avgArrDelay": 17,
-      "severeDelayRate": 18.5
-    },
-    {
-      "dest": "OMA",
-      "dest_name": "Eppley Afld",
-      "flightCount": 95,
-      "avgDepDelay": 27.4,
-      "avgArrDelay": 13.7,
-      "severeDelayRate": 18.5
+      "flightCount": 420,
+      "avgDepDelay": 28.6,
+      "avgArrDelay": 17.8,
+      "severeDelayRate": 18.7
     },
     {
       "dest": "MSN",
       "dest_name": "Dane Co Rgnl Truax Fld",
-      "flightCount": 218,
-      "avgDepDelay": 27.1,
-      "avgArrDelay": 15.3,
-      "severeDelayRate": 17.9
-    },
-    {
-      "dest": "MHT",
-      "dest_name": "Manchester Regional Airport",
-      "flightCount": 142,
-      "avgDepDelay": 24,
-      "avgArrDelay": 17.5,
-      "severeDelayRate": 18.5
+      "flightCount": 406,
+      "avgDepDelay": 28.2,
+      "avgArrDelay": 17.9,
+      "severeDelayRate": 19
     },
     {
       "dest": "TVC",
       "dest_name": "Cherry Capital Airport",
-      "flightCount": 77,
-      "avgDepDelay": 23.4,
-      "avgArrDelay": 16,
-      "severeDelayRate": 13.7
+      "flightCount": 113,
+      "avgDepDelay": 28.2,
+      "avgArrDelay": 21.8,
+      "severeDelayRate": 16.5
+    },
+    {
+      "dest": "OMA",
+      "dest_name": "Eppley Afld",
+      "flightCount": 182,
+      "avgDepDelay": 25.7,
+      "avgArrDelay": 13.8,
+      "severeDelayRate": 19.6
+    },
+    {
+      "dest": "CAK",
+      "dest_name": "Akron Canton Regional Airport",
+      "flightCount": 1572,
+      "avgDepDelay": 23.6,
+      "avgArrDelay": 21,
+      "severeDelayRate": 13
     }
   ],
   "distanceDistribution": [
     {
       "distance_group": "短途 (<500英里)",
-      "flightCount": 80217,
-      "avgDepDelay": 13.4,
-      "avgArrDelay": 9.3,
-      "avgDistance": 286
+      "flightCount": 135206,
+      "avgDepDelay": 12.5,
+      "avgArrDelay": 8.9,
+      "avgDistance": 288
     },
     {
       "distance_group": "中途 (500-1000英里)",
-      "flightCount": 109454,
+      "flightCount": 189212,
       "avgDepDelay": 13.6,
-      "avgArrDelay": 9.1,
-      "avgDistance": 727
+      "avgArrDelay": 9.5,
+      "avgDistance": 730
     },
     {
       "distance_group": "长途 (1000-2000英里)",
-      "flightCount": 95410,
-      "avgDepDelay": 11.9,
-      "avgArrDelay": 5.5,
-      "avgDistance": 1258
+      "flightCount": 169526,
+      "avgDepDelay": 12.1,
+      "avgArrDelay": 6.4,
+      "avgDistance": 1262
     },
     {
       "distance_group": "超长途 (>2000英里)",
-      "flightCount": 51695,
-      "avgDepDelay": 10.9,
-      "avgArrDelay": 1.3,
-      "avgDistance": 2470
+      "flightCount": 96148,
+      "avgDepDelay": 11.5,
+      "avgArrDelay": 3.3,
+      "avgDistance": 2471
     }
   ],
   "destGeo": [
     {
-      "dest": "ORD",
-      "dest_name": "Chicago Ohare Intl",
-      "dest_lat": 41.9786,
-      "dest_lon": -87.9048,
-      "flightCount": 17283,
-      "avgArrDelay": 5.9,
-      "avgDistance": 729
+      "dest": "LAX",
+      "dest_name": "Los Angeles Intl",
+      "dest_lat": 33.9425,
+      "dest_lon": -118.4081,
+      "flightCount": 30608,
+      "avgArrDelay": 2.6,
+      "avgDistance": 2469
     },
     {
       "dest": "ATL",
       "dest_name": "Hartsfield Jackson Atlanta Intl",
       "dest_lat": 33.6367,
       "dest_lon": -84.4281,
-      "flightCount": 17215,
-      "avgArrDelay": 11.3,
+      "flightCount": 30023,
+      "avgArrDelay": 10.9,
       "avgDistance": 757
     },
     {
-      "dest": "LAX",
-      "dest_name": "Los Angeles Intl",
-      "dest_lat": 33.9425,
-      "dest_lon": -118.4081,
-      "flightCount": 16174,
-      "avgArrDelay": 0.5,
-      "avgDistance": 2469
+      "dest": "ORD",
+      "dest_name": "Chicago Ohare Intl",
+      "dest_lat": 41.9786,
+      "dest_lon": -87.9048,
+      "flightCount": 28872,
+      "avgArrDelay": 9.1,
+      "avgDistance": 729
     },
     {
       "dest": "BOS",
       "dest_name": "General Edward Lawrence Logan Intl",
       "dest_lat": 42.3643,
       "dest_lon": -71.0052,
-      "flightCount": 15508,
-      "avgArrDelay": 2.9,
+      "flightCount": 27117,
+      "avgArrDelay": 3.5,
       "avgDistance": 191
     },
     {
@@ -2723,53 +2811,53 @@
       "dest_name": "Orlando Intl",
       "dest_lat": 28.4294,
       "dest_lon": -81.309,
-      "flightCount": 14082,
-      "avgArrDelay": 5.5,
+      "flightCount": 25791,
+      "avgArrDelay": 6.5,
       "avgDistance": 943
-    },
-    {
-      "dest": "CLT",
-      "dest_name": "Charlotte Douglas Intl",
-      "dest_lat": 35.214,
-      "dest_lon": -80.9431,
-      "flightCount": 14064,
-      "avgArrDelay": 7.4,
-      "avgDistance": 538
     },
     {
       "dest": "SFO",
       "dest_name": "San Francisco Intl",
       "dest_lat": 37.619,
       "dest_lon": -122.3749,
-      "flightCount": 13331,
-      "avgArrDelay": 2.7,
+      "flightCount": 25238,
+      "avgArrDelay": 4.5,
       "avgDistance": 2578
     },
     {
-      "dest": "FLL",
-      "dest_name": "Fort Lauderdale Hollywood Intl",
-      "dest_lat": 26.0726,
-      "dest_lon": -80.1527,
-      "flightCount": 12055,
-      "avgArrDelay": 8.1,
-      "avgDistance": 1070
+      "dest": "CLT",
+      "dest_name": "Charlotte Douglas Intl",
+      "dest_lat": 35.214,
+      "dest_lon": -80.9431,
+      "flightCount": 23688,
+      "avgArrDelay": 5.5,
+      "avgDistance": 538
     },
     {
       "dest": "MIA",
       "dest_name": "Miami Intl",
       "dest_lat": 25.7933,
       "dest_lon": -80.2906,
-      "flightCount": 11728,
-      "avgArrDelay": 0.3,
+      "flightCount": 21656,
+      "avgArrDelay": 1,
       "avgDistance": 1092
+    },
+    {
+      "dest": "FLL",
+      "dest_name": "Fort Lauderdale Hollywood Intl",
+      "dest_lat": 26.0726,
+      "dest_lon": -80.1527,
+      "flightCount": 21526,
+      "avgArrDelay": 9.4,
+      "avgDistance": 1070
     },
     {
       "dest": "DCA",
       "dest_name": "Ronald Reagan Washington Natl",
       "dest_lat": 38.8521,
       "dest_lon": -77.0377,
-      "flightCount": 9705,
-      "avgArrDelay": 9.1,
+      "flightCount": 16453,
+      "avgArrDelay": 7.6,
       "avgDistance": 211
     },
     {
@@ -2777,8 +2865,8 @@
       "dest_name": "Detroit Metro Wayne Co",
       "dest_lat": 42.2124,
       "dest_lon": -83.3534,
-      "flightCount": 9384,
-      "avgArrDelay": 5.4,
+      "flightCount": 15394,
+      "avgArrDelay": 5.7,
       "avgDistance": 498
     },
     {
@@ -2786,8 +2874,8 @@
       "dest_name": "Dallas Fort Worth Intl",
       "dest_lat": 32.8968,
       "dest_lon": -97.038,
-      "flightCount": 8738,
-      "avgArrDelay": 0.3,
+      "flightCount": 15225,
+      "avgArrDelay": 2.5,
       "avgDistance": 1383
     },
     {
@@ -2795,8 +2883,8 @@
       "dest_name": "Raleigh Durham Intl",
       "dest_lat": 35.8776,
       "dest_lon": -78.7875,
-      "flightCount": 8163,
-      "avgArrDelay": 10.1,
+      "flightCount": 13173,
+      "avgArrDelay": 9.5,
       "avgDistance": 427
     },
     {
@@ -2804,8 +2892,8 @@
       "dest_name": "Tampa Intl",
       "dest_lat": 27.9755,
       "dest_lon": -82.5332,
-      "flightCount": 7466,
-      "avgArrDelay": 7.4,
+      "flightCount": 13170,
+      "avgArrDelay": 8.3,
       "avgDistance": 1004
     },
     {
@@ -2813,8 +2901,8 @@
       "dest_name": "Denver Intl",
       "dest_lat": 39.8617,
       "dest_lon": -104.6732,
-      "flightCount": 7266,
-      "avgArrDelay": 8.6,
+      "flightCount": 13027,
+      "avgArrDelay": 9.3,
       "avgDistance": 1615
     },
     {
@@ -2822,35 +2910,35 @@
       "dest_name": "George Bush Intercontinental",
       "dest_lat": 29.9844,
       "dest_lon": -95.3414,
-      "flightCount": 7198,
-      "avgArrDelay": 4.2,
+      "flightCount": 12624,
+      "avgArrDelay": 5.1,
       "avgDistance": 1407
-    },
-    {
-      "dest": "MSP",
-      "dest_name": "Minneapolis St Paul Intl",
-      "dest_lat": 44.882,
-      "dest_lon": -93.2218,
-      "flightCount": 7185,
-      "avgArrDelay": 7.3,
-      "avgDistance": 1017
     },
     {
       "dest": "PBI",
       "dest_name": "Palm Beach Intl",
       "dest_lat": 26.6832,
       "dest_lon": -80.0956,
-      "flightCount": 6554,
-      "avgArrDelay": 8.6,
+      "flightCount": 12097,
+      "avgArrDelay": 8.7,
       "avgDistance": 1029
+    },
+    {
+      "dest": "MSP",
+      "dest_name": "Minneapolis St Paul Intl",
+      "dest_lat": 44.882,
+      "dest_lon": -93.2218,
+      "flightCount": 11348,
+      "avgArrDelay": 7.4,
+      "avgDistance": 1017
     },
     {
       "dest": "BNA",
       "dest_name": "Nashville Intl",
       "dest_lat": 36.1245,
       "dest_lon": -86.6782,
-      "flightCount": 6333,
-      "avgArrDelay": 11.8,
+      "flightCount": 11014,
+      "avgArrDelay": 11.7,
       "avgDistance": 758
     },
     {
@@ -2858,8 +2946,8 @@
       "dest_name": "Mc Carran Intl",
       "dest_lat": 36.0801,
       "dest_lon": -115.1522,
-      "flightCount": 5997,
-      "avgArrDelay": 0.3,
+      "flightCount": 10907,
+      "avgArrDelay": 2.2,
       "avgDistance": 2241
     },
     {
@@ -2867,89 +2955,89 @@
       "dest_name": "Washington Dulles Intl",
       "dest_lat": 38.9445,
       "dest_lon": -77.4558,
-      "flightCount": 5700,
-      "avgArrDelay": 13.9,
+      "flightCount": 9024,
+      "avgArrDelay": 14.2,
       "avgDistance": 225
-    },
-    {
-      "dest": "BUF",
-      "dest_name": "Buffalo Niagara Intl",
-      "dest_lat": 42.9405,
-      "dest_lon": -78.7322,
-      "flightCount": 4681,
-      "avgArrDelay": 8.9,
-      "avgDistance": 297
     },
     {
       "dest": "PHX",
       "dest_name": "Phoenix Sky Harbor Intl",
       "dest_lat": 33.4343,
       "dest_lon": -112.0116,
-      "flightCount": 4656,
-      "avgArrDelay": 2.1,
-      "avgDistance": 2141
-    },
-    {
-      "dest": "CLE",
-      "dest_name": "Cleveland Hopkins Intl",
-      "dest_lat": 41.4117,
-      "dest_lon": -81.8498,
-      "flightCount": 4573,
-      "avgArrDelay": 9.2,
-      "avgDistance": 414
+      "flightCount": 8442,
+      "avgArrDelay": 4.1,
+      "avgDistance": 2142
     },
     {
       "dest": "STL",
       "dest_name": "Lambert St Louis Intl",
       "dest_lat": 38.7487,
       "dest_lon": -90.37,
-      "flightCount": 4339,
-      "avgArrDelay": 11.1,
-      "avgDistance": 879
+      "flightCount": 8144,
+      "avgArrDelay": 11.8,
+      "avgDistance": 880
+    },
+    {
+      "dest": "CLE",
+      "dest_name": "Cleveland Hopkins Intl",
+      "dest_lat": 41.4117,
+      "dest_lon": -81.8498,
+      "flightCount": 8135,
+      "avgArrDelay": 8,
+      "avgDistance": 414
     },
     {
       "dest": "MDW",
       "dest_name": "Chicago Midway Intl",
       "dest_lat": 41.786,
       "dest_lon": -87.7524,
-      "flightCount": 4113,
-      "avgArrDelay": 12.4,
+      "flightCount": 7587,
+      "avgArrDelay": 12.7,
       "avgDistance": 718
     },
     {
-      "dest": "CVG",
-      "dest_name": "Cincinnati Northern Kentucky Intl",
-      "dest_lat": 39.0488,
-      "dest_lon": -84.6678,
-      "flightCount": 3941,
-      "avgArrDelay": 15.4,
-      "avgDistance": 575
+      "dest": "BUF",
+      "dest_name": "Buffalo Niagara Intl",
+      "dest_lat": 42.9405,
+      "dest_lon": -78.7322,
+      "flightCount": 7348,
+      "avgArrDelay": 8.8,
+      "avgDistance": 297
     },
     {
       "dest": "SEA",
       "dest_name": "Seattle Tacoma Intl",
       "dest_lat": 47.449,
       "dest_lon": -122.3093,
-      "flightCount": 3923,
-      "avgArrDelay": -1.1,
+      "flightCount": 7102,
+      "avgArrDelay": 1.1,
       "avgDistance": 2413
+    },
+    {
+      "dest": "CMH",
+      "dest_name": "Port Columbus Intl",
+      "dest_lat": 39.998,
+      "dest_lon": -82.8919,
+      "flightCount": 6679,
+      "avgArrDelay": 10.7,
+      "avgDistance": 476
     },
     {
       "dest": "MSY",
       "dest_name": "Louis Armstrong New Orleans Intl",
       "dest_lat": 29.9934,
       "dest_lon": -90.258,
-      "flightCount": 3799,
-      "avgArrDelay": 6.5,
-      "avgDistance": 1178
+      "flightCount": 6427,
+      "avgArrDelay": 6.9,
+      "avgDistance": 1177
     },
     {
       "dest": "RSW",
       "dest_name": "Southwest Florida Intl",
       "dest_lat": 26.5362,
       "dest_lon": -81.7552,
-      "flightCount": 3537,
-      "avgArrDelay": 3.2,
+      "flightCount": 6122,
+      "avgArrDelay": 4.6,
       "avgDistance": 1073
     }
   ],
@@ -2959,21 +3047,21 @@
       "origin_name": "Newark Liberty Intl",
       "origin_lat": 40.6925,
       "origin_lon": -74.1687,
-      "flightCount": 120835
+      "flightCount": 208235
     },
     {
       "origin": "JFK",
       "origin_name": "John F Kennedy Intl",
       "origin_lat": 40.6398,
       "origin_lon": -73.7789,
-      "flightCount": 111279
+      "flightCount": 192762
     },
     {
       "origin": "LGA",
       "origin_name": "La Guardia",
       "origin_lat": 40.7772,
       "origin_lon": -73.8726,
-      "flightCount": 104662
+      "flightCount": 189095
     }
   ]
 }

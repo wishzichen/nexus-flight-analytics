@@ -25,6 +25,22 @@ const chartBaseOptions = {
   }
 };
 
+function averageNumericValues(value: unknown): number | null {
+  if (Array.isArray(value)) {
+    const numbers = value.map(Number).filter(Number.isFinite);
+    if (numbers.length === 0) return null;
+    return numbers.reduce((sum, item) => sum + item, 0) / numbers.length;
+  }
+
+  const numberValue = Number(value);
+  return Number.isFinite(numberValue) ? numberValue : null;
+}
+
+function formatMetric(value: unknown, digits = 1): string {
+  const numberValue = averageNumericValues(value);
+  return numberValue === null ? '--' : numberValue.toFixed(digits);
+}
+
 export default function Module6DelayPropagation() {
   const { data: propagationStats } = useFetch('/api/module6/propagation-stats');
   const { data: sequenceDelay } = useFetch('/api/module6/sequence-delay');
@@ -121,19 +137,20 @@ export default function Module6DelayPropagation() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <KPICard
           title="同机日均航班"
-          value={`${propagationStats?.avgTasksPerDay || '--'}班`}
+          value={`${formatMetric(propagationStats?.avgTasksPerDay, 1)}班`}
+          subtitle="同一飞机同一天"
           icon={Clock}
           color="cyan"
         />
         <KPICard
           title="前序延误均值"
-          value={`${propagationStats?.avgPrevArrDelay || '--'}分钟`}
+          value={`${formatMetric(propagationStats?.avgPrevArrDelay, 1)}分钟`}
           icon={TrendingUp}
           color="orange"
         />
         <KPICard
           title="延误传导率"
-          value={`${propagationStats?.prevDelayedNextDelayed || '--'}%`}
+          value={`${formatMetric(propagationStats?.prevDelayedNextDelayed, 1)}%`}
           subtitle="前序延误导致后续延误"
           icon={AlertTriangle}
           color="red"
@@ -248,11 +265,11 @@ export default function Module6DelayPropagation() {
           </div>
           <div className="flex items-start gap-2">
             <span className="text-orange-400">✓</span>
-            <span>约{propagationStats?.prevDelayedNextDelayed || '--'}%的前序延误会传导至后续航班</span>
+            <span>约{formatMetric(propagationStats?.prevDelayedNextDelayed, 1)}%的前序延误会传导至后续航班</span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-green-400">✓</span>
-            <span>仍有{propagationStats?.prevDelayedNextOnTime || '--'}%的前序延误航班后续准点</span>
+            <span>仍有{formatMetric(propagationStats?.prevDelayedNextOnTime, 1)}%的前序延误航班后续准点</span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-cyan-400">✓</span>

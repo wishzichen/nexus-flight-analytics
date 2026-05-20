@@ -158,6 +158,13 @@ month_options <- detail_table %>%
                        "7月", "8月", "9月", "10月", "11月", "12月")[month]) %>%
   arrange(month)
 
+# 年份列表
+year_options <- detail_table %>%
+  group_by(year) %>%
+  summarise(count = n()) %>%
+  mutate(label = as.character(year)) %>%
+  arrange(year)
+
 # ==============================================================================
 # 5. 第一页数据（用于初始加载）
 # ==============================================================================
@@ -178,6 +185,7 @@ result <- list(
   originOptions = origin_options %>% collect(),
   delayLevelOptions = delay_level_options %>% collect(),
   monthOptions = month_options %>% collect(),
+  yearOptions = year_options %>% collect(),
   totalPages = ceiling(nrow(detail_table) / 100)
 )
 

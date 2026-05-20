@@ -6,11 +6,14 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { createServer as createViteServer } from 'vite';
+import Database from 'better-sqlite3';
+import { buildInteractiveAnalysis, parseInteractiveFilters } from './src/lib/interactiveAnalysis.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const PORT = process.env.PORT || 3000;
 const DATA_DIR = path.join(__dirname, 'data');
+const DB_PATH = path.join(DATA_DIR, 'flights.sqlite');
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 console.log('正在启动航班延误分析系统...');
@@ -36,10 +39,117 @@ function readJsonFile(filePath) {
 }
 
 function safeJsonResponse(res, data) {
-  if (data === null) {
+  if (data === null || data === undefined) {
     return res.status(404).json({ error: '数据未找到，请先运行 R 分析脚本生成数据' });
   }
   return res.json(data);
+}
+
+function getModule8ChunkFiles() {
+  const module8Dir = path.join(DATA_DIR, 'module8');
+  if (!fs.existsSync(module8Dir)) return [];
+
+  return fs.readdirSync(module8Dir)
+    .filter((name) => /^full_data_chunk_\d+\.json$/.test(name))
+    .sort((a, b) => Number(a.match(/\d+/)?.[0] || 0) - Number(b.match(/\d+/)?.[0] || 0));
+}
+
+function readModule8Option(fileName, legacyKey) {
+  return readJsonFile(`module8/${fileName}`) || readJsonFile('module8/explorer_metadata.json')?.[legacyKey] || readJsonFile('module8/explorer_data.json')?.[legacyKey];
+}
+
+let flightDb = null;
+
+function hasFlightDatabase() {
+  return fs.existsSync(DB_PATH);
+}
+
+function getFlightDb() {
+  if (!hasFlightDatabase()) return null;
+  if (!flightDb) {
+    flightDb = new Database(DB_PATH, { readonly: true, fileMustExist: true });
+    flightDb.pragma('query_only = ON');
+    console.log(`[DB] 使用航班数据库: ${DB_PATH}`);
+  }
+  return flightDb;
+}
+
+function buildDbWhere(filters = {}) {
+  const clauses = [];
+  const params = {};
+
+  const addInFilter = (column, key, values) => {
+    if (!Array.isArray(values) || values.length === 0) return;
+    if (values.includes('__none__')) {
+      clauses.push('1 = 0');
+      return;
+    }
+    const placeholders = values.map((value, index) => {
+      const paramName = `${key}${index}`;
+      params[paramName] = String(value);
+      return `@${paramName}`;
+    });
+    clauses.push(`CAST(${column} AS TEXT) IN (${placeholders.join(', ')})`);
+  };
+
+  addInFilter('year', 'year', filters.years);
+  addInFilter('month', 'month', filters.months);
+  addInFilter('airlineCode', 'airline', filters.airlines);
+  addInFilter('departureAirport', 'origin', filters.origins);
+  addInFilter('arrivalAirport', 'destination', filters.destinations);
+  addInFilter('delayLevel', 'delayLevel', filters.delayLevels);
+
+  return {
+    where: clauses.length ? `WHERE ${clauses.join(' AND ')}` : '',
+    params,
+  };
+}
+
+function loadFlightsFromDatabase(filters) {
+  const db = getFlightDb();
+  if (!db) return null;
+
+  const { where, params } = buildDbWhere(filters);
+  return db.prepare(`
+    SELECT
+      year,
+      month,
+      day,
+      hour,
+      weekday,
+      weekdayName,
+      airlineCode,
+      airlineName,
+      flightNumber,
+      aircraftId,
+      departureAirport,
+      departureAirportName,
+      arrivalAirport,
+      arrivalAirportName,
+      route,
+      departureDelay,
+      arrivalDelay,
+      flightTime,
+      flightDistance,
+      flightSpeed,
+      delayLevel
+    FROM flights
+    ${where}
+  `).all(params);
+}
+
+function getDatabaseOptionRows() {
+  const db = getFlightDb();
+  if (!db) return null;
+
+  return {
+    years: db.prepare('SELECT year, CAST(year AS TEXT) AS label, COUNT(*) AS count FROM flights GROUP BY year ORDER BY year').all(),
+    months: db.prepare("SELECT month, CAST(month AS TEXT) || '月' AS monthName, COUNT(*) AS count FROM flights GROUP BY month ORDER BY month").all(),
+    airlines: db.prepare('SELECT airlineCode, COALESCE(NULLIF(airlineName, \'\'), airlineCode) AS airlineName, COUNT(*) AS count FROM flights GROUP BY airlineCode, airlineName ORDER BY count DESC').all(),
+    origins: db.prepare('SELECT departureAirport, COALESCE(NULLIF(departureAirportName, \'\'), departureAirport) AS departureAirportName, COUNT(*) AS count FROM flights GROUP BY departureAirport, departureAirportName ORDER BY count DESC').all(),
+    destinations: db.prepare('SELECT arrivalAirport, COALESCE(NULLIF(arrivalAirportName, \'\'), arrivalAirport) AS arrivalAirportName, COUNT(*) AS count FROM flights GROUP BY arrivalAirport, arrivalAirportName ORDER BY count DESC').all(),
+    delayLevels: db.prepare('SELECT delayLevel, COUNT(*) AS count FROM flights GROUP BY delayLevel ORDER BY count DESC').all(),
+  };
 }
 
 // =============================================================================
@@ -167,15 +277,13 @@ function loadFullDataset() {
   
   return new Promise((resolve, reject) => {
     const allFlights = [];
-    const totalChunks = 7;
-    let loadedChunks = 0;
-    
-    for (let i = 1; i <= totalChunks; i++) {
-      const chunkData = readJsonFile(`module8/full_data_chunk_${i}.json`);
+    const chunkFiles = getModule8ChunkFiles();
+
+    for (const chunkFile of chunkFiles) {
+      const chunkData = readJsonFile(`module8/${chunkFile}`);
       if (chunkData && Array.isArray(chunkData)) {
         allFlights.push(...chunkData);
       }
-      loadedChunks++;
     }
     
     module8Cache.data = allFlights;
@@ -203,8 +311,8 @@ app.get('/api/module8/summary', async (req, res) => {
     
     // 如果都没有，从数据计算
     const allFlights = [];
-    for (let i = 1; i <= 7; i++) {
-      const chunkData = readJsonFile(`module8/full_data_chunk_${i}.json`);
+    for (const chunkFile of getModule8ChunkFiles()) {
+      const chunkData = readJsonFile(`module8/${chunkFile}`);
       if (chunkData && Array.isArray(chunkData)) {
         allFlights.push(...chunkData);
       }
@@ -251,28 +359,62 @@ app.get('/api/module8/list', async (req, res) => {
 
 // 筛选器选项
 app.get('/api/module8/airline-options', (req, res) => {
-  const data = readJsonFile('module8/explorer_data.json')?.airlineOptions;
+  const dbOptions = getDatabaseOptionRows();
+  if (dbOptions) return res.json(dbOptions.airlines);
+  const data = readModule8Option('airline_options.json', 'airlineOptions');
   safeJsonResponse(res, data);
 });
 
 app.get('/api/module8/dest-options', (req, res) => {
-  const data = readJsonFile('module8/explorer_data.json')?.destOptions;
+  const dbOptions = getDatabaseOptionRows();
+  if (dbOptions) return res.json(dbOptions.destinations);
+  const data = readModule8Option('dest_options.json', 'destOptions');
   safeJsonResponse(res, data);
 });
 
 app.get('/api/module8/origin-options', (req, res) => {
-  const data = readJsonFile('module8/explorer_data.json')?.originOptions;
+  const dbOptions = getDatabaseOptionRows();
+  if (dbOptions) return res.json(dbOptions.origins);
+  const data = readModule8Option('origin_options.json', 'originOptions');
   safeJsonResponse(res, data);
 });
 
 app.get('/api/module8/delay-level-options', (req, res) => {
-  const data = readJsonFile('module8/explorer_data.json')?.delayLevelOptions;
+  const dbOptions = getDatabaseOptionRows();
+  if (dbOptions) return res.json(dbOptions.delayLevels);
+  const data = readModule8Option('delay_level_options.json', 'delayLevelOptions');
   safeJsonResponse(res, data);
 });
 
 app.get('/api/module8/month-options', (req, res) => {
-  const data = readJsonFile('module8/explorer_data.json')?.monthOptions;
+  const dbOptions = getDatabaseOptionRows();
+  if (dbOptions) return res.json(dbOptions.months);
+  const data = readModule8Option('month_options.json', 'monthOptions');
   safeJsonResponse(res, data);
+});
+
+app.get('/api/module8/year-options', async (req, res) => {
+  try {
+    const dbOptions = getDatabaseOptionRows();
+    if (dbOptions) return res.json(dbOptions.years);
+
+    const directData = readJsonFile('module8/year_options.json');
+    if (directData) return res.json(directData);
+
+    const explorerData = readJsonFile('module8/explorer_data.json');
+    if (explorerData?.yearOptions) return res.json(explorerData.yearOptions);
+
+    const data = await loadFullDataset();
+    const counts = new Map();
+    data.forEach((flight) => {
+      if (flight.year) counts.set(flight.year, (counts.get(flight.year) || 0) + 1);
+    });
+    res.json(Array.from(counts.entries())
+      .sort(([a], [b]) => Number(a) - Number(b))
+      .map(([year, count]) => ({ year, label: String(year), count })));
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 // 搜索并筛选航班数据
@@ -316,6 +458,25 @@ app.get('/api/module8/search', async (req, res) => {
   }
 });
 
+app.get('/api/interactive/analysis', async (req, res) => {
+  try {
+    const filters = parseInteractiveFilters(req.query);
+    const dbRows = loadFlightsFromDatabase(filters);
+    if (dbRows) {
+      return res.json({
+        ...buildInteractiveAnalysis(dbRows, {}),
+        filters,
+        source: 'sqlite',
+      });
+    }
+
+    const data = await loadFullDataset();
+    res.json(buildInteractiveAnalysis(data, filters));
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // 导出筛选后的数据（支持三种导出方式）
 app.get('/api/module8/export', (req, res) => {
   try {
@@ -327,8 +488,8 @@ app.get('/api/module8/export', (req, res) => {
 
     // 直接从数据块加载
     const allFlights = [];
-    for (let i = 1; i <= 7; i++) {
-      const chunkData = readJsonFile(`module8/full_data_chunk_${i}.json`);
+    for (const chunkFile of getModule8ChunkFiles()) {
+      const chunkData = readJsonFile(`module8/${chunkFile}`);
       if (chunkData && Array.isArray(chunkData)) {
         allFlights.push(...chunkData);
       }

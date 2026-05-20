@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Plane, Activity, BarChart2, ShieldAlert, Clock, Map, Building, GitBranch, PieChart, Table } from 'lucide-react';
+import ThemeToggle from '../components/common/ThemeToggle';
 
 const ParticleBackground = () => {
     return (
@@ -38,6 +39,7 @@ export default function LandingPage() {
 
     return (
         <div ref={containerRef} className="bg-[#020617] bg-grid min-h-screen text-[#f1f5f9] overflow-x-hidden font-sans relative selection:bg-cyan-500/30">
+            <ThemeToggle variant="inline" />
             <ParticleBackground />
 
             {/* 导航栏 */}

@@ -80,7 +80,7 @@ propagation_stats <- with_prev %>%
 # 同机同日平均执行航班数
 avg_tasks_per_day <- flight_chains %>%
   group_by(tailnum, flight_year, month, day) %>%
-  summarise(tasks = n()) %>%
+  summarise(tasks = n(), .groups = "drop") %>%
   summarise(avgTasks = round(mean(tasks), 1)) %>%
   pull(avgTasks)
 

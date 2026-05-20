@@ -29,7 +29,7 @@ const chartBaseOptions = {
   }
 };
 
-export default function Module1Dashboard() {
+export default function Module1Dashboard({ interactiveData }: { interactiveData?: any }) {
   const { data: summary, loading: loading1, error: error1 } = useFetch('/api/module1/summary');
   const { data: hourlyTrend, loading: loading2, error: error2 } = useFetch('/api/module1/hourly-trend');
   const { data: topDestinations, loading: loading3, error: error3 } = useFetch('/api/module1/top-destinations');
@@ -45,6 +45,11 @@ export default function Module1Dashboard() {
     return <DataError message={error1 || error2 || error3 || error4 || error5 || error6} />;
   }
 
+  const activeSummary = interactiveData?.summary || summary;
+  const activeHourlyTrend = interactiveData?.hourlyTrend || hourlyTrend;
+  const activeTopDestinations = interactiveData?.topDestinationsVolume || topDestinations;
+  const activeHeatmap = interactiveData?.heatmap || heatmap;
+
   // 小时延误趋势图配置
   const hourlyOption = {
     ...chartBaseOptions,
@@ -53,11 +58,11 @@ export default function Module1Dashboard() {
       ...chartBaseOptions.xAxis,
       type: 'category',
       boundaryGap: false,
-      data: hourlyTrend?.map((d: any) => `${d.hour}:00`) || []
+      data: activeHourlyTrend?.map((d: any) => `${d.hour}:00`) || []
     },
     yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: '平均延误(分钟)' },
     series: [{
-      data: hourlyTrend?.map((d: any) => d.avgDepDelay) || [],
+      data: activeHourlyTrend?.map((d: any) => d.avgDepDelay) || [],
       type: 'line',
       smooth: true,
       symbol: 'none',
@@ -82,11 +87,11 @@ export default function Module1Dashboard() {
     yAxis: {
       ...chartBaseOptions.xAxis,
       type: 'category',
-      data: [...(topDestinations || [])].reverse().map((d: any) => d.dest)
+      data: [...(activeTopDestinations || [])].reverse().map((d: any) => d.dest)
     },
     series: [{
       type: 'bar',
-      data: [...(topDestinations || [])].reverse().map((d: any) => d.flightCount),
+      data: [...(activeTopDestinations || [])].reverse().map((d: any) => d.flightCount),
       itemStyle: {
         color: {
           type: 'linear', x: 0, y: 0, x2: 1, y2: 0,
@@ -99,6 +104,41 @@ export default function Module1Dashboard() {
       }
     }]
   };
+
+  const heatmapHours = Array.from({ length: 19 }, (_, i) => i + 5);
+  const heatmapHourLabels = heatmapHours.map((hour) => `${hour}:00`);
+  const heatmapWeekdayLabels = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+  const heatmapWeekdayIndex = new Map(heatmapWeekdayLabels.map((name, index) => [name, index]));
+  const heatmapSeriesData = (activeHeatmap || [])
+    .map((d: any) => {
+      const hour = Number(d.hour);
+      const weekdayIndex = Number.isFinite(Number(d.weekday))
+        ? Number(d.weekday) - 1
+        : heatmapWeekdayIndex.get(d.weekdayName);
+      const hourIndex = heatmapHours.indexOf(hour);
+
+      if (
+        hourIndex < 0 ||
+        weekdayIndex === undefined ||
+        weekdayIndex < 0 ||
+        weekdayIndex >= heatmapWeekdayLabels.length
+      ) {
+        return null;
+      }
+
+      return [
+        hourIndex,
+        weekdayIndex,
+        Number(d.avgDelay) || 0,
+        {
+          hour,
+          weekdayName: d.weekdayName || heatmapWeekdayLabels[weekdayIndex],
+          flightCount: d.flightCount,
+          severeDelayRate: d.severeDelayRate
+        }
+      ];
+    })
+    .filter(Boolean);
 
   // 热力图配置
   const heatmapOption = {
@@ -120,18 +160,24 @@ export default function Module1Dashboard() {
         fontSize: 13
       },
       formatter: (params: any) => {
-        const hour = params.data[0];
-        const weekday = params.data[1];
+        const meta = params.data[3] || {};
+        const hour = meta.hour ?? heatmapHours[params.data[0]];
+        const weekday = meta.weekdayName ?? heatmapWeekdayLabels[params.data[1]];
         const delay = params.data[2];
+        const flightCount = meta.flightCount?.toLocaleString?.() ?? '--';
+        const severeDelayRate =
+          meta.severeDelayRate === undefined ? '--' : `${Number(meta.severeDelayRate).toFixed(1)}%`;
         return `<div style="padding: 4px 8px;">
           <div style="font-weight: 600; margin-bottom: 4px; color: #38bdf8;">${weekday} ${hour}:00</div>
           <div>平均延误: <span style="color: #fbbf24; font-weight: 600;">${delay.toFixed(1)}</span> 分钟</div>
+          <div>航班量: <span style="color: #cbd5e1; font-weight: 600;">${flightCount}</span></div>
+          <div>重度延误率: <span style="color: #fb923c; font-weight: 600;">${severeDelayRate}</span></div>
         </div>`;
       }
     },
     xAxis: {
       type: 'category',
-      data: Array.from({ length: 19 }, (_, i) => i + 5),
+      data: heatmapHourLabels,
       position: 'top',
       splitArea: {
         show: true,
@@ -148,7 +194,7 @@ export default function Module1Dashboard() {
         fontSize: 11,
         interval: 0,
         margin: 8,
-        formatter: (value: number) => value
+        formatter: (value: string) => value.replace(':00', '')
       },
       axisTick: {
         show: false
@@ -180,6 +226,7 @@ export default function Module1Dashboard() {
     visualMap: {
       min: 0,
       max: 50,
+      dimension: 2,
       calculable: true,
       orient: 'horizontal',
       left: 'center',
@@ -206,7 +253,7 @@ export default function Module1Dashboard() {
     },
     series: [{
       type: 'heatmap',
-      data: heatmap?.map((d: any) => [d.hour, d.weekdayName, d.avgDelay || 0]) || [],
+      data: heatmapSeriesData,
       label: {
         show: false
       },
@@ -267,37 +314,37 @@ export default function Module1Dashboard() {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         <KPICard
           title="总航班数"
-          value={summary?.totalFlights?.toLocaleString() || '--'}
+          value={activeSummary?.totalFlights?.toLocaleString() || '--'}
           icon={Plane}
           color="cyan"
         />
         <KPICard
           title="平均起飞延误"
-          value={`${summary?.avgDepDelay || '--'}分钟`}
+          value={`${activeSummary?.avgDepDelay || '--'}分钟`}
           icon={Clock}
           color="orange"
         />
         <KPICard
           title="平均到达延误"
-          value={`${summary?.avgArrDelay || '--'}分钟`}
+          value={`${activeSummary?.avgArrDelay || '--'}分钟`}
           icon={Clock}
           color="purple"
         />
         <KPICard
           title="起飞准点率"
-          value={`${summary?.depOnTimeRate || '--'}%`}
+          value={`${activeSummary?.depOnTimeRate || '--'}%`}
           icon={CheckCircle}
           color="green"
         />
         <KPICard
           title="到达准点率"
-          value={`${summary?.arrOnTimeRate || '--'}%`}
+          value={`${activeSummary?.arrOnTimeRate ?? activeSummary?.depOnTimeRate ?? '--'}%`}
           icon={CheckCircle}
           color="green"
         />
         <KPICard
           title="重度延误占比"
-          value={`${summary?.severeDelayRate || '--'}%`}
+          value={`${activeSummary?.severeDelayRate || '--'}%`}
           subtitle="延误>60分钟"
           icon={AlertTriangle}
           color="red"
@@ -369,7 +416,7 @@ export default function Module1Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-slate-300">
           <div className="flex items-start gap-2">
             <span className="text-cyan-400">•</span>
-            <span>整体延误水平中等，平均起飞延误约{summary?.avgDepDelay || 12}分钟</span>
+            <span>整体延误水平中等，平均起飞延误约{activeSummary?.avgDepDelay || 12}分钟</span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-orange-400">•</span>

@@ -2,6 +2,7 @@ import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import App from './App.tsx';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { installStaticApi } from './lib/staticApi';
 import './index.css';
 
@@ -11,8 +12,10 @@ if (import.meta.env.PROD) {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
+    <ThemeProvider>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </ThemeProvider>
   </StrictMode>,
 );

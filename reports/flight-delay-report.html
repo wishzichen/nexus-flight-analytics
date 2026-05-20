@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="我要非得更高">
+
+<title>Nexus Flight Analytics：纽约航班延误的系统画像</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="flight-delay-report_files/libs/clipboard/clipboard.min.js"></script>
+<script src="flight-delay-report_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="flight-delay-report_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="flight-delay-report_files/libs/quarto-html/popper.min.js"></script>
+<script src="flight-delay-report_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="flight-delay-report_files/libs/quarto-html/anchor.min.js"></script>
+<link href="flight-delay-report_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="flight-delay-report_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="flight-delay-report_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="flight-delay-report_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="flight-delay-report_files/libs/bootstrap/bootstrap-439d06bf28833bca9bc7733799859799.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="flight-delay-report_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="flight-delay-report_files/libs/plotly-binding-4.12.0/plotly.js"></script>
+
+<script src="flight-delay-report_files/libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="flight-delay-report_files/libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="flight-delay-report_files/libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="flight-delay-report_files/libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+<link href="flight-delay-report_files/libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="flight-delay-report_files/libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+
+<link href="flight-delay-report_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+
+<script src="flight-delay-report_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="report-style.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目录</h2>
+   
+  <ul class="collapse">
+  <li><a href="#作品定位" id="toc-作品定位" class="nav-link active" data-scroll-target="#作品定位">作品定位</a></li>
+  <li><a href="#核心发现" id="toc-核心发现" class="nav-link" data-scroll-target="#核心发现">核心发现</a></li>
+  <li><a href="#level-1时间与目的地" id="toc-level-1时间与目的地" class="nav-link" data-scroll-target="#level-1时间与目的地">LEVEL 1：时间与目的地</a></li>
+  <li><a href="#level-2空中追回与航司效能" id="toc-level-2空中追回与航司效能" class="nav-link" data-scroll-target="#level-2空中追回与航司效能">LEVEL 2：空中追回与航司效能</a></li>
+  <li><a href="#level-3连锁反应" id="toc-level-3连锁反应" class="nav-link" data-scroll-target="#level-3连锁反应">LEVEL 3：连锁反应</a></li>
+  <li><a href="#level-4延误之源" id="toc-level-4延误之源" class="nav-link" data-scroll-target="#level-4延误之源">LEVEL 4：延误之源</a></li>
+  <li><a href="#答辩摘要" id="toc-答辩摘要" class="nav-link" data-scroll-target="#答辩摘要">答辩摘要</a></li>
+  <li><a href="#复现说明" id="toc-复现说明" class="nav-link" data-scroll-target="#复现说明">复现说明</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Nexus Flight Analytics：纽约航班延误的系统画像</h1>
+<p class="subtitle lead">公共卫生与健康科学学院第二届数据分析大赛分析报告</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">团队</div>
+    <div class="quarto-title-meta-contents">
+             <p>我要非得更高 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">日期</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年5月14日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section class="report-hero">
+<div class="hero-kicker">
+Team 我要非得更高 · Quarto / tidyverse / nycflights13
+</div>
+<h1>
+延误不是偶发事故，而是时间、天气、航司调度与同机任务链共同塑造的系统结果。
+</h1>
+<p>
+本报告按照比赛通知中的六个任务重构分析路径，把“逐时延误、热门目的地、空中追回、航司效能、连锁反应、延误之源”放在同一条证据链里。 网页交互作品可访问 <a href="https://flight.cian.fun" target="_blank">flight.cian.fun</a>，本页则作为更适合评审阅读和答辩展示的 HTML 分析报告。
+</p>
+</section>
+<div class="metric-grid"><div class="metric-card" style="--accent:#0f62fe"><div class="metric-label">有效航班记录</div><div class="metric-value">327,346</div><div class="metric-note">剔除起飞/到达延误缺失后进入分析</div></div><div class="metric-card" style="--accent:#d12771"><div class="metric-label">平均起飞延误</div><div class="metric-value">12.6 分钟</div><div class="metric-note">中位数为 -2.0 分钟</div></div><div class="metric-card" style="--accent:#005d5d"><div class="metric-label">15分钟内起飞准点率</div><div class="metric-value">78.5%</div><div class="metric-note">严重起飞延误率为 8.0%</div></div><div class="metric-card" style="--accent:#ff832b"><div class="metric-label">网络覆盖</div><div class="metric-value">3 / 104</div><div class="metric-note">出发机场 / 目的地；16 家航司，4,037 架飞机</div></div></div>
+<section id="作品定位" class="level2">
+<h2 class="anchored" data-anchor-id="作品定位">作品定位</h2>
+<p>比赛要求的核心不是把所有字段画一遍，而是用 EDA 把影响航班延误的结构讲清楚。我们把六道题组织成三层逻辑：先看延误在时间和目的地上的分布，再看航班、航司与同机任务链如何把延误放大或缓冲，最后用三表联动模型比较机龄与天气的相对作用。</p>
+<div class="task-grid"><div class="task-card"><div class="task-level">LEVEL 1</div><div class="task-title">逐时延误：晨曦或暮光</div><div class="task-method">按计划起飞小时聚合均值、置信区间和时段分布，识别一天中的压力峰值。</div></div><div class="task-card"><div class="task-level">LEVEL 1</div><div class="task-title">目的地：远方的诅咒之地</div><div class="task-method">计算纽约最繁忙十大目的地，并用航班量与到达延误构建风险矩阵。</div></div><div class="task-card"><div class="task-level">LEVEL 2</div><div class="task-title">空中疾行：竞速挽救</div><div class="task-method">筛选起飞延误超过 60 分钟的航班，比较速度分位下的追回分钟与完全恢复率。</div></div><div class="task-card"><div class="task-level">LEVEL 2</div><div class="task-title">航司效能：船大难掉头</div><div class="task-method">将航司代码映射为全称，比较机队规模、航班量、准点率与平均延误。</div></div><div class="task-card"><div class="task-level">LEVEL 3</div><div class="task-title">连锁反应</div><div class="task-method">按 tailnum 与日期排序，用 lag() 追踪前序到达延误对后续起飞的传导。</div></div><div class="task-card"><div class="task-level">LEVEL 4</div><div class="task-title">延误之源</div><div class="task-method">合并 flights、planes、weather，用描述比较和逻辑回归评估机龄与天气。</div></div></div>
+</section>
+<section id="核心发现" class="level2">
+<h2 class="anchored" data-anchor-id="核心发现">核心发现</h2>
+<div class="insight-grid"><div class="insight-item"><strong>时间压力会累积</strong><span>平均起飞延误最高出现在 19:00，约 24.7 分钟；最低出现在 5:00。</span></div><div class="insight-item"><strong>热门目的地不必然最危险</strong><span>十大热门目的地中，ATL 的平均到达延误最高，约 11.3 分钟。</span></div><div class="insight-item"><strong>空中追回存在但有限</strong><span>严重起飞延误航班平均追回 3.0 分钟，但仅 0.1% 能回到 15 分钟内到达。</span></div><div class="insight-item"><strong>航司规模不是单一答案</strong><span>机队规模与平均起飞延误相关系数约 -0.03，说明规模只解释了一小部分差异。</span></div><div class="insight-item"><strong>同一架飞机会传导延误</strong><span>前序航班晚到后，后续起飞延误概率约为前序准点后的 2.8 倍。</span></div><div class="insight-item"><strong>延误之源更偏天气触发</strong><span>控制月份、小时、机场和航司后，模型显示短期触发更偏向 天气条件。</span></div></div>
+</section>
+<section id="level-1时间与目的地" class="level2">
+<h2 class="anchored" data-anchor-id="level-1时间与目的地">LEVEL 1：时间与目的地</h2>
+<section id="逐时延误" class="level3">
+<h3 class="anchored" data-anchor-id="逐时延误">逐时延误</h3>
+<p>延误不是平均铺开在一天里，而是沿着运行日逐步堆积。下图把起飞和到达延误放在同一时间轴上，浅色带表示起飞延误均值的 95% 置信区间，右侧的时段分布用“雨云图”展示均值之外的离散程度。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>显示代码</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>p_hourly <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> hourly_delay,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(hour, <span class="at">ymin =</span> ci_low, <span class="at">ymax =</span> ci_high),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"#bae6fd"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.62</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> hourly_long,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(hour, minutes, <span class="at">color =</span> delay_type),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">1.08</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> hourly_long,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(hour, minutes, <span class="at">color =</span> delay_type),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">2.4</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.9</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">23</span>, <span class="dv">3</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">24.6</span>)) <span class="sc">+</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">" 分钟"</span>)) <span class="sc">+</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"起飞延误"</span> <span class="ot">=</span> okabe_palette[<span class="st">"vermillion"</span>], <span class="st">"到达延误"</span> <span class="ot">=</span> okabe_palette[<span class="st">"blue"</span>])) <span class="sc">+</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"延误沿运行日逐步抬升"</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"最高峰在 "</span>, peak_hour<span class="sc">$</span>hour, <span class="st">":00；低谷在 "</span>, quiet_hour<span class="sc">$</span>hour, <span class="st">":00。置信区间很窄，说明这种节律并非抽样噪声。"</span>),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"计划起飞小时"</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"平均延误"</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"延误类型"</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_report</span>()</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>p_rain <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(period_distribution, <span class="fu">aes</span>(time_period, dep_delay, <span class="at">fill =</span> time_period, <span class="at">color =</span> time_period))</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (has_ggdist) {</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  p_rain <span class="ot">&lt;-</span> p_rain <span class="sc">+</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    ggdist<span class="sc">::</span><span class="fu">stat_halfeye</span>(</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">adjust =</span> <span class="fl">0.75</span>,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">width =</span> <span class="fl">0.72</span>,</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">justification =</span> <span class="sc">-</span><span class="fl">0.18</span>,</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">.width =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">0.95</span>),</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">point_interval =</span> ggdist<span class="sc">::</span>median_qi,</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">alpha =</span> <span class="fl">0.58</span>,</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">slab_color =</span> <span class="cn">NA</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">0.06</span>, <span class="at">height =</span> <span class="dv">0</span>),</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="fl">0.36</span>,</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">alpha =</span> <span class="fl">0.16</span>,</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>      <span class="at">show.legend =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  p_rain <span class="ot">&lt;-</span> p_rain <span class="sc">+</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>, <span class="at">width =</span> <span class="fl">0.82</span>, <span class="at">alpha =</span> <span class="fl">0.55</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.16</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"#334155"</span>, <span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">alpha =</span> <span class="fl">0.88</span>) <span class="sc">+</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>      <span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">0.09</span>, <span class="at">height =</span> <span class="dv">0</span>),</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="fl">0.38</span>,</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>      <span class="at">alpha =</span> <span class="fl">0.16</span>,</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">show.legend =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>p_rain <span class="ot">&lt;-</span> p_rain <span class="sc">+</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> period_uncertainty,</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> mean_delay, <span class="at">ymin =</span> ci_low, <span class="at">ymax =</span> ci_high),</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">inherit.aes =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#0f172a"</span>,</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">0.55</span>,</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">fatten =</span> <span class="fl">2.1</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">" 分钟"</span>)) <span class="sc">+</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> period_palette, <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> period_palette, <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"晚高峰不只均值高，长尾也更厚"</span>,</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="cf">if</span> (has_ggdist) {</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>      <span class="st">"分布形状、抽样航班与均值区间共同展示晚间延误长尾。"</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>      <span class="st">"小提琴图、箱线图和抽样点共同展示晚间延误长尾。"</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"起飞延误"</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_report</span>()</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>p_hourly <span class="sc">+</span> p_rain <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">widths =</span> <span class="fu">c</span>(<span class="fl">1.25</span>, <span class="dv">1</span>), <span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">&amp;</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="flight-delay-report_files/figure-html/hourly-and-raincloud-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>逐时延误与时段分布：折线展示均值趋势，雨云图展示同一时段内部的波动与长尾。</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>显示代码</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(weekday_hour_heatmap, <span class="fu">aes</span>(hour, weekday_label, <span class="at">fill =</span> avg_dep_delay)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> <span class="fl">0.45</span>) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> severe_rate), <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">fill =</span> <span class="st">"#111827"</span>, <span class="at">alpha =</span> <span class="fl">0.72</span>) <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">23</span>, <span class="dv">3</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> risk_palette, <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">" 分钟"</span>)) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="fl">1.2</span>, <span class="fl">5.2</span>), <span class="at">labels =</span> percent, <span class="at">name =</span> <span class="st">"严重延误率"</span>) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="fu">guide_colorbar</span>(<span class="at">title.position =</span> <span class="st">"top"</span>, <span class="at">barwidth =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">4.6</span>, <span class="st">"cm"</span>), <span class="at">barheight =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.22</span>, <span class="st">"cm"</span>)),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fu">guide_legend</span>(<span class="at">title.position =</span> <span class="st">"top"</span>, <span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"高压窗口集中在下午至晚间"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"热力图适合做值班与资源前置排班：颜色看均值，点大小看严重延误风险。"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"计划起飞小时"</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"平均起飞延误"</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_report</span>() <span class="sc">+</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="flight-delay-report_files/figure-html/weekday-heatmap-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>星期与小时热力图：颜色越深表示平均起飞延误越高，可快速定位运行压力窗口。</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="热门目的地" class="level3">
+<h3 class="anchored" data-anchor-id="热门目的地">热门目的地</h3>
+<p>比赛要求找出纽约最繁忙的十大航线目的地。我们进一步把“繁忙”与“延误风险”拆开看：航班量大说明暴露高，平均到达延误高说明治理优先级高。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>显示代码</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>top_destinations <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dest_label =</span> <span class="fu">fct_reorder</span>(dest_label, flight_count)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(flight_count, dest_label, <span class="at">fill =</span> avg_arr_delay)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.68</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> <span class="fl">0.35</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="fu">fmt_int</span>(flight_count), <span class="st">" 班"</span>)),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.08</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> font_family,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.4</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> pal[<span class="st">"ink"</span>]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> comma, <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.16</span>))) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> risk_palette, <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">" 分钟"</span>)) <span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_colorbar</span>(<span class="at">title.position =</span> <span class="st">"top"</span>, <span class="at">barwidth =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">4.8</span>, <span class="st">"cm"</span>), <span class="at">barheight =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.22</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"热门目的地与高延误目的地不是同一个概念"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(dest_risk_gap<span class="sc">$</span>dest, <span class="st">" 是十大热门目的地中平均到达延误最高者。"</span>),</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"航班量"</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"平均到达延误"</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_report</span>()</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="flight-delay-report_files/figure-html/top-destinations-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>纽约最繁忙十大目的地：条形长度为航班量，颜色为平均到达延误。</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>显示代码</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p_dest <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  destination_risk,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    flight_count,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    avg_arr_delay,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">1</span> <span class="sc">-</span> arr_ontime_rate,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> quadrant,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> tooltip</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">median</span>(destination_risk<span class="sc">$</span>avg_arr_delay), <span class="at">color =</span> <span class="st">"#cbd5e1"</span>, <span class="at">linetype =</span> <span class="st">"22"</span>) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(destination_risk<span class="sc">$</span>flight_count), <span class="at">color =</span> <span class="st">"#cbd5e1"</span>, <span class="at">linetype =</span> <span class="st">"22"</span>) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.78</span>) <span class="sc">+</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">16</span>), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> quad_palette) <span class="sc">+</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"交互式目的地风险矩阵"</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"右上象限为“高频高延误”，适合优先进入答辩中的治理建议。"</span>,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"航班量（对数轴）"</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"平均到达延误（分钟）"</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="cn">NULL</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_report</span>()</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(p_dest, <span class="at">tooltip =</span> <span class="st">"text"</span>, <span class="at">height =</span> <span class="dv">560</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend =</span> <span class="fu">list</span>(<span class="at">orientation =</span> <span class="st">"h"</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="sc">-</span><span class="fl">0.16</span>, <span class="at">yanchor =</span> <span class="st">"top"</span>),</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">margin =</span> <span class="fu">list</span>(<span class="at">l =</span> <span class="dv">70</span>, <span class="at">r =</span> <span class="dv">35</span>, <span class="at">b =</span> <span class="dv">95</span>, <span class="at">t =</span> <span class="dv">85</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">config</span>(<span class="at">displayModeBar =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="htmlwidget-692273af985672e3ed26" style="width:100%;height:560px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-692273af985672e3ed26">{"x":{"data":[{"x":[2.2204556271349789,4.3217794302176324],"y":[8.5629720980422377,8.5629720980422377],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(203,213,225,1)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[3.2968844755385471,3.2968844755385471],"y":[-9.9446311283133948,35.736268472906403],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(203,213,225,1)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.621176281775035,2.4297522800024081,3.2271150825891253,2.9253120914996495,3.1458177144918276,2.7185016888672742,2.8621313793130372,3.1737688231366499,2.8976270912904414,3.2753113545418118,3.2268575702887237,2.9694159123539814,2.7450747915820575,2.4983105537896004,2.9122220565324155,3.1565491513317814,3.1878026387184195,2.5538830266438746,2.8744818176994666,3.0429690733931802,2.4502491083193609,3.2322335211147335,2.4683473304121573,2.761927838420529],"y":[14.397129186602871,16.877323420074351,10.726733847065796,19.698337292161519,12.680486061472481,19.005736137667306,18.189560439560438,14.11260053619303,15.935443037974684,14.514058355437665,10.645314353499407,14.78755364806867,20.196043165467625,30.61904761904762,14.698898408812729,10.949093444909344,10.127190136275146,16.234636871508378,15.129506008010681,12.669384057971014,12.109929078014185,8.9039250146455764,33.65986394557823,24.069204152249135],"text":["ALB · Albany Intl<br>航班量：418<br>平均到达延误：14.4 分钟<br>到达准点率：70.3%<br>平均航程：143 英里","BHM · Birmingham Intl<br>航班量：269<br>平均到达延误：16.9 分钟<br>到达准点率：67.7%<br>平均航程：866 英里","BWI · Baltimore Washington Intl<br>航班量：1,687<br>平均到达延误：10.7 分钟<br>到达准点率：74.3%<br>平均航程：179 英里","CAK · Akron Canton Regional Airport<br>航班量：842<br>平均到达延误：19.7 分钟<br>到达准点率：68.4%<br>平均航程：397 英里","DAY · James M Cox Dayton Intl<br>航班量：1,399<br>平均到达延误：12.7 分钟<br>到达准点率：70.8%<br>平均航程：537 英里","DSM · Des Moines Intl<br>航班量：523<br>平均到达延误：19.0 分钟<br>到达准点率：65.4%<br>平均航程：1,021 英里","GRR · Gerald R Ford Intl<br>航班量：728<br>平均到达延误：18.2 分钟<br>到达准点率：66.2%<br>平均航程：606 英里","GSO · Piedmont Triad<br>航班量：1,492<br>平均到达延误：14.1 分钟<br>到达准点率：69.2%<br>平均航程：450 英里","GSP · Greenville-Spartanburg International<br>航班量：790<br>平均到达延误：15.9 分钟<br>到达准点率：66.5%<br>平均航程：596 英里","MCI · Kansas City Intl<br>航班量：1,885<br>平均到达延误：14.5 分钟<br>到达准点率：68.1%<br>平均航程：1,098 英里","MEM · Memphis Intl<br>航班量：1,686<br>平均到达延误：10.6 分钟<br>到达准点率：71.8%<br>平均航程：954 英里","MHT · Manchester Regional Airport<br>航班量：932<br>平均到达延误：14.8 分钟<br>到达准点率：70.3%<br>平均航程：207 英里","MSN · Dane Co Rgnl Truax Fld<br>航班量：556<br>平均到达延误：20.2 分钟<br>到达准点率：65.3%<br>平均航程：804 英里","OKC · Will Rogers World<br>航班量：315<br>平均到达延误：30.6 分钟<br>到达准点率：49.8%<br>平均航程：1,325 英里","OMA · Eppley Afld<br>航班量：817<br>平均到达延误：14.7 分钟<br>到达准点率：67.0%<br>平均航程：1,136 英里","ORF · Norfolk Intl<br>航班量：1,434<br>平均到达延误：10.9 分钟<br>到达准点率：72.3%<br>平均航程：289 英里","PHL · Philadelphia Intl<br>航班量：1,541<br>平均到达延误：10.1 分钟<br>到达准点率：71.9%<br>平均航程：94 英里","PVD · Theodore Francis Green State<br>航班量：358<br>平均到达延误：16.2 分钟<br>到达准点率：67.0%<br>平均航程：160 英里","SAV · Savannah Hilton Head Intl<br>航班量：749<br>平均到达延误：15.1 分钟<br>到达准点率：70.5%<br>平均航程：709 英里","SDF · Louisville International Airport<br>航班量：1,104<br>平均到达延误：12.7 分钟<br>到达准点率：72.4%<br>平均航程：646 英里","SMF · Sacramento Intl<br>航班量：282<br>平均到达延误：12.1 分钟<br>到达准点率：65.2%<br>平均航程：2,521 英里","SYR · Syracuse Hancock Intl<br>航班量：1,707<br>平均到达延误：8.9 分钟<br>到达准点率：75.2%<br>平均航程：206 英里","TUL · Tulsa Intl<br>航班量：294<br>平均到达延误：33.7 分钟<br>到达准点率：52.0%<br>平均航程：1,215 英里","TYS · Mc Ghee Tyson<br>航班量：578<br>平均到达延误：24.1 分钟<br>到达准点率：61.2%<br>平均航程：638 英里"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","opacity":0.78000000000000003,"size":[44.707270507403081,47.209365202004129,40.582435146567065,46.527942678437476,44.285449250475615,49.184061375684429,48.485725605538079,45.822214528634106,48.271740968337902,46.842882067975104,43.277090907230622,44.761735223206379,49.272119166181291,60.472440944881896,47.837143939656194,42.710717679933552,43.139719556068464,47.760545499422506,44.551901849446715,42.650073051899717,49.305476948485584,39.557437020268893,59.052236312581257,52.528409648165855],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(127,127,127,1)"}},"hoveron":"points","name":"低频高延误","legendgroup":"低频高延误","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.4048337166199381,2.4216039268698313,2.4166405073382808,2.6148972160331345,2.5538830266438746,2.9484129657786009,2.568201724066995,2.3159703454569178,2.8457180179666586,2.8202014594856402,2.3222192947339191,2.4899584794248346,3.1277525158329733,2.5538830266438746,2.8188854145940097,2.5158738437116792,2.9095560292411755,3.079543007402906,2.7143297597452332,2.9965116721541785],"y":[4.3818897637795278,4.8522727272727275,8.0038314176245215,7.0485436893203888,8.027932960893855,8.2454954954954953,8.1756756756756754,6.3043478260869561,-1.3651925820256776,-0.062027231467473527,-0.2857142857142857,3.0776699029126213,5.1415797317436658,7.8715083798882679,6.945371775417299,3.4481707317073171,-7.8682266009852215,3.0824313072439633,-3.8359073359073359,7.465725806451613],"text":["ABQ · Albuquerque International Sunport<br>航班量：254<br>平均到达延误：4.4 分钟<br>到达准点率：70.5%<br>平均航程：1,826 英里","ACK · Nantucket Mem<br>航班量：264<br>平均到达延误：4.9 分钟<br>到达准点率：81.1%<br>平均航程：199 英里","AVL · Asheville Regional Airport<br>航班量：261<br>平均到达延误：8.0 分钟<br>到达准点率：76.2%<br>平均航程：584 英里","BDL · Bradley Intl<br>航班量：412<br>平均到达延误：7.0 分钟<br>到达准点率：75.5%<br>平均航程：116 英里","BGR · Bangor Intl<br>航班量：358<br>平均到达延误：8.0 分钟<br>到达准点率：72.3%<br>平均航程：378 英里","BQN · NA<br>航班量：888<br>平均到达延误：8.2 分钟<br>到达准点率：74.5%<br>平均航程：1,579 英里","BUR · Bob Hope<br>航班量：370<br>平均到达延误：8.2 分钟<br>到达准点率：73.2%<br>平均航程：2,465 英里","EGE · Eagle Co Rgnl<br>航班量：207<br>平均到达延误：6.3 分钟<br>到达准点率：74.9%<br>平均航程：1,736 英里","HNL · Honolulu Intl<br>航班量：701<br>平均到达延误：-1.4 分钟<br>到达准点率：83.7%<br>平均航程：4,973 英里","LGB · Long Beach<br>航班量：661<br>平均到达延误：-0.1 分钟<br>到达准点率：77.8%<br>平均航程：2,465 英里","MVY · Martha\\\\'s Vineyard<br>航班量：210<br>平均到达延误：-0.3 分钟<br>到达准点率：81.0%<br>平均航程：173 英里","OAK · Metropolitan Oakland Intl<br>航班量：309<br>平均到达延误：3.1 分钟<br>到达准点率：76.4%<br>平均航程：2,576 英里","PDX · Portland Intl<br>航班量：1,342<br>平均到达延误：5.1 分钟<br>到达准点率：73.8%<br>平均航程：2,446 英里","PSE · NA<br>航班量：358<br>平均到达延误：7.9 分钟<br>到达准点率：76.0%<br>平均航程：1,617 英里","SAT · San Antonio Intl<br>航班量：659<br>平均到达延误：6.9 分钟<br>到达准点率：74.8%<br>平均航程：1,578 英里","SJC · Norman Y Mineta San Jose Intl<br>航班量：328<br>平均到达延误：3.4 分钟<br>到达准点率：75.0%<br>平均航程：2,569 英里","SNA · John Wayne Arpt Orange Co<br>航班量：812<br>平均到达延误：-7.9 分钟<br>到达准点率：84.1%<br>平均航程：2,434 英里","SRQ · Sarasota Bradenton Intl<br>航班量：1,201<br>平均到达延误：3.1 分钟<br>到达准点率：80.4%<br>平均航程：1,045 英里","STT · NA<br>航班量：518<br>平均到达延误：-3.8 分钟<br>到达准点率：85.5%<br>平均航程：1,627 英里","XNA · NW Arkansas Regional<br>航班量：992<br>平均到达延误：7.5 分钟<br>到达准点率：74.5%<br>平均航程：1,142 英里"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","opacity":0.78000000000000003,"size":[44.573000252650395,31.15442686871426,38.243416807171947,39.171844996615441,42.678138914222252,40.26841389070681,41.723536805769335,39.887673464853975,25.258849307859375,36.269791262782761,31.347799902797394,38.080555511544787,41.063358647809096,38.574558395322988,39.96773713951756,39.746721263687135,24.127551442643863,32.245505634382006,15.118110236220474,40.329751657871093],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(127,127,127,1)"}},"hoveron":"points","name":"低频可控","legendgroup":"低频可控","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[4.226264711895694,3.7841892053809607,3.399673721481038,3.6599162000698504,3.4407517004791854,3.6428600525844916,3.5219222448835006,3.5711262770843115,3.9595660466379274,3.8554585803860362,3.7310243798156879,3.2968844755385471,3.4187982905903533,3.6047658847038875,3.4328090050331683,3.8120438979302267,3.3594560201209864,3.8904210188009141,3.3703280077795106,3.3725438007590705,3.6172100945574339],"y":[11.300112846706659,11.812458908612754,8.9509960159362549,8.9459518599562369,10.59296846683581,9.1816112881201644,10.601322910402887,15.364563758389261,9.0669520360004388,8.606500209234202,13.864202117778191,9.9404341241797081,11.844834159359513,12.364223602484472,14.167220376522701,8.5629720980422377,11.660402097902098,10.052380952380952,20.111253196930946,11.560644614079729,11.0784645098986],"text":["ATL · Hartsfield Jackson Atlanta Intl<br>航班量：16,837<br>平均到达延误：11.3 分钟<br>到达准点率：74.7%<br>平均航程：757 英里","BNA · Nashville Intl<br>航班量：6,084<br>平均到达延误：11.8 分钟<br>到达准点率：72.3%<br>平均航程：758 英里","BTV · Burlington Intl<br>航班量：2,510<br>平均到达延误：9.0 分钟<br>到达准点率：75.2%<br>平均航程：265 英里","BUF · Buffalo Niagara Intl<br>航班量：4,570<br>平均到达延误：8.9 分钟<br>到达准点率：77.0%<br>平均航程：297 英里","CHS · Charleston Afb Intl<br>航班量：2,759<br>平均到达延误：10.6 分钟<br>到达准点率：74.2%<br>平均航程：633 英里","CLE · Cleveland Hopkins Intl<br>航班量：4,394<br>平均到达延误：9.2 分钟<br>到达准点率：75.9%<br>平均航程：414 英里","CMH · Port Columbus Intl<br>航班量：3,326<br>平均到达延误：10.6 分钟<br>到达准点率：73.9%<br>平均航程：477 英里","CVG · Cincinnati Northern Kentucky Intl<br>航班量：3,725<br>平均到达延误：15.4 分钟<br>到达准点率：70.4%<br>平均航程：575 英里","DCA · Ronald Reagan Washington Natl<br>航班量：9,111<br>平均到达延误：9.1 分钟<br>到达准点率：75.4%<br>平均航程：211 英里","DEN · Denver Intl<br>航班量：7,169<br>平均到达延误：8.6 分钟<br>到达准点率：73.4%<br>平均航程：1,615 英里","IAD · Washington Dulles Intl<br>航班量：5,383<br>平均到达延误：13.9 分钟<br>到达准点率：73.2%<br>平均航程：225 英里","IND · Indianapolis Intl<br>航班量：1,981<br>平均到达延误：9.9 分钟<br>到达准点率：74.7%<br>平均航程：652 英里","JAX · Jacksonville Intl<br>航班量：2,623<br>平均到达延误：11.8 分钟<br>到达准点率：70.4%<br>平均航程：825 英里","MDW · Chicago Midway Intl<br>航班量：4,025<br>平均到达延误：12.4 分钟<br>到达准点率：74.4%<br>平均航程：718 英里","MKE · General Mitchell Intl<br>航班量：2,709<br>平均到达延误：14.2 分钟<br>到达准点率：71.0%<br>平均航程：733 英里","PBI · Palm Beach Intl<br>航班量：6,487<br>平均到达延误：8.6 分钟<br>到达准点率：74.0%<br>平均航程：1,029 英里","PWM · Portland Intl Jetport<br>航班量：2,288<br>平均到达延误：11.7 分钟<br>到达准点率：72.8%<br>平均航程：276 英里","RDU · Raleigh Durham Intl<br>航班量：7,770<br>平均到达延误：10.1 分钟<br>到达准点率：74.3%<br>平均航程：427 英里","RIC · Richmond Intl<br>航班量：2,346<br>平均到达延误：20.1 分钟<br>到达准点率：64.6%<br>平均航程：281 英里","ROC · Greater Rochester Intl<br>航班量：2,358<br>平均到达延误：11.6 分钟<br>到达准点率：74.0%<br>平均航程：259 英里","STL · Lambert St Louis Intl<br>航班量：4,142<br>平均到达延误：11.1 分钟<br>到达准点率：73.6%<br>平均航程：879 英里"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","opacity":0.78000000000000003,"size":[40.062725062168845,42.721995214388187,39.535982700727118,37.251278568663814,40.632269067661312,38.698912743527572,40.999308516314478,44.628079379478542,39.243793182254109,41.569056982261237,41.75740550187237,40.084134229753786,44.628619237508538,40.399611340208502,44.066439773403495,40.914364938824377,42.230388258944146,40.554430329446795,49.830616710657353,40.886787257013069,41.347744004450107],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(127,127,127,1)"}},"hoveron":"points","name":"高频高延误","legendgroup":"高频高延误","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[3.3821972103774538,4.1767277576441888,4.1358955755640192,3.9236584217933062,3.9557358422776656,4.0754374615856133,3.3186892699477459,3.850339854583479,3.7746629225378223,4.2048251384050168,4.1451031331463817,4.0641958358646431,3.8406705613334089,3.5699588180965942,4.2192176570229067,3.6633239336282122,3.4387005329007363,3.5443161417474274,3.4328090050331683,3.5893910231369333,4.1196846918240499,3.761401557498631,3.3893433112520781,3.8686444383948255],"y":[6.0199087515553709,2.9143922247370524,7.3603188532982298,0.3221268478779209,5.4299634591961023,8.0821215432461972,7.1761881901104179,4.2407904022582921,0.25772849462365588,0.54711094471483834,5.4546430872771534,0.29905977745191065,7.2701688555347088,6.4901749663526243,5.8766147531087771,2.0970473295701257,7.6809905316824469,3.2381496287835523,3.1391657438169065,-1.0990990990990992,2.6728915205344266,2.520526589294994,0.17625458996328031,7.4085250338294992],"text":["AUS · Austin Bergstrom Intl<br>航班量：2,411<br>平均到达延误：6.0 分钟<br>到达准点率：75.1%<br>平均航程：1,514 英里","BOS · General Edward Lawrence Logan Intl<br>航班量：15,022<br>平均到达延误：2.9 分钟<br>到达准点率：81.5%<br>平均航程：191 英里","CLT · Charlotte Douglas Intl<br>航班量：13,674<br>平均到达延误：7.4 分钟<br>到达准点率：76.7%<br>平均航程：538 英里","DFW · Dallas Fort Worth Intl<br>航班量：8,388<br>平均到达延误：0.3 分钟<br>到达准点率：80.6%<br>平均航程：1,383 英里","DTW · Detroit Metro Wayne Co<br>航班量：9,031<br>平均到达延误：5.4 分钟<br>到达准点率：79.2%<br>平均航程：498 英里","FLL · Fort Lauderdale Hollywood Intl<br>航班量：11,897<br>平均到达延误：8.1 分钟<br>到达准点率：74.1%<br>平均航程：1,070 英里","HOU · William P Hobby<br>航班量：2,083<br>平均到达延误：7.2 分钟<br>到达准点率：74.3%<br>平均航程：1,420 英里","IAH · George Bush Intercontinental<br>航班量：7,085<br>平均到达延误：4.2 分钟<br>到达准点率：77.9%<br>平均航程：1,407 英里","LAS · Mc Carran Intl<br>航班量：5,952<br>平均到达延误：0.3 分钟<br>到达准点率：80.8%<br>平均航程：2,241 英里","LAX · Los Angeles Intl<br>航班量：16,026<br>平均到达延误：0.5 分钟<br>到达准点率：79.8%<br>平均航程：2,469 英里","MCO · Orlando Intl<br>航班量：13,967<br>平均到达延误：5.5 分钟<br>到达准点率：78.0%<br>平均航程：943 英里","MIA · Miami Intl<br>航班量：11,593<br>平均到达延误：0.3 分钟<br>到达准点率：81.8%<br>平均航程：1,092 英里","MSP · Minneapolis St Paul Intl<br>航班量：6,929<br>平均到达延误：7.3 分钟<br>到达准点率：77.0%<br>平均航程：1,017 英里","MSY · Louis Armstrong New Orleans Intl<br>航班量：3,715<br>平均到达延误：6.5 分钟<br>到达准点率：75.5%<br>平均航程：1,178 英里","ORD · Chicago Ohare Intl<br>航班量：16,566<br>平均到达延误：5.9 分钟<br>到达准点率：76.7%<br>平均航程：729 英里","PHX · Phoenix Sky Harbor Intl<br>航班量：4,606<br>平均到达延误：2.1 分钟<br>到达准点率：79.1%<br>平均航程：2,141 英里","PIT · Pittsburgh Intl<br>航班量：2,746<br>平均到达延误：7.7 分钟<br>到达准点率：75.6%<br>平均航程：334 英里","RSW · Southwest Florida Intl<br>航班量：3,502<br>平均到达延误：3.2 分钟<br>到达准点率：79.7%<br>平均航程：1,073 英里","SAN · San Diego Intl<br>航班量：2,709<br>平均到达延误：3.1 分钟<br>到达准点率：76.4%<br>平均航程：2,437 英里","SEA · Seattle Tacoma Intl<br>航班量：3,885<br>平均到达延误：-1.1 分钟<br>到达准点率：80.7%<br>平均航程：2,413 英里","SFO · San Francisco Intl<br>航班量：13,173<br>平均到达延误：2.7 分钟<br>到达准点率：78.1%<br>平均航程：2,578 英里","SJU · NA<br>航班量：5,773<br>平均到达延误：2.5 分钟<br>到达准点率：79.5%<br>平均航程：1,600 英里","SLC · Salt Lake City Intl<br>航班量：2,451<br>平均到达延误：0.2 分钟<br>到达准点率：81.8%<br>平均航程：1,987 英里","TPA · Tampa Intl<br>航班量：7,390<br>平均到达延误：7.4 分钟<br>到达准点率：76.2%<br>平均航程：1,004 英里"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","opacity":0.78000000000000003,"size":[39.661620198957955,30.267434503854961,37.678346909648134,31.997266334837654,34.183954707516001,40.832039400210746,40.589199218222412,36.064217431975756,31.563774172639953,33.336438348976799,35.904385153937255,29.800325151948318,37.307554352426443,39.14873631168809,37.716581549073197,34.30471283816447,39.076959948410213,33.486721580418326,37.988139457148712,31.754169353554282,35.824934374170191,33.710372875982578,29.678020373758677,38.252204341968422],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(127,127,127,1)"}},"hoveron":"points","name":"高频可控","legendgroup":"高频可控","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":85,"r":35,"b":95,"l":70},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(22,22,22,1)","family":"Microsoft YaHei","size":14.611872146118724},"title":{"text":"<b> 交互式目的地风险矩阵 <\/b>","font":{"color":"rgba(22,22,22,1)","family":"Microsoft YaHei","size":18.410958904109588},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2.2204556271349789,4.3217794302176324],"tickmode":"array","ticktext":["300","1,000","3,000","10,000"],"tickvals":[2.4771212547196626,3,3.4771212547196626,4],"categoryorder":"array","categoryarray":["300","1,000","3,000","10,000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(22,22,22,1)","family":"Microsoft YaHei","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(237,245,255,1)","gridwidth":0.50477376504773774,"zeroline":false,"anchor":"y","title":{"text":"<b> 航班量（对数轴） <\/b>","font":{"color":"rgba(82,82,82,1)","family":"Microsoft YaHei","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-9.9446311283133948,35.736268472906403],"tickmode":"array","ticktext":["0","10","20","30"],"tickvals":[0,10.000000000000002,20,30],"categoryorder":"array","categoryarray":["0","10","20","30"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(22,22,22,1)","family":"Microsoft YaHei","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(237,245,255,1)","gridwidth":0.50477376504773774,"zeroline":false,"anchor":"x","title":{"text":"<b> 平均到达延误（分钟） <\/b>","font":{"color":"rgba(82,82,82,1)","family":"Microsoft YaHei","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(22,22,22,1)","family":"Microsoft YaHei","size":11.68949771689498},"orientation":"h","x":0,"y":-0.16,"xanchor":"center","yanchor":"top","title":{"text":"","font":{"color":"rgba(82,82,82,1)","family":"Microsoft YaHei","size":14.611872146118724}}},"hovermode":"closest","height":560,"barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"source":"A","attrs":{"4f4c44a62602":{"yintercept":{},"type":"scatter"},"4f4c7463f0f":{"xintercept":{}},"4f4c560d2bf":{"x":{},"y":{},"size":{},"colour":{},"text":{}}},"cur_data":"4f4c44a62602","visdat":{"4f4c44a62602":["function (y) ","x"],"4f4c7463f0f":["function (y) ","x"],"4f4c560d2bf":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="note-plain">
+<p>从评审角度看，LEVEL 1 的关键不是“哪个小时最大”或“哪个目的地最多”，而是把运行压力窗口和高暴露目的地放进同一套优先级框架：先管晚间高压，再管高频高延误的目的地。</p>
+</div>
+</section>
+</section>
+<section id="level-2空中追回与航司效能" class="level2">
+<h2 class="anchored" data-anchor-id="level-2空中追回与航司效能">LEVEL 2：空中追回与航司效能</h2>
+<section id="空中疾行竞速挽救" class="level3">
+<h3 class="anchored" data-anchor-id="空中疾行竞速挽救">空中疾行：竞速挽救</h3>
+<p>对于起飞延误超过 60 分钟的航班，空中速度确实能追回一部分时间。但追回能力不是万能解药：严重延误的主要损失已经发生在起飞前，飞行阶段只能缓冲，不能完全消除。</p>
+<div class="metric-grid"><div class="metric-card" style="--accent:#d12771"><div class="metric-label">严重起飞延误航班</div><div class="metric-value">26,329</div><div class="metric-note">起飞延误超过 60 分钟且速度有效</div></div><div class="metric-card" style="--accent:#005d5d"><div class="metric-label">平均追回时间</div><div class="metric-value">3.0 分钟</div><div class="metric-note">起飞延误 122.0 分钟，到达延误 119.0 分钟</div></div><div class="metric-card" style="--accent:#0f62fe"><div class="metric-label">发生追回的比例</div><div class="metric-value">62.7%</div><div class="metric-note">到达延误小于起飞延误</div></div><div class="metric-card" style="--accent:#6929c4"><div class="metric-label">完全恢复比例</div><div class="metric-value">0.1%</div><div class="metric-note">到达延误回到 15 分钟内</div></div></div>
+<div class="cell">
+<details class="code-fold">
+<summary>显示代码</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p_recovery_dumbbell <span class="ot">&lt;-</span> speed_quartile <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">speed_band =</span> <span class="fu">fct_reorder</span>(speed_band, avg_speed)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> speed_band)) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> avg_dep_delay, <span class="at">xend =</span> avg_arr_delay, <span class="at">yend =</span> speed_band),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#cbd5e1"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="dv">7</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">lineend =</span> <span class="st">"round"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg_dep_delay), <span class="at">color =</span> okabe_palette[<span class="st">"vermillion"</span>], <span class="at">size =</span> <span class="fl">4.8</span>) <span class="sc">+</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg_arr_delay), <span class="at">color =</span> pal[<span class="st">"teal"</span>], <span class="at">size =</span> <span class="fl">4.8</span>) <span class="sc">+</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> (avg_dep_delay <span class="sc">+</span> avg_arr_delay) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"追回 "</span>, <span class="fu">fmt_num</span>(avg_recovery), <span class="st">" 分"</span>)),</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> font_family,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#0f172a"</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.3</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">fontface =</span> <span class="st">"bold"</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">nudge_y =</span> <span class="fl">0.24</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">" 分钟"</span>)) <span class="sc">+</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"飞得更快，通常能多追回一点"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"红点为平均起飞延误，绿点为平均到达延误，线段长度代表被消化的延误。"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"平均延误"</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"速度分位"</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_report</span>()</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>p_recovery_rate <span class="ot">&lt;-</span> speed_quartile <span class="sc">%&gt;%</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">speed_band =</span> <span class="fu">fct_reorder</span>(speed_band, avg_speed)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(full_recovery_rate, speed_band)) <span class="sc">+</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> pal[<span class="st">"purple"</span>], <span class="at">width =</span> <span class="fl">0.58</span>, <span class="at">alpha =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">fmt_pct</span>(full_recovery_rate)),</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.12</span>,</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> font_family,</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> pal[<span class="st">"ink"</span>],</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.4</span>,</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(speed_quartile<span class="sc">$</span>full_recovery_rate) <span class="sc">*</span> <span class="fl">1.38</span>)) <span class="sc">+</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"完全恢复仍是少数"</span>,</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"能追回不等于能准点到达，飞行阶段的补救空间有限。"</span>,</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"到达延误 ≤ 15 分钟比例"</span>,</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_report</span>()</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>p_recovery_dumbbell <span class="sc">+</span> p_recovery_rate <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">widths =</span> <span class="fu">c</span>(<span class="fl">1.18</span>, <span class="fl">0.92</span>))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="flight-delay-report_files/figure-html/recovery-chart-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>空中追回双视图：左侧哑铃图展示起飞延误到到达延误的缩短，右侧展示完全恢复比例。</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="note-plain">
+<p>控制起飞延误、航程、小时、出发机场和航司后，速度每提高 1 mph，平均追回时间变化约为 <strong>0.184 分钟</strong>。换算到 50 mph，约对应 <strong>9.2 分钟</strong>。速度是缓冲器，不是根治方案。</p>
+</div>
+</section>
+<section id="航司效能船大难掉头" class="level3">
+<h3 class="anchored" data-anchor-id="航司效能船大难掉头">航司效能：船大难掉头</h3>
+<p>如果只看航司规模，很容易把“机队大”误读为“必然更慢”。散点图显示，规模与延误之间存在一定关系，但相关系数并不高。航线结构、基地机场、班次密度和天气暴露同样重要。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>显示代码</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airline_perf, <span class="fu">aes</span>(plane_count, avg_dep_delay)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rect"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="fu">median</span>(airline_perf<span class="sc">$</span>plane_count, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="fu">median</span>(airline_perf<span class="sc">$</span>avg_dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"#fee2e2"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.55</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">median</span>(airline_perf<span class="sc">$</span>avg_dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">color =</span> <span class="st">"#cbd5e1"</span>, <span class="at">linetype =</span> <span class="st">"22"</span>) <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(airline_perf<span class="sc">$</span>plane_count, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">color =</span> <span class="st">"#cbd5e1"</span>, <span class="at">linetype =</span> <span class="st">"22"</span>) <span class="sc">+</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> pal[<span class="st">"cyan"</span>], <span class="at">fill =</span> <span class="st">"#cffafe"</span>, <span class="at">linewidth =</span> <span class="fl">0.9</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> flight_count, <span class="at">color =</span> dep_ontime_rate), <span class="at">alpha =</span> <span class="fl">0.86</span>) <span class="sc">+</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label_repel</span>(</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> airline_labels,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> carrier),</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> font_family,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.4</span>,</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> pal[<span class="st">"ink"</span>],</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"white"</span>,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">label.size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">min.segment.length =</span> <span class="dv">0</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="fl">3.6</span>, <span class="dv">11</span>), <span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_gradientn</span>(<span class="at">colors =</span> <span class="fu">c</span>(pal[<span class="st">"gray"</span>], pal[<span class="st">"cyan"</span>], pal[<span class="st">"teal"</span>]), <span class="at">labels =</span> percent) <span class="sc">+</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fu">guide_legend</span>(<span class="at">title.position =</span> <span class="st">"top"</span>, <span class="at">nrow =</span> <span class="dv">1</span>),</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">guide_colorbar</span>(<span class="at">title.position =</span> <span class="st">"top"</span>, <span class="at">barwidth =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">4.5</span>, <span class="st">"cm"</span>), <span class="at">barheight =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.22</span>, <span class="st">"cm"</span>))</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"航司越大，并不必然越慢"</span>,</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"右上浅红区域表示“大机队且高延误”。规模与平均起飞延误相关系数 r = "</span>, <span class="fu">round</span>(airline_size_cor, <span class="dv">2</span>), <span class="st">"。"</span>),</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"旗下飞机数量（对数轴）"</span>,</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"平均起飞延误（分钟）"</span>,</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="st">"航班量"</span>,</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"起飞准点率"</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_report</span>()</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="flight-delay-report_files/figure-html/airline-chart-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>航司规模与起飞延误：横轴为机队规模，对数尺度；颜色越绿表示起飞准点率越高。</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="note-plain">
+<p>HA（Hawaiian Airlines Inc.）起飞准点率最高，为 <strong>93.0%</strong>；F9（Frontier Airlines Inc.）平均起飞延误最高，为 <strong>20.2 分钟</strong>。所以航司评价应同时纳入规模、航线和运行环境。</p>
+</div>
+</section>
+</section>
+<section id="level-3连锁反应" class="level2">
+<h2 class="anchored" data-anchor-id="level-3连锁反应">LEVEL 3：连锁反应</h2>
+<p>同一架飞机一天内经常连续执行多段任务。前序航班晚到后，清洁、机组、登机口和下一段旅客登机都会被压缩。这里按照 <code>tailnum + 日期 + 计划起飞时间</code> 排序，并用 <code>lag()</code> 把前序到达延误带入当前航班。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>显示代码</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p_chain <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(chain_binned, <span class="fu">aes</span>(prev_delay_band, current_delay_rate)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> avg_current_dep_delay), <span class="at">width =</span> <span class="fl">0.62</span>) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">fmt_pct</span>(current_delay_rate)),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.35</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> font_family,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> pal[<span class="st">"ink"</span>],</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> percent, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(chain_binned<span class="sc">$</span>current_delay_rate) <span class="sc">*</span> <span class="fl">1.2</span>)) <span class="sc">+</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> risk_palette, <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">" 分钟"</span>), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"前序晚到越久，后续延误概率越高"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"柱高为后续起飞延误率；颜色越亮代表后续平均起飞延误更高。"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"前序到达延误"</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"后续起飞延误率"</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_report</span>()</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>p_sequence <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sequence_delay, <span class="fu">aes</span>(task_sequence, avg_dep_delay)) <span class="sc">+</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">fill =</span> <span class="st">"#e0f2fe"</span>, <span class="at">alpha =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> pal[<span class="st">"cyan"</span>], <span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> flight_count, <span class="at">color =</span> severe_rate), <span class="at">alpha =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> sequence_delay<span class="sc">$</span>task_sequence) <span class="sc">+</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">" 分钟"</span>)) <span class="sc">+</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">8</span>), <span class="at">labels =</span> comma, <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> okabe_palette[<span class="st">"sky"</span>], <span class="at">high =</span> okabe_palette[<span class="st">"vermillion"</span>], <span class="at">labels =</span> percent, <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"任务链越靠后，积压越明显"</span>,</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"折线为平均起飞延误；点大小代表航班量，颜色越深代表严重延误率更高。"</span>,</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"同机同日任务序号"</span>,</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"平均起飞延误"</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_report</span>()</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>p_chain <span class="sc">+</span> p_sequence <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="flight-delay-report_files/figure-html/propagation-chart-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>同机延误传导：前序到达延误越重，后续起飞延误率和平均延误同步抬升。</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="metric-grid"><div class="metric-card" style="--accent:#0f62fe"><div class="metric-label">可追踪相邻任务对</div><div class="metric-value">78,968</div><div class="metric-note">同一飞机同一天的前后航班</div></div><div class="metric-card" style="--accent:#6929c4"><div class="metric-label">延误相关系数</div><div class="metric-value">0.38</div><div class="metric-note">前序到达延误 vs 当前起飞延误</div></div><div class="metric-card" style="--accent:#d12771"><div class="metric-label">前序晚到后的延误概率</div><div class="metric-value">62.8%</div><div class="metric-note">前序准点后为 22.3%</div></div><div class="metric-card" style="--accent:#005d5d"><div class="metric-label">风险倍数</div><div class="metric-value">2.8 倍</div><div class="metric-note">绝对风险差 40.4%</div></div></div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="ywsdngqjrc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ywsdngqjrc table {
+  font-family: 'Microsoft YaHei';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ywsdngqjrc thead, #ywsdngqjrc tbody, #ywsdngqjrc tfoot, #ywsdngqjrc tr, #ywsdngqjrc td, #ywsdngqjrc th {
+  border-style: none;
+}
+
+#ywsdngqjrc p {
+  margin: 0;
+  padding: 0;
+}
+
+#ywsdngqjrc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ywsdngqjrc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ywsdngqjrc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ywsdngqjrc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ywsdngqjrc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ywsdngqjrc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ywsdngqjrc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ywsdngqjrc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ywsdngqjrc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ywsdngqjrc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ywsdngqjrc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ywsdngqjrc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ywsdngqjrc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ywsdngqjrc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ywsdngqjrc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ywsdngqjrc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ywsdngqjrc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ywsdngqjrc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ywsdngqjrc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ywsdngqjrc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ywsdngqjrc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ywsdngqjrc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ywsdngqjrc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ywsdngqjrc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ywsdngqjrc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ywsdngqjrc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ywsdngqjrc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ywsdngqjrc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ywsdngqjrc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ywsdngqjrc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ywsdngqjrc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ywsdngqjrc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ywsdngqjrc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ywsdngqjrc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ywsdngqjrc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ywsdngqjrc .gt_left {
+  text-align: left;
+}
+
+#ywsdngqjrc .gt_center {
+  text-align: center;
+}
+
+#ywsdngqjrc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ywsdngqjrc .gt_font_normal {
+  font-weight: normal;
+}
+
+#ywsdngqjrc .gt_font_bold {
+  font-weight: bold;
+}
+
+#ywsdngqjrc .gt_font_italic {
+  font-style: italic;
+}
+
+#ywsdngqjrc .gt_super {
+  font-size: 65%;
+}
+
+#ywsdngqjrc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ywsdngqjrc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ywsdngqjrc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ywsdngqjrc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ywsdngqjrc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ywsdngqjrc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ywsdngqjrc .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ywsdngqjrc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ywsdngqjrc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="10" class="gt_heading gt_title gt_font_normal">同机传播案例</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="10" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">同一架飞机、同一天内连续任务的延误接力</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="a飞机号" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">飞机号</th>
+<th id="a日期" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">日期</th>
+<th id="a序号" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">序号</th>
+<th id="a航班号" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">航班号</th>
+<th id="a航段" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">航段</th>
+<th id="a计划起飞" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">计划起飞</th>
+<th id="a实际起飞" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">实际起飞</th>
+<th id="a起飞延误" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">起飞延误</th>
+<th id="a到达延误" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">到达延误</th>
+<th id="a前序到达延误" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">前序到达延误</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="飞机号">N927DA</td>
+<td class="gt_row gt_right" headers="日期">2013-03-17</td>
+<td class="gt_row gt_right" headers="序号">1</td>
+<td class="gt_row gt_right" headers="航班号">1879</td>
+<td class="gt_row gt_left" headers="航段">LGA → FLL</td>
+<td class="gt_row gt_right" headers="计划起飞">705</td>
+<td class="gt_row gt_right" headers="实际起飞">658</td>
+<td class="gt_row gt_right" headers="起飞延误" style="background-color: #EFF6FF; color: #000000">−7</td>
+<td class="gt_row gt_right" headers="到达延误" style="background-color: #EFF6FF; color: #000000">−16</td>
+<td class="gt_row gt_left" headers="前序到达延误">起点</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="飞机号">N927DA</td>
+<td class="gt_row gt_right" headers="日期">2013-03-17</td>
+<td class="gt_row gt_right" headers="序号">2</td>
+<td class="gt_row gt_right" headers="航班号">2119</td>
+<td class="gt_row gt_left" headers="航段">LGA → MSP</td>
+<td class="gt_row gt_right" headers="计划起飞">810</td>
+<td class="gt_row gt_right" headers="实际起飞">2,321</td>
+<td class="gt_row gt_right" headers="起飞延误" style="background-color: #FEE2E2; color: #000000">911</td>
+<td class="gt_row gt_right" headers="到达延误" style="background-color: #FEE2E2; color: #000000">915</td>
+<td class="gt_row gt_left" headers="前序到达延误">-16</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="飞机号">N927DA</td>
+<td class="gt_row gt_right" headers="日期">2013-03-17</td>
+<td class="gt_row gt_right" headers="序号">3</td>
+<td class="gt_row gt_right" headers="航班号">2079</td>
+<td class="gt_row gt_left" headers="航段">LGA → FLL</td>
+<td class="gt_row gt_right" headers="计划起飞">1,440</td>
+<td class="gt_row gt_right" headers="实际起飞">1,439</td>
+<td class="gt_row gt_right" headers="起飞延误" style="background-color: #EFF6FF; color: #000000">−1</td>
+<td class="gt_row gt_right" headers="到达延误" style="background-color: #EFF6FF; color: #000000">−13</td>
+<td class="gt_row gt_left" headers="前序到达延误">915</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="note-warning">
+<p>管理含义很直接：延误治理不能只盯单个航班。对高利用率飞机，一旦前序航班已经晚到，后续登机口、机组和地服资源就要提前重排，尤其是下午和晚间任务链。</p>
+</div>
+</section>
+<section id="level-4延误之源" class="level2">
+<h2 class="anchored" data-anchor-id="level-4延误之源">LEVEL 4：延误之源</h2>
+<p>最后一题要求合并 <code>flights</code>、<code>planes</code> 和 <code>weather</code>，判断延误更像来自“高龄飞机”的长期风险，还是“恶劣天气”的短期冲击。我们先做描述性比较，再用逻辑回归控制小时、月份、机场和航司。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>显示代码</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p_age <span class="ot">&lt;-</span> age_profile <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(plane_age_band, severe_rate)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> avg_dep_delay), <span class="at">width =</span> <span class="fl">0.68</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">fmt_pct</span>(severe_rate)),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.35</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> font_family,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> pal[<span class="st">"ink"</span>],</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.4</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> percent, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(age_profile<span class="sc">$</span>severe_rate) <span class="sc">*</span> <span class="fl">1.25</span>)) <span class="sc">+</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> risk_palette, <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">" 分钟"</span>), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"机龄分组"</span>,</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"机龄体现长期运营弹性。"</span>,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"严重起飞延误率"</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_report</span>()</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>p_weather <span class="ot">&lt;-</span> weather_profile <span class="sc">%&gt;%</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(weather_band, severe_rate)) <span class="sc">+</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> avg_dep_delay), <span class="at">width =</span> <span class="fl">0.68</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">fmt_pct</span>(severe_rate)),</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.35</span>,</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> font_family,</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> pal[<span class="st">"ink"</span>],</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.4</span>,</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> percent, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(weather_profile<span class="sc">$</span>severe_rate) <span class="sc">*</span> <span class="fl">1.25</span>)) <span class="sc">+</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> risk_palette, <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">" 分钟"</span>), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"天气状态"</span>,</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"低能见度、大风和降水更像短期触发。"</span>,</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"严重起飞延误率"</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_report</span>()</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>p_age <span class="sc">+</span> p_weather</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="flight-delay-report_files/figure-html/attribution-profile-chart-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>机龄与天气的描述性比较：柱高为严重起飞延误率，颜色为平均起飞延误。</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>模型形式如下，连续变量按 1 个标准差解释。优势比大于 1 表示严重起飞延误风险上升，小于 1 表示风险下降。</p>
+<p><span class="math display">\[
+\Pr(\text{严重起飞延误}) \sim \text{机龄} + \text{风速} + \text{能见度} + \text{降水} + \text{小时} + \text{机场} + \text{航司} + \text{月份}
+\]</span></p>
+<div class="cell">
+<details class="code-fold">
+<summary>显示代码</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>attribution_effects <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">factor_cn =</span> <span class="fu">fct_reorder</span>(factor_cn, estimate)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(factor_cn, estimate)) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#94a3b8"</span>, <span class="at">linetype =</span> <span class="st">"22"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high, <span class="at">color =</span> source), <span class="at">linewidth =</span> <span class="fl">1.25</span>) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> source, <span class="at">size =</span> effect_strength), <span class="at">alpha =</span> <span class="fl">0.96</span>) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.2f"</span>, estimate), <span class="at">color =</span> source),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.58</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> font_family,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.7</span>,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">fontface =</span> <span class="st">"bold"</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="fl">0.13</span>, <span class="fl">0.26</span>))) <span class="sc">+</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"飞机属性"</span> <span class="ot">=</span> pal[<span class="st">"purple"</span>], <span class="st">"天气条件"</span> <span class="ot">=</span> pal[<span class="st">"teal"</span>])) <span class="sc">+</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">8</span>), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"天气变量的边际解释力整体强于机龄"</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"能见度的优势比小于 1，表示能见度提高会降低严重延误风险；降水和风速则提高风险。"</span>,</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"严重起飞延误优势比（log 轴）"</span>,</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="cn">NULL</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_report</span>()</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="flight-delay-report_files/figure-html/attribution-model-chart-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>延误归因模型：点为优势比，线段为 95% 置信区间。</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="note-plain">
+<p>综合描述比较与控制模型，延误之源更偏向 <strong>天气条件</strong>。20 年以上飞机相对 0-5 年飞机的平均起飞延误差约为 <strong>-1.2 分钟</strong>；低能见度相对正常天气的平均起飞延误差约为 <strong>15.9 分钟</strong>。机龄反映长期运营弹性，天气更像短期严重延误的直接触发条件。</p>
+</div>
+</section>
+<section id="答辩摘要" class="level2">
+<h2 class="anchored" data-anchor-id="答辩摘要">答辩摘要</h2>
+<div class="final-judgement">
+<div class="final-kicker">
+Final judgement
+</div>
+<div class="final-title">
+延误治理的主战场，不在单个航班，而在 <span>天气预警、地面周转、任务链重排</span> 三个提前量。
+</div>
+<div class="final-copy">
+数据显示，延误沿运行日和同机任务链逐步积压；飞行速度可以追回一部分分钟数，但不能替代起飞前资源调度。若要把分析转化为行动，应优先对晚高峰、低能见度或大风降水时段，以及前序已经晚到的飞机建立联合预警。
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="slertpiwhx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#slertpiwhx table {
+  font-family: 'Microsoft YaHei';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#slertpiwhx thead, #slertpiwhx tbody, #slertpiwhx tfoot, #slertpiwhx tr, #slertpiwhx td, #slertpiwhx th {
+  border-style: none;
+}
+
+#slertpiwhx p {
+  margin: 0;
+  padding: 0;
+}
+
+#slertpiwhx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#slertpiwhx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#slertpiwhx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#slertpiwhx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#slertpiwhx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#slertpiwhx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slertpiwhx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#slertpiwhx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#slertpiwhx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#slertpiwhx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#slertpiwhx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#slertpiwhx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#slertpiwhx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#slertpiwhx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#slertpiwhx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#slertpiwhx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#slertpiwhx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#slertpiwhx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#slertpiwhx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slertpiwhx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#slertpiwhx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#slertpiwhx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#slertpiwhx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slertpiwhx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#slertpiwhx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#slertpiwhx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slertpiwhx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slertpiwhx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#slertpiwhx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slertpiwhx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#slertpiwhx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slertpiwhx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#slertpiwhx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slertpiwhx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#slertpiwhx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slertpiwhx .gt_left {
+  text-align: left;
+}
+
+#slertpiwhx .gt_center {
+  text-align: center;
+}
+
+#slertpiwhx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#slertpiwhx .gt_font_normal {
+  font-weight: normal;
+}
+
+#slertpiwhx .gt_font_bold {
+  font-weight: bold;
+}
+
+#slertpiwhx .gt_font_italic {
+  font-style: italic;
+}
+
+#slertpiwhx .gt_super {
+  font-size: 65%;
+}
+
+#slertpiwhx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#slertpiwhx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#slertpiwhx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#slertpiwhx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#slertpiwhx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#slertpiwhx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#slertpiwhx .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#slertpiwhx .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#slertpiwhx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border">从发现到行动</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="a发现" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">发现</th>
+<th id="a证据" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">证据</th>
+<th id="a行动建议" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">行动建议</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="发现">日内积压明显</td>
+<td class="gt_row gt_left" headers="证据">平均起飞延误最高出现在 19:00，约 24.7 分钟</td>
+<td class="gt_row gt_left" headers="行动建议">保障资源前移到下午和晚高峰前，提前消化拥堵</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="发现">热门目的地需要分层治理</td>
+<td class="gt_row gt_left" headers="证据">ATL 在十大热门目的地中平均到达延误最高</td>
+<td class="gt_row gt_left" headers="行动建议">建立“高频 + 高延误”目的地监控清单</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="发现">严重起飞延误仍有追回空间</td>
+<td class="gt_row gt_left" headers="证据">严重起飞延误航班平均追回 3.0 分钟</td>
+<td class="gt_row gt_left" headers="行动建议">把长航程和高速度航班视为恢复窗口，但不要替代地面准点管理</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="发现">航司规模解释有限</td>
+<td class="gt_row gt_left" headers="证据">规模与平均起飞延误相关系数约 -0.03</td>
+<td class="gt_row gt_left" headers="行动建议">评价航司时同时纳入航线结构、机场暴露和任务密度</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="发现">同机延误会传导</td>
+<td class="gt_row gt_left" headers="证据">前序晚到后，后续延误概率是前序准点后的 2.8 倍</td>
+<td class="gt_row gt_left" headers="行动建议">为连续任务飞机设置动态缓冲，优先重排晚到飞机的后续资源</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="发现">天气是短期触发源</td>
+<td class="gt_row gt_left" headers="证据">控制模型显示核心天气变量的效应强度高于机龄</td>
+<td class="gt_row gt_left" headers="行动建议">把能见度、风速、降水转化为提前调度阈值</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="复现说明" class="level2">
+<h2 class="anchored" data-anchor-id="复现说明">复现说明</h2>
+<p>本作品使用比赛通知推荐的 Quarto 格式，主要分析工具为 R 与 tidyverse。项目根目录运行：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render reports/flight-delay-report.qmd</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>也可以使用项目脚本：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run report:render</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>报告优先读取网页项目已生成的 <code>data/flights_enriched.rds</code>；若该文件不存在，会从 <code>nycflights13</code> 的 <code>flights</code>、<code>planes</code>、<code>weather</code>、<code>airlines</code>、<code>airports</code> 重新构建分析宽表。</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="flight-delay-report_files/libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -2,37 +2,42 @@
   {
     "airlineCode": "UA",
     "airlineName": "United Air Lines Inc.",
-    "count": 58665
+    "count": 104932
   },
   {
     "airlineCode": "B6",
     "airlineName": "JetBlue Airways",
-    "count": 54635
+    "count": 99114
   },
   {
     "airlineCode": "EV",
     "airlineName": "ExpressJet Airlines Inc.",
-    "count": 54173
+    "count": 93992
   },
   {
     "airlineCode": "DL",
     "airlineName": "Delta Air Lines Inc.",
-    "count": 48110
+    "count": 89793
   },
   {
     "airlineCode": "AA",
     "airlineName": "American Airlines Inc.",
-    "count": 32729
+    "count": 59031
   },
   {
     "airlineCode": "MQ",
     "airlineName": "Envoy Air",
-    "count": 26397
+    "count": 44956
   },
   {
     "airlineCode": "US",
     "airlineName": "US Airways Inc.",
-    "count": 20536
+    "count": 37286
+  },
+  {
+    "airlineCode": "WN",
+    "airlineName": "Southwest Airlines Co.",
+    "count": 24177
   },
   {
     "airlineCode": "9E",
@@ -40,29 +45,29 @@
     "count": 18460
   },
   {
-    "airlineCode": "WN",
-    "airlineName": "Southwest Airlines Co.",
-    "count": 12275
-  },
-  {
     "airlineCode": "VX",
     "airlineName": "Virgin America",
-    "count": 5162
+    "count": 9959
   },
   {
     "airlineCode": "FL",
     "airlineName": "AirTran Airways Corporation",
-    "count": 3260
+    "count": 4511
   },
   {
     "airlineCode": "AS",
     "airlineName": "Alaska Airlines Inc.",
-    "count": 714
+    "count": 1288
   },
   {
     "airlineCode": "F9",
     "airlineName": "Frontier Airlines Inc.",
-    "count": 685
+    "count": 1158
+  },
+  {
+    "airlineCode": "HA",
+    "airlineName": "Hawaiian Airlines Inc.",
+    "count": 602
   },
   {
     "airlineCode": "YV",
@@ -70,13 +75,8 @@
     "count": 601
   },
   {
-    "airlineCode": "HA",
-    "airlineName": "Hawaiian Airlines Inc.",
-    "count": 342
-  },
-  {
     "airlineCode": "OO",
     "airlineName": "SkyWest Airlines Inc.",
-    "count": 32
+    "count": 232
   }
 ]

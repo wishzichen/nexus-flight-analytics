@@ -1,0 +1,1352 @@
+---
+title: "Nexus Flight Analytics：纽约航班延误的系统画像"
+subtitle: "公共卫生与健康科学学院第二届数据分析大赛分析报告"
+author: "我要非得更高"
+author-title: "团队"
+date: 2026-05-14
+date-format: "YYYY年M月D日"
+published-title: "日期"
+lang: zh
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    toc-location: right
+    number-sections: false
+    anchor-sections: true
+    theme: cosmo
+    css: report-style.css
+    code-fold: true
+    code-summary: "显示代码"
+    code-tools: false
+    code-overflow: wrap
+    df-print: paged
+    fig-width: 11
+    fig-height: 6.4
+    fig-dpi: 180
+    fig-align: center
+    smooth-scroll: true
+execute:
+  warning: false
+  message: false
+  echo: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(nycflights13)
+  library(lubridate)
+  library(scales)
+  library(knitr)
+  library(gt)
+  library(broom)
+  library(patchwork)
+  library(viridis)
+  library(ggrepel)
+  library(ggtext)
+  library(plotly)
+})
+
+set.seed(20260514)
+has_ggdist <- requireNamespace("ggdist", quietly = TRUE)
+
+knitr::opts_chunk$set(
+  dev = "ragg_png",
+  dpi = 180,
+  fig.retina = 2,
+  out.width = "100%"
+)
+
+project_root <- if (file.exists("data/flights_enriched.rds")) {
+  getwd()
+} else if (file.exists("../data/flights_enriched.rds")) {
+  normalizePath("..", winslash = "/")
+} else {
+  getwd()
+}
+
+project_path <- function(...) file.path(project_root, ...)
+font_family <- "Microsoft YaHei"
+
+build_flights_enriched <- function() {
+  planes_subset <- planes %>%
+    select(tailnum, plane_year = year, manufacturer, model, engines, seats, engine)
+
+  weather_subset <- weather %>%
+    select(origin, year, month, day, hour, temp, dewp, humid, wind_dir,
+           wind_speed, wind_gust, precip, pressure, visib) %>%
+    distinct()
+
+  airports_origin <- airports %>%
+    select(faa, origin_name = name, origin_lat = lat, origin_lon = lon)
+
+  airports_dest <- airports %>%
+    select(faa, dest_name = name, dest_lat = lat, dest_lon = lon)
+
+  flights %>%
+    mutate(
+      flight_year = year,
+      hour = as.integer(substr(sprintf("%04d", sched_dep_time), 1, 2)),
+      minute = as.integer(substr(sprintf("%04d", sched_dep_time), 3, 4)),
+      hour = if_else(hour == 24L, 0L, hour),
+      datetime = ymd_hms(sprintf(
+        "%d-%02d-%02d %02d:%02d:00",
+        year, month, day, hour, minute
+      )),
+      weekday = wday(datetime, week_start = 1),
+      weekday_name = wday(datetime, label = TRUE, abbr = FALSE, week_start = 1),
+      is_weekend = weekday >= 6,
+      route = paste(origin, dest, sep = " -> ")
+    ) %>%
+    select(-year) %>%
+    left_join(planes_subset, by = "tailnum") %>%
+    left_join(
+      weather_subset,
+      by = c("origin", "flight_year" = "year", "month", "day", "hour")
+    ) %>%
+    left_join(airlines %>% rename(carrier_name = name), by = "carrier") %>%
+    left_join(airports_origin, by = c("origin" = "faa")) %>%
+    left_join(airports_dest, by = c("dest" = "faa")) %>%
+    mutate(
+      plane_age = 2013 - plane_year,
+      speed_mph = distance / (air_time / 60),
+      recovery_minutes = dep_delay - arr_delay
+    )
+}
+
+flights_raw <- if (file.exists(project_path("data", "flights_enriched.rds"))) {
+  readRDS(project_path("data", "flights_enriched.rds"))
+} else {
+  build_flights_enriched()
+}
+
+flights_clean <- flights_raw %>%
+  mutate(
+    hour = if_else(hour == 24L, 0L, as.integer(hour)),
+    carrier_name = coalesce(carrier_name, carrier),
+    plane_age_band = case_when(
+      is.na(plane_age) ~ "未知",
+      plane_age <= 5 ~ "0-5年",
+      plane_age <= 10 ~ "6-10年",
+      plane_age <= 20 ~ "11-20年",
+      TRUE ~ "20年以上"
+    ),
+    plane_age_band = factor(
+      plane_age_band,
+      levels = c("0-5年", "6-10年", "11-20年", "20年以上", "未知")
+    ),
+    weather_band = case_when(
+      is.na(visib) | is.na(wind_speed) ~ "天气缺失",
+      visib < 3 ~ "低能见度",
+      wind_speed > 25 | (!is.na(wind_gust) & wind_gust > 30) ~ "大风",
+      precip > 0 ~ "降水",
+      TRUE ~ "正常"
+    ),
+    weather_band = factor(
+      weather_band,
+      levels = c("正常", "降水", "大风", "低能见度", "天气缺失")
+    ),
+    time_period = case_when(
+      hour < 9 ~ "清晨",
+      hour < 13 ~ "上午",
+      hour < 17 ~ "午后",
+      hour < 21 ~ "晚高峰",
+      TRUE ~ "夜间"
+    ),
+    time_period = factor(time_period, levels = c("清晨", "上午", "午后", "晚高峰", "夜间")),
+    distance_band = case_when(
+      distance < 500 ~ "短途",
+      distance < 1000 ~ "中途",
+      distance < 2000 ~ "长途",
+      TRUE ~ "超长途"
+    ),
+    distance_band = factor(distance_band, levels = c("短途", "中途", "长途", "超长途")),
+    weekday_label = factor(
+      weekday,
+      levels = 1:7,
+      labels = c("周一", "周二", "周三", "周四", "周五", "周六", "周日")
+    ),
+    dep_delayed_15 = dep_delay > 15,
+    arr_delayed_15 = arr_delay > 15,
+    severe_dep_delay = dep_delay > 60,
+    ontime_dep_15 = dep_delay <= 15,
+    ontime_arr_15 = arr_delay <= 15,
+    speed_mph = if_else(is.finite(speed_mph), speed_mph, NA_real_),
+    recovery_minutes = dep_delay - arr_delay,
+    route_arrow = paste(origin, dest, sep = " → ")
+  )
+
+analysis_df <- flights_clean %>%
+  filter(!is.na(dep_delay), !is.na(arr_delay), !is.na(hour), hour >= 0, hour <= 23)
+
+summary_stats <- analysis_df %>%
+  summarise(
+    total_flights = n(),
+    avg_dep_delay = mean(dep_delay, na.rm = TRUE),
+    avg_arr_delay = mean(arr_delay, na.rm = TRUE),
+    median_dep_delay = median(dep_delay, na.rm = TRUE),
+    median_arr_delay = median(arr_delay, na.rm = TRUE),
+    dep_ontime_rate = mean(ontime_dep_15, na.rm = TRUE),
+    arr_ontime_rate = mean(ontime_arr_15, na.rm = TRUE),
+    severe_rate = mean(severe_dep_delay, na.rm = TRUE),
+    avg_speed = mean(speed_mph, na.rm = TRUE),
+    origin_count = n_distinct(origin),
+    dest_count = n_distinct(dest),
+    carrier_count = n_distinct(carrier),
+    tail_count = n_distinct(tailnum, na.rm = TRUE)
+  )
+
+hourly_delay <- analysis_df %>%
+  group_by(hour) %>%
+  summarise(
+    flight_count = n(),
+    avg_dep_delay = mean(dep_delay, na.rm = TRUE),
+    median_dep_delay = median(dep_delay, na.rm = TRUE),
+    avg_arr_delay = mean(arr_delay, na.rm = TRUE),
+    severe_rate = mean(severe_dep_delay, na.rm = TRUE),
+    se_dep = sd(dep_delay, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    ci_low = avg_dep_delay - 1.96 * se_dep,
+    ci_high = avg_dep_delay + 1.96 * se_dep
+  )
+
+hourly_long <- hourly_delay %>%
+  select(hour, avg_dep_delay, avg_arr_delay) %>%
+  pivot_longer(
+    cols = c(avg_dep_delay, avg_arr_delay),
+    names_to = "delay_type",
+    values_to = "minutes"
+  ) %>%
+  mutate(
+    delay_type = recode(
+      delay_type,
+      avg_dep_delay = "起飞延误",
+      avg_arr_delay = "到达延误"
+    )
+  )
+
+peak_hour <- hourly_delay %>% slice_max(avg_dep_delay, n = 1, with_ties = FALSE)
+quiet_hour <- hourly_delay %>% slice_min(avg_dep_delay, n = 1, with_ties = FALSE)
+
+period_distribution <- analysis_df %>%
+  filter(dep_delay >= -20, dep_delay <= 120) %>%
+  group_by(time_period) %>%
+  group_modify(~ slice_sample(.x, n = min(nrow(.x), 900))) %>%
+  ungroup()
+
+period_uncertainty <- analysis_df %>%
+  filter(dep_delay >= -20, dep_delay <= 120) %>%
+  group_by(time_period) %>%
+  summarise(
+    n = n(),
+    mean_delay = mean(dep_delay, na.rm = TRUE),
+    median_delay = median(dep_delay, na.rm = TRUE),
+    q25 = quantile(dep_delay, 0.25, na.rm = TRUE),
+    q75 = quantile(dep_delay, 0.75, na.rm = TRUE),
+    se = sd(dep_delay, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    ci_low = mean_delay - 1.96 * se,
+    ci_high = mean_delay + 1.96 * se
+  )
+
+weekday_hour_heatmap <- analysis_df %>%
+  filter(!is.na(weekday_label), hour >= 5, hour <= 23) %>%
+  group_by(weekday_label, hour) %>%
+  summarise(
+    flight_count = n(),
+    avg_dep_delay = mean(dep_delay, na.rm = TRUE),
+    severe_rate = mean(severe_dep_delay, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+top_destinations <- analysis_df %>%
+  group_by(dest, dest_name) %>%
+  summarise(
+    flight_count = n(),
+    avg_arr_delay = mean(arr_delay, na.rm = TRUE),
+    avg_dep_delay = mean(dep_delay, na.rm = TRUE),
+    arr_ontime_rate = mean(ontime_arr_15, na.rm = TRUE),
+    avg_distance = mean(distance, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(flight_count)) %>%
+  slice_head(n = 10) %>%
+  mutate(dest_label = paste0(dest, " · ", str_trunc(dest_name, 24)))
+
+dest_risk_gap <- top_destinations %>%
+  slice_max(avg_arr_delay, n = 1, with_ties = FALSE)
+
+destination_risk <- analysis_df %>%
+  group_by(dest, dest_name) %>%
+  summarise(
+    flight_count = n(),
+    avg_arr_delay = mean(arr_delay, na.rm = TRUE),
+    arr_ontime_rate = mean(ontime_arr_15, na.rm = TRUE),
+    avg_distance = mean(distance, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  filter(flight_count >= 200) %>%
+  mutate(
+    quadrant = case_when(
+      flight_count >= median(flight_count) & avg_arr_delay >= median(avg_arr_delay) ~ "高频高延误",
+      flight_count >= median(flight_count) & avg_arr_delay < median(avg_arr_delay) ~ "高频可控",
+      flight_count < median(flight_count) & avg_arr_delay >= median(avg_arr_delay) ~ "低频高延误",
+      TRUE ~ "低频可控"
+    ),
+    tooltip = paste0(
+      dest, " · ", dest_name,
+      "<br>航班量：", comma(flight_count),
+      "<br>平均到达延误：", number(avg_arr_delay, accuracy = 0.1), " 分钟",
+      "<br>到达准点率：", percent(arr_ontime_rate, accuracy = 0.1),
+      "<br>平均航程：", comma(round(avg_distance)), " 英里"
+    )
+  )
+
+recovery_flights <- analysis_df %>%
+  filter(
+    dep_delay > 60,
+    !is.na(speed_mph),
+    speed_mph > 100,
+    speed_mph < 800,
+    !is.na(distance),
+    !is.na(recovery_minutes)
+  )
+
+recovery_stats <- recovery_flights %>%
+  summarise(
+    n = n(),
+    avg_dep_delay = mean(dep_delay, na.rm = TRUE),
+    avg_arr_delay = mean(arr_delay, na.rm = TRUE),
+    avg_recovery = mean(recovery_minutes, na.rm = TRUE),
+    recovery_rate = mean(recovery_minutes > 0, na.rm = TRUE),
+    full_recovery_rate = mean(arr_delay <= 15, na.rm = TRUE),
+    avg_speed = mean(speed_mph, na.rm = TRUE)
+  )
+
+speed_quartile <- recovery_flights %>%
+  mutate(speed_q = ntile(speed_mph, 4)) %>%
+  group_by(speed_q) %>%
+  summarise(
+    flight_count = n(),
+    min_speed = min(speed_mph, na.rm = TRUE),
+    max_speed = max(speed_mph, na.rm = TRUE),
+    avg_speed = mean(speed_mph, na.rm = TRUE),
+    avg_dep_delay = mean(dep_delay, na.rm = TRUE),
+    avg_arr_delay = mean(arr_delay, na.rm = TRUE),
+    avg_recovery = mean(recovery_minutes, na.rm = TRUE),
+    full_recovery_rate = mean(arr_delay <= 15, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(speed_band = paste0("Q", speed_q, "\n", round(min_speed), "-", round(max_speed), " mph"))
+
+recovery_model <- lm(
+  recovery_minutes ~ dep_delay + speed_mph + distance + hour + origin + carrier,
+  data = recovery_flights
+)
+
+recovery_model_tidy <- tidy(recovery_model) %>%
+  filter(term %in% c("dep_delay", "speed_mph", "distance", "hour")) %>%
+  mutate(
+    term_cn = recode(
+      term,
+      dep_delay = "起飞延误",
+      speed_mph = "飞行速度",
+      distance = "航程距离",
+      hour = "计划起飞小时"
+    )
+  )
+
+speed_coef <- recovery_model_tidy %>%
+  filter(term == "speed_mph") %>%
+  pull(estimate)
+
+airline_perf <- analysis_df %>%
+  group_by(carrier, carrier_name) %>%
+  summarise(
+    flight_count = n(),
+    plane_count = n_distinct(tailnum, na.rm = TRUE),
+    avg_dep_delay = mean(dep_delay, na.rm = TRUE),
+    avg_arr_delay = mean(arr_delay, na.rm = TRUE),
+    dep_ontime_rate = mean(ontime_dep_15, na.rm = TRUE),
+    severe_rate = mean(severe_dep_delay, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  filter(flight_count >= 100, plane_count > 0) %>%
+  arrange(avg_dep_delay)
+
+airline_size_cor <- cor(
+  log10(airline_perf$plane_count),
+  airline_perf$avg_dep_delay,
+  use = "complete.obs"
+)
+
+best_airline <- airline_perf %>% slice_max(dep_ontime_rate, n = 1, with_ties = FALSE)
+worst_airline <- airline_perf %>% slice_max(avg_dep_delay, n = 1, with_ties = FALSE)
+
+airline_labels <- airline_perf %>%
+  mutate(label_rank = min_rank(desc(flight_count))) %>%
+  filter(label_rank <= 6 | carrier %in% c(best_airline$carrier, worst_airline$carrier))
+
+flight_chain <- flights_clean %>%
+  filter(!is.na(tailnum), !is.na(sched_dep_time), !is.na(dep_delay), !is.na(arr_delay)) %>%
+  arrange(tailnum, flight_year, month, day, sched_dep_time) %>%
+  group_by(tailnum, flight_year, month, day) %>%
+  mutate(
+    task_sequence = row_number(),
+    total_tasks = n(),
+    prev_arr_delay = lag(arr_delay),
+    prev_dest = lag(dest),
+    prev_flight = lag(flight),
+    prev_carrier = lag(carrier)
+  ) %>%
+  ungroup()
+
+chain_pairs <- flight_chain %>%
+  filter(!is.na(prev_arr_delay), !is.na(dep_delay))
+
+propagation_stats <- chain_pairs %>%
+  summarise(
+    n_pairs = n(),
+    corr = cor(prev_arr_delay, dep_delay, use = "complete.obs"),
+    prob_delay_after_prev_delay = mean(dep_delay[prev_arr_delay > 15] > 15, na.rm = TRUE),
+    prob_delay_after_prev_ontime = mean(dep_delay[prev_arr_delay <= 15] > 15, na.rm = TRUE),
+    avg_current_delay_after_prev_delay = mean(dep_delay[prev_arr_delay > 15], na.rm = TRUE),
+    avg_current_delay_after_prev_ontime = mean(dep_delay[prev_arr_delay <= 15], na.rm = TRUE)
+  ) %>%
+  mutate(
+    delay_risk_lift = prob_delay_after_prev_delay / prob_delay_after_prev_ontime,
+    delay_risk_diff = prob_delay_after_prev_delay - prob_delay_after_prev_ontime
+  )
+
+sequence_delay <- flight_chain %>%
+  filter(task_sequence <= 8) %>%
+  group_by(task_sequence) %>%
+  summarise(
+    flight_count = n(),
+    avg_dep_delay = mean(dep_delay, na.rm = TRUE),
+    avg_arr_delay = mean(arr_delay, na.rm = TRUE),
+    severe_rate = mean(severe_dep_delay, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+chain_binned <- chain_pairs %>%
+  mutate(
+    prev_delay_band = cut(
+      prev_arr_delay,
+      breaks = c(-Inf, 0, 15, 30, 60, 120, Inf),
+      labels = c("提前/准点", "0-15", "15-30", "30-60", "60-120", "120+"),
+      right = TRUE
+    )
+  ) %>%
+  group_by(prev_delay_band) %>%
+  summarise(
+    flight_count = n(),
+    avg_current_dep_delay = mean(dep_delay, na.rm = TRUE),
+    current_delay_rate = mean(dep_delay > 15, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+case_example_key <- flight_chain %>%
+  filter(total_tasks >= 3, !is.na(prev_arr_delay)) %>%
+  group_by(tailnum, flight_year, month, day) %>%
+  summarise(
+    total_tasks = max(total_tasks),
+    max_prev_arr_delay = max(prev_arr_delay, na.rm = TRUE),
+    max_dep_delay = max(dep_delay, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  filter(is.finite(max_prev_arr_delay), max_prev_arr_delay > 60) %>%
+  arrange(desc(max_prev_arr_delay + max_dep_delay)) %>%
+  slice_head(n = 1)
+
+case_example <- flight_chain %>%
+  semi_join(case_example_key, by = c("tailnum", "flight_year", "month", "day")) %>%
+  arrange(task_sequence) %>%
+  select(
+    tailnum, flight_year, month, day, task_sequence, flight,
+    origin, dest, sched_dep_time, dep_time, arr_time, dep_delay, arr_delay, prev_arr_delay
+  )
+
+attribution_df <- flights_clean %>%
+  filter(
+    !is.na(dep_delay),
+    !is.na(plane_age),
+    !is.na(wind_speed),
+    !is.na(visib),
+    !is.na(precip),
+    !is.na(hour),
+    !is.na(origin),
+    !is.na(carrier),
+    !is.na(month)
+  ) %>%
+  mutate(severe_delay_flag = dep_delay > 60)
+
+age_profile <- attribution_df %>%
+  group_by(plane_age_band) %>%
+  summarise(
+    flight_count = n(),
+    avg_dep_delay = mean(dep_delay, na.rm = TRUE),
+    severe_rate = mean(severe_delay_flag, na.rm = TRUE),
+    avg_age = mean(plane_age, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  filter(plane_age_band != "未知")
+
+weather_profile <- attribution_df %>%
+  group_by(weather_band) %>%
+  summarise(
+    flight_count = n(),
+    avg_dep_delay = mean(dep_delay, na.rm = TRUE),
+    severe_rate = mean(severe_delay_flag, na.rm = TRUE),
+    avg_wind_speed = mean(wind_speed, na.rm = TRUE),
+    avg_visibility = mean(visib, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  filter(weather_band != "天气缺失")
+
+attribution_model <- glm(
+  severe_delay_flag ~ scale(plane_age) + scale(wind_speed) + scale(visib) +
+    scale(precip) + factor(hour) + factor(origin) + factor(carrier) +
+    factor(month),
+  data = attribution_df,
+  family = binomial()
+)
+
+attribution_effects <- tidy(attribution_model, exponentiate = FALSE, conf.int = FALSE) %>%
+  filter(term %in% c(
+    "scale(plane_age)",
+    "scale(wind_speed)",
+    "scale(visib)",
+    "scale(precip)"
+  )) %>%
+  mutate(
+    conf.low = estimate - 1.96 * std.error,
+    conf.high = estimate + 1.96 * std.error,
+    estimate = exp(estimate),
+    conf.low = exp(conf.low),
+    conf.high = exp(conf.high),
+    factor_cn = recode(
+      term,
+      `scale(plane_age)` = "机龄",
+      `scale(wind_speed)` = "风速",
+      `scale(visib)` = "能见度",
+      `scale(precip)` = "降水"
+    ),
+    source = if_else(factor_cn == "机龄", "飞机属性", "天气条件"),
+    direction = if_else(estimate > 1, "风险上升", "风险下降"),
+    effect_strength = abs(log(estimate))
+  ) %>%
+  arrange(desc(effect_strength))
+
+lookup_value <- function(data, key_col, value_col, key) {
+  value <- data[[value_col]][as.character(data[[key_col]]) == key]
+  if (length(value) == 0) NA_real_ else value[[1]]
+}
+
+age_effect <- lookup_value(attribution_effects, "factor_cn", "effect_strength", "机龄")
+weather_effect <- attribution_effects %>%
+  filter(source == "天气条件") %>%
+  summarise(value = max(effect_strength, na.rm = TRUE)) %>%
+  pull(value)
+
+dominant_source <- if (!is.na(weather_effect) && !is.na(age_effect) && weather_effect > age_effect) {
+  "天气条件"
+} else {
+  "飞机机龄"
+}
+
+old_plane_increase <- lookup_value(age_profile, "plane_age_band", "avg_dep_delay", "20年以上") -
+  lookup_value(age_profile, "plane_age_band", "avg_dep_delay", "0-5年")
+
+bad_weather_increase <- lookup_value(weather_profile, "weather_band", "avg_dep_delay", "低能见度") -
+  lookup_value(weather_profile, "weather_band", "avg_dep_delay", "正常")
+
+fmt_num <- function(x, digits = 1) {
+  ifelse(is.na(x), "NA", number(x, accuracy = 10^-digits, big.mark = ","))
+}
+
+fmt_int <- function(x) {
+  ifelse(is.na(x), "NA", comma(round(x), accuracy = 1))
+}
+
+fmt_pct <- function(x, digits = 1) {
+  ifelse(is.na(x), "NA", percent(x, accuracy = 10^-digits))
+}
+
+pal <- c(
+  ink = "#161616",
+  muted = "#525252",
+  muted_soft = "#6f6f6f",
+  line = "#e0e0e0",
+  line_soft = "#edf5ff",
+  panel = "#ffffff",
+  bg = "#f4f7fb",
+  teal = "#005d5d",
+  cyan = "#1192e8",
+  blue = "#0f62fe",
+  purple = "#6929c4",
+  magenta = "#9f1853",
+  green = "#198038",
+  yellow = "#b28600",
+  orange = "#ff832b",
+  red = "#da1e28",
+  rose = "#d12771",
+  gray = "#8d8d8d"
+)
+
+okabe_palette <- c(
+  blue = "#0072B2",
+  sky = "#56B4E9",
+  teal = "#009E73",
+  orange = "#E69F00",
+  vermillion = "#D55E00",
+  purple = "#CC79A7",
+  yellow = "#F0E442",
+  gray = "#999999"
+)
+
+risk_palette <- viridisLite::viridis(6, option = "D", begin = 0.12, end = 0.92)
+period_palette <- c(
+  "清晨" = okabe_palette["sky"],
+  "上午" = okabe_palette["teal"],
+  "午后" = okabe_palette["orange"],
+  "晚高峰" = okabe_palette["vermillion"],
+  "夜间" = okabe_palette["purple"]
+)
+quad_palette <- c(
+  "高频高延误" = okabe_palette["vermillion"],
+  "高频可控" = okabe_palette["blue"],
+  "低频高延误" = okabe_palette["orange"],
+  "低频可控" = okabe_palette["gray"]
+)
+
+theme_report <- function(base_size = 11) {
+  theme_minimal(base_family = font_family, base_size = base_size) +
+    theme(
+      text = element_text(color = pal["ink"]),
+      plot.title = element_text(face = "bold", size = rel(1.26), margin = margin(b = 6)),
+      plot.subtitle = element_text(color = pal["muted"], size = rel(0.93), lineheight = 1.16, margin = margin(b = 10)),
+      plot.caption = element_text(color = pal["muted"], size = rel(0.82), hjust = 0),
+      axis.title = element_text(color = pal["muted"], face = "bold"),
+      axis.text = element_text(color = pal["ink"]),
+      panel.grid.major = element_line(color = pal["line_soft"], linewidth = 0.38),
+      panel.grid.minor = element_blank(),
+      legend.position = "bottom",
+      legend.box = "vertical",
+      legend.direction = "horizontal",
+      legend.margin = margin(t = 4),
+      legend.spacing.y = grid::unit(2, "pt"),
+      legend.key.height = grid::unit(9, "pt"),
+      legend.title = element_text(color = pal["muted"], face = "bold"),
+      legend.text = element_text(color = pal["ink"]),
+      plot.title.position = "plot",
+      plot.caption.position = "plot",
+      plot.background = element_rect(fill = "white", color = NA),
+      panel.background = element_rect(fill = "white", color = NA),
+      plot.margin = margin(16, 20, 16, 20)
+    )
+}
+
+metric_card <- function(label, value, note, accent = pal["teal"]) {
+  paste0(
+    '<div class="metric-card" style="--accent:', accent, '">',
+    '<div class="metric-label">', label, '</div>',
+    '<div class="metric-value">', value, '</div>',
+    '<div class="metric-note">', note, '</div>',
+    '</div>'
+  )
+}
+
+task_card <- function(level, title, method) {
+  paste0(
+    '<div class="task-card">',
+    '<div class="task-level">', level, '</div>',
+    '<div class="task-title">', title, '</div>',
+    '<div class="task-method">', method, '</div>',
+    '</div>'
+  )
+}
+
+insight_item <- function(title, text) {
+  paste0(
+    '<div class="insight-item">',
+    '<strong>', title, '</strong>',
+    '<span>', text, '</span>',
+    '</div>'
+  )
+}
+
+html_grid <- function(items, class = "metric-grid") {
+  asis_output(paste0('<div class="', class, '">', paste(items, collapse = ""), '</div>'))
+}
+```
+
+<section class="report-hero">
+  <div class="hero-kicker">Team 我要非得更高 · Quarto / tidyverse / nycflights13</div>
+  <h1>延误不是偶发事故，而是时间、天气、航司调度与同机任务链共同塑造的系统结果。</h1>
+  <p>
+    本报告按照比赛通知中的六个任务重构分析路径，把“逐时延误、热门目的地、空中追回、航司效能、连锁反应、延误之源”放在同一条证据链里。
+    网页交互作品可访问 <a href="https://flight.cian.fun" target="_blank">flight.cian.fun</a>，本页则作为更适合评审阅读和答辩展示的 HTML 分析报告。
+  </p>
+</section>
+
+```{r}
+#| label: hero-cards
+#| results: asis
+#| echo: false
+
+html_grid(c(
+  metric_card("有效航班记录", fmt_int(summary_stats$total_flights), "剔除起飞/到达延误缺失后进入分析", pal["blue"]),
+  metric_card("平均起飞延误", paste0(fmt_num(summary_stats$avg_dep_delay), " 分钟"), paste0("中位数为 ", fmt_num(summary_stats$median_dep_delay), " 分钟"), pal["rose"]),
+  metric_card("15分钟内起飞准点率", fmt_pct(summary_stats$dep_ontime_rate), paste0("严重起飞延误率为 ", fmt_pct(summary_stats$severe_rate)), pal["teal"]),
+  metric_card("网络覆盖", paste0(summary_stats$origin_count, " / ", summary_stats$dest_count), paste0("出发机场 / 目的地；", summary_stats$carrier_count, " 家航司，", fmt_int(summary_stats$tail_count), " 架飞机"), pal["orange"])
+))
+```
+
+## 作品定位
+
+比赛要求的核心不是把所有字段画一遍，而是用 EDA 把影响航班延误的结构讲清楚。我们把六道题组织成三层逻辑：先看延误在时间和目的地上的分布，再看航班、航司与同机任务链如何把延误放大或缓冲，最后用三表联动模型比较机龄与天气的相对作用。
+
+```{r}
+#| label: task-map
+#| results: asis
+#| echo: false
+
+html_grid(c(
+  task_card("LEVEL 1", "逐时延误：晨曦或暮光", "按计划起飞小时聚合均值、置信区间和时段分布，识别一天中的压力峰值。"),
+  task_card("LEVEL 1", "目的地：远方的诅咒之地", "计算纽约最繁忙十大目的地，并用航班量与到达延误构建风险矩阵。"),
+  task_card("LEVEL 2", "空中疾行：竞速挽救", "筛选起飞延误超过 60 分钟的航班，比较速度分位下的追回分钟与完全恢复率。"),
+  task_card("LEVEL 2", "航司效能：船大难掉头", "将航司代码映射为全称，比较机队规模、航班量、准点率与平均延误。"),
+  task_card("LEVEL 3", "连锁反应", "按 tailnum 与日期排序，用 lag() 追踪前序到达延误对后续起飞的传导。"),
+  task_card("LEVEL 4", "延误之源", "合并 flights、planes、weather，用描述比较和逻辑回归评估机龄与天气。")
+), "task-grid")
+```
+
+## 核心发现
+
+```{r}
+#| label: insight-strip
+#| results: asis
+#| echo: false
+
+html_grid(c(
+  insight_item(
+    "时间压力会累积",
+    paste0("平均起飞延误最高出现在 ", peak_hour$hour, ":00，约 ", fmt_num(peak_hour$avg_dep_delay), " 分钟；最低出现在 ", quiet_hour$hour, ":00。")
+  ),
+  insight_item(
+    "热门目的地不必然最危险",
+    paste0("十大热门目的地中，", dest_risk_gap$dest, " 的平均到达延误最高，约 ", fmt_num(dest_risk_gap$avg_arr_delay), " 分钟。")
+  ),
+  insight_item(
+    "空中追回存在但有限",
+    paste0("严重起飞延误航班平均追回 ", fmt_num(recovery_stats$avg_recovery), " 分钟，但仅 ", fmt_pct(recovery_stats$full_recovery_rate), " 能回到 15 分钟内到达。")
+  ),
+  insight_item(
+    "航司规模不是单一答案",
+    paste0("机队规模与平均起飞延误相关系数约 ", round(airline_size_cor, 2), "，说明规模只解释了一小部分差异。")
+  ),
+  insight_item(
+    "同一架飞机会传导延误",
+    paste0("前序航班晚到后，后续起飞延误概率约为前序准点后的 ", fmt_num(propagation_stats$delay_risk_lift), " 倍。")
+  ),
+  insight_item(
+    "延误之源更偏天气触发",
+    paste0("控制月份、小时、机场和航司后，模型显示短期触发更偏向 ", dominant_source, "。")
+  )
+), "insight-grid")
+```
+
+## LEVEL 1：时间与目的地
+
+### 逐时延误
+
+延误不是平均铺开在一天里，而是沿着运行日逐步堆积。下图把起飞和到达延误放在同一时间轴上，浅色带表示起飞延误均值的 95% 置信区间，右侧的时段分布用“雨云图”展示均值之外的离散程度。
+
+```{r}
+#| label: hourly-and-raincloud
+#| fig-cap: "逐时延误与时段分布：折线展示均值趋势，雨云图展示同一时段内部的波动与长尾。"
+#| fig-height: 6.8
+
+p_hourly <- ggplot() +
+  geom_ribbon(
+    data = hourly_delay,
+    aes(hour, ymin = ci_low, ymax = ci_high),
+    fill = "#bae6fd",
+    alpha = 0.62
+  ) +
+  geom_line(
+    data = hourly_long,
+    aes(hour, minutes, color = delay_type),
+    linewidth = 1.08
+  ) +
+  geom_point(
+    data = hourly_long,
+    aes(hour, minutes, color = delay_type),
+    size = 2.4,
+    alpha = 0.9
+  ) +
+  scale_x_continuous(breaks = seq(0, 23, 3), limits = c(0, 24.6)) +
+  scale_y_continuous(labels = label_number(suffix = " 分钟")) +
+  scale_color_manual(values = c("起飞延误" = okabe_palette["vermillion"], "到达延误" = okabe_palette["blue"])) +
+  labs(
+    title = "延误沿运行日逐步抬升",
+    subtitle = paste0("最高峰在 ", peak_hour$hour, ":00；低谷在 ", quiet_hour$hour, ":00。置信区间很窄，说明这种节律并非抽样噪声。"),
+    x = "计划起飞小时",
+    y = "平均延误",
+    color = "延误类型"
+  ) +
+  theme_report()
+
+p_rain <- ggplot(period_distribution, aes(time_period, dep_delay, fill = time_period, color = time_period))
+
+if (has_ggdist) {
+  p_rain <- p_rain +
+    ggdist::stat_halfeye(
+      adjust = 0.75,
+      width = 0.72,
+      justification = -0.18,
+      .width = c(0.5, 0.8, 0.95),
+      point_interval = ggdist::median_qi,
+      alpha = 0.58,
+      slab_color = NA
+    ) +
+    geom_point(
+      position = position_jitter(width = 0.06, height = 0),
+      size = 0.36,
+      alpha = 0.16,
+      show.legend = FALSE
+    )
+} else {
+  p_rain <- p_rain +
+    geom_violin(trim = FALSE, width = 0.82, alpha = 0.55, color = NA) +
+    geom_boxplot(width = 0.16, outlier.shape = NA, color = "#334155", fill = "white", alpha = 0.88) +
+    geom_point(
+      position = position_jitter(width = 0.09, height = 0),
+      size = 0.38,
+      alpha = 0.16,
+      show.legend = FALSE
+    )
+}
+
+p_rain <- p_rain +
+  geom_pointrange(
+    data = period_uncertainty,
+    aes(y = mean_delay, ymin = ci_low, ymax = ci_high),
+    inherit.aes = TRUE,
+    color = "#0f172a",
+    linewidth = 0.55,
+    fatten = 2.1
+  ) +
+  coord_flip() +
+  scale_y_continuous(labels = label_number(suffix = " 分钟")) +
+  scale_fill_manual(values = period_palette, guide = "none") +
+  scale_color_manual(values = period_palette, guide = "none") +
+  labs(
+    title = "晚高峰不只均值高，长尾也更厚",
+    subtitle = if (has_ggdist) {
+      "分布形状、抽样航班与均值区间共同展示晚间延误长尾。"
+    } else {
+      "小提琴图、箱线图和抽样点共同展示晚间延误长尾。"
+    },
+    x = NULL,
+    y = "起飞延误"
+  ) +
+  theme_report()
+
+p_hourly + p_rain + plot_layout(widths = c(1.25, 1), guides = "collect") &
+  theme(legend.position = "bottom")
+```
+
+```{r}
+#| label: weekday-heatmap
+#| fig-cap: "星期与小时热力图：颜色越深表示平均起飞延误越高，可快速定位运行压力窗口。"
+
+ggplot(weekday_hour_heatmap, aes(hour, weekday_label, fill = avg_dep_delay)) +
+  geom_tile(color = "white", linewidth = 0.45) +
+  geom_point(aes(size = severe_rate), shape = 21, color = "white", fill = "#111827", alpha = 0.72) +
+  scale_x_continuous(breaks = seq(5, 23, 3), expand = c(0, 0)) +
+  scale_y_discrete(expand = c(0, 0)) +
+  scale_fill_gradientn(colors = risk_palette, labels = label_number(suffix = " 分钟")) +
+  scale_size(range = c(1.2, 5.2), labels = percent, name = "严重延误率") +
+  guides(
+    fill = guide_colorbar(title.position = "top", barwidth = grid::unit(4.6, "cm"), barheight = grid::unit(0.22, "cm")),
+    size = guide_legend(title.position = "top", nrow = 1)
+  ) +
+  labs(
+    title = "高压窗口集中在下午至晚间",
+    subtitle = "热力图适合做值班与资源前置排班：颜色看均值，点大小看严重延误风险。",
+    x = "计划起飞小时",
+    y = NULL,
+    fill = "平均起飞延误"
+  ) +
+  theme_report() +
+  theme(panel.grid = element_blank())
+```
+
+### 热门目的地
+
+比赛要求找出纽约最繁忙的十大航线目的地。我们进一步把“繁忙”与“延误风险”拆开看：航班量大说明暴露高，平均到达延误高说明治理优先级高。
+
+```{r}
+#| label: top-destinations
+#| fig-cap: "纽约最繁忙十大目的地：条形长度为航班量，颜色为平均到达延误。"
+
+top_destinations %>%
+  mutate(dest_label = fct_reorder(dest_label, flight_count)) %>%
+  ggplot(aes(flight_count, dest_label, fill = avg_arr_delay)) +
+  geom_col(width = 0.68, color = "white", linewidth = 0.35) +
+  geom_text(
+    aes(label = paste0(fmt_int(flight_count), " 班")),
+    hjust = -0.08,
+    family = font_family,
+    size = 3.4,
+    color = pal["ink"]
+  ) +
+  scale_x_continuous(labels = comma, expand = expansion(mult = c(0, 0.16))) +
+  scale_fill_gradientn(colors = risk_palette, labels = label_number(suffix = " 分钟")) +
+  guides(fill = guide_colorbar(title.position = "top", barwidth = grid::unit(4.8, "cm"), barheight = grid::unit(0.22, "cm"))) +
+  labs(
+    title = "热门目的地与高延误目的地不是同一个概念",
+    subtitle = paste0(dest_risk_gap$dest, " 是十大热门目的地中平均到达延误最高者。"),
+    x = "航班量",
+    y = NULL,
+    fill = "平均到达延误"
+  ) +
+  theme_report()
+```
+
+```{r}
+#| label: destination-risk-interactive
+
+p_dest <- ggplot(
+  destination_risk,
+  aes(
+    flight_count,
+    avg_arr_delay,
+    size = 1 - arr_ontime_rate,
+    color = quadrant,
+    text = tooltip
+  )
+) +
+  geom_hline(yintercept = median(destination_risk$avg_arr_delay), color = "#cbd5e1", linetype = "22") +
+  geom_vline(xintercept = median(destination_risk$flight_count), color = "#cbd5e1", linetype = "22") +
+  geom_point(alpha = 0.78) +
+  scale_x_log10(labels = comma) +
+  scale_size(range = c(4, 16), guide = "none") +
+  scale_color_manual(values = quad_palette) +
+  labs(
+    title = "交互式目的地风险矩阵",
+    subtitle = "右上象限为“高频高延误”，适合优先进入答辩中的治理建议。",
+    x = "航班量（对数轴）",
+    y = "平均到达延误（分钟）",
+    color = NULL
+  ) +
+  theme_report()
+
+ggplotly(p_dest, tooltip = "text", height = 560) %>%
+  layout(
+    legend = list(orientation = "h", x = 0, y = -0.16, yanchor = "top"),
+    margin = list(l = 70, r = 35, b = 95, t = 85)
+  ) %>%
+  config(displayModeBar = FALSE)
+```
+
+<div class="note-plain">
+从评审角度看，LEVEL 1 的关键不是“哪个小时最大”或“哪个目的地最多”，而是把运行压力窗口和高暴露目的地放进同一套优先级框架：先管晚间高压，再管高频高延误的目的地。
+</div>
+
+## LEVEL 2：空中追回与航司效能
+
+### 空中疾行：竞速挽救
+
+对于起飞延误超过 60 分钟的航班，空中速度确实能追回一部分时间。但追回能力不是万能解药：严重延误的主要损失已经发生在起飞前，飞行阶段只能缓冲，不能完全消除。
+
+```{r}
+#| label: recovery-cards
+#| results: asis
+#| echo: false
+
+html_grid(c(
+  metric_card("严重起飞延误航班", fmt_int(recovery_stats$n), "起飞延误超过 60 分钟且速度有效", pal["rose"]),
+  metric_card("平均追回时间", paste0(fmt_num(recovery_stats$avg_recovery), " 分钟"), paste0("起飞延误 ", fmt_num(recovery_stats$avg_dep_delay), " 分钟，到达延误 ", fmt_num(recovery_stats$avg_arr_delay), " 分钟"), pal["teal"]),
+  metric_card("发生追回的比例", fmt_pct(recovery_stats$recovery_rate), "到达延误小于起飞延误", pal["blue"]),
+  metric_card("完全恢复比例", fmt_pct(recovery_stats$full_recovery_rate), "到达延误回到 15 分钟内", pal["purple"])
+))
+```
+
+```{r}
+#| label: recovery-chart
+#| fig-cap: "空中追回双视图：左侧哑铃图展示起飞延误到到达延误的缩短，右侧展示完全恢复比例。"
+#| fig-height: 6.8
+
+p_recovery_dumbbell <- speed_quartile %>%
+  mutate(speed_band = fct_reorder(speed_band, avg_speed)) %>%
+  ggplot(aes(y = speed_band)) +
+  geom_segment(
+    aes(x = avg_dep_delay, xend = avg_arr_delay, yend = speed_band),
+    color = "#cbd5e1",
+    linewidth = 7,
+    lineend = "round"
+  ) +
+  geom_point(aes(x = avg_dep_delay), color = okabe_palette["vermillion"], size = 4.8) +
+  geom_point(aes(x = avg_arr_delay), color = pal["teal"], size = 4.8) +
+  geom_text(
+    aes(x = (avg_dep_delay + avg_arr_delay) / 2, label = paste0("追回 ", fmt_num(avg_recovery), " 分")),
+    family = font_family,
+    color = "#0f172a",
+    size = 3.3,
+    fontface = "bold",
+    nudge_y = 0.24
+  ) +
+  scale_x_continuous(labels = label_number(suffix = " 分钟")) +
+  labs(
+    title = "飞得更快，通常能多追回一点",
+    subtitle = "红点为平均起飞延误，绿点为平均到达延误，线段长度代表被消化的延误。",
+    x = "平均延误",
+    y = "速度分位"
+  ) +
+  theme_report()
+
+p_recovery_rate <- speed_quartile %>%
+  mutate(speed_band = fct_reorder(speed_band, avg_speed)) %>%
+  ggplot(aes(full_recovery_rate, speed_band)) +
+  geom_col(fill = pal["purple"], width = 0.58, alpha = 0.9) +
+  geom_text(
+    aes(label = fmt_pct(full_recovery_rate)),
+    hjust = -0.12,
+    family = font_family,
+    color = pal["ink"],
+    size = 3.4,
+    fontface = "bold"
+  ) +
+  scale_x_continuous(labels = percent, limits = c(0, max(speed_quartile$full_recovery_rate) * 1.38)) +
+  labs(
+    title = "完全恢复仍是少数",
+    subtitle = "能追回不等于能准点到达，飞行阶段的补救空间有限。",
+    x = "到达延误 ≤ 15 分钟比例",
+    y = NULL
+  ) +
+  theme_report()
+
+p_recovery_dumbbell + p_recovery_rate + plot_layout(widths = c(1.18, 0.92))
+```
+
+<div class="note-plain">
+控制起飞延误、航程、小时、出发机场和航司后，速度每提高 1 mph，平均追回时间变化约为 <strong>`r fmt_num(speed_coef, 3)` 分钟</strong>。换算到 50 mph，约对应 <strong>`r fmt_num(speed_coef * 50)` 分钟</strong>。速度是缓冲器，不是根治方案。
+</div>
+
+### 航司效能：船大难掉头
+
+如果只看航司规模，很容易把“机队大”误读为“必然更慢”。散点图显示，规模与延误之间存在一定关系，但相关系数并不高。航线结构、基地机场、班次密度和天气暴露同样重要。
+
+```{r}
+#| label: airline-chart
+#| fig-cap: "航司规模与起飞延误：横轴为机队规模，对数尺度；颜色越绿表示起飞准点率越高。"
+
+ggplot(airline_perf, aes(plane_count, avg_dep_delay)) +
+  annotate(
+    "rect",
+    xmin = median(airline_perf$plane_count, na.rm = TRUE),
+    xmax = Inf,
+    ymin = median(airline_perf$avg_dep_delay, na.rm = TRUE),
+    ymax = Inf,
+    fill = "#fee2e2",
+    alpha = 0.55
+  ) +
+  geom_hline(yintercept = median(airline_perf$avg_dep_delay, na.rm = TRUE), color = "#cbd5e1", linetype = "22") +
+  geom_vline(xintercept = median(airline_perf$plane_count, na.rm = TRUE), color = "#cbd5e1", linetype = "22") +
+  geom_smooth(method = "lm", se = TRUE, color = pal["cyan"], fill = "#cffafe", linewidth = 0.9, alpha = 0.5) +
+  geom_point(aes(size = flight_count, color = dep_ontime_rate), alpha = 0.86) +
+  geom_label_repel(
+    data = airline_labels,
+    aes(label = carrier),
+    family = font_family,
+    size = 3.4,
+    color = pal["ink"],
+    fill = "white",
+    label.size = 0.2,
+    min.segment.length = 0
+  ) +
+  scale_x_log10(labels = comma) +
+  scale_size(range = c(3.6, 11), labels = comma) +
+  scale_color_gradientn(colors = c(pal["gray"], pal["cyan"], pal["teal"]), labels = percent) +
+  guides(
+    size = guide_legend(title.position = "top", nrow = 1),
+    color = guide_colorbar(title.position = "top", barwidth = grid::unit(4.5, "cm"), barheight = grid::unit(0.22, "cm"))
+  ) +
+  labs(
+    title = "航司越大，并不必然越慢",
+    subtitle = paste0("右上浅红区域表示“大机队且高延误”。规模与平均起飞延误相关系数 r = ", round(airline_size_cor, 2), "。"),
+    x = "旗下飞机数量（对数轴）",
+    y = "平均起飞延误（分钟）",
+    size = "航班量",
+    color = "起飞准点率"
+  ) +
+  theme_report()
+```
+
+<div class="note-plain">
+`r best_airline$carrier`（`r best_airline$carrier_name`）起飞准点率最高，为 <strong>`r fmt_pct(best_airline$dep_ontime_rate)`</strong>；`r worst_airline$carrier`（`r worst_airline$carrier_name`）平均起飞延误最高，为 <strong>`r fmt_num(worst_airline$avg_dep_delay)` 分钟</strong>。所以航司评价应同时纳入规模、航线和运行环境。
+</div>
+
+## LEVEL 3：连锁反应
+
+同一架飞机一天内经常连续执行多段任务。前序航班晚到后，清洁、机组、登机口和下一段旅客登机都会被压缩。这里按照 `tailnum + 日期 + 计划起飞时间` 排序，并用 `lag()` 把前序到达延误带入当前航班。
+
+```{r}
+#| label: propagation-chart
+#| fig-cap: "同机延误传导：前序到达延误越重，后续起飞延误率和平均延误同步抬升。"
+#| fig-height: 6.8
+
+p_chain <- ggplot(chain_binned, aes(prev_delay_band, current_delay_rate)) +
+  geom_col(aes(fill = avg_current_dep_delay), width = 0.62) +
+  geom_text(
+    aes(label = fmt_pct(current_delay_rate)),
+    vjust = -0.35,
+    family = font_family,
+    color = pal["ink"],
+    size = 3.5,
+    fontface = "bold"
+  ) +
+  scale_y_continuous(labels = percent, limits = c(0, max(chain_binned$current_delay_rate) * 1.2)) +
+  scale_fill_gradientn(colors = risk_palette, labels = label_number(suffix = " 分钟"), guide = "none") +
+  labs(
+    title = "前序晚到越久，后续延误概率越高",
+    subtitle = "柱高为后续起飞延误率；颜色越亮代表后续平均起飞延误更高。",
+    x = "前序到达延误",
+    y = "后续起飞延误率"
+  ) +
+  theme_report()
+
+p_sequence <- ggplot(sequence_delay, aes(task_sequence, avg_dep_delay)) +
+  geom_area(fill = "#e0f2fe", alpha = 0.9) +
+  geom_line(color = pal["cyan"], linewidth = 1.1) +
+  geom_point(aes(size = flight_count, color = severe_rate), alpha = 0.9) +
+  scale_x_continuous(breaks = sequence_delay$task_sequence) +
+  scale_y_continuous(labels = label_number(suffix = " 分钟")) +
+  scale_size(range = c(3, 8), labels = comma, guide = "none") +
+  scale_color_gradient(low = okabe_palette["sky"], high = okabe_palette["vermillion"], labels = percent, guide = "none") +
+  labs(
+    title = "任务链越靠后，积压越明显",
+    subtitle = "折线为平均起飞延误；点大小代表航班量，颜色越深代表严重延误率更高。",
+    x = "同机同日任务序号",
+    y = "平均起飞延误"
+  ) +
+  theme_report()
+
+p_chain + p_sequence + plot_layout(widths = c(1, 1))
+```
+
+```{r}
+#| label: propagation-cards
+#| results: asis
+#| echo: false
+
+html_grid(c(
+  metric_card("可追踪相邻任务对", fmt_int(propagation_stats$n_pairs), "同一飞机同一天的前后航班", pal["blue"]),
+  metric_card("延误相关系数", round(propagation_stats$corr, 2), "前序到达延误 vs 当前起飞延误", pal["purple"]),
+  metric_card("前序晚到后的延误概率", fmt_pct(propagation_stats$prob_delay_after_prev_delay), paste0("前序准点后为 ", fmt_pct(propagation_stats$prob_delay_after_prev_ontime)), pal["rose"]),
+  metric_card("风险倍数", paste0(fmt_num(propagation_stats$delay_risk_lift), " 倍"), paste0("绝对风险差 ", fmt_pct(propagation_stats$delay_risk_diff)), pal["teal"])
+))
+```
+
+```{r}
+#| label: case-example
+#| echo: false
+
+if (nrow(case_example) == 0) {
+  asis_output('<p class="muted-text">当前筛选条件下暂无可展示的同机传播案例。</p>')
+} else {
+  case_example %>%
+    transmute(
+      飞机号 = tailnum,
+      日期 = sprintf("%d-%02d-%02d", flight_year, month, day),
+      序号 = task_sequence,
+      航班号 = flight,
+      航段 = paste(origin, dest, sep = " → "),
+      计划起飞 = sched_dep_time,
+      实际起飞 = dep_time,
+      起飞延误 = dep_delay,
+      到达延误 = arr_delay,
+      前序到达延误 = if_else(is.na(prev_arr_delay), "起点", as.character(round(prev_arr_delay)))
+    ) %>%
+    gt() %>%
+    tab_header(
+      title = "同机传播案例",
+      subtitle = "同一架飞机、同一天内连续任务的延误接力"
+    ) %>%
+    fmt_number(columns = c(计划起飞, 实际起飞, 起飞延误, 到达延误), decimals = 0) %>%
+    data_color(columns = c(起飞延误, 到达延误), palette = c("#eff6ff", "#fee2e2")) %>%
+    tab_options(table.font.names = font_family)
+}
+```
+
+<div class="note-warning">
+管理含义很直接：延误治理不能只盯单个航班。对高利用率飞机，一旦前序航班已经晚到，后续登机口、机组和地服资源就要提前重排，尤其是下午和晚间任务链。
+</div>
+
+## LEVEL 4：延误之源
+
+最后一题要求合并 `flights`、`planes` 和 `weather`，判断延误更像来自“高龄飞机”的长期风险，还是“恶劣天气”的短期冲击。我们先做描述性比较，再用逻辑回归控制小时、月份、机场和航司。
+
+```{r}
+#| label: attribution-profile-chart
+#| fig-cap: "机龄与天气的描述性比较：柱高为严重起飞延误率，颜色为平均起飞延误。"
+#| fig-height: 6.8
+
+p_age <- age_profile %>%
+  ggplot(aes(plane_age_band, severe_rate)) +
+  geom_col(aes(fill = avg_dep_delay), width = 0.68, color = "white") +
+  geom_text(
+    aes(label = fmt_pct(severe_rate)),
+    vjust = -0.35,
+    family = font_family,
+    color = pal["ink"],
+    size = 3.4,
+    fontface = "bold"
+  ) +
+  scale_y_continuous(labels = percent, limits = c(0, max(age_profile$severe_rate) * 1.25)) +
+  scale_fill_gradientn(colors = risk_palette, labels = label_number(suffix = " 分钟"), guide = "none") +
+  labs(
+    title = "机龄分组",
+    subtitle = "机龄体现长期运营弹性。",
+    x = NULL,
+    y = "严重起飞延误率"
+  ) +
+  theme_report()
+
+p_weather <- weather_profile %>%
+  ggplot(aes(weather_band, severe_rate)) +
+  geom_col(aes(fill = avg_dep_delay), width = 0.68, color = "white") +
+  geom_text(
+    aes(label = fmt_pct(severe_rate)),
+    vjust = -0.35,
+    family = font_family,
+    color = pal["ink"],
+    size = 3.4,
+    fontface = "bold"
+  ) +
+  scale_y_continuous(labels = percent, limits = c(0, max(weather_profile$severe_rate) * 1.25)) +
+  scale_fill_gradientn(colors = risk_palette, labels = label_number(suffix = " 分钟"), guide = "none") +
+  labs(
+    title = "天气状态",
+    subtitle = "低能见度、大风和降水更像短期触发。",
+    x = NULL,
+    y = "严重起飞延误率"
+  ) +
+  theme_report()
+
+p_age + p_weather
+```
+
+模型形式如下，连续变量按 1 个标准差解释。优势比大于 1 表示严重起飞延误风险上升，小于 1 表示风险下降。
+
+$$
+\Pr(\text{严重起飞延误}) \sim \text{机龄} + \text{风速} + \text{能见度} + \text{降水} + \text{小时} + \text{机场} + \text{航司} + \text{月份}
+$$
+
+```{r}
+#| label: attribution-model-chart
+#| fig-cap: "延误归因模型：点为优势比，线段为 95% 置信区间。"
+
+attribution_effects %>%
+  mutate(factor_cn = fct_reorder(factor_cn, estimate)) %>%
+  ggplot(aes(factor_cn, estimate)) +
+  geom_hline(yintercept = 1, color = "#94a3b8", linetype = "22", linewidth = 0.8) +
+  geom_linerange(aes(ymin = conf.low, ymax = conf.high, color = source), linewidth = 1.25) +
+  geom_point(aes(color = source, size = effect_strength), alpha = 0.96) +
+  geom_text(
+    aes(label = sprintf("%.2f", estimate), color = source),
+    hjust = -0.58,
+    family = font_family,
+    size = 3.7,
+    fontface = "bold",
+    show.legend = FALSE
+  ) +
+  coord_flip() +
+  scale_y_log10(expand = expansion(mult = c(0.13, 0.26))) +
+  scale_color_manual(values = c("飞机属性" = pal["purple"], "天气条件" = pal["teal"])) +
+  scale_size(range = c(4, 8), guide = "none") +
+  labs(
+    title = "天气变量的边际解释力整体强于机龄",
+    subtitle = "能见度的优势比小于 1，表示能见度提高会降低严重延误风险；降水和风速则提高风险。",
+    x = NULL,
+    y = "严重起飞延误优势比（log 轴）",
+    color = NULL
+  ) +
+  theme_report()
+```
+
+<div class="note-plain">
+综合描述比较与控制模型，延误之源更偏向 <strong>`r dominant_source`</strong>。20 年以上飞机相对 0-5 年飞机的平均起飞延误差约为 <strong>`r fmt_num(old_plane_increase)` 分钟</strong>；低能见度相对正常天气的平均起飞延误差约为 <strong>`r fmt_num(bad_weather_increase)` 分钟</strong>。机龄反映长期运营弹性，天气更像短期严重延误的直接触发条件。
+</div>
+
+## 答辩摘要
+
+<div class="final-judgement">
+  <div class="final-kicker">Final judgement</div>
+  <div class="final-title">延误治理的主战场，不在单个航班，而在 <span>天气预警、地面周转、任务链重排</span> 三个提前量。</div>
+  <div class="final-copy">
+  数据显示，延误沿运行日和同机任务链逐步积压；飞行速度可以追回一部分分钟数，但不能替代起飞前资源调度。若要把分析转化为行动，应优先对晚高峰、低能见度或大风降水时段，以及前序已经晚到的飞机建立联合预警。
+  </div>
+</div>
+
+```{r}
+#| label: action-table
+#| echo: false
+
+tibble::tribble(
+  ~发现, ~证据, ~行动建议,
+  "日内积压明显",
+  paste0("平均起飞延误最高出现在 ", peak_hour$hour, ":00，约 ", fmt_num(peak_hour$avg_dep_delay), " 分钟"),
+  "保障资源前移到下午和晚高峰前，提前消化拥堵",
+  "热门目的地需要分层治理",
+  paste0(dest_risk_gap$dest, " 在十大热门目的地中平均到达延误最高"),
+  "建立“高频 + 高延误”目的地监控清单",
+  "严重起飞延误仍有追回空间",
+  paste0("严重起飞延误航班平均追回 ", fmt_num(recovery_stats$avg_recovery), " 分钟"),
+  "把长航程和高速度航班视为恢复窗口，但不要替代地面准点管理",
+  "航司规模解释有限",
+  paste0("规模与平均起飞延误相关系数约 ", round(airline_size_cor, 2)),
+  "评价航司时同时纳入航线结构、机场暴露和任务密度",
+  "同机延误会传导",
+  paste0("前序晚到后，后续延误概率是前序准点后的 ", fmt_num(propagation_stats$delay_risk_lift), " 倍"),
+  "为连续任务飞机设置动态缓冲，优先重排晚到飞机的后续资源",
+  "天气是短期触发源",
+  "控制模型显示核心天气变量的效应强度高于机龄",
+  "把能见度、风速、降水转化为提前调度阈值"
+) %>%
+  gt() %>%
+  tab_header(title = "从发现到行动") %>%
+  cols_width(
+    发现 ~ px(150),
+    证据 ~ px(280),
+    行动建议 ~ px(390)
+  ) %>%
+  tab_options(table.font.names = font_family)
+```
+
+## 复现说明
+
+本作品使用比赛通知推荐的 Quarto 格式，主要分析工具为 R 与 tidyverse。项目根目录运行：
+
+```bash
+quarto render reports/flight-delay-report.qmd
+```
+
+也可以使用项目脚本：
+
+```bash
+npm run report:render
+```
+
+报告优先读取网页项目已生成的 `data/flights_enriched.rds`；若该文件不存在，会从 `nycflights13` 的 `flights`、`planes`、`weather`、`airlines`、`airports` 重新构建分析宽表。

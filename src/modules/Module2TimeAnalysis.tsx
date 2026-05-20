@@ -25,7 +25,7 @@ const chartBaseOptions = {
   }
 };
 
-export default function Module2TimeAnalysis() {
+export default function Module2TimeAnalysis({ interactiveData }: { interactiveData?: any }) {
   const { data: hourlyDepDelay } = useFetch('/api/module2/hourly-dep-delay');
   const { data: hourlyComparison } = useFetch('/api/module2/hourly-comparison');
   const { data: monthlyTrend } = useFetch('/api/module2/monthly-trend');
@@ -33,6 +33,9 @@ export default function Module2TimeAnalysis() {
   const { data: weekdayHourHeatmap } = useFetch('/api/module2/weekday-hour-heatmap');
   const { data: periodAnalysis } = useFetch('/api/module2/period-analysis');
   const { data: conclusions } = useFetch('/api/module2/conclusions');
+
+  const activeHourlyComparison = interactiveData?.hourlyComparison || hourlyComparison;
+  const activeWeekdayHourHeatmap = interactiveData?.weekdayHourHeatmap || weekdayHourHeatmap;
 
   // 双折线图：起飞延误 vs 到达延误
   const comparisonOption = {
@@ -47,7 +50,7 @@ export default function Module2TimeAnalysis() {
       ...chartBaseOptions.xAxis,
       type: 'category',
       boundaryGap: false,
-      data: hourlyComparison?.map((d: any) => `${d.hour}:00`) || []
+      data: activeHourlyComparison?.map((d: any) => `${d.hour}:00`) || []
     },
     yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: '平均延误(分钟)' },
     series: [
@@ -55,7 +58,7 @@ export default function Module2TimeAnalysis() {
         name: '起飞延误',
         type: 'line',
         smooth: true,
-        data: hourlyComparison?.map((d: any) => d.avgDepDelay) || [],
+        data: activeHourlyComparison?.map((d: any) => d.avgDepDelay) || [],
         lineStyle: { color: '#00f2ff' },
         itemStyle: { color: '#00f2ff' }
       },
@@ -63,7 +66,7 @@ export default function Module2TimeAnalysis() {
         name: '到达延误',
         type: 'line',
         smooth: true,
-        data: hourlyComparison?.map((d: any) => d.avgArrDelay) || [],
+        data: activeHourlyComparison?.map((d: any) => d.avgArrDelay) || [],
         lineStyle: { color: '#8b5cf6' },
         itemStyle: { color: '#8b5cf6' }
       }
@@ -146,6 +149,41 @@ export default function Module2TimeAnalysis() {
     }]
   };
 
+  const heatmapHours = Array.from({ length: 19 }, (_, i) => i + 5);
+  const heatmapHourLabels = heatmapHours.map((hour) => `${hour}:00`);
+  const heatmapWeekdayLabels = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+  const heatmapWeekdayIndex = new Map(heatmapWeekdayLabels.map((name, index) => [name, index]));
+  const heatmapSeriesData = (activeWeekdayHourHeatmap || [])
+    .map((d: any) => {
+      const hour = Number(d.hour);
+      const weekdayIndex = Number.isFinite(Number(d.weekday))
+        ? Number(d.weekday) - 1
+        : heatmapWeekdayIndex.get(d.weekdayName);
+      const hourIndex = heatmapHours.indexOf(hour);
+
+      if (
+        hourIndex < 0 ||
+        weekdayIndex === undefined ||
+        weekdayIndex < 0 ||
+        weekdayIndex >= heatmapWeekdayLabels.length
+      ) {
+        return null;
+      }
+
+      return [
+        hourIndex,
+        weekdayIndex,
+        Number(d.avgDelay) || 0,
+        {
+          hour,
+          weekdayName: d.weekdayName || heatmapWeekdayLabels[weekdayIndex],
+          flightCount: d.flightCount,
+          severeDelayRate: d.severeDelayRate
+        }
+      ];
+    })
+    .filter(Boolean);
+
   // 热力图
   const heatmapOption = {
     backgroundColor: 'transparent',
@@ -166,8 +204,9 @@ export default function Module2TimeAnalysis() {
         fontSize: 13
       },
       formatter: (params: any) => {
-        const hour = params.data[0];
-        const weekday = params.data[1];
+        const meta = params.data[3] || {};
+        const hour = meta.hour ?? heatmapHours[params.data[0]];
+        const weekday = meta.weekdayName ?? heatmapWeekdayLabels[params.data[1]];
         const delay = params.data[2];
         return `<div style="padding: 4px 8px;">
           <div style="font-weight: 600; margin-bottom: 4px; color: #38bdf8;">${weekday} ${hour}:00</div>
@@ -177,7 +216,7 @@ export default function Module2TimeAnalysis() {
     },
     xAxis: {
       type: 'category',
-      data: Array.from({ length: 19 }, (_, i) => i + 5),
+      data: heatmapHourLabels,
       position: 'top',
       splitArea: {
         show: true,
@@ -194,7 +233,7 @@ export default function Module2TimeAnalysis() {
         fontSize: 11,
         interval: 0,
         margin: 8,
-        formatter: (value: number) => value
+        formatter: (value: string) => value.replace(':00', '')
       },
       axisTick: {
         show: false
@@ -226,6 +265,7 @@ export default function Module2TimeAnalysis() {
     visualMap: {
       min: 0,
       max: 50,
+      dimension: 2,
       calculable: true,
       orient: 'horizontal',
       left: 'center',
@@ -252,7 +292,7 @@ export default function Module2TimeAnalysis() {
     },
     series: [{
       type: 'heatmap',
-      data: weekdayHourHeatmap?.map((d: any) => [d.hour, d.weekdayName, d.avgDelay || 0]) || [],
+      data: heatmapSeriesData,
       label: {
         show: false
       },
