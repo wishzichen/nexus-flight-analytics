@@ -27,6 +27,13 @@ const chartBaseOptions = {
   }
 };
 
+const OPERATING_START_HOUR = 5;
+const OPERATING_END_HOUR = 23;
+const OPERATING_HOURS = Array.from(
+  { length: OPERATING_END_HOUR - OPERATING_START_HOUR + 1 },
+  (_, index) => OPERATING_START_HOUR + index,
+);
+
 export default function Module2TimeAnalysis({ interactiveData }: { interactiveData?: any }) {
   const { language } = useLanguage();
   const isZh = language === 'zh';
@@ -45,8 +52,8 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
     eveningAvg: isZh ? '晚间平均延误' : 'Evening Avg Delay',
     worstMonth: isZh ? '最差月份' : 'Most Variable Month',
     worstMonthSub: isZh ? '延误波动最大' : 'Highest delay variance',
-    comparisonTitle: isZh ? '24小时延误对比' : '24-hour Delay Comparison',
-    comparisonDesc: isZh ? '起飞延误与到达延误的对比，观察空中追回效果' : 'Compare departure and arrival delay to observe in-air recovery.',
+    comparisonTitle: isZh ? '05:00-23:00 延误对比' : '05:00-23:00 Delay Comparison',
+    comparisonDesc: isZh ? '聚焦主运营窗口，对比起飞延误与到达延误，观察空中追回效果' : 'Focus on the main operating window and compare departure vs arrival delay to observe in-air recovery.',
     monthlyTitle: isZh ? '月份延误趋势' : 'Monthly Delay Trend',
     monthlyDesc: isZh ? '各月份平均延误变化，识别季节性规律' : 'Monthly average delay changes reveal seasonal patterns.',
     weekdayTitle: isZh ? '星期延误分析' : 'Weekday Delay Analysis',
@@ -58,7 +65,7 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
     c1: isZh ? '早间(5-9点)航班最准点，建议优先选择' : 'Morning flights from 05:00 to 09:00 are the most punctual.',
     c2: isZh ? '下午延误通常比早间更高，运营压力开始累积' : 'Afternoon delay is usually higher than morning delay as operating pressure accumulates.',
     c3: isZh ? '晚间18-21点延误最严重，需预留充足时间' : 'The 18:00-21:00 window has the heaviest delay risk.',
-    c4: isZh ? '延误随全天运营累积，越晚越容易延误' : 'Delay accumulates across the operating day and becomes more likely later.',
+    c4: isZh ? '延误随主运营窗口累积，越晚越容易延误' : 'Delay accumulates across the main operating window and becomes more likely later.',
   };
   Object.assign(label, isZh ? {
     depDelay: '起飞延误',
@@ -73,8 +80,8 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
     eveningAvg: '晚间平均延误',
     worstMonth: '波动最大月份',
     worstMonthSub: '延误波动最大',
-    comparisonTitle: '24 小时延误对比',
-    comparisonDesc: '对比起飞延误与到达延误，观察空中追回效果。',
+    comparisonTitle: '05:00-23:00 延误对比',
+    comparisonDesc: '聚焦主运营窗口，对比起飞延误与到达延误，观察空中追回效果。',
     monthlyTitle: '月份延误趋势',
     monthlyDesc: '各月份平均延误变化，用于识别季节性规律。',
     weekdayTitle: '星期延误分析',
@@ -86,7 +93,7 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
     c1: '05:00-09:00 的早间航班通常最准点。',
     c2: '下午延误通常高于早间，运营压力开始累积。',
     c3: '18:00-21:00 是最严重的延误风险窗口。',
-    c4: '延误会随全天运行逐步积累，越晚越容易延误。',
+    c4: '延误会随 05:00-23:00 主运营窗口逐步累积，越晚越容易延误。',
   } : {
     depDelay: 'Departure Delay',
     arrDelay: 'Arrival Delay',
@@ -100,8 +107,8 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
     eveningAvg: 'Evening Avg Delay',
     worstMonth: 'Most Variable Month',
     worstMonthSub: 'Highest delay variance',
-    comparisonTitle: '24-hour Delay Comparison',
-    comparisonDesc: 'Compare departure and arrival delay to observe in-air recovery.',
+    comparisonTitle: '05:00-23:00 Delay Comparison',
+    comparisonDesc: 'Focus on the main operating window and compare departure vs arrival delay to observe in-air recovery.',
     monthlyTitle: 'Monthly Delay Trend',
     monthlyDesc: 'Monthly average delay changes reveal seasonal patterns.',
     weekdayTitle: 'Weekday Delay Analysis',
@@ -128,8 +135,8 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
     eveningAvg: '晚间平均延误',
     worstMonth: '波动最大月份',
     worstMonthSub: '延误波动最大',
-    comparisonTitle: '24 小时延误对比',
-    comparisonDesc: '对比起飞延误与到达延误，观察空中追回效果。',
+    comparisonTitle: '05:00-23:00 延误对比',
+    comparisonDesc: '聚焦主运营窗口，对比起飞延误与到达延误，观察空中追回效果。',
     monthlyTitle: '月份延误趋势',
     monthlyDesc: '各月份平均延误变化，用于识别季节性规律。',
     weekdayTitle: '星期延误分析',
@@ -141,7 +148,7 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
     c1: '05:00-09:00 的早间航班通常最准点。',
     c2: '下午延误通常高于早间，运营压力开始累积。',
     c3: '18:00-21:00 是最严重的延误风险窗口。',
-    c4: '延误会随全天运行逐步累积，越晚越容易延误。',
+    c4: '延误会随 05:00-23:00 主运营窗口逐步累积，越晚越容易延误。',
   } : {});
   const { data: hourlyDepDelay } = useFetch('/api/module2/hourly-dep-delay');
   const { data: hourlyComparison } = useFetch('/api/module2/hourly-comparison');
@@ -153,6 +160,10 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
 
   const activeHourlyComparison = interactiveData?.hourlyComparison || hourlyComparison;
   const activeWeekdayHourHeatmap = interactiveData?.weekdayHourHeatmap || weekdayHourHeatmap;
+  const operatingHourlyComparison = (activeHourlyComparison || []).filter((d: any) => {
+    const hour = Number(d.hour);
+    return Number.isFinite(hour) && hour >= OPERATING_START_HOUR && hour <= OPERATING_END_HOUR;
+  });
   const translatePeriod = (value: string) => {
     return localizeDisplayValue(value, language);
   };
@@ -170,7 +181,7 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
       ...chartBaseOptions.xAxis,
       type: 'category',
       boundaryGap: false,
-      data: activeHourlyComparison?.map((d: any) => `${d.hour}:00`) || []
+      data: operatingHourlyComparison.map((d: any) => `${d.hour}:00`)
     },
     yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: label.avgDelayAxis },
     series: [
@@ -178,7 +189,7 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
         name: label.depDelay,
         type: 'line',
         smooth: true,
-        data: activeHourlyComparison?.map((d: any) => d.avgDepDelay) || [],
+        data: operatingHourlyComparison.map((d: any) => d.avgDepDelay),
         lineStyle: { color: '#00f2ff' },
         itemStyle: { color: '#00f2ff' }
       },
@@ -186,7 +197,7 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
         name: label.arrDelay,
         type: 'line',
         smooth: true,
-        data: activeHourlyComparison?.map((d: any) => d.avgArrDelay) || [],
+        data: operatingHourlyComparison.map((d: any) => d.avgArrDelay),
         lineStyle: { color: '#8b5cf6' },
         itemStyle: { color: '#8b5cf6' }
       }
@@ -269,7 +280,7 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
     }]
   };
 
-  const heatmapHours = Array.from({ length: 19 }, (_, i) => i + 5);
+  const heatmapHours = OPERATING_HOURS;
   const heatmapHourLabels = heatmapHours.map((hour) => `${hour}:00`);
   const heatmapWeekdayLabels = weekdayLabels;
   const heatmapWeekdayIndex = new Map([

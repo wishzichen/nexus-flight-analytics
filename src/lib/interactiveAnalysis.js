@@ -1,4 +1,4 @@
-const WEEKDAY_LABELS = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+const WEEKDAY_LABELS = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
 const NONE_FILTER_TOKEN = '__none__';
 
 function asArray(value) {
@@ -41,13 +41,15 @@ function getWeekdayIndex(row) {
   if (numeric && numeric >= 1 && numeric <= 7) return numeric;
 
   const name = row.weekdayName || row.weekday_name || '';
-  if (name.includes('一') || name === 'Monday') return 1;
-  if (name.includes('二') || name === 'Tuesday') return 2;
-  if (name.includes('三') || name === 'Wednesday') return 3;
-  if (name.includes('四') || name === 'Thursday') return 4;
-  if (name.includes('五') || name === 'Friday') return 5;
-  if (name.includes('六') || name === 'Saturday') return 6;
-  if (name.includes('日') || name === 'Sunday') return 7;
+  if (!name) return null;
+  const text = String(name).toLowerCase();
+  if (text.includes('星期一') || text.includes('周一') || text === 'monday' || text === 'mon') return 1;
+  if (text.includes('星期二') || text.includes('周二') || text === 'tuesday' || text === 'tue') return 2;
+  if (text.includes('星期三') || text.includes('周三') || text === 'wednesday' || text === 'wed') return 3;
+  if (text.includes('星期四') || text.includes('周四') || text === 'thursday' || text === 'thu') return 4;
+  if (text.includes('星期五') || text.includes('周五') || text === 'friday' || text === 'fri') return 5;
+  if (text.includes('星期六') || text.includes('周六') || text === 'saturday' || text === 'sat') return 6;
+  if (text.includes('星期日') || text.includes('星期天') || text.includes('周日') || text === 'sunday' || text === 'sun') return 7;
   return null;
 }
 
@@ -154,6 +156,30 @@ export function buildInteractiveAnalysis(rows, filters = {}) {
     },
   ).sort((a, b) => a.weekday - b.weekday || a.hour - b.hour);
 
+  const weekdayHourlyComparison = groupRows(
+    filtered,
+    (row) => {
+      const weekday = getWeekdayIndex(row);
+      const hour = toNumber(row.hour);
+      return weekday && hour !== null ? `${weekday}|${hour}` : null;
+    },
+    (key, group) => {
+      const [weekday, hour] = String(key).split('|').map(Number);
+      const avgDepDelay = round(average(group, depDelay), 1);
+      const avgArrDelay = round(average(group, arrDelay), 1);
+      return {
+        weekday,
+        hour,
+        weekdayName: WEEKDAY_LABELS[weekday - 1],
+        flightCount: group.length,
+        avgDepDelay,
+        avgArrDelay,
+        recoveryMinutes: round(avgDepDelay - avgArrDelay, 1),
+        severeDelayRate: round((group.filter((row) => (toNumber(depDelay(row)) ?? 0) > 60).length / group.length) * 100, 1),
+      };
+    },
+  ).sort((a, b) => a.weekday - b.weekday || a.hour - b.hour);
+
   const topDestinations = groupRows(filtered, (row) => row.arrivalAirport || row.dest, (dest, group) => ({
     dest,
     dest_name: group[0]?.arrivalAirportName || group[0]?.dest_name || dest,
@@ -203,6 +229,7 @@ export function buildInteractiveAnalysis(rows, filters = {}) {
     hourlyComparison,
     heatmap: weekdayHourHeatmap,
     weekdayHourHeatmap,
+    weekdayHourlyComparison,
     topDestinations,
     topDestinationsVolume: topDestinations.slice(0, 10),
     topDestinationsDelay: topDestinationsDelay.slice(0, 10),
