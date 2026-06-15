@@ -3,6 +3,8 @@ import ReactECharts from 'echarts-for-react';
 import { Clock, Calendar, TrendingUp, AlertCircle } from 'lucide-react';
 import KPICard from '../components/charts/KPICard';
 import { useFetch } from '../hooks/useModuleData';
+import { useLanguage } from '../contexts/LanguageContext';
+import { localizeDisplayValue, localizeWeekdayByIndex } from '../lib/displayLocalization';
 
 const chartBaseOptions = {
   backgroundColor: 'transparent',
@@ -26,6 +28,121 @@ const chartBaseOptions = {
 };
 
 export default function Module2TimeAnalysis({ interactiveData }: { interactiveData?: any }) {
+  const { language } = useLanguage();
+  const isZh = language === 'zh';
+  const sourceWeekdayLabels = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+  const weekdayLabels = sourceWeekdayLabels.map((_, index) => localizeWeekdayByIndex(index + 1, language));
+  const label = {
+    depDelay: isZh ? '起飞延误' : 'Departure Delay',
+    arrDelay: isZh ? '到达延误' : 'Arrival Delay',
+    avgDelayAxis: isZh ? '平均延误(分钟)' : 'Avg delay (min)',
+    avgDelay: isZh ? '平均延误' : 'Avg delay',
+    minute: isZh ? '分钟' : 'min',
+    severeDelay: isZh ? '严重延误' : 'Severe delay',
+    onTime: isZh ? '准点' : 'On time',
+    morningAvg: isZh ? '早间平均延误' : 'Morning Avg Delay',
+    afternoonAvg: isZh ? '下午平均延误' : 'Afternoon Avg Delay',
+    eveningAvg: isZh ? '晚间平均延误' : 'Evening Avg Delay',
+    worstMonth: isZh ? '最差月份' : 'Most Variable Month',
+    worstMonthSub: isZh ? '延误波动最大' : 'Highest delay variance',
+    comparisonTitle: isZh ? '24小时延误对比' : '24-hour Delay Comparison',
+    comparisonDesc: isZh ? '起飞延误与到达延误的对比，观察空中追回效果' : 'Compare departure and arrival delay to observe in-air recovery.',
+    monthlyTitle: isZh ? '月份延误趋势' : 'Monthly Delay Trend',
+    monthlyDesc: isZh ? '各月份平均延误变化，识别季节性规律' : 'Monthly average delay changes reveal seasonal patterns.',
+    weekdayTitle: isZh ? '星期延误分析' : 'Weekday Delay Analysis',
+    periodTitle: isZh ? '时段延误分析' : 'Time Period Delay Analysis',
+    periodDesc: isZh ? '不同时段的延误程度对比' : 'Compare delay levels across operating periods.',
+    heatmapTitle: isZh ? '星期×小时延误热力图' : 'Weekday by Hour Delay Heatmap',
+    heatmapDesc: isZh ? '精准定位高风险时段（5:00-23:00）' : 'Pinpoint high-risk windows from 05:00 to 23:00.',
+    conclusionTitle: isZh ? '时间规律结论' : 'Time Pattern Findings',
+    c1: isZh ? '早间(5-9点)航班最准点，建议优先选择' : 'Morning flights from 05:00 to 09:00 are the most punctual.',
+    c2: isZh ? '下午延误通常比早间更高，运营压力开始累积' : 'Afternoon delay is usually higher than morning delay as operating pressure accumulates.',
+    c3: isZh ? '晚间18-21点延误最严重，需预留充足时间' : 'The 18:00-21:00 window has the heaviest delay risk.',
+    c4: isZh ? '延误随全天运营累积，越晚越容易延误' : 'Delay accumulates across the operating day and becomes more likely later.',
+  };
+  Object.assign(label, isZh ? {
+    depDelay: '起飞延误',
+    arrDelay: '到达延误',
+    avgDelayAxis: '平均延误(分钟)',
+    avgDelay: '平均延误',
+    minute: '分钟',
+    severeDelay: '严重延误',
+    onTime: '准点',
+    morningAvg: '早间平均延误',
+    afternoonAvg: '下午平均延误',
+    eveningAvg: '晚间平均延误',
+    worstMonth: '波动最大月份',
+    worstMonthSub: '延误波动最大',
+    comparisonTitle: '24 小时延误对比',
+    comparisonDesc: '对比起飞延误与到达延误，观察空中追回效果。',
+    monthlyTitle: '月份延误趋势',
+    monthlyDesc: '各月份平均延误变化，用于识别季节性规律。',
+    weekdayTitle: '星期延误分析',
+    periodTitle: '时段延误分析',
+    periodDesc: '对比不同运营时段的延误程度。',
+    heatmapTitle: '星期 x 小时延误热力图',
+    heatmapDesc: '精准定位 05:00-23:00 的高风险窗口。',
+    conclusionTitle: '时间规律结论',
+    c1: '05:00-09:00 的早间航班通常最准点。',
+    c2: '下午延误通常高于早间，运营压力开始累积。',
+    c3: '18:00-21:00 是最严重的延误风险窗口。',
+    c4: '延误会随全天运行逐步积累，越晚越容易延误。',
+  } : {
+    depDelay: 'Departure Delay',
+    arrDelay: 'Arrival Delay',
+    avgDelayAxis: 'Avg delay (min)',
+    avgDelay: 'Avg delay',
+    minute: 'min',
+    severeDelay: 'Severe delay',
+    onTime: 'On time',
+    morningAvg: 'Morning Avg Delay',
+    afternoonAvg: 'Afternoon Avg Delay',
+    eveningAvg: 'Evening Avg Delay',
+    worstMonth: 'Most Variable Month',
+    worstMonthSub: 'Highest delay variance',
+    comparisonTitle: '24-hour Delay Comparison',
+    comparisonDesc: 'Compare departure and arrival delay to observe in-air recovery.',
+    monthlyTitle: 'Monthly Delay Trend',
+    monthlyDesc: 'Monthly average delay changes reveal seasonal patterns.',
+    weekdayTitle: 'Weekday Delay Analysis',
+    periodTitle: 'Time Period Delay Analysis',
+    periodDesc: 'Compare delay levels across operating periods.',
+    heatmapTitle: 'Weekday by Hour Delay Heatmap',
+    heatmapDesc: 'Pinpoint high-risk windows from 05:00 to 23:00.',
+    conclusionTitle: 'Time Pattern Findings',
+    c1: 'Morning flights from 05:00 to 09:00 are the most punctual.',
+    c2: 'Afternoon delay is usually higher than morning delay as operating pressure accumulates.',
+    c3: 'The 18:00-21:00 window has the heaviest delay risk.',
+    c4: 'Delay accumulates across the operating day and becomes more likely later.',
+  });
+  Object.assign(label, isZh ? {
+    depDelay: '起飞延误',
+    arrDelay: '到达延误',
+    avgDelayAxis: '平均延误(分钟)',
+    avgDelay: '平均延误',
+    minute: '分钟',
+    severeDelay: '严重延误',
+    onTime: '准点',
+    morningAvg: '早间平均延误',
+    afternoonAvg: '下午平均延误',
+    eveningAvg: '晚间平均延误',
+    worstMonth: '波动最大月份',
+    worstMonthSub: '延误波动最大',
+    comparisonTitle: '24 小时延误对比',
+    comparisonDesc: '对比起飞延误与到达延误，观察空中追回效果。',
+    monthlyTitle: '月份延误趋势',
+    monthlyDesc: '各月份平均延误变化，用于识别季节性规律。',
+    weekdayTitle: '星期延误分析',
+    periodTitle: '时段延误分析',
+    periodDesc: '对比不同运营时段的延误程度。',
+    heatmapTitle: '星期 x 小时延误热力图',
+    heatmapDesc: '精准定位 05:00-23:00 的高风险窗口。',
+    conclusionTitle: '时间规律结论',
+    c1: '05:00-09:00 的早间航班通常最准点。',
+    c2: '下午延误通常高于早间，运营压力开始累积。',
+    c3: '18:00-21:00 是最严重的延误风险窗口。',
+    c4: '延误会随全天运行逐步累积，越晚越容易延误。',
+  } : {});
   const { data: hourlyDepDelay } = useFetch('/api/module2/hourly-dep-delay');
   const { data: hourlyComparison } = useFetch('/api/module2/hourly-comparison');
   const { data: monthlyTrend } = useFetch('/api/module2/monthly-trend');
@@ -36,13 +153,16 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
 
   const activeHourlyComparison = interactiveData?.hourlyComparison || hourlyComparison;
   const activeWeekdayHourHeatmap = interactiveData?.weekdayHourHeatmap || weekdayHourHeatmap;
+  const translatePeriod = (value: string) => {
+    return localizeDisplayValue(value, language);
+  };
 
   // 双折线图：起飞延误 vs 到达延误
   const comparisonOption = {
     ...chartBaseOptions,
     tooltip: { ...chartBaseOptions.tooltip, trigger: 'axis' },
     legend: {
-      data: ['起飞延误', '到达延误'],
+      data: [label.depDelay, label.arrDelay],
       textStyle: { color: '#94a3b8' },
       top: 0
     },
@@ -52,10 +172,10 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
       boundaryGap: false,
       data: activeHourlyComparison?.map((d: any) => `${d.hour}:00`) || []
     },
-    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: '平均延误(分钟)' },
+    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: label.avgDelayAxis },
     series: [
       {
-        name: '起飞延误',
+        name: label.depDelay,
         type: 'line',
         smooth: true,
         data: activeHourlyComparison?.map((d: any) => d.avgDepDelay) || [],
@@ -63,7 +183,7 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
         itemStyle: { color: '#00f2ff' }
       },
       {
-        name: '到达延误',
+        name: label.arrDelay,
         type: 'line',
         smooth: true,
         data: activeHourlyComparison?.map((d: any) => d.avgArrDelay) || [],
@@ -80,9 +200,9 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
     xAxis: {
       ...chartBaseOptions.xAxis,
       type: 'category',
-      data: monthlyTrend?.map((d: any) => d.monthName) || []
+      data: monthlyTrend?.map((d: any) => isZh ? d.monthName : `M${d.month}`) || []
     },
-    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: '平均延误(分钟)' },
+    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: label.avgDelayAxis },
     series: [{
       type: 'line',
       data: monthlyTrend?.map((d: any) => d.avgDepDelay) || [],
@@ -108,9 +228,9 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
     xAxis: {
       ...chartBaseOptions.xAxis,
       type: 'category',
-      data: weekdayAnalysis?.map((d: any) => d.weekdayName) || []
+      data: weekdayAnalysis?.map((d: any) => weekdayLabels[(Number(d.weekday) || 1) - 1] || d.weekdayName) || []
     },
-    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: '平均延误(分钟)' },
+    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: label.avgDelayAxis },
     series: [{
       type: 'bar',
       data: weekdayAnalysis?.map((d: any) => ({
@@ -130,10 +250,10 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
     xAxis: {
       ...chartBaseOptions.xAxis,
       type: 'category',
-      data: periodAnalysis?.map((d: any) => d.time_period) || [],
+      data: periodAnalysis?.map((d: any) => translatePeriod(d.time_period)) || [],
       axisLabel: { rotate: 30, color: '#64748b' }
     },
-    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: '平均延误(分钟)' },
+    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: label.avgDelayAxis },
     series: [{
       type: 'bar',
       data: periodAnalysis?.map((d: any) => d.avgDepDelay) || [],
@@ -151,8 +271,11 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
 
   const heatmapHours = Array.from({ length: 19 }, (_, i) => i + 5);
   const heatmapHourLabels = heatmapHours.map((hour) => `${hour}:00`);
-  const heatmapWeekdayLabels = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-  const heatmapWeekdayIndex = new Map(heatmapWeekdayLabels.map((name, index) => [name, index]));
+  const heatmapWeekdayLabels = weekdayLabels;
+  const heatmapWeekdayIndex = new Map([
+    ...sourceWeekdayLabels.map((name, index) => [name, index] as const),
+    ...heatmapWeekdayLabels.map((name, index) => [name, index] as const),
+  ]);
   const heatmapSeriesData = (activeWeekdayHourHeatmap || [])
     .map((d: any) => {
       const hour = Number(d.hour);
@@ -176,7 +299,7 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
         Number(d.avgDelay) || 0,
         {
           hour,
-          weekdayName: d.weekdayName || heatmapWeekdayLabels[weekdayIndex],
+          weekdayName: heatmapWeekdayLabels[weekdayIndex],
           flightCount: d.flightCount,
           severeDelayRate: d.severeDelayRate
         }
@@ -210,7 +333,7 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
         const delay = params.data[2];
         return `<div style="padding: 4px 8px;">
           <div style="font-weight: 600; margin-bottom: 4px; color: #38bdf8;">${weekday} ${hour}:00</div>
-          <div>平均延误: <span style="color: #fbbf24; font-weight: 600;">${delay.toFixed(1)}</span> 分钟</div>
+          <div>${label.avgDelay}: <span style="color: #fbbf24; font-weight: 600;">${delay.toFixed(1)}</span> ${label.minute}</div>
         </div>`;
       }
     },
@@ -241,7 +364,7 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
     },
     yAxis: {
       type: 'category',
-      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+      data: weekdayLabels,
       splitArea: {
         show: true,
         areaStyle: {
@@ -286,7 +409,7 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
         color: '#94a3b8',
         fontSize: 12
       },
-      text: ['严重延误', '准点'],
+      text: [label.severeDelay, label.onTime],
       textGap: 15,
       precision: 0
     },
@@ -317,30 +440,30 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
       {/* 关键指标 */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <KPICard
-          title="早间平均延误"
-          value={`${conclusions?.morningAvgDelay || '--'}分钟`}
-          subtitle="5-12点"
+          title={label.morningAvg}
+          value={`${conclusions?.morningAvgDelay || '--'} ${label.minute}`}
+          subtitle={isZh ? '5-12点' : '05:00-12:00'}
           icon={Clock}
           color="green"
         />
         <KPICard
-          title="下午平均延误"
-          value={`${conclusions?.afternoonAvgDelay || '--'}分钟`}
-          subtitle="12-18点"
+          title={label.afternoonAvg}
+          value={`${conclusions?.afternoonAvgDelay || '--'} ${label.minute}`}
+          subtitle={isZh ? '12-18点' : '12:00-18:00'}
           icon={Clock}
           color="orange"
         />
         <KPICard
-          title="晚间平均延误"
-          value={`${conclusions?.eveningAvgDelay || '--'}分钟`}
-          subtitle="18-23点"
+          title={label.eveningAvg}
+          value={`${conclusions?.eveningAvgDelay || '--'} ${label.minute}`}
+          subtitle={isZh ? '18-23点' : '18:00-23:00'}
           icon={Clock}
           color="red"
         />
         <KPICard
-          title="最差月份"
-          value={conclusions?.maxVarMonth || '--'}
-          subtitle="延误波动最大"
+          title={label.worstMonth}
+          value={conclusions?.maxVarMonth ? localizeDisplayValue(conclusions.maxVarMonth, language) : '--'}
+          subtitle={label.worstMonthSub}
           icon={Calendar}
           color="purple"
         />
@@ -352,10 +475,10 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
         <div className="glass-panel p-6 rounded-2xl">
           <h3 className="text-lg font-medium text-slate-100 mb-4 flex items-center gap-2">
             <TrendingUp className="w-5 h-5 text-cyan-400" />
-            24小时延误对比
+            {label.comparisonTitle}
           </h3>
           <p className="text-sm text-slate-400 mb-4">
-            起飞延误与到达延误的对比，观察空中追回效果
+            {label.comparisonDesc}
           </p>
           <div className="h-[300px]">
             <ReactECharts option={comparisonOption} style={{ height: '100%', width: '100%' }} />
@@ -366,10 +489,10 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
         <div className="glass-panel p-6 rounded-2xl">
           <h3 className="text-lg font-medium text-slate-100 mb-4 flex items-center gap-2">
             <Calendar className="w-5 h-5 text-purple-400" />
-            月份延误趋势
+            {label.monthlyTitle}
           </h3>
           <p className="text-sm text-slate-400 mb-4">
-            各月份平均延误变化，识别季节性规律
+            {label.monthlyDesc}
           </p>
           <div className="h-[300px]">
             <ReactECharts option={monthlyOption} style={{ height: '100%', width: '100%' }} />
@@ -380,10 +503,14 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
         <div className="glass-panel p-6 rounded-2xl">
           <h3 className="text-lg font-medium text-slate-100 mb-4 flex items-center gap-2">
             <Calendar className="w-5 h-5 text-orange-400" />
-            星期延误分析
+            {label.weekdayTitle}
           </h3>
           <p className="text-sm text-slate-400 mb-4">
-            周一至周日的延误差异，{conclusions?.worstWeekday || '--'}延误最严重
+            {isZh
+              ? `周一至周日的延误差异，${conclusions?.worstWeekday || '--'}延误最严重`
+              : `Compare delay differences from Monday through Sunday. ${
+                  conclusions?.worstWeekday ? localizeDisplayValue(conclusions.worstWeekday, language) : '--'
+                } has the highest delay.`}
           </p>
           <div className="h-[300px]">
             <ReactECharts option={weekdayOption} style={{ height: '100%', width: '100%' }} />
@@ -394,10 +521,10 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
         <div className="glass-panel p-6 rounded-2xl">
           <h3 className="text-lg font-medium text-slate-100 mb-4 flex items-center gap-2">
             <Clock className="w-5 h-5 text-green-400" />
-            时段延误分析
+            {label.periodTitle}
           </h3>
           <p className="text-sm text-slate-400 mb-4">
-            不同时段的延误程度对比
+            {label.periodDesc}
           </p>
           <div className="h-[300px]">
             <ReactECharts option={periodOption} style={{ height: '100%', width: '100%' }} />
@@ -410,10 +537,10 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
             <div>
               <h3 className="text-lg font-medium text-slate-100 flex items-center gap-2">
                 <AlertCircle className="w-5 h-5 text-red-400" />
-                星期×小时延误热力图
+                {label.heatmapTitle}
               </h3>
               <p className="text-sm text-slate-400 mt-2">
-                精准定位高风险时段（5:00-23:00），{conclusions?.worstHour || '--'}:00为最差时刻
+                {label.heatmapDesc}
               </p>
             </div>
           </div>
@@ -425,23 +552,23 @@ export default function Module2TimeAnalysis({ interactiveData }: { interactiveDa
 
       {/* 关键结论 */}
       <div className="glass-panel p-6 rounded-2xl border-l-4 border-l-orange-500">
-        <h3 className="text-lg font-medium text-slate-100 mb-3">时间规律结论</h3>
+        <h3 className="text-lg font-medium text-slate-100 mb-3">{label.conclusionTitle}</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
           <div className="flex items-start gap-2">
             <span className="text-green-400">✓</span>
-            <span>早间(5-9点)航班最准点，建议优先选择</span>
+            <span>{label.c1}</span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-orange-400">✓</span>
-            <span>下午延误比早间增加约{conclusions?.afternoonIncrease || '--'}分钟</span>
+            <span>{label.c2}</span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-red-400">✓</span>
-            <span>晚间18-21点延误最严重，需预留充足时间</span>
+            <span>{label.c3}</span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-purple-400">✓</span>
-            <span>延误随全天运营累积，越晚越容易延误</span>
+            <span>{label.c4}</span>
           </div>
         </div>
       </div>

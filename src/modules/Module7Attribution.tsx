@@ -3,6 +3,8 @@ import ReactECharts from 'echarts-for-react';
 import { Wind, Thermometer, Plane, AlertTriangle, BarChart2 } from 'lucide-react';
 import KPICard from '../components/charts/KPICard';
 import { useFetch } from '../hooks/useModuleData';
+import { useLanguage } from '../contexts/LanguageContext';
+import { localizeDisplayValue } from '../lib/displayLocalization';
 
 const chartBaseOptions = {
   backgroundColor: 'transparent',
@@ -26,6 +28,107 @@ const chartBaseOptions = {
 };
 
 export default function Module7Attribution() {
+  const { language } = useLanguage();
+  const isZh = language === 'zh';
+  const label = {
+    avgDelayAxis: isZh ? '平均延误(分钟)' : 'Avg delay (min)',
+    importanceAxis: isZh ? '重要性(%)' : 'Importance (%)',
+    impactStrength: isZh ? '影响强度' : 'Impact strength',
+    correlation: isZh ? '相关性' : 'Correlation',
+    minute: isZh ? '分钟' : 'min',
+    ageCorrelation: isZh ? '机龄相关性' : 'Aircraft Age Correlation',
+    topWeather: isZh ? '最强天气因素' : 'Top Weather Factor',
+    oldPlaneIncrease: isZh ? '老飞机延误增加' : 'Older-aircraft Delay Increase',
+    badWeatherIncrease: isZh ? '恶劣天气延误增加' : 'Bad-weather Delay Increase',
+    ageTitle: isZh ? '机龄分组延误分析' : 'Aircraft Age Group Delay Analysis',
+    ageDesc: isZh ? '不同机龄组的平均延误对比' : 'Compare average delay across aircraft age groups.',
+    weatherTitle: isZh ? '天气条件延误分析' : 'Weather Condition Delay Analysis',
+    weatherDesc: isZh ? '不同天气条件下的平均延误对比' : 'Compare average delay under different weather conditions.',
+    importanceTitle: isZh ? '特征重要性排序' : 'Feature Importance Ranking',
+    importanceDesc: isZh ? '各因素对延误的影响强度排序' : 'Ranking of factor impact strength on delay.',
+    radarTitle: isZh ? '多因素影响强度雷达图' : 'Multi-factor Impact Radar',
+    radarDesc: isZh ? '各类因素对延误的综合影响' : 'Combined impact profile of factor groups.',
+    corrTitle: isZh ? '天气变量与延误相关性' : 'Weather Variables and Delay Correlation',
+    conclusionTitle: isZh ? '延误归因结论' : 'Delay Attribution Findings',
+    c1: isZh ? '机龄与延误相关性较弱，老飞机并非主要延误原因' : 'Aircraft age correlation is weak; older aircraft are not the dominant delay driver.',
+    c2: isZh ? '天气因素中，风速、能见度等变量对延误影响更突出' : 'Weather factors such as wind speed and visibility have more visible delay impact.',
+    c3: isZh ? '低能见度天气通常会显著推高延误水平' : 'Low-visibility weather usually pushes delay levels higher.',
+    c4: isZh ? '时段因素(下午/晚间)比天气和机龄影响更显著' : 'Time-of-day factors, especially afternoon and evening, are stronger than weather and aircraft age.',
+  };
+  Object.assign(label, isZh ? {
+    avgDelayAxis: '平均延误(分钟)',
+    importanceAxis: '重要性(%)',
+    impactStrength: '影响强度',
+    correlation: '相关性',
+    minute: '分钟',
+    ageCorrelation: '机龄相关性',
+    topWeather: '最强天气因素',
+    oldPlaneIncrease: '老飞机延误增加',
+    badWeatherIncrease: '恶劣天气延误增加',
+    ageTitle: '机龄分组延误分析',
+    ageDesc: '对比不同机龄组的平均延误。',
+    weatherTitle: '天气条件延误分析',
+    weatherDesc: '对比不同天气条件下的平均延误。',
+    importanceTitle: '特征重要性排序',
+    importanceDesc: '各因素对延误的影响强度排序。',
+    radarTitle: '多因素影响强度雷达图',
+    radarDesc: '各类因素对延误的综合影响。',
+    corrTitle: '天气变量与延误相关性',
+    conclusionTitle: '延误归因结论',
+    c1: '机龄与延误相关性较弱，老飞机并非主要延误原因。',
+    c2: '天气因素中，风速、能见度等变量对延误影响更突出。',
+    c3: '低能见度天气通常会显著推高延误水平。',
+    c4: '时段因素，尤其下午和晚间，比天气和机龄影响更明显。',
+  } : {
+    avgDelayAxis: 'Avg delay (min)',
+    importanceAxis: 'Importance (%)',
+    impactStrength: 'Impact strength',
+    correlation: 'Correlation',
+    minute: 'min',
+    ageCorrelation: 'Aircraft Age Correlation',
+    topWeather: 'Top Weather Factor',
+    oldPlaneIncrease: 'Older-aircraft Delay Increase',
+    badWeatherIncrease: 'Bad-weather Delay Increase',
+    ageTitle: 'Aircraft Age Group Delay Analysis',
+    ageDesc: 'Compare average delay across aircraft age groups.',
+    weatherTitle: 'Weather Condition Delay Analysis',
+    weatherDesc: 'Compare average delay under different weather conditions.',
+    importanceTitle: 'Feature Importance Ranking',
+    importanceDesc: 'Ranking of factor impact strength on delay.',
+    radarTitle: 'Multi-factor Impact Radar',
+    radarDesc: 'Combined impact profile of factor groups.',
+    corrTitle: 'Weather Variables and Delay Correlation',
+    conclusionTitle: 'Delay Attribution Findings',
+    c1: 'Aircraft age correlation is weak; older aircraft are not the dominant delay driver.',
+    c2: 'Weather factors such as wind speed and visibility have more visible delay impact.',
+    c3: 'Low-visibility weather usually pushes delay levels higher.',
+    c4: 'Time-of-day factors, especially afternoon and evening, are stronger than weather and aircraft age.',
+  });
+  Object.assign(label, isZh ? {
+    avgDelayAxis: '平均延误(分钟)',
+    importanceAxis: '重要性(%)',
+    impactStrength: '影响强度',
+    correlation: '相关性',
+    minute: '分钟',
+    ageCorrelation: '机龄相关性',
+    topWeather: '最强天气因素',
+    oldPlaneIncrease: '老飞机延误增加',
+    badWeatherIncrease: '恶劣天气延误增加',
+    ageTitle: '机龄分组延误分析',
+    ageDesc: '对比不同机龄组的平均延误。',
+    weatherTitle: '天气条件延误分析',
+    weatherDesc: '对比不同天气条件下的平均延误。',
+    importanceTitle: '特征重要性排序',
+    importanceDesc: '各因素对延误的影响强度排序。',
+    radarTitle: '多因素影响强度雷达图',
+    radarDesc: '各类因素对延误的综合影响。',
+    corrTitle: '天气变量与延误相关性',
+    conclusionTitle: '延误归因结论',
+    c1: '机龄与延误相关性较弱，老飞机并非主要延误原因。',
+    c2: '天气因素中，风速、能见度等变量对延误影响更突出。',
+    c3: '低能见度天气通常会显著推高延误水平。',
+    c4: '时段因素，尤其下午和晚间，比天气和机龄影响更明显。',
+  } : {});
   const { data: ageAnalysis } = useFetch('/api/module7/age-analysis');
   const { data: weatherAnalysis } = useFetch('/api/module7/weather-analysis');
   const { data: correlationMatrix } = useFetch('/api/module7/correlation-matrix');
@@ -41,9 +144,9 @@ export default function Module7Attribution() {
     xAxis: {
       ...chartBaseOptions.xAxis,
       type: 'category',
-      data: ageAnalysis?.map((d: any) => d.plane_age_group) || []
+      data: ageAnalysis?.map((d: any) => localizeDisplayValue(d.plane_age_group, language)) || []
     },
-    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: '平均延误(分钟)' },
+    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: label.avgDelayAxis },
     series: [{
       type: 'bar',
       data: ageAnalysis?.map((d: any) => ({
@@ -60,9 +163,9 @@ export default function Module7Attribution() {
     xAxis: {
       ...chartBaseOptions.xAxis,
       type: 'category',
-      data: weatherAnalysis?.map((d: any) => d.weather_condition) || []
+      data: weatherAnalysis?.map((d: any) => localizeDisplayValue(d.weather_condition, language)) || []
     },
-    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: '平均延误(分钟)' },
+    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: label.avgDelayAxis },
     series: [{
       type: 'bar',
       data: weatherAnalysis?.map((d: any) => ({
@@ -76,11 +179,11 @@ export default function Module7Attribution() {
   const importanceOption = {
     ...chartBaseOptions,
     tooltip: { ...chartBaseOptions.tooltip, trigger: 'axis' },
-    xAxis: { ...chartBaseOptions.yAxis, type: 'value', name: '重要性(%)' },
+    xAxis: { ...chartBaseOptions.yAxis, type: 'value', name: label.importanceAxis },
     yAxis: {
       ...chartBaseOptions.xAxis,
       type: 'category',
-      data: [...(featureImportance || [])].reverse().map((d: any) => d.feature)
+      data: [...(featureImportance || [])].reverse().map((d: any) => localizeDisplayValue(d.feature, language))
     },
     series: [{
       type: 'bar',
@@ -102,7 +205,7 @@ export default function Module7Attribution() {
     backgroundColor: 'transparent',
     tooltip: {},
     radar: {
-      indicator: radarData?.map((d: any) => ({ name: d.factor, max: 50 })) || [],
+      indicator: radarData?.map((d: any) => ({ name: localizeDisplayValue(d.factor, language), max: 50 })) || [],
       axisName: { color: '#94a3b8' },
       splitLine: { lineStyle: { color: '#1e293b' } },
       splitArea: { areaStyle: { color: ['rgba(15, 23, 42, 0.2)', 'rgba(15, 23, 42, 0.4)'] } }
@@ -111,7 +214,7 @@ export default function Module7Attribution() {
       type: 'radar',
       data: [{
         value: radarData?.map((d: any) => d.value) || [],
-        name: '影响强度',
+        name: label.impactStrength,
         areaStyle: { color: 'rgba(6, 182, 212, 0.3)' },
         lineStyle: { color: '#06b6d4' },
         itemStyle: { color: '#06b6d4' }
@@ -129,12 +232,12 @@ export default function Module7Attribution() {
     xAxis: {
       ...chartBaseOptions.xAxis,
       type: 'category',
-      data: correlationMatrix?.map((d: any) => d.variable) || []
+      data: correlationMatrix?.map((d: any) => localizeDisplayValue(d.variable, language)) || []
     },
     yAxis: {
       ...chartBaseOptions.yAxis,
       type: 'category',
-      data: ['相关性']
+      data: [label.correlation]
     },
     visualMap: {
       min: -1,
@@ -157,26 +260,26 @@ export default function Module7Attribution() {
       {/* 关键指标 */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <KPICard
-          title="机龄相关性"
+          title={label.ageCorrelation}
           value={conclusions?.ageCorrelation?.toFixed(3) || '--'}
           icon={Plane}
           color="cyan"
         />
         <KPICard
-          title="最强天气因素"
-          value={conclusions?.topWeatherFactor || '--'}
+          title={label.topWeather}
+          value={conclusions?.topWeatherFactor ? localizeDisplayValue(conclusions.topWeatherFactor, language) : '--'}
           icon={Wind}
           color="purple"
         />
         <KPICard
-          title="老飞机延误增加"
-          value={`${conclusions?.oldPlaneDelayIncrease || '--'}分钟`}
+          title={label.oldPlaneIncrease}
+          value={`${conclusions?.oldPlaneDelayIncrease || '--'} ${label.minute}`}
           icon={AlertTriangle}
           color="orange"
         />
         <KPICard
-          title="恶劣天气延误增加"
-          value={`${conclusions?.badWeatherDelayIncrease || '--'}分钟`}
+          title={label.badWeatherIncrease}
+          value={`${conclusions?.badWeatherDelayIncrease || '--'} ${label.minute}`}
           icon={Thermometer}
           color="red"
         />
@@ -188,10 +291,10 @@ export default function Module7Attribution() {
         <div className="glass-panel p-6 rounded-2xl">
           <h3 className="text-lg font-medium text-slate-100 mb-4 flex items-center gap-2">
             <Plane className="w-5 h-5 text-cyan-400" />
-            机龄分组延误分析
+            {label.ageTitle}
           </h3>
           <p className="text-sm text-slate-400 mb-4">
-            不同机龄组的平均延误对比
+            {label.ageDesc}
           </p>
           <div className="h-[300px]">
             <ReactECharts option={ageOption} style={{ height: '100%', width: '100%' }} />
@@ -202,10 +305,10 @@ export default function Module7Attribution() {
         <div className="glass-panel p-6 rounded-2xl">
           <h3 className="text-lg font-medium text-slate-100 mb-4 flex items-center gap-2">
             <Wind className="w-5 h-5 text-purple-400" />
-            天气条件延误分析
+            {label.weatherTitle}
           </h3>
           <p className="text-sm text-slate-400 mb-4">
-            不同天气条件下的平均延误对比
+            {label.weatherDesc}
           </p>
           <div className="h-[300px]">
             <ReactECharts option={weatherOption} style={{ height: '100%', width: '100%' }} />
@@ -216,10 +319,10 @@ export default function Module7Attribution() {
         <div className="glass-panel p-6 rounded-2xl">
           <h3 className="text-lg font-medium text-slate-100 mb-4 flex items-center gap-2">
             <BarChart2 className="w-5 h-5 text-orange-400" />
-            特征重要性排序
+            {label.importanceTitle}
           </h3>
           <p className="text-sm text-slate-400 mb-4">
-            各因素对延误的影响强度排序
+            {label.importanceDesc}
           </p>
           <div className="h-[300px]">
             <ReactECharts option={importanceOption} style={{ height: '100%', width: '100%' }} />
@@ -230,10 +333,10 @@ export default function Module7Attribution() {
         <div className="glass-panel p-6 rounded-2xl">
           <h3 className="text-lg font-medium text-slate-100 mb-4 flex items-center gap-2">
             <AlertTriangle className="w-5 h-5 text-red-400" />
-            多因素影响强度雷达图
+            {label.radarTitle}
           </h3>
           <p className="text-sm text-slate-400 mb-4">
-            各类因素对延误的综合影响
+            {label.radarDesc}
           </p>
           <div className="h-[300px]">
             <ReactECharts option={radarOption} style={{ height: '100%', width: '100%' }} />
@@ -243,11 +346,11 @@ export default function Module7Attribution() {
 
       {/* 天气变量相关性 */}
       <div className="glass-panel p-6 rounded-2xl">
-        <h3 className="text-lg font-medium text-slate-100 mb-4">天气变量与延误相关性</h3>
+        <h3 className="text-lg font-medium text-slate-100 mb-4">{label.corrTitle}</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {correlationMatrix?.map((item: any, i: number) => (
             <div key={i} className="p-3 rounded-lg bg-slate-800/50">
-              <div className="text-sm text-slate-400">{item.variable}</div>
+              <div className="text-sm text-slate-400">{localizeDisplayValue(item.variable, language)}</div>
               <div className={`text-lg font-bold ${item.correlation > 0 ? 'text-red-400' : 'text-green-400'}`}>
                 {item.correlation.toFixed(3)}
               </div>
@@ -258,23 +361,23 @@ export default function Module7Attribution() {
 
       {/* 关键结论 */}
       <div className="glass-panel p-6 rounded-2xl border-l-4 border-l-orange-500">
-        <h3 className="text-lg font-medium text-slate-100 mb-3">延误归因结论</h3>
+        <h3 className="text-lg font-medium text-slate-100 mb-3">{label.conclusionTitle}</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
           <div className="flex items-start gap-2">
             <span className="text-cyan-400">✓</span>
-            <span>机龄与延误相关性较弱，老飞机并非主要延误原因</span>
+            <span>{label.c1}</span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-red-400">✓</span>
-            <span>天气因素中，{conclusions?.topWeatherFactor || '风速'}对延误影响最大</span>
+            <span>{label.c2}</span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-orange-400">✓</span>
-            <span>低能见度天气下延误增加约{conclusions?.badWeatherDelayIncrease || '--'}分钟</span>
+            <span>{label.c3}</span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-purple-400">✓</span>
-            <span>时段因素(下午/晚间)比天气和机龄影响更显著</span>
+            <span>{label.c4}</span>
           </div>
         </div>
       </div>

@@ -1,83 +1,75 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { Search, Download, Filter, ChevronLeft, ChevronRight, Check, Loader2, X, Sparkles, FileSearch, Trash2 } from 'lucide-react';
+﻿import { useCallback, useEffect, useMemo, useState } from 'react';
+import {
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  FileSearch,
+  Filter,
+  Loader2,
+  Search,
+  Trash2,
+} from 'lucide-react';
+import { getLocalizedFields } from '../lib/fieldMetadata.js';
+import { useLanguage } from '../contexts/LanguageContext';
+import { delayLevelKey, localizeDelayLevel } from '../lib/displayLocalization';
+import { cachedJson } from '../lib/preloadData';
 
-interface Flight {
-  date: string;
-  airlineCode: string;
-  airlineName?: string;
-  flightNumber: string | number;
-  aircraftId?: string;
-  departureAirport?: string;
-  departureAirportName?: string;
-  arrivalAirport?: string;
-  arrivalAirportName?: string;
-  route: string;
-  departureDelay: number;
-  arrivalDelay: number;
-  flightTime?: number;
-  flightDistance?: number;
-  flightSpeed?: number;
-  delayLevel: string;
-}
+type Flight = Record<string, any>;
 
-interface SearchResponse {
+type SearchResponse = {
   data: Flight[];
   total: number;
   page: number;
   pageSize: number;
-}
+};
 
-interface SummaryStats {
+type SummaryStats = {
   totalRecords: number;
   avgDepDelay: number;
   avgArrDelay?: number;
-  avgFlightTime?: number;
   avgDistance: number;
-  avgSpeed?: number;
-  avgAircraftAge?: number;
   uniqueAirlines: number;
   uniqueRoutes: number;
-  uniqueAircraft?: number;
+};
+
+type OptionRow = Record<string, any> & { count?: number };
+
+const pageSizeOptions = [10, 20, 50, 100, 200];
+const DEFAULT_PAGE_SIZE = 20;
+const DEFAULT_FILTERS = { q: '', airline: '', destination: '', delayLevel: '' };
+
+function getDelayColor(delay: number) {
+  if (delay <= 0) return 'text-green-400';
+  if (delay <= 15) return 'text-cyan-400';
+  if (delay <= 60) return 'text-yellow-400';
+  return 'text-red-400';
 }
 
-interface FilterOptions {
-  airlineCode: string;
-  airlineName: string;
-  count: number;
-}
-
-interface DestOptions {
-  arrivalAirport: string;
-  arrivalAirportName: string;
-  count: number;
-}
-
-interface DelayLevelOptions {
-  delayLevel: string;
-  count: number;
+function delayBadgeClass(level: string) {
+  const key = delayLevelKey(level);
+  if (key === 'onTime') return 'bg-green-500/20 text-green-400';
+  if (key === 'light') return 'bg-cyan-500/20 text-cyan-400';
+  if (key === 'moderate') return 'bg-yellow-500/20 text-yellow-400';
+  if (key === 'missing') return 'bg-slate-500/20 text-slate-400';
+  return 'bg-red-500/20 text-red-400';
 }
 
 export default function Module8DataExplorer() {
-  // 分页状态
+  const { language, t } = useLanguage();
+  const unit = {
+    minute: language === 'zh' ? '分钟' : 'min',
+    mile: language === 'zh' ? '英里' : 'mi',
+  };
+  const fields = useMemo(() => getLocalizedFields(language), [language]);
+  const visibleFields = useMemo(
+    () => fields.filter((field: any) => !['year', 'month', 'day', 'hour', 'weekday', 'weekdayName'].includes(field.fid)),
+    [fields],
+  );
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(20);
-  const pageSizeOptions = [10, 20, 50, 100, 200];
-
-  // 筛选条件状态 - 临时状态和确认状态分离
-  const [tempFilters, setTempFilters] = useState({
-    q: '',
-    airline: '',
-    destination: '',
-    delayLevel: ''
-  });
-  const [appliedFilters, setAppliedFilters] = useState({
-    q: '',
-    airline: '',
-    destination: '',
-    delayLevel: ''
-  });
-
-  // 数据状态
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
+  const [tempFilters, setTempFilters] = useState(DEFAULT_FILTERS);
+  const [appliedFilters, setAppliedFilters] = useState(DEFAULT_FILTERS);
   const [flightList, setFlightList] = useState<Flight[]>([]);
   const [totalRecords, setTotalRecords] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -86,613 +78,389 @@ export default function Module8DataExplorer() {
   const [exporting, setExporting] = useState(false);
   const [showExportMenu, setShowExportMenu] = useState(false);
   const [exportRange, setExportRange] = useState({ startPage: '', endPage: '' });
-
-  // 获取静态选项数据
   const [summary, setSummary] = useState<SummaryStats | null>(null);
-  const [airlineOptions, setAirlineOptions] = useState<FilterOptions[]>([]);
-  const [destOptions, setDestOptions] = useState<DestOptions[]>([]);
-  const [delayLevelOptions, setDelayLevelOptions] = useState<DelayLevelOptions[]>([]);
-  const [optionsLoaded, setOptionsLoaded] = useState(false);  // 标记初始数据是否加载完成
-  const [initialLoadComplete, setInitialLoadComplete] = useState(false);  // 标记是否完成首次加载
+  const [airlineOptions, setAirlineOptions] = useState<OptionRow[]>([]);
+  const [destOptions, setDestOptions] = useState<OptionRow[]>([]);
+  const [delayLevelOptions, setDelayLevelOptions] = useState<OptionRow[]>([]);
+  const [optionsLoaded, setOptionsLoaded] = useState(false);
 
-  // 获取摘要数据和筛选选项
+  const totalPages = Math.max(1, Math.ceil(totalRecords / pageSize));
+  const hasActiveFilters = Object.values(appliedFilters).some(Boolean);
+  const hasTempFilters = Object.values(tempFilters).some(Boolean);
+  const visibleStart = totalRecords > 0 ? ((page - 1) * pageSize) + 1 : 0;
+  const visibleEnd = Math.min(page * pageSize, totalRecords);
+
   useEffect(() => {
+    let mounted = true;
     Promise.all([
-      fetch('/api/module8/summary').then(res => res.json()).catch(() => null),
-      fetch('/api/module8/airline-options').then(res => res.json()).catch(() => []),
-      fetch('/api/module8/dest-options').then(res => res.json()).catch(() => []),
-      fetch('/api/module8/delay-level-options').then(res => res.json()).catch(() => [])
-    ]).then(([summaryData, airlines, dests, delays]) => {
-      if (summaryData && !summaryData.error) {
-        setSummary(summaryData);
-      }
+      cachedJson<SummaryStats>('/api/module8/summary').catch(() => null),
+      cachedJson<OptionRow[]>('/api/module8/airline-options').catch(() => []),
+      cachedJson<OptionRow[]>('/api/module8/dest-options').catch(() => []),
+      cachedJson<OptionRow[]>('/api/module8/delay-level-options').catch(() => []),
+    ]).then(([summaryData, airlines, destinations, delays]) => {
+      if (!mounted) return;
+      if (summaryData) setSummary(summaryData);
       setAirlineOptions(airlines || []);
-      setDestOptions(dests || []);
+      setDestOptions(destinations || []);
       setDelayLevelOptions(delays || []);
       setOptionsLoaded(true);
-    }).catch(err => {
-      console.error('加载数据失败:', err);
-      setOptionsLoaded(true); // 即使失败也继续，避免死循环
+    }).catch(() => {
+      if (mounted) setOptionsLoaded(true);
     });
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
-  // 搜索数据
-  const searchFlights = useCallback(async (filters: typeof appliedFilters, pageNum: number) => {
+  const searchFlights = useCallback(async (filters: typeof appliedFilters, pageNum: number, size: number) => {
     setLoading(true);
     setHasSearched(true);
     try {
       const params = new URLSearchParams({
-        page: pageNum.toString(),
-        pageSize: pageSize.toString()
+        page: String(pageNum),
+        pageSize: String(size),
       });
-
       if (filters.q) params.append('q', filters.q);
       if (filters.airline) params.append('airline', filters.airline);
       if (filters.destination) params.append('destination', filters.destination);
       if (filters.delayLevel) params.append('delayLevel', filters.delayLevel);
 
-      const response = await fetch(`/api/module8/search?${params.toString()}`);
-
-      if (!response.ok) {
-        throw new Error(`请求失败: ${response.status}`);
-      }
-
-      const data: SearchResponse = await response.json();
-
-      // 确保数据格式正确
-      const processedData = (data.data || []).map((flight: Flight) => ({
-        ...flight,
-        flightNumber: String(flight.flightNumber) // 确保flightNumber是字符串
-      }));
-
-      setFlightList(processedData);
+      const data = await cachedJson<SearchResponse>(`/api/module8/search?${params.toString()}`);
+      setFlightList((data.data || []).map((flight) => ({ ...flight, flightNumber: String(flight.flightNumber ?? '') })));
       setTotalRecords(data.total || 0);
-      setInitialLoadComplete(true);
     } catch (error) {
-      console.error('搜索失败:', error);
+      console.error('Flight search failed:', error);
       setFlightList([]);
       setTotalRecords(0);
     } finally {
       setLoading(false);
     }
-  }, [pageSize]);
+  }, []);
 
-  // 初始化加载数据 - 只在选项加载完成且从未搜索过时执行
   useEffect(() => {
-    if (optionsLoaded && !hasSearched) {
-      searchFlights(appliedFilters, page);
-    }
-  }, [optionsLoaded, hasSearched]);
+    searchFlights(DEFAULT_FILTERS, 1, DEFAULT_PAGE_SIZE);
+  }, [searchFlights]);
 
-  // 页码大小变化时重置到第一页
   const handlePageSizeChange = (newSize: number) => {
     setPageSize(newSize);
     setPage(1);
-    searchFlights(appliedFilters, 1);
+    searchFlights(appliedFilters, 1, newSize);
   };
 
-  // 页码变化时重新加载数据
   const handlePageChange = (newPage: number) => {
+    if (newPage < 1 || newPage > totalPages) return;
     setPage(newPage);
-    searchFlights(appliedFilters, newPage);
+    searchFlights(appliedFilters, newPage, pageSize);
   };
 
-  // 应用筛选
   const handleApplyFilters = () => {
     setPage(1);
     setAppliedFilters({ ...tempFilters });
-    searchFlights({ ...tempFilters }, 1);
+    searchFlights({ ...tempFilters }, 1, pageSize);
   };
 
-  // 重置筛选
   const handleResetFilters = () => {
-    const defaultFilters = { q: '', airline: '', destination: '', delayLevel: '' };
-    setTempFilters(defaultFilters);
-    setAppliedFilters(defaultFilters);
+    setTempFilters(DEFAULT_FILTERS);
+    setAppliedFilters(DEFAULT_FILTERS);
     setPage(1);
-    searchFlights(defaultFilters, 1);
+    searchFlights(DEFAULT_FILTERS, 1, pageSize);
   };
 
-  // 检查是否有筛选条件
-  const hasActiveFilters = Object.values(appliedFilters).some(v => v !== '');
-  const hasTempFilters = Object.values(tempFilters).some(v => v !== '');
-
-  // 页码跳转处理
   const handleJumpToPage = () => {
-    const targetPage = parseInt(jumpPageInput);
+    const targetPage = Number.parseInt(jumpPageInput, 10);
     if (targetPage >= 1 && targetPage <= totalPages) {
       handlePageChange(targetPage);
       setJumpPageInput('');
     }
   };
 
-  // 导出CSV - 支持三种方式
   const handleExport = async (mode: 'all' | 'current' | 'range') => {
     setExporting(true);
     setShowExportMenu(false);
     try {
-      const params = new URLSearchParams();
-
-      // 添加筛选条件
+      const params = new URLSearchParams({ exportMode: mode, lang: language });
       if (appliedFilters.q) params.append('q', appliedFilters.q);
       if (appliedFilters.airline) params.append('airline', appliedFilters.airline);
       if (appliedFilters.destination) params.append('destination', appliedFilters.destination);
       if (appliedFilters.delayLevel) params.append('delayLevel', appliedFilters.delayLevel);
 
-      // 根据导出模式设置参数
-      let exportDesc = '';
       if (mode === 'current') {
-        params.append('page', page.toString());
-        params.append('pageSize', pageSize.toString());
-        params.append('exportMode', 'current');
-        exportDesc = `第${page}页`;
+        params.append('page', String(page));
+        params.append('pageSize', String(pageSize));
       } else if (mode === 'range') {
-        const start = parseInt(exportRange.startPage);
-        const end = parseInt(exportRange.endPage);
-        if (isNaN(start) || isNaN(end) || start < 1 || end > totalPages || start > end) {
-          alert(`请输入有效的页码范围（1-${totalPages}）`);
-          setExporting(false);
+        const start = Number.parseInt(exportRange.startPage, 10);
+        const end = Number.parseInt(exportRange.endPage, 10);
+        if (!Number.isFinite(start) || !Number.isFinite(end) || start < 1 || end > totalPages || start > end) {
+          alert(language === 'zh' ? `请输入 1-${totalPages} 内的有效页码范围` : `Enter a valid page range within 1-${totalPages}`);
           return;
         }
-        params.append('startPage', start.toString());
-        params.append('endPage', end.toString());
-        params.append('pageSize', pageSize.toString());
-        params.append('exportMode', 'range');
-        exportDesc = `第${start}-${end}页`;
-      } else {
-        params.append('exportMode', 'all');
-        exportDesc = '全部';
+        params.append('startPage', String(start));
+        params.append('endPage', String(end));
+        params.append('pageSize', String(pageSize));
       }
 
       const response = await fetch(`/api/module8/export?${params.toString()}`);
-
-      if (!response.ok) {
-        throw new Error('导出失败');
-      }
-
+      if (!response.ok) throw new Error('Export failed');
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-
-      // 生成文件名
-      const filterNames = [];
-      if (appliedFilters.q) filterNames.push(`搜索${appliedFilters.q}`);
-      if (appliedFilters.airline) filterNames.push(appliedFilters.airline);
-      if (appliedFilters.destination) filterNames.push(appliedFilters.destination);
-      if (appliedFilters.delayLevel) filterNames.push(appliedFilters.delayLevel);
-
-      const filterStr = filterNames.length > 0 ? `_${filterNames.join('_')}` : '';
-      const fileName = `flights_${exportDesc}${filterStr}_${Date.now()}.csv`;
-
-      a.download = fileName;
-      document.body.appendChild(a);
-      a.click();
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `flights_${mode}_${Date.now()}.csv`;
+      document.body.appendChild(link);
+      link.click();
       window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
+      document.body.removeChild(link);
     } catch (error) {
-      console.error('导出失败:', error);
-      alert('导出失败，请重试');
+      console.error('Export failed:', error);
+      alert(language === 'zh' ? '导出失败，请重试' : 'Export failed. Please retry.');
     } finally {
       setExporting(false);
     }
   };
 
-  const getDelayColor = (delay: number) => {
-    if (delay <= 0) return 'text-green-400';
-    if (delay <= 15) return 'text-cyan-400';
-    if (delay <= 60) return 'text-yellow-400';
-    return 'text-red-400';
-  };
-
-  const totalPages = Math.ceil(totalRecords / pageSize);
-
   return (
-    <div className="space-y-6">
-      {/* 统计摘要 */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <div className="glass-panel p-4 rounded-xl">
-          <div className="text-xs text-slate-400">总记录数</div>
-          <div className="text-xl font-bold text-cyan-400">
-            {summary?.totalRecords?.toLocaleString() || '--'}
-          </div>
-        </div>
-        <div className="glass-panel p-4 rounded-xl">
-          <div className="text-xs text-slate-400">平均起飞延误</div>
-          <div className="text-xl font-bold text-orange-400">
-            {summary?.avgDepDelay || '--'}分钟
-          </div>
-        </div>
-        <div className="glass-panel p-4 rounded-xl">
-          <div className="text-xs text-slate-400">平均飞行距离</div>
-          <div className="text-xl font-bold text-purple-400">
-            {summary?.avgDistance?.toLocaleString() || '--'}英里
-          </div>
-        </div>
-        <div className="glass-panel p-4 rounded-xl">
-          <div className="text-xs text-slate-400">航司数量</div>
-          <div className="text-xl font-bold text-green-400">
-            {summary?.uniqueAirlines || '--'}
-          </div>
-        </div>
-        <div className="glass-panel p-4 rounded-xl">
-          <div className="text-xs text-slate-400">航线数量</div>
-          <div className="text-xl font-bold text-blue-400">
-            {summary?.uniqueRoutes || '--'}
-          </div>
+    <div className="space-y-5">
+      <div className="glass-panel rounded-xl p-4">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+          {[
+            { label: t('explorer.totalRecords'), value: summary?.totalRecords?.toLocaleString() || '--', color: 'text-cyan-300' },
+            { label: t('explorer.avgDepDelay'), value: `${summary?.avgDepDelay ?? '--'} ${unit.minute}`, color: 'text-orange-300' },
+            { label: t('explorer.avgDistance'), value: `${summary?.avgDistance?.toLocaleString() || '--'} ${unit.mile}`, color: 'text-violet-300' },
+            { label: t('explorer.airlineCount'), value: summary?.uniqueAirlines || '--', color: 'text-emerald-300' },
+            { label: t('explorer.routeCount'), value: summary?.uniqueRoutes || '--', color: 'text-sky-300' },
+          ].map((item) => (
+            <div key={item.label} className="min-w-0 border-l border-white/10 px-3 first:border-l-0">
+              <div className="truncate text-xs text-slate-500">{item.label}</div>
+              <div className={`mt-1 truncate text-lg font-semibold ${item.color}`}>{item.value}</div>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* 筛选器 - 优化版 */}
-      <div className="glass-panel p-5 rounded-xl">
-        <div className="space-y-4">
-          {/* 第一行：搜索框和筛选条件 */}
-          <div className="flex items-center gap-4 flex-wrap">
-            {/* 搜索框 - 增强版 */}
-            <div className="relative flex-1 min-w-[240px] max-w-md">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-cyan-400" />
-              <input
-                type="text"
-                placeholder="搜索航班号、航司、航线..."
-                value={tempFilters.q}
-                onChange={(e) => setTempFilters({ ...tempFilters, q: e.target.value })}
-                onKeyDown={(e) => e.key === 'Enter' && handleApplyFilters()}
-                className="w-full bg-slate-800/80 border border-cyan-500/30 rounded-xl pl-11 pr-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all"
-              />
-              {tempFilters.q && (
-                <button 
-                  onClick={() => setTempFilters({ ...tempFilters, q: '' })}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-white"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              )}
-            </div>
-
-            {/* 航司筛选 */}
-            <select
-              value={tempFilters.airline}
-              onChange={(e) => setTempFilters({ ...tempFilters, airline: e.target.value })}
-              className="bg-slate-800/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all min-w-[140px]"
-            >
-              <option value="">全部航司</option>
-              {airlineOptions?.slice(0, 20).map((a: any) => (
-                <option key={a.airlineCode} value={a.airlineCode}>
-                  {a.airlineName} ({a.count?.toLocaleString()})
-                </option>
-              ))}
-            </select>
-
-            {/* 目的地筛选 */}
-            <select
-              value={tempFilters.destination}
-              onChange={(e) => setTempFilters({ ...tempFilters, destination: e.target.value })}
-              className="bg-slate-800/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all min-w-[140px]"
-            >
-              <option value="">全部目的地</option>
-              {destOptions?.slice(0, 20).map((d: any) => (
-                <option key={d.arrivalAirport} value={d.arrivalAirport}>
-                  {d.arrivalAirportName} ({d.count?.toLocaleString()})
-                </option>
-              ))}
-            </select>
-
-            {/* 延误等级筛选 */}
-            <select
-              value={tempFilters.delayLevel}
-              onChange={(e) => setTempFilters({ ...tempFilters, delayLevel: e.target.value })}
-              className="bg-slate-800/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all min-w-[140px]"
-            >
-              <option value="">全部延误等级</option>
-              {delayLevelOptions?.map((d: any) => (
-                <option key={d.delayLevel} value={d.delayLevel}>
-                  {d.delayLevel} ({d.count?.toLocaleString()})
-                </option>
-              ))}
-            </select>
+      <div className="glass-panel rounded-xl p-4">
+        <div className="grid grid-cols-1 gap-3 xl:grid-cols-[minmax(280px,1fr)_180px_180px_160px_auto]">
+          <div className="relative">
+            <Search className="absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-cyan-400" />
+            <input
+              type="text"
+              placeholder={t('explorer.searchPlaceholder')}
+              value={tempFilters.q}
+              onChange={(event) => setTempFilters({ ...tempFilters, q: event.target.value })}
+              onKeyDown={(event) => event.key === 'Enter' && handleApplyFilters()}
+              className="w-full rounded-lg border border-cyan-500/25 bg-slate-900/70 py-2.5 pl-11 pr-4 text-sm text-slate-200 placeholder:text-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/15"
+            />
           </div>
 
-          {/* 第二行：操作按钮和状态 */}
-          <div className="flex items-center justify-between flex-wrap gap-4">
-            <div className="flex items-center gap-3">
-              {/* 重置按钮 */}
-              <button
-                onClick={handleResetFilters}
-                disabled={!hasActiveFilters && !hasTempFilters}
-                className="flex items-center gap-2 px-4 py-2.5 bg-slate-700/80 text-slate-300 rounded-xl hover:bg-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all border border-white/5"
-              >
-                <Trash2 className="w-4 h-4" />
-                <span>重置</span>
-              </button>
+          <select
+            value={tempFilters.airline}
+            onChange={(event) => setTempFilters({ ...tempFilters, airline: event.target.value })}
+            disabled={!optionsLoaded}
+            className="rounded-lg border border-white/10 bg-slate-900/70 px-3 py-2.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none disabled:cursor-wait disabled:opacity-60"
+          >
+            <option value="">{t('filter.all')} {t('filter.airlines')}</option>
+            {airlineOptions.slice(0, 40).map((airline) => (
+              <option key={airline.airlineCode || airline.carrier} value={airline.airlineCode || airline.carrier}>
+                {airline.airlineName || airline.carrier_name || airline.airlineCode} ({airline.count?.toLocaleString?.()})
+              </option>
+            ))}
+          </select>
 
-              {/* 开始检索按钮 - 优化版，更加突出 */}
-              <button
-                onClick={handleApplyFilters}
-                disabled={loading}
-                className={`flex items-center gap-2.5 px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 shadow-lg ${
-                  hasTempFilters && !loading
-                    ? 'bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white hover:from-cyan-400 hover:via-blue-400 hover:to-purple-400 shadow-cyan-500/30 hover:shadow-cyan-400/40 transform hover:scale-105'
-                    : 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-400 hover:to-blue-400'
-                } disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none`}
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    <span className="font-medium">检索中...</span>
-                  </>
-                ) : (
-                  <>
-                    <Sparkles className={`w-5 h-5 ${hasTempFilters ? 'animate-bounce' : ''}`} />
-                    <span className="font-semibold">{hasTempFilters ? '开始检索' : '应用筛选'}</span>
-                  </>
-                )}
-              </button>
-              
-              {/* 快捷提示 */}
-              {hasTempFilters && (
-                <span className="text-xs text-cyan-400/70 hidden md:inline animate-pulse">
-                  ✨ 按 Enter 键快速检索
-                </span>
-              )}
-            </div>
+          <select
+            value={tempFilters.destination}
+            onChange={(event) => setTempFilters({ ...tempFilters, destination: event.target.value })}
+            disabled={!optionsLoaded}
+            className="rounded-lg border border-white/10 bg-slate-900/70 px-3 py-2.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none disabled:cursor-wait disabled:opacity-60"
+          >
+            <option value="">{t('filter.all')} {t('filter.destinations')}</option>
+            {destOptions.slice(0, 40).map((dest) => (
+              <option key={dest.arrivalAirport || dest.dest} value={dest.arrivalAirport || dest.dest}>
+                {dest.arrivalAirportName || dest.dest_name || dest.arrivalAirport} ({dest.count?.toLocaleString?.()})
+              </option>
+            ))}
+          </select>
 
-            {/* 当前筛选状态和命中数量 */}
-            <div className="flex items-center gap-5">
-              {hasActiveFilters && (
-                <div className="flex items-center gap-2 text-sm flex-wrap">
-                  <Filter className="w-4 h-4 text-cyan-400" />
-                  <span className="text-slate-400">当前筛选：</span>
-                  {appliedFilters.q && (
-                    <span className="px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded-lg border border-cyan-500/30 flex items-center gap-1">
-                      <FileSearch className="w-3 h-3" />
-                      {appliedFilters.q}
-                    </span>
-                  )}
-                  {appliedFilters.airline && (
-                    <span className="px-2 py-0.5 bg-purple-500/20 text-purple-400 rounded-lg border border-purple-500/30">
-                      {appliedFilters.airline}
-                    </span>
-                  )}
-                  {appliedFilters.destination && (
-                    <span className="px-2 py-0.5 bg-blue-500/20 text-blue-400 rounded-lg border border-blue-500/30">
-                      {appliedFilters.destination}
-                    </span>
-                  )}
-                  {appliedFilters.delayLevel && (
-                    <span className="px-2 py-0.5 bg-orange-500/20 text-orange-400 rounded-lg border border-orange-500/30">
-                      {appliedFilters.delayLevel}
-                    </span>
-                  )}
-                </div>
-              )}
-              
-              {/* 搜索结果计数 - 优化版 */}
-              <div className="flex items-center gap-2">
-                {loading ? (
-                  <div className="flex items-center gap-2 px-4 py-2 bg-slate-800/50 rounded-xl border border-cyan-500/20">
-                    <Loader2 className="w-4 h-4 text-cyan-400 animate-spin" />
-                    <span className="text-cyan-400 font-medium">正在检索...</span>
-                  </div>
-                ) : (
-                  <>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-slate-800/50 rounded-xl border border-white/10">
-                      <span className="text-slate-400 text-sm">命中</span>
-                      <span className={`text-lg font-bold ${totalRecords > 0 ? 'text-cyan-400' : 'text-red-400'}`}>
-                        {totalRecords.toLocaleString()}
-                      </span>
-                      <span className="text-slate-400 text-sm">条</span>
-                    </div>
-                    {hasSearched && totalRecords > 0 && (
-                      <div className="flex items-center gap-1.5 px-3 py-1.5 bg-green-500/10 text-green-400 rounded-lg text-xs border border-green-500/20">
-                        <Check className="w-3.5 h-3.5" />
-                        <span>完成</span>
-                      </div>
-                    )}
-                    {hasSearched && totalRecords === 0 && (
-                      <div className="flex items-center gap-1.5 px-3 py-1.5 bg-red-500/10 text-red-400 rounded-lg text-xs border border-red-500/20">
-                        <X className="w-3.5 h-3.5" />
-                        <span>无数据</span>
-                      </div>
-                    )}
-                  </>
-                )}
-              </div>
-            </div>
+          <select
+            value={tempFilters.delayLevel}
+            onChange={(event) => setTempFilters({ ...tempFilters, delayLevel: event.target.value })}
+            disabled={!optionsLoaded}
+            className="rounded-lg border border-white/10 bg-slate-900/70 px-3 py-2.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none disabled:cursor-wait disabled:opacity-60"
+          >
+            <option value="">{t('filter.all')} {t('filter.delayLevels')}</option>
+            {delayLevelOptions.map((delay) => (
+              <option key={delay.delayLevel || delay.category} value={delay.delayLevel || delay.category}>
+                {localizeDelayLevel(delay.delayLevel || delay.category, language)} ({delay.count?.toLocaleString?.()})
+              </option>
+            ))}
+          </select>
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={handleResetFilters}
+              disabled={!hasActiveFilters && !hasTempFilters}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-slate-900/70 text-slate-400 transition-colors hover:bg-white/5 hover:text-slate-100 disabled:cursor-not-allowed disabled:opacity-40"
+              title={t('explorer.reset')}
+            >
+              <Trash2 className="h-4 w-4" />
+            </button>
+            <button
+              type="button"
+              onClick={handleApplyFilters}
+              disabled={loading}
+              className="inline-flex h-10 items-center gap-2 rounded-lg bg-cyan-500 px-4 text-sm font-semibold text-slate-950 transition-colors hover:bg-cyan-400 disabled:cursor-wait disabled:opacity-50"
+            >
+              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <FileSearch className="h-4 w-4" />}
+              {hasTempFilters ? t('explorer.search') : t('explorer.apply')}
+            </button>
           </div>
         </div>
+
+        <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+          {hasActiveFilters && (
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-2.5 py-1 text-cyan-300">
+              <Filter className="h-3.5 w-3.5" />
+              {t('explorer.activeFilter')}
+            </span>
+          )}
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-slate-900/50 px-2.5 py-1">
+            {t('explorer.hit')} <strong className="font-semibold text-cyan-300">{totalRecords.toLocaleString()}</strong> {t('explorer.records')}
+          </span>
+          {hasSearched && totalRecords > 0 && !loading && (
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1 text-emerald-300">
+              <Check className="h-3.5 w-3.5" />
+              {t('status.complete')}
+            </span>
+          )}
+          {loading && flightList.length > 0 && (
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-2.5 py-1 text-cyan-300">
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              {t('status.searching')}
+            </span>
+          )}
+          {!optionsLoaded && (
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-slate-900/50 px-2.5 py-1">
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              {t('status.loadingData')}
+            </span>
+          )}
+          </div>
       </div>
 
-      {/* 数据表格 */}
-      <div className="glass-panel rounded-2xl overflow-hidden">
-        {/* 表格工具栏 - 导出按钮 */}
-        <div className="flex items-center justify-between p-4 border-b border-white/10 bg-slate-900/30">
-          <div className="text-sm text-slate-400">
-            {totalRecords > 0 && (
-              <span>显示第 {((page - 1) * pageSize) + 1} - {Math.min(page * pageSize, totalRecords)} 条，共 {totalRecords.toLocaleString()} 条记录</span>
-            )}
+      <div className="glass-panel overflow-hidden rounded-2xl">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 bg-slate-900/30 p-4">
+          <div className="min-w-0">
+            <div className="text-sm font-medium text-slate-200">{t('explorer.title')}</div>
+            <div className="mt-1 text-xs text-slate-500">
+              {totalRecords > 0
+                ? `${visibleStart.toLocaleString()} - ${visibleEnd.toLocaleString()} / ${totalRecords.toLocaleString()}`
+                : t('status.noData')}
+            </div>
           </div>
-
-          {/* 导出按钮组 */}
           <div className="relative">
             <button
-              onClick={() => setShowExportMenu(!showExportMenu)}
+              type="button"
+              onClick={() => setShowExportMenu((current) => !current)}
               disabled={exporting || totalRecords === 0}
-              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl hover:from-green-400 hover:to-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg"
+              className="inline-flex items-center gap-2 rounded-lg border border-emerald-500/25 bg-emerald-500/15 px-3 py-2 text-sm font-medium text-emerald-200 transition-colors hover:bg-emerald-500/25 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {exporting ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>导出中...</span>
-                </>
-              ) : (
-                <>
-                  <Download className="w-4 h-4" />
-                  <span>导出 CSV</span>
-                  <ChevronRight className={`w-4 h-4 transition-transform ${showExportMenu ? 'rotate-90' : ''}`} />
-                </>
-              )}
+              {exporting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
+              {t('explorer.export')}
             </button>
-
-            {/* 导出菜单 */}
             {showExportMenu && !exporting && (
-              <div className="absolute right-0 top-full mt-2 w-80 bg-slate-800 border border-white/10 rounded-xl shadow-2xl z-50 overflow-hidden">
-                {/* 导出全部 */}
-                <button
-                  onClick={() => handleExport('all')}
-                  className="w-full px-4 py-3 text-left hover:bg-white/5 transition-colors border-b border-white/5"
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="text-sm font-medium text-white">导出全部结果</div>
-                      <div className="text-xs text-slate-400 mt-1">
-                        导出所有 {totalRecords.toLocaleString()} 条筛选结果
-                      </div>
-                    </div>
-                    <Download className="w-4 h-4 text-green-400" />
-                  </div>
+              <div className="absolute right-0 top-full z-50 mt-2 w-72 overflow-hidden rounded-xl border border-white/10 bg-slate-800 shadow-2xl">
+                <button type="button" onClick={() => handleExport('all')} className="w-full border-b border-white/5 px-4 py-3 text-left text-sm text-white hover:bg-white/5">
+                  {t('explorer.exportAll')}
                 </button>
-
-                {/* 导出当前页 */}
-                <button
-                  onClick={() => handleExport('current')}
-                  className="w-full px-4 py-3 text-left hover:bg-white/5 transition-colors border-b border-white/5"
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="text-sm font-medium text-white">导出当前页</div>
-                      <div className="text-xs text-slate-400 mt-1">
-                        导出第 {page} 页的 {Math.min(pageSize, totalRecords - (page - 1) * pageSize)} 条记录
-                      </div>
-                    </div>
-                    <Download className="w-4 h-4 text-cyan-400" />
-                  </div>
+                <button type="button" onClick={() => handleExport('current')} className="w-full border-b border-white/5 px-4 py-3 text-left text-sm text-white hover:bg-white/5">
+                  {t('explorer.exportCurrent')}
                 </button>
-
-                {/* 导出指定范围 */}
-                <div className="px-4 py-3">
-                  <div className="text-sm font-medium text-white mb-2">导出指定页范围</div>
-                  <div className="flex items-center gap-2 mb-2">
+                <div className="space-y-3 px-4 py-3">
+                  <div className="text-sm font-medium text-white">{t('explorer.exportRange')}</div>
+                  <div className="flex items-center gap-2">
                     <input
                       type="number"
                       min="1"
                       max={totalPages}
-                      placeholder="起始页"
                       value={exportRange.startPage}
-                      onChange={(e) => setExportRange({ ...exportRange, startPage: e.target.value })}
-                      className="flex-1 px-3 py-2 bg-slate-700 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-cyan-500"
+                      onChange={(event) => setExportRange({ ...exportRange, startPage: event.target.value })}
+                      className="w-full rounded-lg border border-white/10 bg-slate-700 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
                     />
                     <span className="text-slate-400">-</span>
                     <input
                       type="number"
                       min="1"
                       max={totalPages}
-                      placeholder="结束页"
                       value={exportRange.endPage}
-                      onChange={(e) => setExportRange({ ...exportRange, endPage: e.target.value })}
-                      className="flex-1 px-3 py-2 bg-slate-700 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-cyan-500"
+                      onChange={(event) => setExportRange({ ...exportRange, endPage: event.target.value })}
+                      className="w-full rounded-lg border border-white/10 bg-slate-700 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
                     />
                   </div>
-                  <div className="text-xs text-slate-400 mb-3">
-                    共 {totalPages} 页，每页 {pageSize} 条
-                  </div>
                   <button
+                    type="button"
                     onClick={() => handleExport('range')}
                     disabled={!exportRange.startPage || !exportRange.endPage}
-                    className="w-full px-3 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-400 hover:to-pink-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-sm font-medium"
+                    className="w-full rounded-lg bg-purple-500 px-3 py-2 text-sm font-medium text-white hover:bg-purple-400 disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    <div className="flex items-center justify-center gap-2">
-                      <Download className="w-4 h-4" />
-                      <span>导出范围</span>
-                    </div>
+                    {t('explorer.exportRange')}
                   </button>
                 </div>
               </div>
             )}
           </div>
         </div>
+
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-slate-400 bg-slate-800/50 border-b border-white/10">
-                <th className="text-left p-3 whitespace-nowrap">日期</th>
-                <th className="text-left p-3 whitespace-nowrap">航司</th>
-                <th className="text-left p-3 whitespace-nowrap">航班号</th>
-                <th className="text-left p-3 whitespace-nowrap">飞机号</th>
-                <th className="text-left p-3 whitespace-nowrap">航线</th>
-                <th className="text-right p-3 whitespace-nowrap">起飞延误</th>
-                <th className="text-right p-3 whitespace-nowrap">到达延误</th>
-                <th className="text-right p-3 whitespace-nowrap">飞行时长</th>
-                <th className="text-right p-3 whitespace-nowrap">距离</th>
-                <th className="text-right p-3 whitespace-nowrap">速度</th>
-                <th className="text-left p-3 whitespace-nowrap">延误等级</th>
+              <tr className="border-b border-white/10 bg-slate-800/50 text-slate-400">
+                {visibleFields.map((field: any) => (
+                  <th key={field.fid} className="whitespace-nowrap p-3 text-left">{field.label}</th>
+                ))}
               </tr>
             </thead>
             <tbody>
-              {/* 初始加载状态 */}
-              {!optionsLoaded || !initialLoadComplete ? (
+              {loading && flightList.length === 0 ? (
                 <tr>
-                  <td colSpan={11} className="p-8 text-center">
-                    <div className="flex items-center justify-center gap-2 text-slate-400">
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      <span>{!optionsLoaded ? '正在加载筛选选项...' : '正在检索数据...'}</span>
-                    </div>
+                  <td colSpan={visibleFields.length} className="p-8 text-center text-cyan-400">
+                    <Loader2 className="mr-2 inline h-5 w-5 animate-spin" />
+                    {t('status.searching')}
                   </td>
                 </tr>
-              ) : loading ? (
-                <tr>
-                  <td colSpan={11} className="p-8 text-center">
-                    <div className="flex items-center justify-center gap-2 text-cyan-400">
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      <span>正在检索数据...</span>
-                    </div>
-                  </td>
-                </tr>
-              ) : flightList?.length > 0 ? (
-                flightList.map((flight, i) => (
-                  <tr
-                    key={i}
-                    className="text-slate-300 border-b border-white/5 hover:bg-white/5 transition-colors"
-                  >
-                    <td className="p-3 whitespace-nowrap">{flight.date}</td>
-                    <td className="p-3 whitespace-nowrap">{flight.airlineCode}</td>
-                    <td className="p-3 whitespace-nowrap font-mono text-cyan-400">{flight.flightNumber}</td>
-                    <td className="p-3 whitespace-nowrap font-mono text-xs text-slate-400">{flight.aircraftId || '--'}</td>
-                    <td className="p-3 whitespace-nowrap">{flight.route}</td>
-                    <td className={`text-right p-3 whitespace-nowrap font-medium ${getDelayColor(flight.departureDelay)}`}>
-                      {flight.departureDelay ?? '--'}分钟
-                    </td>
-                    <td className={`text-right p-3 whitespace-nowrap font-medium ${getDelayColor(flight.arrivalDelay)}`}>
-                      {flight.arrivalDelay ?? '--'}分钟
-                    </td>
-                    <td className="text-right p-3 whitespace-nowrap">
-                      {flight.flightTime ? `${flight.flightTime}分钟` : '--'}
-                    </td>
-                    <td className="text-right p-3 whitespace-nowrap">
-                      {flight.flightDistance?.toLocaleString() || '--'}英里
-                    </td>
-                    <td className="text-right p-3 whitespace-nowrap">
-                      {flight.flightSpeed ? `${flight.flightSpeed.toFixed(0)}mph` : '--'}
-                    </td>
-                    <td className="p-3 whitespace-nowrap">
-                      <span className={`px-2 py-0.5 rounded text-xs ${
-                        flight.delayLevel === '准点' ? 'bg-green-500/20 text-green-400' :
-                        flight.delayLevel === '轻微' ? 'bg-cyan-500/20 text-cyan-400' :
-                        flight.delayLevel === '中度' ? 'bg-yellow-500/20 text-yellow-400' :
-                        'bg-red-500/20 text-red-400'
-                      }`}>
-                        {flight.delayLevel}
-                      </span>
-                    </td>
+              ) : flightList.length > 0 ? (
+                flightList.map((flight, index) => (
+                  <tr key={`${flight.uniqueKey || flight.flightNumber}-${index}`} className="border-b border-white/5 text-slate-300 transition-colors hover:bg-white/5">
+                    {visibleFields.map((field: any) => {
+                      const value = flight[field.fid];
+                      if (field.fid === 'departureDelay' || field.fid === 'arrivalDelay') {
+                        return <td key={field.fid} className={`whitespace-nowrap p-3 font-medium ${getDelayColor(Number(value || 0))}`}>{value ?? '--'} {unit.minute}</td>;
+                      }
+                      if (field.fid === 'flightDistance') {
+                        return <td key={field.fid} className="whitespace-nowrap p-3">{value?.toLocaleString?.() || value || '--'} {unit.mile}</td>;
+                      }
+                      if (field.fid === 'flightTime') {
+                        return <td key={field.fid} className="whitespace-nowrap p-3">{value ? `${value} ${unit.minute}` : '--'}</td>;
+                      }
+                      if (field.fid === 'flightSpeed') {
+                        return <td key={field.fid} className="whitespace-nowrap p-3">{value ? `${Number(value).toFixed(0)} mph` : '--'}</td>;
+                      }
+                      if (field.fid === 'delayLevel') {
+                        return (
+                          <td key={field.fid} className="whitespace-nowrap p-3">
+                            <span className={`rounded px-2 py-0.5 text-xs ${delayBadgeClass(String(value || ''))}`}>
+                              {value ? localizeDelayLevel(value, language) : '--'}
+                            </span>
+                          </td>
+                        );
+                      }
+                      return <td key={field.fid} className="whitespace-nowrap p-3">{value || '--'}</td>;
+                    })}
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan={11} className="p-12 text-center">
-                    <div className="flex flex-col items-center gap-3">
-                      <div className="text-4xl opacity-30">🔍</div>
-                      <div className="text-slate-400 font-medium">暂无匹配数据</div>
-                      <div className="text-xs text-slate-500">请尝试调整筛选条件或搜索关键词</div>
-                    </div>
+                  <td colSpan={visibleFields.length} className="p-12 text-center text-slate-400">
+                    {t('status.noData')}
                   </td>
                 </tr>
               )}
@@ -700,148 +468,65 @@ export default function Module8DataExplorer() {
           </table>
         </div>
 
-        {/* 分页 - 优化版 */}
-        <div className="flex items-center justify-between p-4 border-t border-white/10 bg-slate-900/30 flex-wrap gap-4">
-          {/* 左侧：记录统计 */}
-          <div className="text-sm text-slate-400 flex items-center gap-2">
-            <span className="text-slate-500">📄</span>
-            <span>第 <span className="text-cyan-400 font-semibold">{page}</span> / {totalPages.toLocaleString()} 页</span>
-            <span className="text-slate-600">|</span>
-            <span>共 <span className="text-cyan-400 font-semibold">{totalRecords.toLocaleString()}</span> 条记录</span>
+        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/10 bg-slate-900/30 p-4">
+          <div className="text-sm text-slate-400">
+            {t('explorer.page')} <span className="font-semibold text-cyan-400">{page}</span> / {totalPages.toLocaleString()}
           </div>
-          
-          {/* 中间：页码导航 */}
+
           <div className="flex items-center gap-2">
             <button
+              type="button"
               onClick={() => handlePageChange(page - 1)}
               disabled={page === 1 || loading}
-              className="p-2 rounded-xl bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all border border-white/5"
-              title="上一页"
+              className="rounded-xl border border-white/5 bg-slate-800 p-2 text-slate-400 transition-colors hover:bg-slate-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="h-4 w-4" />
             </button>
-            
-            {/* 动态页码显示 */}
-            <div className="flex items-center gap-1">
-              {totalPages <= 7 ? (
-                // 页面较少时显示所有页码
-                [...Array(totalPages)].map((_, i) => {
-                  const pageNum = i + 1;
-                  return (
-                    <button
-                      key={pageNum}
-                      onClick={() => handlePageChange(pageNum)}
-                      className={`px-3 py-1.5 rounded-lg transition-all text-sm min-w-[40px] ${
-                        page === pageNum
-                          ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/20'
-                          : 'bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white'
-                      }`}
-                    >
-                      {pageNum}
-                    </button>
-                  );
-                })
-              ) : (
-                // 页面较多时显示当前页附近的页码
-                (() => {
-                  const pages = [];
-                  const start = Math.max(1, page - 2);
-                  const end = Math.min(totalPages, page + 2);
-                  
-                  if (start > 1) {
-                    pages.push(<button key={1} onClick={() => handlePageChange(1)} className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white transition-all text-sm">1</button>);
-                    if (start > 2) pages.push(<span key="ellipsis1" className="text-slate-500 px-1">...</span>);
-                  }
-                  
-                  for (let i = start; i <= end; i++) {
-                    pages.push(
-                      <button
-                        key={i}
-                        onClick={() => handlePageChange(i)}
-                        className={`px-3 py-1.5 rounded-lg transition-all text-sm min-w-[40px] ${
-                          page === i
-                            ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/20'
-                            : 'bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white'
-                        }`}
-                      >
-                        {i}
-                      </button>
-                    );
-                  }
-                  
-                  if (end < totalPages) {
-                    if (end < totalPages - 1) pages.push(<span key="ellipsis2" className="text-slate-500 px-1">...</span>);
-                    pages.push(<button key={totalPages} onClick={() => handlePageChange(totalPages)} className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white transition-all text-sm">{totalPages}</button>);
-                  }
-                  
-                  return pages;
-                })()
-              )}
-            </div>
-            
             <button
+              type="button"
               onClick={() => handlePageChange(page + 1)}
               disabled={page >= totalPages || loading}
-              className="p-2 rounded-xl bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all border border-white/5"
-              title="下一页"
+              className="rounded-xl border border-white/5 bg-slate-800 p-2 text-slate-400 transition-colors hover:bg-slate-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="h-4 w-4" />
             </button>
           </div>
-          
-          {/* 右侧：页码跳转和每页条数 */}
-          <div className="flex items-center gap-3">
-            {/* 页码跳转 */}
+
+          <div className="flex flex-wrap items-center gap-3">
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-400">跳转到</span>
+              <span className="text-xs text-slate-400">{t('explorer.jump')}</span>
               <input
                 type="number"
                 min={1}
                 max={totalPages}
                 value={jumpPageInput}
-                onChange={(e) => setJumpPageInput(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleJumpToPage()}
-                placeholder="页码"
-                className="w-16 px-2 py-1.5 bg-slate-800 border border-white/15 rounded-lg text-sm text-cyan-400 text-center focus:outline-none focus:border-cyan-500"
+                onChange={(event) => setJumpPageInput(event.target.value)}
+                onKeyDown={(event) => event.key === 'Enter' && handleJumpToPage()}
+                className="w-16 rounded-lg border border-white/15 bg-slate-800 px-2 py-1.5 text-center text-sm text-cyan-400 focus:border-cyan-500 focus:outline-none"
               />
-              <span className="text-xs text-slate-400">页</span>
               <button
+                type="button"
                 onClick={handleJumpToPage}
                 disabled={!jumpPageInput || loading}
-                className="px-3 py-1.5 bg-cyan-500/20 text-cyan-400 rounded-lg hover:bg-cyan-500/30 disabled:opacity-40 disabled:cursor-not-allowed transition-all text-sm font-medium border border-cyan-500/30"
+                className="rounded-lg border border-cyan-500/30 bg-cyan-500/20 px-3 py-1.5 text-sm font-medium text-cyan-400 transition-colors hover:bg-cyan-500/30 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                跳转
+                {t('explorer.jump')}
               </button>
             </div>
-            
-            {/* 每页条数选择器 */}
             <div className="flex items-center gap-2 border-l border-white/10 pl-3">
-              <span className="text-xs text-slate-400">每页</span>
+              <span className="text-xs text-slate-400">{t('explorer.pageSize')}</span>
               <select
                 value={pageSize}
-                onChange={(e) => handlePageSizeChange(parseInt(e.target.value))}
-                className="bg-slate-800 border border-white/15 rounded-lg px-2 py-1.5 text-sm text-cyan-400 focus:outline-none focus:border-cyan-500 cursor-pointer"
+                onChange={(event) => handlePageSizeChange(Number.parseInt(event.target.value, 10))}
+                className="rounded-lg border border-white/15 bg-slate-800 px-2 py-1.5 text-sm text-cyan-400 focus:border-cyan-500 focus:outline-none"
               >
-                {pageSizeOptions.map(size => (
-                  <option key={size} value={size}>{size}条</option>
+                {pageSizeOptions.map((size) => (
+                  <option key={size} value={size}>{size}</option>
                 ))}
               </select>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* 使用说明 */}
-      <div className="glass-panel p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
-        <h4 className="text-sm font-medium text-cyan-400 mb-2">💡 数据探索使用说明</h4>
-        <ul className="text-xs text-slate-300 space-y-1">
-          <li>• 在搜索框输入航班号、航司名称或航线关键词，按回车或点击「应用筛选」</li>
-          <li>• 使用下拉筛选器选择航司、目的地或延误等级</li>
-          <li>• 点击「应用筛选」确认筛选条件，系统将显示符合条件的记录数</li>
-          <li>• 点击「重置」可一键清除所有筛选条件</li>
-          <li>• 点击「导出 CSV」可选择导出范围：全部结果、当前页或自定义页数范围</li>
-          <li>• 延误等级：准点(≤0分钟)、轻微(0-15分钟)、中度(15-60分钟)、严重(&gt;60分钟)</li>
-        </ul>
       </div>
     </div>
   );

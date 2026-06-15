@@ -1,70 +1,59 @@
 # 项目结构
 
-`nexus-flight-analytics` 现在按“前端应用、分析数据、分析脚本、部署文档、归档产物”归类。
+`nexus-flight-analytics` 是航班延误分析系统的应用仓库。上层比赛资料、论文、PPT 和压缩包不属于本次整理范围。
 
 ```text
 nexus-flight-analytics/
-├─ .github/workflows/
-│  └─ deploy-pages.yml              # GitHub Pages 自动部署
-├─ archive/generated/               # 临时生成结果、诊断产物归档
-├─ data/                            # 分析数据与本地 SQLite 数据库
-│  ├─ flights.sqlite                # 本地生成的交互筛选/重聚合数据库（不入 Git）
-│  ├─ module1/                      # 总览仪表盘
-│  ├─ module2/                      # 时间规律分析
-│  ├─ module3/                      # 航线与目的地分析
-│  ├─ module4/                      # 空中追回分析
-│  ├─ module5/                      # 航司表现分析
-│  ├─ module6/                      # 延误传播分析
-│  ├─ module7/                      # 延误归因分析
-│  ├─ module8/                      # 数据探索、分页与静态发布数据
+├─ .github/workflows/              # GitHub Pages 自动部署
+├─ archive/generated/              # 历史截图、旧导出、诊断产物归档
+├─ data/                           # 分析数据和本地 SQLite 数据库
+│  ├─ flights.sqlite               # 本地交互分析数据库，不纳入 Git
+│  ├─ module1/ ... module8/         # 各分析模块 JSON 数据
 │  └─ raw_multi_year/               # 多年份原始数据缓存
-├─ docs/
-│  ├─ deployment-github-pages.md     # GitHub Pages 部署说明
-│  └─ project-structure.md          # 当前文件
-├─ plans/
-│  └─ optimization-plan.md          # 功能优化记录
-├─ reports/                         # Quarto HTML 分析报告
-│  ├─ flight-delay-report.qmd        # 报告源码
-│  ├─ flight-delay-report.html       # 渲染后的 HTML 报告
-│  └─ report-style.css              # 报告专用样式
-├─ scripts/                         # R 数据处理与分析脚本
-│  ├─ 00_collect_multi_year_data.R   # 多年份数据采集
-│  ├─ 01_data_preparation.R
-│  ├─ 02_module1_dashboard.R
-│  ├─ ...
-│  ├─ build_flights_database.mjs     # SQLite 数据库构建/补数
-│  └─ run_all_analyses.R
+├─ docs/                           # 项目文档
+├─ exports/figure1/                # Figure 1 导出说明
+├─ plans/                          # 方案与优化记录
+├─ reports/                        # Quarto 报告和渲染结果
+├─ scripts/                        # R 数据处理脚本与 SQLite 构建脚本
 ├─ src/
-│  ├─ components/                   # 通用 UI 与图表组件
-│  ├─ contexts/                     # 主题等全局上下文
-│  ├─ hooks/                        # 数据获取 Hooks
+│  ├─ components/
+│  │  ├─ assistant/                 # AI Assistant 前端浮层
+│  │  ├─ charts/                    # 通用图表卡片
+│  │  ├─ common/                    # 主题、语言、错误提示
+│  │  └─ layout/                    # Dashboard 导航
+│  ├─ contexts/                     # ThemeContext、LanguageContext
+│  ├─ hooks/                        # 数据获取 Hook
 │  ├─ lib/
-│  │  └─ staticApi.ts               # Pages 生产环境静态 API 适配层
-│  ├─ modules/                      # 8 个分析模块
-│  ├─ pages/                        # Landing 与 Dashboard 页面
-│  ├─ types/                        # 全局类型
-│  ├─ App.tsx
-│  └─ main.tsx
-├─ index.html                       # Vite HTML 入口
-├─ package.json                     # npm 脚本与依赖
-├─ simple-server.mjs                # 本地开发 Express + Vite 服务
-├─ tsconfig.json
-└─ vite.config.ts                   # 构建、分包、数据复制配置
+│  │  ├─ fieldMetadata.js           # 字段字典、双语标签、Graphic Walker 元数据
+│  │  ├─ interactiveAnalysis.js     # 筛选后聚合分析
+│  │  └─ staticApi.ts               # GitHub Pages 静态 API 适配
+│  ├─ modules/                      # 8 个原分析模块 + Visual EDA
+│  ├─ pages/                        # Landing、Dashboard、Figure 1
+│  └─ types/                        # 全局类型
+├─ simple-server.mjs                # 本地/服务端 Express + Vite + AI 代理
+├─ vite.config.ts                   # Vite 构建和静态数据复制
+└─ package.json
 ```
 
-## 数据与发布规则
+## 运行与部署
 
-- GitHub Pages 只发布 `dist/`。
-- `npm run build` 会将 `data/**/*.json` 复制到 `dist/data/`。
-- `data/flights_enriched.rds` 仅用于本地 R 分析，不会复制到 `dist/`。
-- `data/flights.sqlite` 用于本地开发服务的数据库查询和筛选后重聚合，不纳入版本管理，也不会复制到 `dist/`。
-- `data/raw_multi_year/bts_cache/*.zip` 是临时下载缓存，不纳入版本管理。
-- `reports/flight-delay-report.qmd` 可用 `npm run report:render` 重新生成 HTML 报告。
-- 生产环境由 `src/lib/staticApi.ts` 接管 `/api/...`，无需部署 Node/Express 服务。
+- 本地开发：`npm run dev` 启动 Express + Vite，支持 SQLite 查询、AI Assistant 和 EDA。
+- 静态构建：`npm run build` 输出 `dist/`，并复制 `data/**/*.json` 到 `dist/data/`。
+- GitHub Pages：生产包由 `src/lib/staticApi.ts` 接管 `/api/...` 的 GET 请求，支持仪表盘、筛选、导出和 Visual EDA。
+- AI Assistant：需要 Node/Express 后端代理和服务端 `SUB2API_API_KEY`。纯静态部署不会保存或暴露密钥，只返回“需要后端代理”的禁用提示。
 
-## 本地与线上职责
+## 环境变量
 
-- 本地开发：`npm run dev` 使用 `simple-server.mjs`，可以继续走 Express API。
-- 数据库补数：`npm run db:build` 使用当前静态数据生成 SQLite；`npm run db:build:latest` 会尝试从 BTS TranStats 补齐最新月份，失败月份默认跳过并可续跑。
-- 静态发布：`npm run build` 输出纯静态站点，适配 GitHub Pages。
-- 发布检查：`npm run deploy:check` 会先跑 TypeScript 检查，再构建静态站点。
+真实密钥只放在本地或服务器 `.env` 中，不提交到 Git：
+
+```env
+SUB2API_BASE_URL="https://sub2api.cian.fun/v1"
+SUB2API_API_KEY="YOUR_SUB2API_API_KEY"
+SUB2API_MODEL="gpt-5.5"
+```
+
+## 数据说明
+
+- `data/flights.sqlite` 当前用于本地筛选、交互聚合、EDA 抽样和 AI 上下文构建。
+- `data/module8/full_data_chunk_*.json` 用于静态部署场景下的分页、导出、筛选和 EDA。
+- 数据库字段名保持英文稳定；中文/英文显示名由 `src/lib/fieldMetadata.js` 提供。

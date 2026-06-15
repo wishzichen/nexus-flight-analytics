@@ -1,296 +1,346 @@
-import React, { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Plane, Activity, BarChart2, ShieldAlert, Clock, Map, Building, GitBranch, PieChart, Table } from 'lucide-react';
+import {
+  Activity,
+  ArrowRight,
+  BarChart2,
+  Building,
+  ChevronDown,
+  Clock,
+  Database,
+  GitBranch,
+  Map,
+  PieChart,
+  Plane,
+  Radar,
+  ShieldAlert,
+  Sparkles,
+  Table,
+  Waypoints,
+} from 'lucide-react';
 import ThemeToggle from '../components/common/ThemeToggle';
+import LanguageToggle from '../components/common/LanguageToggle';
+import { useLanguage } from '../contexts/LanguageContext';
+import { scheduleDashboardPreload } from '../lib/preloadData';
 
-const ParticleBackground = () => {
-    return (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
-            <div className="radar-circle" style={{width: 600, height: 600, top: 100, left: -100}}></div>
-            <div className="radar-circle" style={{width: 400, height: 400, top: 200, left: 0}}></div>
-            <div className="radar-circle" style={{width: 200, height: 200, top: 300, left: 100}}></div>
-            <div className="absolute top-0 left-0 w-full h-1 bg-cyan-500/20 shadow-[0_0_20px_rgba(6,182,212,0.5)]"></div>
-        </div>
-    );
-}
+const ParticleBackground = () => (
+  <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-60">
+    <div className="radar-circle" style={{ width: 600, height: 600, top: 100, left: -140 }} />
+    <div className="radar-circle animation-delay-200" style={{ width: 420, height: 420, top: 210, left: -10 }} />
+    <div className="radar-circle animation-delay-500" style={{ width: 220, height: 220, top: 310, left: 90 }} />
+    <div className="absolute left-0 top-0 h-px w-full bg-cyan-500/20 shadow-[0_0_22px_rgba(6,182,212,0.45)]" />
+  </div>
+);
 
 const modules = [
-    { name: '总览仪表板', icon: BarChart2, color: 'cyan' },
-    { name: '时间规律', icon: Clock, color: 'purple' },
-    { name: '航线分析', icon: Map, color: 'orange' },
-    { name: '空中追回', icon: Plane, color: 'green' },
-    { name: '航司表现', icon: Building, color: 'blue' },
-    { name: '延误传导', icon: GitBranch, color: 'red' },
-    { name: '延误归因', icon: PieChart, color: 'pink' },
-    { name: '数据探索', icon: Table, color: 'indigo' },
+  { labelKey: 'tab.overview', icon: BarChart2, color: 'text-cyan-400' },
+  { labelKey: 'tab.time', icon: Clock, color: 'text-purple-400' },
+  { labelKey: 'tab.routes', icon: Map, color: 'text-orange-400' },
+  { labelKey: 'tab.recovery', icon: Plane, color: 'text-green-400' },
+  { labelKey: 'tab.airlines', icon: Building, color: 'text-blue-400' },
+  { labelKey: 'tab.propagation', icon: GitBranch, color: 'text-red-400' },
+  { labelKey: 'tab.attribution', icon: PieChart, color: 'text-pink-400' },
+  { labelKey: 'tab.explorer', icon: Table, color: 'text-indigo-400' },
+  { labelKey: 'tab.eda', icon: Activity, color: 'text-teal-400' },
 ];
 
+const copy = {
+  zh: {
+    eyebrow: 'Nexus Flight Analytics',
+    h1Top: '航班延误',
+    h1Mid: '不是偶然。',
+    h1Bottom: '它是一套系统。',
+    subhead: '从 2013 年 nycflights13 到多年份纽约航班明细，系统把延误的时间结构、航线网络、航司差异、空中追回、传导链路与归因模型放到同一条分析路径里。',
+    dataReady: '数据正在预加载',
+    dataReadySub: '进入系统后默认分析无需重新等待',
+    statRecords: '航班记录',
+    statRoutes: '航线网络',
+    statAirlines: '航司画像',
+    statModules: '分析模块',
+    promiseTitle: '像打开一台精密设备一样进入数据',
+    promiseCopy: '首页负责说明问题，控制台负责回答问题。你可以从宏观指标切到航线、航司、时段、归因，再进入可拖拽 EDA，自由组合字段验证直觉。',
+    capability1: '默认数据预热',
+    capability1Copy: '首页空闲时提前请求筛选项和 2013 默认分析，减少首次进入控制台的等待。',
+    capability2: '网络化延误视角',
+    capability2Copy: '延误被拆成小时、星期、航线、航司、机场与严重等级，便于追踪压力从哪里开始扩散。',
+    capability3: 'AI + EDA 联动',
+    capability3Copy: 'AI 助手读当前筛选上下文，EDA 则允许用拖拽槽位快速换图并继续自由探索。',
+    storyTitle: '从一个航班，到一整张运行网络',
+    storyCopy: '系统不是堆图表，而是把分析问题排成路径：先看总体水平，再定位时段和目的地，随后比较航司恢复能力，最后用归因与 EDA 验证机制。',
+    flow: ['采集与清洗', '指标聚合', '交互筛选', '图形探索', 'AI 解释'],
+    moduleTitle: '九个模块，一条连续分析线',
+    moduleCopy: '每个模块都能回答一个明确问题，也能把结果传递给下一步探索。',
+    ctaCopy: '进入控制台后，默认 2013 数据、筛选项和核心图表会尽量直接可用。',
+  },
+  en: {
+    eyebrow: 'Nexus Flight Analytics',
+    h1Top: 'Flight delay',
+    h1Mid: 'is not random.',
+    h1Bottom: 'It is a system.',
+    subhead: 'From nycflights13 to multi-year NYC flight records, the experience connects time structure, route networks, airline differences, air recovery, propagation, and attribution.',
+    dataReady: 'Data is preloading',
+    dataReadySub: 'Default dashboard data is warmed before entry',
+    statRecords: 'Flight records',
+    statRoutes: 'Route network',
+    statAirlines: 'Airline profiles',
+    statModules: 'Analysis modules',
+    promiseTitle: 'Enter the data like a precision instrument',
+    promiseCopy: 'The landing page frames the question; the dashboard answers it. Move from metrics to routes, airlines, periods, attribution, and drag-and-drop EDA.',
+    capability1: 'Default data warmup',
+    capability1Copy: 'While the landing page is idle, filters and the 2013 default analysis are requested ahead of time.',
+    capability2: 'Network delay lens',
+    capability2Copy: 'Delay is broken into hour, weekday, route, airline, airport, and severity so pressure can be traced.',
+    capability3: 'AI plus EDA',
+    capability3Copy: 'The assistant reads current filters, while EDA slots let you switch charts quickly and explore freely.',
+    storyTitle: 'From one flight to an operating network',
+    storyCopy: 'This is not a pile of charts. It is a path: read the baseline, locate periods and destinations, compare recovery, then validate mechanisms with attribution and EDA.',
+    flow: ['Collect', 'Aggregate', 'Filter', 'Explore', 'Explain'],
+    moduleTitle: 'Nine modules, one continuous analysis line',
+    moduleCopy: 'Each module answers a clear question and carries context into the next exploration step.',
+    ctaCopy: 'When you enter the dashboard, default 2013 data, filters, and core charts are warmed whenever possible.',
+  },
+};
+
 export default function LandingPage() {
-    const navigate = useNavigate();
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end end"]
-    });
+  const navigate = useNavigate();
+  const { language, t } = useLanguage();
+  const local = copy[language];
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const heroY = useTransform(scrollYProgress, [0, 0.2], [0, 100]);
 
-    const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-    const heroY = useTransform(scrollYProgress, [0, 0.2], [0, 100]);
+  useEffect(() => {
+    scheduleDashboardPreload();
+  }, []);
 
-    return (
-        <div ref={containerRef} className="bg-[#020617] bg-grid min-h-screen text-[#f1f5f9] overflow-x-hidden font-sans relative selection:bg-cyan-500/30">
-            <ThemeToggle variant="inline" />
-            <ParticleBackground />
+  const stats = [
+    { title: local.statRecords, value: '590,092', icon: Database, color: 'text-cyan-400' },
+    { title: local.statRoutes, value: '233', icon: Waypoints, color: 'text-orange-400' },
+    { title: local.statAirlines, value: '16', icon: Plane, color: 'text-green-400' },
+    { title: local.statModules, value: '9', icon: Activity, color: 'text-purple-400' },
+  ];
 
-            {/* 导航栏 */}
-            <nav className="fixed top-0 w-full z-50 border-b border-white/5 py-4 px-8 flex justify-between items-center bg-slate-950/80 backdrop-blur-md">
-                <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center">
-                        <Plane className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                        <span className="font-bold tracking-tight text-white">航班延误分析系统</span>
-                        <span className="hidden md:inline text-slate-500 text-sm ml-2">| Nexus Flight Analytics</span>
-                    </div>
-                </div>
-                <button
-                    onClick={() => navigate('/dashboard')}
-                    className="flex items-center gap-2 px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/25"
-                >
-                    进入系统 <ArrowRight className="w-4 h-4" />
-                </button>
-            </nav>
+  const capabilities = [
+    { title: local.capability1, copy: local.capability1Copy, icon: Sparkles },
+    { title: local.capability2, copy: local.capability2Copy, icon: Radar },
+    { title: local.capability3, copy: local.capability3Copy, icon: ShieldAlert },
+  ];
 
-            {/* 主视觉区域 */}
-            <motion.section
-                style={{ opacity: heroOpacity, y: heroY }}
-                className="relative h-screen flex flex-col items-center justify-center text-center px-4 z-10"
-            >
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-900/20 via-[#020617] to-[#020617] -z-10" />
-
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-5xl mx-auto"
-                >
-                    <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-sm font-medium">
-                        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                        nycflights13 数据集 · 336,776 条航班记录
-                    </div>
-
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter leading-none mb-8">
-                        DELAY IS A <span className="font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">SYSTEM</span>,<br/>
-                        <span className="text-slate-400">NOT AN ACCIDENT.</span>
-                    </h1>
-
-                    <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-                        解码时间、天气与运营压力的连锁反应。通过沉浸式数据视角，探索航班延误背后的隐藏机制。
-                    </p>
-
-                    {/* 功能模块展示 */}
-                    <div className="grid grid-cols-4 md:grid-cols-8 gap-3 mb-12 max-w-3xl mx-auto">
-                        {modules.map((mod, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5 + i * 0.05 }}
-                                className="flex flex-col items-center gap-1 p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group"
-                            >
-                                <mod.icon className={`w-5 h-5 text-${mod.color}-400 group-hover:scale-110 transition-transform`} />
-                                <span className="text-[10px] text-slate-500 group-hover:text-slate-300">{mod.name}</span>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    <div className="flex justify-center gap-4">
-                        <button
-                            onClick={() => navigate('/dashboard')}
-                            className="px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
-                        >
-                            启动分析
-                        </button>
-                        <button
-                            onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="px-8 py-3.5 border border-white/20 text-white font-medium rounded-xl hover:bg-white/10 transition-colors"
-                        >
-                            了解更多
-                        </button>
-                    </div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.5, duration: 1 }}
-                    className="absolute bottom-12 flex flex-col items-center gap-2 text-slate-500 text-sm"
-                >
-                    <span className="text-xs tracking-widest uppercase">向下滚动探索</span>
-                    <div className="w-6 h-10 border-2 border-slate-600 rounded-full flex justify-center pt-2">
-                        <div className="w-1.5 h-3 bg-cyan-400 rounded-full animate-bounce" />
-                    </div>
-                </motion.div>
-            </motion.section>
-
-            {/* 数据概览区域 */}
-            <section id="features" className="py-24 relative z-10 bg-gradient-to-b from-transparent via-slate-900/50 to-transparent">
-                <div className="max-w-7xl mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="text-center mb-16"
-                    >
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                            时间损失的<span className="text-cyan-400">解剖学</span>
-                        </h2>
-                        <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-                            航班不是孤立事件，而是高度敏感网络中的节点。我们解构纽约 2013 年数据，揭示运营压力如何传播。
-                        </p>
-                    </motion.div>
-
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-                        {[
-                            { title: "分析航班总数", value: "336,776", icon: BarChart2, color: "cyan" },
-                            { title: "延误航班比例", value: "39.1%", icon: ShieldAlert, color: "orange" },
-                            { title: "平均起飞延误", value: "12.6分钟", icon: Activity, color: "purple" },
-                            { title: "数据维度", value: "19个字段", icon: Plane, color: "green" },
-                        ].map((stat, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="glass-panel p-6 rounded-2xl hover:bg-slate-800/60 transition-all duration-300 border-l-4 border-l-cyan-500/50 hover:border-l-cyan-400"
-                            >
-                                <stat.icon className={`w-8 h-8 text-${stat.color}-400 mb-4`} />
-                                <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-                                <div className="text-sm text-slate-500">{stat.title}</div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* 航班案例卡片 */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="relative max-w-2xl mx-auto rounded-3xl glass-panel overflow-hidden"
-                    >
-                        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop')] bg-cover bg-center opacity-10" />
-                        <div className="relative p-8">
-                            <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" />
-                                    <span className="font-mono text-cyan-400">航班 UA1545</span>
-                                </div>
-                                <div className="text-xs text-slate-500">纽约 → 洛杉矶</div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-6 font-mono text-sm">
-                                <div>
-                                    <div className="text-slate-500 mb-1">计划起飞</div>
-                                    <div className="text-white text-lg">05:15</div>
-                                </div>
-                                <div>
-                                    <div className="text-slate-500 mb-1">实际起飞</div>
-                                    <div className="text-orange-400 text-lg">05:54 <span className="text-xs">(+39分钟)</span></div>
-                                </div>
-                                <div>
-                                    <div className="text-slate-500 mb-1">计划到达</div>
-                                    <div className="text-white text-lg">08:19</div>
-                                </div>
-                                <div>
-                                    <div className="text-slate-500 mb-1">实际到达</div>
-                                    <div className="text-green-400 text-lg">08:12 <span className="text-xs">(-7分钟)</span></div>
-                                </div>
-                            </div>
-                            <div className="mt-6 p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
-                                <div className="text-cyan-400 text-sm">
-                                    ✈️ 空中追回成功，弥补 46 分钟延误
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* 功能模块详情 */}
-            <section className="py-24 relative z-10">
-                <div className="max-w-7xl mx-auto px-6">
-                    <h2 className="text-4xl font-bold text-center mb-4">八大分析模块</h2>
-                    <p className="text-slate-400 text-center mb-16 max-w-2xl mx-auto">
-                        从宏观概览到微观明细，全方位解析航班延误规律
-                    </p>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {[
-                            { name: '总览仪表板', desc: '整体延误概况、关键指标、时间热力图', icon: BarChart2, color: 'cyan' },
-                            { name: '时间规律', desc: '24小时/月份/星期延误趋势分析', icon: Clock, color: 'purple' },
-                            { name: '航线分析', desc: '目的地延误排名、航线风险评估', icon: Map, color: 'orange' },
-                            { name: '空中追回', desc: '高延误航班的追回能力分析', icon: Plane, color: 'green' },
-                            { name: '航司表现', desc: '航司准点率、机队规模对比', icon: Building, color: 'blue' },
-                            { name: '延误传导', desc: '同机延误传导效应分析', icon: GitBranch, color: 'red' },
-                            { name: '延误归因', desc: '机龄vs天气因素影响分析', icon: PieChart, color: 'pink' },
-                            { name: '数据探索', desc: '航班明细数据查询与导出', icon: Table, color: 'indigo' },
-                        ].map((mod, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.05 }}
-                                className="group p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-cyan-500/30 hover:bg-slate-800/50 transition-all duration-300 cursor-pointer"
-                                onClick={() => navigate('/dashboard')}
-                            >
-                                <mod.icon className={`w-10 h-10 text-${mod.color}-400 mb-4 group-hover:scale-110 transition-transform`} />
-                                <h3 className="text-lg font-semibold text-white mb-2">{mod.name}</h3>
-                                <p className="text-sm text-slate-500">{mod.desc}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* 技术栈 */}
-            <section className="py-24 relative z-10 bg-slate-900/50">
-                <div className="max-w-5xl mx-auto px-6 text-center">
-                    <h2 className="text-3xl font-bold mb-8">技术架构</h2>
-                    <div className="flex flex-wrap justify-center gap-4">
-                        {['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'ECharts', 'Express.js', 'R 语言', 'nycflights13'].map((tech, i) => (
-                            <span key={i} className="px-4 py-2 bg-slate-800 rounded-full text-sm text-slate-300 border border-white/5">
-                                {tech}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* 行动召唤 */}
-            <section className="py-32 relative z-10">
-                <div className="max-w-3xl mx-auto px-6 text-center">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                        准备好深入探索了吗？
-                    </h2>
-                    <p className="text-slate-400 text-lg mb-10">
-                        进入控制室，探索交互式仪表板，按小时、目的地、航司和气象因素切分数据。
-                    </p>
-                    <button
-                        onClick={() => navigate('/dashboard')}
-                        className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold text-lg rounded-2xl hover:shadow-xl hover:shadow-cyan-500/25 transition-all duration-300"
-                    >
-                        进入航班仪表板
-                        <ArrowRight className="w-5 h-5" />
-                    </button>
-                </div>
-            </section>
-
-            {/* 页脚 */}
-            <footer className="py-8 border-t border-white/5 text-center text-sm text-slate-600">
-                <p>基于 nycflights13 数据集 · R 语言分析 · React + ECharts 可视化</p>
-            </footer>
+  return (
+    <div ref={containerRef} className="relative min-h-screen overflow-x-hidden bg-grid font-sans text-[var(--page-ink)]">
+      <ParticleBackground />
+      <nav className="fixed top-0 z-50 flex w-full items-center justify-between border-b border-white/10 bg-slate-950/80 px-6 py-4 backdrop-blur-md md:px-8">
+        <div className="flex min-w-0 items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500">
+            <Plane className="h-5 w-5 text-white" />
+          </div>
+          <div className="min-w-0 w-44 sm:w-64">
+            <span className="block truncate font-bold tracking-tight text-white">{t('app.name')}</span>
+            <span className="hidden text-sm text-slate-500 md:inline">{t('app.nameEn')}</span>
+          </div>
         </div>
-    );
+        <div className="flex items-center gap-3">
+          <LanguageToggle />
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => navigate('/dashboard')}
+            className="hidden items-center gap-2 rounded-lg bg-cyan-500 px-5 py-2.5 font-semibold text-slate-950 transition-colors hover:bg-cyan-400 sm:flex"
+          >
+            {t('app.enter')} <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
+      </nav>
+
+      <motion.section
+        style={{ opacity: heroOpacity, y: heroY }}
+        className="landing-hero relative z-10 flex min-h-[92vh] items-center overflow-hidden px-6 pt-24"
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "linear-gradient(90deg, rgba(2,6,23,0.96) 0%, rgba(2,6,23,0.80) 38%, rgba(2,6,23,0.30) 100%), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2200&auto=format&fit=crop')",
+          }}
+        />
+        <div className="pointer-events-none absolute right-[7%] top-[20%] hidden h-[380px] w-[380px] opacity-80 lg:block">
+          <span className="radar-circle inset-0" />
+          <span className="radar-circle inset-10 animation-delay-200" />
+          <span className="radar-circle inset-20 animation-delay-500" />
+          <span className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-300 shadow-[0_0_24px_rgba(34,211,238,0.9)]" />
+        </div>
+        <div className="relative z-10 mx-auto w-full max-w-7xl pb-20">
+          <div className="max-w-5xl">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300">
+              <span className="h-2 w-2 rounded-full bg-cyan-400" />
+              {local.eyebrow}
+            </div>
+            <h1 className="mb-8 text-5xl font-light leading-[0.96] tracking-normal md:text-7xl lg:text-8xl">
+              {local.h1Top}
+              <br />
+              <span className="text-slate-300">{local.h1Mid}</span>
+              <br />
+              <span className="font-bold text-cyan-300">{local.h1Bottom}</span>
+            </h1>
+            <p className="mb-10 max-w-3xl text-lg leading-8 text-slate-300 md:text-xl">
+              {local.subhead}
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button
+                type="button"
+                onClick={() => navigate('/dashboard')}
+                className="inline-flex items-center gap-3 rounded-xl bg-cyan-500 px-8 py-3.5 font-bold text-slate-950 transition-colors hover:bg-cyan-400"
+              >
+                {t('app.launch')} <ArrowRight className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+                className="rounded-xl border border-white/20 px-8 py-3.5 font-medium text-white transition-colors hover:bg-white/10"
+              >
+                {t('app.learnMore')}
+              </button>
+            </div>
+            <div className="mt-10 flex max-w-xl items-center gap-3 rounded-xl border border-cyan-400/20 bg-cyan-400/10 px-4 py-3 text-sm text-cyan-100">
+              <LoaderDot />
+              <div>
+                <div className="font-semibold">{local.dataReady}</div>
+                <div className="text-xs text-cyan-100/70">{local.dataReadySub}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <motion.button
+          type="button"
+          onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-cyan-200/90 transition-colors hover:text-cyan-100"
+          aria-label={t('app.scroll')}
+        >
+          <span>{t('app.scroll')}</span>
+          <span className="relative flex h-10 w-6 items-start justify-center rounded-full border border-cyan-300/50 p-1.5">
+            <span className="h-2 w-1 rounded-full bg-cyan-300 animate-bounce" />
+          </span>
+          <ChevronDown className="h-4 w-4 animate-bounce" />
+        </motion.button>
+      </motion.section>
+
+      <section id="features" className="bg-slate-950 px-6 py-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 grid gap-8 lg:grid-cols-[1fr_0.85fr] lg:items-end">
+            <div>
+              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-cyan-400">{t('landing.featuresTitle')}</p>
+              <h2 className="max-w-4xl text-3xl font-bold leading-tight md:text-5xl">{local.promiseTitle}</h2>
+            </div>
+            <p className="text-lg leading-8 text-slate-400">{local.promiseCopy}</p>
+          </div>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            {stats.map((stat) => (
+              <div key={stat.title} className="glass-panel rounded-xl p-5">
+                <stat.icon className={`mb-4 h-7 w-7 ${stat.color}`} />
+                <div className="mb-1 text-3xl font-bold text-white">{stat.value}</div>
+                <div className="text-sm text-slate-500">{stat.title}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-20">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-3">
+          {capabilities.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ delay: index * 0.08 }}
+              className="glass-panel rounded-xl p-6"
+            >
+              <item.icon className="mb-5 h-8 w-8 text-cyan-400" />
+              <h3 className="mb-3 text-xl font-semibold text-white">{item.title}</h3>
+              <p className="text-sm leading-7 text-slate-400">{item.copy}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-slate-950 px-6 py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <h2 className="mb-5 text-3xl font-bold md:text-5xl">{local.storyTitle}</h2>
+            <p className="text-lg leading-8 text-slate-400">{local.storyCopy}</p>
+          </div>
+          <div className="glass-panel rounded-xl p-5">
+            <div className="grid gap-3 sm:grid-cols-5">
+              {local.flow.map((step, index) => (
+                <div key={step} className="rounded-lg border border-white/10 bg-slate-900/50 p-4 text-center">
+                  <div className="mx-auto mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500/15 text-sm font-bold text-cyan-300">
+                    {index + 1}
+                  </div>
+                  <div className="text-sm font-medium text-slate-200">{step}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">{local.moduleTitle}</h2>
+            <p className="text-slate-400">{local.moduleCopy}</p>
+          </div>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-9">
+            {modules.map((mod) => (
+              <button
+                key={mod.labelKey}
+                type="button"
+                onClick={() => navigate('/dashboard')}
+                className="glass-panel group rounded-xl p-4 text-center transition-colors hover:border-cyan-500/30"
+              >
+                <mod.icon className={`mx-auto mb-3 h-7 w-7 ${mod.color} transition-transform group-hover:scale-105`} />
+                <h3 className="text-sm font-semibold text-white">{t(mod.labelKey)}</h3>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-950 px-6 py-20 text-center">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mb-6 text-3xl font-bold md:text-5xl">{t('landing.ctaTitle')}</h2>
+          <p className="mb-10 text-lg leading-8 text-slate-400">{local.ctaCopy}</p>
+          <button
+            type="button"
+            onClick={() => navigate('/dashboard')}
+            className="inline-flex items-center gap-3 rounded-xl bg-cyan-500 px-10 py-4 text-lg font-bold text-slate-950 transition-colors hover:bg-cyan-400"
+          >
+            {t('app.enter')} <ArrowRight className="h-5 w-5" />
+          </button>
+        </div>
+      </section>
+
+      <footer className="border-t border-white/5 py-8 text-center text-sm text-slate-600">
+        {t('app.footer')}
+      </footer>
+    </div>
+  );
+}
+
+function LoaderDot() {
+  return (
+    <span className="relative flex h-3 w-3 shrink-0">
+      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-300 opacity-60" />
+      <span className="relative inline-flex h-3 w-3 rounded-full bg-cyan-300" />
+    </span>
+  );
 }

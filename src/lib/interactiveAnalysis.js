@@ -47,7 +47,7 @@ function getWeekdayIndex(row) {
   if (name.includes('四') || name === 'Thursday') return 4;
   if (name.includes('五') || name === 'Friday') return 5;
   if (name.includes('六') || name === 'Saturday') return 6;
-  if (name.includes('日') || name.includes('天') || name === 'Sunday') return 7;
+  if (name.includes('日') || name === 'Sunday') return 7;
   return null;
 }
 
@@ -56,7 +56,7 @@ function groupRows(rows, keyFn, mapper) {
 }
 
 function getRoute(row) {
-  return row.route || `${row.departureAirport || row.origin || ''} → ${row.arrivalAirport || row.dest || ''}`;
+  return row.route || `${row.departureAirport || row.origin || ''} -> ${row.arrivalAirport || row.dest || ''}`;
 }
 
 function matchesAny(value, selected) {
@@ -77,13 +77,22 @@ export function parseInteractiveFilters(source) {
 }
 
 export function filterFlights(rows, filters) {
+  const normalizedFilters = {
+    years: filters?.years || [],
+    months: filters?.months || [],
+    airlines: filters?.airlines || [],
+    origins: filters?.origins || [],
+    destinations: filters?.destinations || [],
+    delayLevels: filters?.delayLevels || [],
+  };
+
   return rows.filter((row) => (
-    matchesAny(row.year, filters.years) &&
-    matchesAny(row.month, filters.months) &&
-    matchesAny(row.airlineCode || row.carrier, filters.airlines) &&
-    matchesAny(row.departureAirport || row.origin, filters.origins) &&
-    matchesAny(row.arrivalAirport || row.dest, filters.destinations) &&
-    matchesAny(row.delayLevel, filters.delayLevels)
+    matchesAny(row.year, normalizedFilters.years) &&
+    matchesAny(row.month, normalizedFilters.months) &&
+    matchesAny(row.airlineCode || row.carrier, normalizedFilters.airlines) &&
+    matchesAny(row.departureAirport || row.origin, normalizedFilters.origins) &&
+    matchesAny(row.arrivalAirport || row.dest, normalizedFilters.destinations) &&
+    matchesAny(row.delayLevel, normalizedFilters.delayLevels)
   ));
 }
 
@@ -110,6 +119,7 @@ export function buildInteractiveAnalysis(rows, filters = {}) {
     avgDepDelay: round(average(filtered, depDelay), 1),
     avgArrDelay: round(average(filtered, arrDelay), 1),
     depOnTimeRate: filtered.length ? round((onTimeRows.length / filtered.length) * 100, 1) : 0,
+    arrOnTimeRate: filtered.length ? round((filtered.filter((row) => (toNumber(arrDelay(row)) ?? 0) <= 15).length / filtered.length) * 100, 1) : 0,
     severeDelayRate: filtered.length ? round((severeRows.length / filtered.length) * 100, 1) : 0,
     uniqueAirlines: uniqueAirlines.size,
     uniqueRoutes: uniqueRoutes.size,

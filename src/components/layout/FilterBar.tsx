@@ -1,4 +1,3 @@
-import React from 'react';
 import { Filter, X } from 'lucide-react';
 
 interface FilterOption {
@@ -26,7 +25,7 @@ export default function FilterBar({
   origins,
   destinations,
   filters,
-  onFilterChange
+  onFilterChange,
 }: FilterBarProps) {
   const handleChange = (key: string, value: string) => {
     onFilterChange({ ...filters, [key]: value === 'all' ? undefined : value });
@@ -36,87 +35,86 @@ export default function FilterBar({
     onFilterChange({});
   };
 
-  const hasFilters = Object.values(filters).some(v => v !== undefined);
+  const hasFilters = Object.values(filters).some((value) => value !== undefined);
 
   return (
-    <div className="glass-panel p-4 rounded-xl mb-6">
-      <div className="flex items-center gap-4 flex-wrap">
+    <div className="glass-panel mb-6 rounded-xl p-4">
+      <div className="flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2 text-slate-400">
-          <Filter className="w-4 h-4" />
+          <Filter className="h-4 w-4" />
           <span className="text-sm font-medium">筛选条件：</span>
         </div>
 
-        {/* 月份筛选 */}
         {months && (
           <select
             value={filters.month || 'all'}
-            onChange={(e) => handleChange('month', e.target.value)}
-            className="bg-slate-800 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500"
+            onChange={(event) => handleChange('month', event.target.value)}
+            className="rounded-lg border border-white/10 bg-slate-800 px-3 py-1.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
           >
             <option value="all">全部月份</option>
-            {months.map((m: any) => (
-              <option key={m.month} value={m.month}>
-                {m.monthName || `${m.month}月`} ({m.count?.toLocaleString()})
+            {months.map((month: any) => (
+              <option key={month.month} value={month.month}>
+                {month.monthName || `${month.month}月`} ({month.count?.toLocaleString()})
               </option>
             ))}
           </select>
         )}
 
-        {/* 航司筛选 */}
         {airlines && (
           <select
             value={filters.airline || 'all'}
-            onChange={(e) => handleChange('airline', e.target.value)}
-            className="bg-slate-800 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500"
+            onChange={(event) => handleChange('airline', event.target.value)}
+            className="rounded-lg border border-white/10 bg-slate-800 px-3 py-1.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
           >
             <option value="all">全部航司</option>
-            {airlines.map((a: any) => (
-              <option key={a.airlineCode || a.carrier} value={a.airlineCode || a.carrier}>
-                {a.airlineName || a.carrier_name} ({a.count?.toLocaleString()})
+            {airlines.map((airline: any) => (
+              <option key={airline.airlineCode || airline.carrier} value={airline.airlineCode || airline.carrier}>
+                {airline.airlineName || airline.carrier_name} ({airline.count?.toLocaleString()})
               </option>
             ))}
           </select>
         )}
 
-        {/* 出发机场筛选 */}
         {origins && (
           <select
             value={filters.origin || 'all'}
-            onChange={(e) => handleChange('origin', e.target.value)}
-            className="bg-slate-800 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500"
+            onChange={(event) => handleChange('origin', event.target.value)}
+            className="rounded-lg border border-white/10 bg-slate-800 px-3 py-1.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
           >
             <option value="all">全部出发机场</option>
-            {origins.map((o: any) => (
-              <option key={o.departureAirport || o.origin} value={o.departureAirport || o.origin}>
-                {o.departureAirportName || o.origin_name || o.departureAirport || o.origin}
+            {origins.map((origin: any) => (
+              <option key={origin.departureAirport || origin.origin} value={origin.departureAirport || origin.origin}>
+                {origin.departureAirportName || origin.origin_name || origin.departureAirport || origin.origin}
               </option>
             ))}
           </select>
         )}
 
-        {/* 目的地筛选 */}
         {destinations && (
           <select
             value={filters.destination || 'all'}
-            onChange={(e) => handleChange('destination', e.target.value)}
-            className="bg-slate-800 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500"
+            onChange={(event) => handleChange('destination', event.target.value)}
+            className="rounded-lg border border-white/10 bg-slate-800 px-3 py-1.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
           >
             <option value="all">全部目的地</option>
-            {destinations.map((d: any) => (
-              <option key={d.arrivalAirport || d.dest} value={d.arrivalAirport || d.dest}>
-                {d.arrivalAirportName || d.dest_name || d.arrivalAirport || d.dest}
+            {destinations.map((destination: any) => (
+              <option
+                key={destination.arrivalAirport || destination.dest}
+                value={destination.arrivalAirport || destination.dest}
+              >
+                {destination.arrivalAirportName || destination.dest_name || destination.arrivalAirport || destination.dest}
               </option>
             ))}
           </select>
         )}
 
-        {/* 清除筛选 */}
         {hasFilters && (
           <button
+            type="button"
             onClick={clearFilters}
-            className="flex items-center gap-1 px-3 py-1.5 text-sm text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-lg transition-colors"
+            className="flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm text-red-400 transition-colors hover:bg-red-500/10 hover:text-red-300"
           >
-            <X className="w-3 h-3" />
+            <X className="h-3 w-3" />
             清除筛选
           </button>
         )}

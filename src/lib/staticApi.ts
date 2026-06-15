@@ -1,4 +1,5 @@
-import { buildInteractiveAnalysis, parseInteractiveFilters } from './interactiveAnalysis.js';
+import { buildInteractiveAnalysis, filterFlights, parseInteractiveFilters } from './interactiveAnalysis.js';
+import { getLocalizedFields, projectFlightRow } from './fieldMetadata.js';
 
 type EndpointSpec = {
   file: string;
@@ -86,7 +87,10 @@ const MODULE8_OPTION_FILES: Record<string, { file: string; key: string }> = {
   '/api/module8/year-options': { file: 'module8/year_options.json', key: 'yearOptions' },
 };
 
+const DEFAULT_YEAR = '2013';
 const DEFAULT_CHUNK_SIZE = 50000;
+const DEFAULT_EDA_ROWS = 50000;
+const MAX_EDA_ROWS = 400000;
 const jsonCache = new Map<string, Promise<unknown>>();
 
 declare global {
@@ -127,9 +131,7 @@ function getApiPath(url: URL): string | null {
 
 function getByKey(data: unknown, key?: string): unknown {
   if (!key) return data;
-  if (data && typeof data === 'object' && key in data) {
-    return (data as Record<string, unknown>)[key];
-  }
+  if (data && typeof data === 'object' && key in data) return (data as Record<string, unknown>)[key];
   return null;
 }
 
@@ -138,7 +140,39 @@ function toPositiveInt(value: string | null, fallback: number): number {
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
 }
 
-function hasFilters(params: URLSearchParams): boolean {
+function clampLimit(value: string | null, fallback = DEFAULT_EDA_ROWS): number {
+  return Math.min(toPositiveInt(value, fallback), MAX_EDA_ROWS);
+}
+
+function hasAnyInteractiveFilter(filters: Record<string, string[]>): boolean {
+  return ['years', 'months', 'airlines', 'origins', 'destinations', 'delayLevels']
+    .some((key) => filters[key]?.length > 0);
+}
+
+function hasOnlyDefaultYear(filters: Record<string, string[]>): boolean {
+  const years = filters.years || [];
+  return years.length === 1
+    && String(years[0]) === DEFAULT_YEAR
+    && ['months', 'airlines', 'origins', 'destinations', 'delayLevels']
+      .every((key) => !filters[key]?.length);
+}
+
+function resolveEdaRequest(params: URLSearchParams) {
+  const requestedFullLoad = (params.get('limit') || '').toLowerCase() === 'all';
+  const filters = parseInteractiveFilters(params);
+
+  if (!hasAnyInteractiveFilter(filters)) {
+    filters.years = [DEFAULT_YEAR];
+  }
+
+  return {
+    filters,
+    limit: requestedFullLoad ? MAX_EDA_ROWS : clampLimit(params.get('limit')),
+    requestedFullLoad,
+  };
+}
+
+function hasExplorerFilters(params: URLSearchParams): boolean {
   return ['q', 'airline', 'destination', 'delayLevel'].some((key) => (params.get(key) || '').trim());
 }
 
@@ -146,7 +180,7 @@ function asText(value: unknown): string {
   return value === null || value === undefined ? '' : String(value).toLowerCase();
 }
 
-function matchesFlight(flight: FlightRecord, params: URLSearchParams): boolean {
+function matchesExplorerFlight(flight: FlightRecord, params: URLSearchParams): boolean {
   const q = (params.get('q') || '').toLowerCase().trim();
   const airline = params.get('airline') || '';
   const destination = params.get('destination') || '';
@@ -155,7 +189,6 @@ function matchesFlight(flight: FlightRecord, params: URLSearchParams): boolean {
   if (airline && flight.airlineCode !== airline) return false;
   if (destination && flight.arrivalAirport !== destination) return false;
   if (delayLevel && flight.delayLevel !== delayLevel) return false;
-
   if (!q) return true;
 
   return [
@@ -175,9 +208,7 @@ async function loadJson(filePath: string, nativeFetch: typeof fetch): Promise<un
     jsonCache.set(
       filePath,
       nativeFetch(dataUrl(filePath)).then((response) => {
-        if (!response.ok) {
-          throw new Error(`Static data not found: ${filePath}`);
-        }
+        if (!response.ok) throw new Error(`Static data not found: ${filePath}`);
         return response.json();
       }),
     );
@@ -198,9 +229,29 @@ async function loadModule8Meta(nativeFetch: typeof fetch): Promise<Record<string
   return legacy && typeof legacy === 'object' ? (legacy as Record<string, unknown>) : {};
 }
 
+async function loadModule8ChunkInfo(nativeFetch: typeof fetch) {
+  const meta = await loadModule8Meta(nativeFetch);
+  const summary = (meta.summaryStats || meta) as Record<string, unknown>;
+  const totalRecords = Number(summary.totalRecords || meta.totalRecords || 336776);
+  const chunkSize = Number(meta.chunkSize || DEFAULT_CHUNK_SIZE) || DEFAULT_CHUNK_SIZE;
+  const chunkCount = Number(meta.chunkCount || Math.ceil(totalRecords / chunkSize)) || 1;
+  return { chunkSize, chunkCount, totalRecords };
+}
+
 async function loadTotalRecords(nativeFetch: typeof fetch): Promise<number> {
   const { totalRecords } = await loadModule8ChunkInfo(nativeFetch);
   return totalRecords;
+}
+
+async function loadYearTotal(year: string, nativeFetch: typeof fetch): Promise<number | null> {
+  const directData = await loadJson('module8/year_options.json', nativeFetch).catch(() => null);
+  const meta = Array.isArray(directData) ? null : await loadModule8Meta(nativeFetch);
+  const options = Array.isArray(directData)
+    ? directData as any[]
+    : Array.isArray(meta?.yearOptions) ? meta.yearOptions as any[] : [];
+  const row = options.find((item) => String(item.year ?? item.label) === year);
+  const count = Number(row?.count);
+  return Number.isFinite(count) && count > 0 ? count : null;
 }
 
 async function loadChunk(chunkNumber: number, nativeFetch: typeof fetch): Promise<FlightRecord[]> {
@@ -213,19 +264,6 @@ async function loadFirstPage(nativeFetch: typeof fetch): Promise<FlightRecord[]>
   return loadArray('module8/first_page.json', nativeFetch);
 }
 
-async function loadModule8ChunkInfo(nativeFetch: typeof fetch): Promise<{
-  chunkSize: number;
-  chunkCount: number;
-  totalRecords: number;
-}> {
-  const meta = await loadModule8Meta(nativeFetch);
-  const summary = (meta.summaryStats || meta) as Record<string, unknown>;
-  const totalRecords = Number(summary.totalRecords || meta.totalRecords || 336776);
-  const chunkSize = Number(meta.chunkSize || DEFAULT_CHUNK_SIZE) || DEFAULT_CHUNK_SIZE;
-  const chunkCount = Number(meta.chunkCount || Math.ceil(totalRecords / chunkSize)) || 1;
-  return { chunkSize, chunkCount, totalRecords };
-}
-
 async function loadAllFlights(nativeFetch: typeof fetch): Promise<FlightRecord[]> {
   const { chunkCount } = await loadModule8ChunkInfo(nativeFetch);
   const chunks = await Promise.all(
@@ -234,11 +272,7 @@ async function loadAllFlights(nativeFetch: typeof fetch): Promise<FlightRecord[]
   return chunks.flat();
 }
 
-async function loadUnfilteredRange(
-  startIndex: number,
-  endIndex: number,
-  nativeFetch: typeof fetch,
-): Promise<FlightRecord[]> {
+async function loadUnfilteredRange(startIndex: number, endIndex: number, nativeFetch: typeof fetch) {
   if (startIndex === 0 && endIndex <= 100) {
     const firstPage = await loadFirstPage(nativeFetch);
     return firstPage.slice(startIndex, endIndex);
@@ -279,8 +313,7 @@ async function handleModule8Option(pathname: string, nativeFetch: typeof fetch):
   if (Array.isArray(directData)) return jsonResponse(directData);
 
   const meta = await loadModule8Meta(nativeFetch);
-  const fallback = meta[option.key] || [];
-  return jsonResponse(fallback);
+  return jsonResponse(meta[option.key] || []);
 }
 
 async function handleModule8Summary(nativeFetch: typeof fetch): Promise<Response> {
@@ -311,20 +344,14 @@ async function handleModule8Search(url: URL, nativeFetch: typeof fetch): Promise
   const start = (page - 1) * pageSize;
   const end = start + pageSize;
 
-  if (!hasFilters(params)) {
+  if (!hasExplorerFilters(params)) {
     const total = await loadTotalRecords(nativeFetch);
     const rows = start >= total ? [] : await loadUnfilteredRange(start, Math.min(end, total), nativeFetch);
-    return jsonResponse({
-      data: rows,
-      total,
-      page,
-      pageSize,
-      totalPages: Math.ceil(total / pageSize),
-    });
+    return jsonResponse({ data: rows, total, page, pageSize, totalPages: Math.ceil(total / pageSize) });
   }
 
   const allFlights = await loadAllFlights(nativeFetch);
-  const filtered = allFlights.filter((flight) => matchesFlight(flight, params));
+  const filtered = allFlights.filter((flight) => matchesExplorerFlight(flight, params));
   return jsonResponse({
     data: filtered.slice(start, end),
     total: filtered.length,
@@ -338,26 +365,10 @@ function csvEscape(value: unknown): string {
   return `"${String(value ?? '').replace(/"/g, '""')}"`;
 }
 
-function buildCsv(rows: FlightRecord[]): string {
-  const columns = [
-    ['日期', 'date'],
-    ['航司代码', 'airlineCode'],
-    ['航司名称', 'airlineName'],
-    ['航班号', 'flightNumber'],
-    ['飞机编号', 'aircraftId'],
-    ['出发机场', 'departureAirport'],
-    ['目的机场', 'arrivalAirport'],
-    ['航线', 'route'],
-    ['起飞延误(分钟)', 'departureDelay'],
-    ['到达延误(分钟)', 'arrivalDelay'],
-    ['飞行时长(分钟)', 'flightTime'],
-    ['距离(英里)', 'flightDistance'],
-    ['速度(mph)', 'flightSpeed'],
-    ['延误等级', 'delayLevel'],
-  ] as const;
-
-  const header = columns.map(([label]) => csvEscape(label)).join(',');
-  const body = rows.map((row) => columns.map(([, key]) => csvEscape(row[key])).join(','));
+function buildCsv(rows: FlightRecord[], language: string): string {
+  const fields = getLocalizedFields(language);
+  const header = fields.map((field: any) => csvEscape(field.label)).join(',');
+  const body = rows.map((row) => fields.map((field: any) => csvEscape(row[field.fid])).join(','));
   return [header, ...body].join('\n');
 }
 
@@ -366,17 +377,16 @@ async function handleModule8Export(url: URL, nativeFetch: typeof fetch): Promise
   const mode = params.get('exportMode') || 'all';
   const pageSize = toPositiveInt(params.get('pageSize'), 20);
   const page = toPositiveInt(params.get('page'), 1);
+  const language = params.get('lang') === 'en' ? 'en' : 'zh';
   let rows: FlightRecord[];
 
-  if (!hasFilters(params) && mode !== 'all') {
+  if (!hasExplorerFilters(params) && mode !== 'all') {
     const startPage = mode === 'range' ? toPositiveInt(params.get('startPage'), 1) : page;
     const endPage = mode === 'range' ? toPositiveInt(params.get('endPage'), startPage) : page;
-    const start = (startPage - 1) * pageSize;
-    const end = endPage * pageSize;
-    rows = await loadUnfilteredRange(start, end, nativeFetch);
+    rows = await loadUnfilteredRange((startPage - 1) * pageSize, endPage * pageSize, nativeFetch);
   } else {
     const allFlights = await loadAllFlights(nativeFetch);
-    rows = hasFilters(params) ? allFlights.filter((flight) => matchesFlight(flight, params)) : allFlights;
+    rows = hasExplorerFilters(params) ? allFlights.filter((flight) => matchesExplorerFlight(flight, params)) : allFlights;
 
     if (mode === 'current') {
       const start = (page - 1) * pageSize;
@@ -388,11 +398,8 @@ async function handleModule8Export(url: URL, nativeFetch: typeof fetch): Promise
     }
   }
 
-  if (rows.length === 0) {
-    return jsonResponse({ error: 'No matching flight records' }, { status: 404 });
-  }
-
-  return csvResponse(buildCsv(rows));
+  if (rows.length === 0) return jsonResponse({ error: 'No matching flight records' }, { status: 404 });
+  return csvResponse(buildCsv(rows, language));
 }
 
 async function handleInteractiveAnalysis(url: URL, nativeFetch: typeof fetch): Promise<Response> {
@@ -401,17 +408,75 @@ async function handleInteractiveAnalysis(url: URL, nativeFetch: typeof fetch): P
   return jsonResponse(buildInteractiveAnalysis(allFlights, filters));
 }
 
+async function handleEdaRows(url: URL, nativeFetch: typeof fetch): Promise<Response> {
+  const params = url.searchParams;
+  const language = params.get('lang') === 'en' ? 'en' : 'zh';
+  const { filters, limit, requestedFullLoad } = resolveEdaRequest(params);
+
+  if (hasOnlyDefaultYear(filters)) {
+    const total = await loadYearTotal(DEFAULT_YEAR, nativeFetch) || await loadTotalRecords(nativeFetch);
+    const rows = (await loadUnfilteredRange(0, Math.min(limit, total), nativeFetch))
+      .map((row: any) => projectFlightRow(row));
+
+    return jsonResponse({
+      rows,
+      fields: getLocalizedFields(language),
+      total,
+      loaded: rows.length,
+      limit,
+      sampled: total > rows.length,
+      requestedFullLoad,
+      filters,
+      source: 'static-json-sample',
+    });
+  }
+
+  const allFlights = await loadAllFlights(nativeFetch);
+  const filtered = filterFlights(allFlights, filters);
+  const rows = filtered.slice(0, limit).map((row: any) => projectFlightRow(row));
+
+  return jsonResponse({
+    rows,
+    fields: getLocalizedFields(language),
+    total: filtered.length,
+    loaded: rows.length,
+    limit,
+    sampled: filtered.length > rows.length,
+    requestedFullLoad,
+    filters,
+    source: 'static-json',
+  });
+}
+
 async function handleApiRequest(url: URL, nativeFetch: typeof fetch): Promise<Response> {
   const pathname = getApiPath(url);
   if (!pathname) return jsonResponse({ error: 'Not an API request' }, { status: 404 });
 
+  if (pathname === '/api/assistant/chat') {
+    return jsonResponse(
+      {
+        code: 'STATIC_BACKEND_REQUIRED',
+        error: 'AI assistant requires the Node/Express backend proxy and a server-side API key.',
+      },
+      { status: 501 },
+    );
+  }
+  if (pathname === '/api/assistant/health') {
+    const fallbackModels = ['gpt-5.4-mini', 'gpt-5.2-chat-latest', 'gpt-5.1', 'claude-haiku-4-5', 'grok-4.20-fast'];
+    return jsonResponse({
+      configured: false,
+      backend: false,
+      model: 'gpt-5.5',
+      fallbackModels,
+      modelOptions: ['gpt-5.5', ...fallbackModels],
+    });
+  }
   if (pathname === '/api/dashboard/summary') return handleDashboardSummary(nativeFetch);
   if (pathname === '/api/module8/summary') return handleModule8Summary(nativeFetch);
-  if (pathname === '/api/module8/search' || pathname === '/api/module8/list') {
-    return handleModule8Search(url, nativeFetch);
-  }
+  if (pathname === '/api/module8/search' || pathname === '/api/module8/list') return handleModule8Search(url, nativeFetch);
   if (pathname === '/api/module8/export') return handleModule8Export(url, nativeFetch);
   if (pathname === '/api/interactive/analysis') return handleInteractiveAnalysis(url, nativeFetch);
+  if (pathname === '/api/eda/rows') return handleEdaRows(url, nativeFetch);
 
   const optionResponse = await handleModule8Option(pathname, nativeFetch);
   if (optionResponse) return optionResponse;
@@ -429,11 +494,10 @@ export function installStaticApi(): void {
   const nativeFetch = window.fetch.bind(window);
 
   window.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
-    const method = init?.method || (input instanceof Request ? input.method : 'GET');
     const rawUrl = input instanceof Request ? input.url : input.toString();
     const url = new URL(rawUrl, window.location.href);
 
-    if (method.toUpperCase() === 'GET' && getApiPath(url)) {
+    if (getApiPath(url)) {
       try {
         return await handleApiRequest(url, nativeFetch);
       } catch (error) {

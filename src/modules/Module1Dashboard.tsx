@@ -6,6 +6,8 @@ import {
 import KPICard from '../components/charts/KPICard';
 import { useFetch } from '../hooks/useModuleData';
 import DataError from '../components/common/DataError';
+import { useLanguage } from '../contexts/LanguageContext';
+import { localizeDisplayValue, localizeWeekdayByIndex } from '../lib/displayLocalization';
 
 // 图表基础配置
 const chartBaseOptions = {
@@ -30,6 +32,142 @@ const chartBaseOptions = {
 };
 
 export default function Module1Dashboard({ interactiveData }: { interactiveData?: any }) {
+  const { language, t } = useLanguage();
+  const isZh = language === 'zh';
+  const label = {
+    avgDelayAxis: isZh ? '平均延误(分钟)' : 'Avg delay (min)',
+    flightCount: isZh ? '航班量' : 'Flight count',
+    avgDelay: isZh ? '平均延误' : 'Avg delay',
+    severeRate: isZh ? '重度延误率' : 'Severe delay rate',
+    severeDelay: isZh ? '严重延误' : 'Severe delay',
+    onTime: isZh ? '准点' : 'On time',
+    minute: isZh ? '分钟' : 'min',
+    totalFlights: isZh ? '总航班数' : 'Total Flights',
+    avgDepDelay: isZh ? '平均起飞延误' : 'Avg Departure Delay',
+    avgArrDelay: isZh ? '平均到达延误' : 'Avg Arrival Delay',
+    depOnTimeRate: isZh ? '起飞准点率' : 'Departure On-time Rate',
+    arrOnTimeRate: isZh ? '到达准点率' : 'Arrival On-time Rate',
+    severeShare: isZh ? '重度延误占比' : 'Severe Delay Share',
+    severeSubtitle: isZh ? '延误>60分钟' : 'Delay > 60 min',
+    hourlyTitle: isZh ? '全天延误趋势' : 'Daily Delay Trend',
+    hourlyDesc: isZh ? '观察延误随时间累积的规律，下午和晚间延误明显加剧' : 'Track how delay accumulates through the day, with heavier pressure in afternoon and evening windows.',
+    destinationsTitle: isZh ? '最繁忙目的地 Top 10' : 'Busiest Destinations Top 10',
+    destinationsDesc: isZh ? '从纽约三大机场出发的热门目的地航班量排名' : 'Destination volume ranking for flights departing from the three NYC airports.',
+    heatmapTitle: isZh ? '时间热力图' : 'Time Heatmap',
+    heatmapDesc: isZh ? '小时×星期的延误分布，识别高风险时段' : 'Hour by weekday delay distribution for identifying high-risk windows.',
+    levelTitle: isZh ? '延误等级分布' : 'Delay Level Distribution',
+    levelDesc: isZh ? '航班延误程度的整体分布情况' : 'Overall distribution of flight delay severity.',
+    conclusionTitle: isZh ? '关键结论' : 'Key Findings',
+    conclusion2: isZh ? '下午18-21点为延误高峰时段，建议错峰出行' : 'The 18:00-21:00 evening window is the main delay peak; avoid tight connections there.',
+    conclusion3: isZh ? 'ORD(芝加哥)、ATL(亚特兰大)为最繁忙目的地' : 'ORD and ATL are among the busiest destination markets.',
+  };
+  Object.assign(label, isZh ? {
+    avgDelayAxis: '平均延误(分钟)',
+    flightCount: '航班量',
+    avgDelay: '平均延误',
+    severeRate: '严重延误率',
+    severeDelay: '严重延误',
+    onTime: '准点',
+    minute: '分钟',
+    totalFlights: '总航班数',
+    avgDepDelay: '平均起飞延误',
+    avgArrDelay: '平均到达延误',
+    depOnTimeRate: '起飞准点率',
+    arrOnTimeRate: '到达准点率',
+    severeShare: '严重延误占比',
+    severeSubtitle: '延误 > 60 分钟',
+    hourlyTitle: '全天延误趋势',
+    hourlyDesc: '观察延误随时间累积的规律，下午和晚间延误压力更明显。',
+    destinationsTitle: '最繁忙目的地 Top 10',
+    destinationsDesc: '从纽约三大机场出发的热门目的地航班量排名。',
+    heatmapTitle: '时间热力图',
+    heatmapDesc: '小时 x 星期的延误分布，用于识别高风险时段。',
+    levelTitle: '延误等级分布',
+    levelDesc: '航班延误程度的整体分布。',
+    conclusionTitle: '关键结论',
+    conclusion2: '18:00-21:00 是主要延误高峰，建议避开紧张中转。',
+    conclusion3: 'ORD 和 ATL 是最繁忙的目的地市场之一。',
+  } : {});
+  Object.assign(label, isZh ? {
+    avgDelayAxis: '平均延误(分钟)',
+    flightCount: '航班量',
+    avgDelay: '平均延误',
+    severeRate: '严重延误率',
+    severeDelay: '严重延误',
+    onTime: '准点',
+    minute: '分钟',
+    totalFlights: '总航班数',
+    avgDepDelay: '平均起飞延误',
+    avgArrDelay: '平均到达延误',
+    depOnTimeRate: '起飞准点率',
+    arrOnTimeRate: '到达准点率',
+    severeShare: '严重延误占比',
+    severeSubtitle: '延误 > 60 分钟',
+    hourlyTitle: '全天延误趋势',
+    hourlyDesc: '观察延误随时间积累的规律，下午和晚间延误压力更明显。',
+    destinationsTitle: '最繁忙目的地 Top 10',
+    destinationsDesc: '从纽约三大机场出发的热门目的地航班量排名。',
+    heatmapTitle: '时间热力图',
+    heatmapDesc: '小时 x 星期的延误分布，用于识别高风险时段。',
+    levelTitle: '延误等级分布',
+    levelDesc: '航班延误程度的整体分布。',
+    conclusionTitle: '关键结论',
+    conclusion2: '18:00-21:00 是主要延误高峰，建议避开紧凑中转。',
+    conclusion3: 'ORD 和 ATL 是最繁忙的目的地市场之一。',
+  } : {
+    avgDelayAxis: 'Avg delay (min)',
+    flightCount: 'Flight count',
+    avgDelay: 'Avg delay',
+    severeRate: 'Severe delay rate',
+    severeDelay: 'Severe delay',
+    onTime: 'On time',
+    minute: 'min',
+    totalFlights: 'Total Flights',
+    avgDepDelay: 'Avg Departure Delay',
+    avgArrDelay: 'Avg Arrival Delay',
+    depOnTimeRate: 'Departure On-time Rate',
+    arrOnTimeRate: 'Arrival On-time Rate',
+    severeShare: 'Severe Delay Share',
+    severeSubtitle: 'Delay > 60 min',
+    hourlyTitle: 'Daily Delay Trend',
+    hourlyDesc: 'Track how delay accumulates through the day, with heavier pressure in afternoon and evening windows.',
+    destinationsTitle: 'Busiest Destinations Top 10',
+    destinationsDesc: 'Destination volume ranking for flights departing from the three NYC airports.',
+    heatmapTitle: 'Time Heatmap',
+    heatmapDesc: 'Hour by weekday delay distribution for identifying high-risk windows.',
+    levelTitle: 'Delay Level Distribution',
+    levelDesc: 'Overall distribution of flight delay severity.',
+    conclusionTitle: 'Key Findings',
+    conclusion2: 'The 18:00-21:00 evening window is the main delay peak; avoid tight connections there.',
+    conclusion3: 'ORD and ATL are among the busiest destination markets.',
+  });
+  Object.assign(label, isZh ? {
+    avgDelayAxis: '平均延误(分钟)',
+    flightCount: '航班量',
+    avgDelay: '平均延误',
+    severeRate: '严重延误率',
+    severeDelay: '严重延误',
+    onTime: '准点',
+    minute: '分钟',
+    totalFlights: '总航班数',
+    avgDepDelay: '平均起飞延误',
+    avgArrDelay: '平均到达延误',
+    depOnTimeRate: '起飞准点率',
+    arrOnTimeRate: '到达准点率',
+    severeShare: '严重延误占比',
+    severeSubtitle: '延误 > 60 分钟',
+    hourlyTitle: '全天延误趋势',
+    hourlyDesc: '观察延误随时间累积的规律，下午和晚间延误压力更明显。',
+    destinationsTitle: '最繁忙目的地 Top 10',
+    destinationsDesc: '从纽约三大机场出发的热门目的地航班量排名。',
+    heatmapTitle: '时间热力图',
+    heatmapDesc: '小时 x 星期的延误分布，用于识别高风险时段。',
+    levelTitle: '延误等级分布',
+    levelDesc: '航班延误程度的整体分布。',
+    conclusionTitle: '关键结论',
+    conclusion2: '18:00-21:00 是主要延误高峰，建议避开紧张中转。',
+    conclusion3: 'ORD 和 ATL 是最繁忙的目的地市场之一。',
+  } : {});
   const { data: summary, loading: loading1, error: error1 } = useFetch('/api/module1/summary');
   const { data: hourlyTrend, loading: loading2, error: error2 } = useFetch('/api/module1/hourly-trend');
   const { data: topDestinations, loading: loading3, error: error3 } = useFetch('/api/module1/top-destinations');
@@ -49,6 +187,10 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
   const activeHourlyTrend = interactiveData?.hourlyTrend || hourlyTrend;
   const activeTopDestinations = interactiveData?.topDestinationsVolume || topDestinations;
   const activeHeatmap = interactiveData?.heatmap || heatmap;
+  const activeOntimePie = interactiveData?.ontimePie || ontimePie;
+  const conclusion1 = isZh
+    ? `整体延误水平中等，平均起飞延误约${activeSummary?.avgDepDelay || 12}分钟`
+    : `Overall delay is moderate, with average departure delay around ${activeSummary?.avgDepDelay || 12} minutes.`;
 
   // 小时延误趋势图配置
   const hourlyOption = {
@@ -60,7 +202,7 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
       boundaryGap: false,
       data: activeHourlyTrend?.map((d: any) => `${d.hour}:00`) || []
     },
-    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: '平均延误(分钟)' },
+    yAxis: { ...chartBaseOptions.yAxis, type: 'value', name: label.avgDelayAxis },
     series: [{
       data: activeHourlyTrend?.map((d: any) => d.avgDepDelay) || [],
       type: 'line',
@@ -83,7 +225,7 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
   const destOption = {
     ...chartBaseOptions,
     tooltip: { ...chartBaseOptions.tooltip, trigger: 'axis', axisPointer: { type: 'shadow' } },
-    xAxis: { ...chartBaseOptions.yAxis, type: 'value', name: '航班量' },
+    xAxis: { ...chartBaseOptions.yAxis, type: 'value', name: label.flightCount },
     yAxis: {
       ...chartBaseOptions.xAxis,
       type: 'category',
@@ -107,8 +249,12 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
 
   const heatmapHours = Array.from({ length: 19 }, (_, i) => i + 5);
   const heatmapHourLabels = heatmapHours.map((hour) => `${hour}:00`);
-  const heatmapWeekdayLabels = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-  const heatmapWeekdayIndex = new Map(heatmapWeekdayLabels.map((name, index) => [name, index]));
+  const sourceWeekdayLabels = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+  const heatmapWeekdayLabels = sourceWeekdayLabels.map((_, index) => localizeWeekdayByIndex(index + 1, language));
+  const heatmapWeekdayIndex = new Map([
+    ...sourceWeekdayLabels.map((name, index) => [name, index] as const),
+    ...heatmapWeekdayLabels.map((name, index) => [name, index] as const),
+  ]);
   const heatmapSeriesData = (activeHeatmap || [])
     .map((d: any) => {
       const hour = Number(d.hour);
@@ -132,7 +278,7 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
         Number(d.avgDelay) || 0,
         {
           hour,
-          weekdayName: d.weekdayName || heatmapWeekdayLabels[weekdayIndex],
+          weekdayName: heatmapWeekdayLabels[weekdayIndex],
           flightCount: d.flightCount,
           severeDelayRate: d.severeDelayRate
         }
@@ -169,9 +315,9 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
           meta.severeDelayRate === undefined ? '--' : `${Number(meta.severeDelayRate).toFixed(1)}%`;
         return `<div style="padding: 4px 8px;">
           <div style="font-weight: 600; margin-bottom: 4px; color: #38bdf8;">${weekday} ${hour}:00</div>
-          <div>平均延误: <span style="color: #fbbf24; font-weight: 600;">${delay.toFixed(1)}</span> 分钟</div>
-          <div>航班量: <span style="color: #cbd5e1; font-weight: 600;">${flightCount}</span></div>
-          <div>重度延误率: <span style="color: #fb923c; font-weight: 600;">${severeDelayRate}</span></div>
+          <div>${label.avgDelay}: <span style="color: #fbbf24; font-weight: 600;">${delay.toFixed(1)}</span> ${label.minute}</div>
+          <div>${label.flightCount}: <span style="color: #cbd5e1; font-weight: 600;">${flightCount}</span></div>
+          <div>${label.severeRate}: <span style="color: #fb923c; font-weight: 600;">${severeDelayRate}</span></div>
         </div>`;
       }
     },
@@ -202,7 +348,7 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
     },
     yAxis: {
       type: 'category',
-      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+      data: heatmapWeekdayLabels,
       splitArea: {
         show: true,
         areaStyle: {
@@ -247,7 +393,7 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
         color: '#94a3b8',
         fontSize: 12
       },
-      text: ['严重延误', '准点'],
+      text: [label.severeDelay, label.onTime],
       textGap: 15,
       precision: 0
     },
@@ -295,7 +441,7 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
       },
       label: { show: false },
       emphasis: { label: { show: true, fontSize: 14, fontWeight: 'bold', color: '#fff' } },
-      data: ontimePie?.map((d: any) => ({ value: d.count, name: d.category })) || [],
+      data: activeOntimePie?.map((d: any) => ({ value: d.count, name: localizeDisplayValue(d.category, language) })) || [],
       color: ['#10b981', '#06b6d4', '#fbbf24', '#f97316', '#ef4444']
     }]
   };
@@ -303,7 +449,7 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-cyan-400 animate-pulse">正在加载数据...</div>
+        <div className="text-cyan-400 animate-pulse">{t('status.loadingData')}</div>
       </div>
     );
   }
@@ -313,39 +459,39 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
       {/* KPI 卡片 */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         <KPICard
-          title="总航班数"
+          title={label.totalFlights}
           value={activeSummary?.totalFlights?.toLocaleString() || '--'}
           icon={Plane}
           color="cyan"
         />
         <KPICard
-          title="平均起飞延误"
-          value={`${activeSummary?.avgDepDelay || '--'}分钟`}
+          title={label.avgDepDelay}
+          value={`${activeSummary?.avgDepDelay || '--'} ${label.minute}`}
           icon={Clock}
           color="orange"
         />
         <KPICard
-          title="平均到达延误"
-          value={`${activeSummary?.avgArrDelay || '--'}分钟`}
+          title={label.avgArrDelay}
+          value={`${activeSummary?.avgArrDelay || '--'} ${label.minute}`}
           icon={Clock}
           color="purple"
         />
         <KPICard
-          title="起飞准点率"
+          title={label.depOnTimeRate}
           value={`${activeSummary?.depOnTimeRate || '--'}%`}
           icon={CheckCircle}
           color="green"
         />
         <KPICard
-          title="到达准点率"
+          title={label.arrOnTimeRate}
           value={`${activeSummary?.arrOnTimeRate ?? activeSummary?.depOnTimeRate ?? '--'}%`}
           icon={CheckCircle}
           color="green"
         />
         <KPICard
-          title="重度延误占比"
+          title={label.severeShare}
           value={`${activeSummary?.severeDelayRate || '--'}%`}
-          subtitle="延误>60分钟"
+          subtitle={label.severeSubtitle}
           icon={AlertTriangle}
           color="red"
         />
@@ -357,10 +503,10 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
         <div className="glass-panel p-6 rounded-2xl">
           <h3 className="text-lg font-medium text-slate-100 mb-4 flex items-center gap-2">
             <TrendingUp className="w-5 h-5 text-cyan-400" />
-            全天延误趋势
+            {label.hourlyTitle}
           </h3>
           <p className="text-sm text-slate-400 mb-4">
-            观察延误随时间累积的规律，下午和晚间延误明显加剧
+            {label.hourlyDesc}
           </p>
           <div className="h-[300px]">
             <ReactECharts option={hourlyOption} style={{ height: '100%', width: '100%' }} />
@@ -371,10 +517,10 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
         <div className="glass-panel p-6 rounded-2xl">
           <h3 className="text-lg font-medium text-slate-100 mb-4 flex items-center gap-2">
             <MapPin className="w-5 h-5 text-purple-400" />
-            最繁忙目的地 Top 10
+            {label.destinationsTitle}
           </h3>
           <p className="text-sm text-slate-400 mb-4">
-            从纽约三大机场出发的热门目的地航班量排名
+            {label.destinationsDesc}
           </p>
           <div className="h-[300px]">
             <ReactECharts option={destOption} style={{ height: '100%', width: '100%' }} />
@@ -385,10 +531,10 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
         <div className="glass-panel p-6 rounded-2xl">
           <h3 className="text-lg font-medium text-slate-100 mb-4 flex items-center gap-2">
             <Clock className="w-5 h-5 text-orange-400" />
-            时间热力图
+            {label.heatmapTitle}
           </h3>
           <p className="text-sm text-slate-400 mb-4">
-            小时×星期的延误分布，识别高风险时段
+            {label.heatmapDesc}
           </p>
           <div className="h-[300px]">
             <ReactECharts option={heatmapOption} style={{ height: '100%', width: '100%' }} />
@@ -399,10 +545,10 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
         <div className="glass-panel p-6 rounded-2xl">
           <h3 className="text-lg font-medium text-slate-100 mb-4 flex items-center gap-2">
             <CheckCircle className="w-5 h-5 text-green-400" />
-            延误等级分布
+            {label.levelTitle}
           </h3>
           <p className="text-sm text-slate-400 mb-4">
-            航班延误程度的整体分布情况
+            {label.levelDesc}
           </p>
           <div className="h-[300px]">
             <ReactECharts option={pieOption} style={{ height: '100%', width: '100%' }} />
@@ -412,19 +558,19 @@ export default function Module1Dashboard({ interactiveData }: { interactiveData?
 
       {/* 关键结论 */}
       <div className="glass-panel p-6 rounded-2xl border-l-4 border-l-cyan-500">
-        <h3 className="text-lg font-medium text-slate-100 mb-3">关键结论</h3>
+        <h3 className="text-lg font-medium text-slate-100 mb-3">{label.conclusionTitle}</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-slate-300">
           <div className="flex items-start gap-2">
             <span className="text-cyan-400">•</span>
-            <span>整体延误水平中等，平均起飞延误约{activeSummary?.avgDepDelay || 12}分钟</span>
+            <span>{isZh ? `整体延误水平中等，平均起飞延误约 ${activeSummary?.avgDepDelay || 12} 分钟。` : conclusion1}</span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-orange-400">•</span>
-            <span>下午18-21点为延误高峰时段，建议错峰出行</span>
+            <span>{label.conclusion2}</span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-purple-400">•</span>
-            <span>ORD(芝加哥)、ATL(亚特兰大)为最繁忙目的地</span>
+            <span>{label.conclusion3}</span>
           </div>
         </div>
       </div>
