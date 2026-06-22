@@ -80,6 +80,9 @@ const DB_SELECT_COLUMNS = [
 ];
 
 const MODULE_ENDPOINTS = [
+  ['/api/airports-info', 'airports_info.json'],
+  ['/api/airlines-info', 'airlines_info.json'],
+
   ['/api/module1/summary', 'module1/dashboard.json', 'summary'],
   ['/api/module1/hourly-trend', 'module1/dashboard.json', 'hourlyTrend'],
   ['/api/module1/top-destinations', 'module1/dashboard.json', 'topDestinations'],

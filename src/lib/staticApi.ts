@@ -9,6 +9,9 @@ type EndpointSpec = {
 type FlightRecord = Record<string, unknown>;
 
 const API_ENDPOINTS: Record<string, EndpointSpec> = {
+  '/api/airports-info': { file: 'airports_info.json' },
+  '/api/airlines-info': { file: 'airlines_info.json' },
+
   '/api/module1/summary': { file: 'module1/dashboard.json', key: 'summary' },
   '/api/module1/hourly-trend': { file: 'module1/dashboard.json', key: 'hourlyTrend' },
   '/api/module1/top-destinations': { file: 'module1/dashboard.json', key: 'topDestinations' },

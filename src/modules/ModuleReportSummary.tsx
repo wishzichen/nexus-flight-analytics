@@ -1,5 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import ReactECharts from 'echarts-for-react';
+import * as echarts from 'echarts';
+import usTopologyUrl from 'vega-webgl-renderer/docs/data/us-10m.json?url';
+import { feature } from 'topojson-client';
 import {
   Activity,
   AlertTriangle,
@@ -47,6 +50,10 @@ const OPERATING_HOURS = Array.from(
   { length: OPERATING_END_HOUR - OPERATING_START_HOUR + 1 },
   (_, index) => OPERATING_START_HOUR + index,
 );
+const US_MAP_NAME = 'nexus-usa-contiguous';
+const NON_CONTIGUOUS_STATE_IDS = new Set(['02', '15', '60', '66', '69', '72', '78']);
+let usMapLoadPromise: Promise<void> | null = null;
+let usMapRegistered = false;
 
 function asArray(value: unknown) {
   return Array.isArray(value) ? value : [];
@@ -71,6 +78,47 @@ function formatDecimal(value: unknown, digits = 1) {
 
 function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value));
+}
+
+function normalizeStateId(id: unknown) {
+  return String(id ?? '').padStart(2, '0');
+}
+
+async function ensureUsMapRegistered() {
+  if (usMapRegistered) return;
+  if (!usMapLoadPromise) {
+    usMapLoadPromise = fetch(usTopologyUrl)
+      .then((response) => {
+        if (!response.ok) throw new Error(`US map data failed to load: ${response.status}`);
+        return response.json();
+      })
+      .then((topology) => {
+        const states = feature(topology, topology.objects.states) as any;
+        const contiguousStates = {
+          ...states,
+          features: states.features
+            .filter((item: any) => !NON_CONTIGUOUS_STATE_IDS.has(normalizeStateId(item.id ?? item.properties?.id)))
+            .map((item: any) => ({
+              ...item,
+              properties: {
+                ...item.properties,
+                name: item.properties?.name || `state-${normalizeStateId(item.id)}`,
+              },
+            })),
+        };
+        echarts.registerMap(US_MAP_NAME, contiguousStates);
+        usMapRegistered = true;
+      })
+      .catch((error) => {
+        usMapLoadPromise = null;
+        throw error;
+      });
+  }
+  await usMapLoadPromise;
+}
+
+function airportCode(row: any) {
+  return row.faa || row.dest || row.origin || row.iata || row.code;
 }
 
 function getMaxBy(rows: any[], key: string) {
@@ -419,14 +467,56 @@ function buildDestinationScatterOption(rows: any[], copy: any, theme: 'dark' | '
   };
 }
 
-function buildRouteMapOption(routeRows: any[], originGeo: any[], destGeo: any[], copy: any, theme: 'dark' | 'light') {
+function buildRouteMapOption(
+  routeRows: any[],
+  originGeo: any[],
+  destGeo: any[],
+  airportGeo: any[],
+  copy: any,
+  theme: 'dark' | 'light',
+  isMapReady: boolean,
+) {
   const base = chartBase(theme);
-  const originByCode = new Map(originGeo.map((row) => [row.origin, row]));
-  const destByCode = new Map(destGeo.map((row) => [row.dest, row]));
+  const originByCode = new Map<string, any>();
+  const destByCode = new Map<string, any>();
+
+  airportGeo.forEach((row) => {
+    const code = airportCode(row);
+    if (!code) return;
+    const lon = Number(row.lon);
+    const lat = Number(row.lat);
+    if (!Number.isFinite(lon) || !Number.isFinite(lat)) return;
+    const normalized = String(code);
+    originByCode.set(normalized, {
+      origin: normalized,
+      origin_name: row.name || normalized,
+      origin_lon: lon,
+      origin_lat: lat,
+      flightCount: row.flight_count,
+    });
+    destByCode.set(normalized, {
+      dest: normalized,
+      dest_name: row.name || normalized,
+      dest_lon: lon,
+      dest_lat: lat,
+      flightCount: row.flight_count,
+      avgArrDelay: row.avg_delay,
+    });
+  });
+
+  originGeo.forEach((row) => {
+    if (!row.origin) return;
+    originByCode.set(row.origin, row);
+  });
+  destGeo.forEach((row) => {
+    if (!row.dest) return;
+    destByCode.set(row.dest, row);
+  });
+
   const sortedRoutes = [...routeRows]
     .filter((row) => row.origin && row.dest)
-    .sort((a, b) => Number(b.flightCount || 0) - Number(a.flightCount || 0))
-    .slice(0, 90);
+    .sort((a, b) => Number(b.avgArrDelay ?? b.avgDepDelay ?? 0) - Number(a.avgArrDelay ?? a.avgDepDelay ?? 0))
+    .slice(0, 80);
 
   const routeLines = sortedRoutes.map((row) => {
     const origin = originByCode.get(row.origin);
@@ -440,6 +530,7 @@ function buildRouteMapOption(routeRows: any[], originGeo: any[], destGeo: any[],
       ],
       value: Number(row.flightCount || 0),
       avgDelay: Number(row.avgArrDelay ?? row.avgDepDelay ?? 0),
+      severeRate: Number(row.severeDelayRate || 0),
       origin: row.origin,
       dest: row.dest,
     };
@@ -468,6 +559,11 @@ function buildRouteMapOption(routeRows: any[], originGeo: any[], destGeo: any[],
   }));
   const maxRouteCount = Math.max(...routeLines.map((item) => Number(item.value || 0)), 1);
   const maxDestCount = Math.max(...destinationPoints.map((item) => Number(item.count || 0)), 1);
+  const dark = theme === 'dark';
+  const mapFill = dark ? 'rgba(15, 23, 42, 0.72)' : 'rgba(226, 242, 254, 0.88)';
+  const mapBorder = dark ? 'rgba(148, 163, 184, 0.30)' : 'rgba(15, 23, 42, 0.16)';
+  const mapEmphasis = dark ? 'rgba(30, 64, 175, 0.46)' : 'rgba(125, 211, 252, 0.46)';
+  const pointBorder = dark ? '#0f172a' : '#ffffff';
 
   return {
     ...base,
@@ -480,6 +576,7 @@ function buildRouteMapOption(routeRows: any[], originGeo: any[], destGeo: any[],
             `<strong>${row.name}</strong>`,
             `${copy.flightCount}: ${formatNumber(row.value)}`,
             `${copy.avgArrDelay}: ${formatDecimal(row.avgDelay)} ${copy.minute}`,
+            `${copy.severeRate}: ${formatDecimal(row.severeRate)}%`,
           ].join('<br/>');
         }
         const row = params.data;
@@ -490,9 +587,32 @@ function buildRouteMapOption(routeRows: any[], originGeo: any[], destGeo: any[],
         ].join('<br/>');
       },
     },
-    grid: { left: 36, right: 26, top: 32, bottom: 58, containLabel: true },
-    xAxis: { ...base.xAxis, type: 'value', min: -126, max: -66, name: 'lon' },
-    yAxis: { ...base.yAxis, type: 'value', min: 24, max: 50, name: 'lat' },
+    legend: {
+      ...base.legend,
+      top: 2,
+      right: 12,
+      data: [copy.routes, copy.destinations, copy.origins],
+    },
+    geo: isMapReady ? {
+      map: US_MAP_NAME,
+      roam: true,
+      zoom: 1.2,
+      center: [-96, 37.7],
+      boundingCoords: [[-125, 49.8], [-66.5, 24.1]],
+      silent: true,
+      itemStyle: {
+        areaColor: mapFill,
+        borderColor: mapBorder,
+        borderWidth: 0.9,
+      },
+      emphasis: {
+        disabled: true,
+        itemStyle: { areaColor: mapEmphasis },
+      },
+      label: { show: false },
+    } : undefined,
+    xAxis: isMapReady ? undefined : { ...base.xAxis, type: 'value', min: -126, max: -66, name: 'lon' },
+    yAxis: isMapReady ? undefined : { ...base.yAxis, type: 'value', min: 24, max: 50, name: 'lat' },
     visualMap: {
       min: 0,
       max: Math.max(...destinationPoints.map((item) => item.avgDelay), 20),
@@ -501,40 +621,62 @@ function buildRouteMapOption(routeRows: any[], originGeo: any[], destGeo: any[],
       orient: 'horizontal',
       left: 'center',
       bottom: 0,
+      itemWidth: 14,
+      itemHeight: 120,
       inRange: { color: ['#10b981', '#f59e0b', '#ef4444'] },
-      textStyle: { color: theme === 'dark' ? '#94a3b8' : '#475569' },
+      text: [copy.highRisk, copy.lowRisk],
+      textStyle: { color: dark ? '#94a3b8' : '#475569' },
     },
     series: [
       {
         name: copy.routes,
         type: 'lines',
-        coordinateSystem: 'cartesian2d',
+        coordinateSystem: isMapReady ? 'geo' : 'cartesian2d',
         data: routeLines.map((line) => ({
           ...line,
           lineStyle: {
-            width: clamp(Math.sqrt(line.value / maxRouteCount) * 4, 0.7, 4),
-            opacity: 0.26,
+            color: line.avgDelay >= 30 ? '#ef4444' : line.avgDelay >= 18 ? '#f59e0b' : '#22d3ee',
+            width: clamp(Math.sqrt(line.value / maxRouteCount) * 5, 1.1, 5),
+            opacity: clamp(0.18 + (line.avgDelay / 70), 0.24, 0.68),
           },
         })),
-        lineStyle: { color: '#22d3ee', curveness: 0.18 },
-        effect: { show: true, symbol: 'arrow', symbolSize: 5, color: '#22d3ee', trailLength: 0.14 },
+        lineStyle: { curveness: 0.22 },
+        effect: { show: true, symbol: 'arrow', symbolSize: 5, color: '#e0f2fe', trailLength: 0.16 },
+        blendMode: 'lighter',
         zlevel: 1,
       },
       {
         name: copy.destinations,
         type: 'scatter',
+        coordinateSystem: isMapReady ? 'geo' : 'cartesian2d',
         data: destinationPoints.map((item) => [item.lon, item.lat, item.count, item.avgDelay, `${item.dest} ${item.name || ''}`]),
-        symbolSize: (value: any[]) => clamp(Math.sqrt(Number(value[2] || 0) / maxDestCount) * 44, 8, 44),
-        itemStyle: { opacity: 0.82, borderColor: '#ffffff', borderWidth: 1 },
+        symbolSize: (value: any[]) => clamp(Math.sqrt(Number(value[2] || 0) / maxDestCount) * 42, 8, 42),
+        itemStyle: { opacity: 0.9, borderColor: pointBorder, borderWidth: 1.3, shadowBlur: 10, shadowColor: 'rgba(0, 0, 0, 0.28)' },
+        emphasis: {
+          label: {
+            show: true,
+            formatter: (params: any) => String(params.data?.[4] || '').split(' ')[0],
+            color: dark ? '#f8fafc' : '#0f172a',
+            fontWeight: 700,
+          },
+        },
         zlevel: 2,
       },
       {
         name: copy.origins,
         type: 'effectScatter',
+        coordinateSystem: isMapReady ? 'geo' : 'cartesian2d',
         data: originGeo.map((item) => [Number(item.origin_lon), Number(item.origin_lat), Number(item.flightCount || 0), 0, `${item.origin} ${item.origin_name || ''}`]),
-        symbolSize: 14,
-        rippleEffect: { scale: 3 },
-        itemStyle: { color: '#f59e0b' },
+        symbolSize: 15,
+        rippleEffect: { scale: 3.2, brushType: 'stroke' },
+        itemStyle: { color: '#f59e0b', borderColor: pointBorder, borderWidth: 1.4, shadowBlur: 12, shadowColor: 'rgba(245, 158, 11, 0.42)' },
+        label: {
+          show: true,
+          position: 'right',
+          formatter: (params: any) => String(params.data?.[4] || '').split(' ')[0],
+          color: dark ? '#fde68a' : '#92400e',
+          fontWeight: 700,
+        },
         zlevel: 3,
       },
     ],
@@ -800,6 +942,7 @@ export default function ModuleReportSummary({ interactiveData }: ReportProps) {
   const { theme } = useTheme();
   const isZh = language === 'zh';
   const [selectedWeekday, setSelectedWeekday] = useState<WeekdaySelection>('all');
+  const [isUsMapReady, setIsUsMapReady] = useState(usMapRegistered);
 
   const { data: fallbackSummary } = useFetch('/api/module1/summary');
   const { data: fallbackHourlyComparison } = useFetch('/api/module2/hourly-comparison');
@@ -810,6 +953,7 @@ export default function ModuleReportSummary({ interactiveData }: ReportProps) {
   const { data: fallbackRouteAnalysis } = useFetch('/api/module3/route-analysis');
   const { data: originGeo } = useFetch('/api/module3/origin-geo');
   const { data: destGeo } = useFetch('/api/module3/dest-geo');
+  const { data: airportGeo } = useFetch('/api/airports-info');
   const { data: fallbackDelayRanking } = useFetch('/api/module5/delay-ranking');
   const { data: fallbackOntimeRanking } = useFetch('/api/module5/ontime-ranking');
   const { data: recoveryStats } = useFetch('/api/module4/recovery-stats');
@@ -832,6 +976,20 @@ export default function ModuleReportSummary({ interactiveData }: ReportProps) {
   const ontimeRanking = asArray(interactiveData?.ontimeRanking || fallbackOntimeRanking);
   const featureRows = asArray(featureImportance);
   const weatherRows = asArray(weatherAnalysis);
+
+  useEffect(() => {
+    let mounted = true;
+    ensureUsMapRegistered()
+      .then(() => {
+        if (mounted) setIsUsMapReady(true);
+      })
+      .catch((error) => {
+        console.warn('[route-map] US map fallback to coordinate view:', error);
+      });
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const selectedHourlyRows = useMemo(
     () => rowsForWeekday(selectedWeekday, hourlyComparison, weekdayHourlyComparison, weekdayHourHeatmap),
@@ -1273,9 +1431,17 @@ export default function ModuleReportSummary({ interactiveData }: ReportProps) {
           subtitle={copy.mapSub}
           caption={copy.mapCaption}
           icon={Navigation}
-          option={buildRouteMapOption(routeAnalysis, asArray(originGeo), asArray(destGeo), copy, theme)}
+          option={buildRouteMapOption(
+            routeAnalysis,
+            asArray(originGeo),
+            asArray(destGeo),
+            asArray(airportGeo),
+            copy,
+            theme,
+            isUsMapReady,
+          )}
           emptyText={copy.emptyChart}
-          height={400}
+          height={460}
           guide={[
             { label: copy.ask, text: copy.mapGuideQuestion },
             { label: copy.read, text: copy.mapGuideRead },
