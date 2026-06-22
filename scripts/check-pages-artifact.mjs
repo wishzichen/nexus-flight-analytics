@@ -58,7 +58,9 @@ if (!fs.existsSync(distDir)) {
   }
 
   const requiredDataFiles = [
+    'data/airports_info.json',
     'data/module1/dashboard.json',
+    'data/module3/route_analysis.json',
     'data/module8/full_first_page.json',
     'data/module8/full_summary.json',
   ];
@@ -79,6 +81,11 @@ if (!fs.existsSync(distDir)) {
   }
 
   const allFiles = walkFiles(distDir);
+  const hasUsMapAsset = allFiles.some((file) => /assets[\\/]+us-10m-.+\.json$/.test(path.relative(distDir, file)));
+  if (!hasUsMapAsset) {
+    fail('US map asset is missing from dist/assets. The route map will fall back to a coordinate chart.');
+  }
+
   const totalBytes = allFiles.reduce((sum, file) => sum + fs.statSync(file).size, 0);
   const totalMb = totalBytes / 1024 / 1024;
   const rdsFiles = allFiles.filter((file) => file.toLowerCase().endsWith('.rds'));

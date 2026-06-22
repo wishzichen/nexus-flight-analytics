@@ -121,6 +121,28 @@ function airportCode(row: any) {
   return row.faa || row.dest || row.origin || row.iata || row.code;
 }
 
+function routeDelayColor(avgDelay: number) {
+  if (avgDelay >= 30) return '#ef4444';
+  if (avgDelay >= 18) return '#f59e0b';
+  return '#22d3ee';
+}
+
+function pointPayload(data: any) {
+  return Array.isArray(data) ? data : data?.value || [];
+}
+
+function originLabelPosition(code: string) {
+  if (code === 'JFK') return 'bottom';
+  if (code === 'LGA') return 'top';
+  return 'right';
+}
+
+function originLabelOffset(code: string): [number, number] {
+  if (code === 'JFK') return [0, 10];
+  if (code === 'LGA') return [0, -10];
+  return [8, 0];
+}
+
 function getMaxBy(rows: any[], key: string) {
   return rows.reduce((best, row) => {
     if (!best) return row;
@@ -547,23 +569,35 @@ function buildRouteMapOption(
       lat: Number(geo.dest_lat),
       count: 0,
       weightedDelay: 0,
+      weightedSevereRate: 0,
     };
     current.count += line.value;
     current.weightedDelay += line.avgDelay * line.value;
+    current.weightedSevereRate += line.severeRate * line.value;
     destinationMap.set(line.dest, current);
   });
 
   const destinationPoints = Array.from(destinationMap.values()).map((item) => ({
     ...item,
     avgDelay: item.count ? Number((item.weightedDelay / item.count).toFixed(1)) : 0,
+    avgSevereRate: item.count ? Number((item.weightedSevereRate / item.count).toFixed(1)) : 0,
   }));
+  const highRiskPoints = [...destinationPoints]
+    .filter((item) => item.avgDelay >= 18 || item.avgSevereRate >= 18)
+    .sort((a, b) => (
+      Number(b.avgDelay || 0) - Number(a.avgDelay || 0)
+      || Number(b.avgSevereRate || 0) - Number(a.avgSevereRate || 0)
+      || Number(b.count || 0) - Number(a.count || 0)
+    ))
+    .slice(0, 6);
   const maxRouteCount = Math.max(...routeLines.map((item) => Number(item.value || 0)), 1);
   const maxDestCount = Math.max(...destinationPoints.map((item) => Number(item.count || 0)), 1);
   const dark = theme === 'dark';
-  const mapFill = dark ? 'rgba(15, 23, 42, 0.72)' : 'rgba(226, 242, 254, 0.88)';
-  const mapBorder = dark ? 'rgba(148, 163, 184, 0.30)' : 'rgba(15, 23, 42, 0.16)';
+  const mapFill = dark ? 'rgba(15, 23, 42, 0.66)' : 'rgba(226, 242, 254, 0.9)';
+  const mapBorder = dark ? 'rgba(148, 163, 184, 0.36)' : 'rgba(15, 23, 42, 0.18)';
   const mapEmphasis = dark ? 'rgba(30, 64, 175, 0.46)' : 'rgba(125, 211, 252, 0.46)';
   const pointBorder = dark ? '#0f172a' : '#ffffff';
+  const labelBackground = dark ? 'rgba(15, 23, 42, 0.82)' : 'rgba(255, 255, 255, 0.84)';
 
   return {
     ...base,
@@ -579,11 +613,12 @@ function buildRouteMapOption(
             `${copy.severeRate}: ${formatDecimal(row.severeRate)}%`,
           ].join('<br/>');
         }
-        const row = params.data;
+        const row = pointPayload(params.data);
         return [
           `<strong>${row[4]}</strong>`,
           `${copy.flightCount}: ${formatNumber(row[2])}`,
           `${copy.avgArrDelay}: ${formatDecimal(row[3])} ${copy.minute}`,
+          `${copy.severeRate}: ${formatDecimal(row[5])}%`,
         ].join('<br/>');
       },
     },
@@ -596,14 +631,15 @@ function buildRouteMapOption(
     geo: isMapReady ? {
       map: US_MAP_NAME,
       roam: true,
-      zoom: 1.2,
-      center: [-96, 37.7],
+      zoom: 1.16,
+      center: [-95.6, 37.9],
       boundingCoords: [[-125, 49.8], [-66.5, 24.1]],
+      scaleLimit: { min: 0.95, max: 5 },
       silent: true,
       itemStyle: {
         areaColor: mapFill,
         borderColor: mapBorder,
-        borderWidth: 0.9,
+        borderWidth: 1,
       },
       emphasis: {
         disabled: true,
@@ -622,7 +658,7 @@ function buildRouteMapOption(
       left: 'center',
       bottom: 0,
       itemWidth: 14,
-      itemHeight: 120,
+      itemHeight: 112,
       inRange: { color: ['#10b981', '#f59e0b', '#ef4444'] },
       text: [copy.highRisk, copy.lowRisk],
       textStyle: { color: dark ? '#94a3b8' : '#475569' },
@@ -635,23 +671,22 @@ function buildRouteMapOption(
         data: routeLines.map((line) => ({
           ...line,
           lineStyle: {
-            color: line.avgDelay >= 30 ? '#ef4444' : line.avgDelay >= 18 ? '#f59e0b' : '#22d3ee',
-            width: clamp(Math.sqrt(line.value / maxRouteCount) * 5, 1.1, 5),
-            opacity: clamp(0.18 + (line.avgDelay / 70), 0.24, 0.68),
+            color: routeDelayColor(line.avgDelay),
+            width: clamp(Math.sqrt(line.value / maxRouteCount) * 4.2, 0.9, 4.2),
+            opacity: clamp(0.18 + (line.avgDelay / 86), 0.22, 0.56),
           },
         })),
         lineStyle: { curveness: 0.22 },
-        effect: { show: true, symbol: 'arrow', symbolSize: 5, color: '#e0f2fe', trailLength: 0.16 },
-        blendMode: 'lighter',
+        effect: { show: true, symbol: 'arrow', symbolSize: 4.5, color: dark ? '#dbeafe' : '#1d4ed8', trailLength: 0.08, period: 6 },
         zlevel: 1,
       },
       {
         name: copy.destinations,
         type: 'scatter',
         coordinateSystem: isMapReady ? 'geo' : 'cartesian2d',
-        data: destinationPoints.map((item) => [item.lon, item.lat, item.count, item.avgDelay, `${item.dest} ${item.name || ''}`]),
-        symbolSize: (value: any[]) => clamp(Math.sqrt(Number(value[2] || 0) / maxDestCount) * 42, 8, 42),
-        itemStyle: { opacity: 0.9, borderColor: pointBorder, borderWidth: 1.3, shadowBlur: 10, shadowColor: 'rgba(0, 0, 0, 0.28)' },
+        data: destinationPoints.map((item) => [item.lon, item.lat, item.count, item.avgDelay, `${item.dest} ${item.name || ''}`, item.avgSevereRate]),
+        symbolSize: (value: any[]) => clamp(Math.sqrt(Number(value[2] || 0) / maxDestCount) * 36, 7, 36),
+        itemStyle: { opacity: 0.86, borderColor: pointBorder, borderWidth: 1.2, shadowBlur: 8, shadowColor: 'rgba(0, 0, 0, 0.24)' },
         emphasis: {
           label: {
             show: true,
@@ -663,19 +698,66 @@ function buildRouteMapOption(
         zlevel: 2,
       },
       {
+        name: copy.highRisk,
+        type: 'effectScatter',
+        coordinateSystem: isMapReady ? 'geo' : 'cartesian2d',
+        data: highRiskPoints.map((item, index) => ({
+          name: `${item.dest} ${item.name || ''}`,
+          value: [item.lon, item.lat, item.count, item.avgDelay, `${item.dest} ${item.name || ''}`, item.avgSevereRate],
+          label: {
+            position: index % 2 === 0 ? 'top' : 'bottom',
+            offset: [0, index % 2 === 0 ? -3 : 3],
+          },
+        })),
+        symbolSize: (value: any[]) => clamp(12 + Number(value[3] || 0) * 0.28, 15, 28),
+        rippleEffect: { scale: 2.1, brushType: 'stroke' },
+        itemStyle: {
+          color: '#ef4444',
+          borderColor: pointBorder,
+          borderWidth: 1.6,
+          shadowBlur: 16,
+          shadowColor: 'rgba(239, 68, 68, 0.45)',
+        },
+        label: {
+          show: true,
+          formatter: (params: any) => String(pointPayload(params.data)?.[4] || '').split(' ')[0],
+          color: dark ? '#fecaca' : '#991b1b',
+          fontSize: 11,
+          fontWeight: 800,
+          backgroundColor: labelBackground,
+          borderRadius: 4,
+          padding: [2, 5],
+        },
+        zlevel: 4,
+      },
+      {
         name: copy.origins,
         type: 'effectScatter',
         coordinateSystem: isMapReady ? 'geo' : 'cartesian2d',
-        data: originGeo.map((item) => [Number(item.origin_lon), Number(item.origin_lat), Number(item.flightCount || 0), 0, `${item.origin} ${item.origin_name || ''}`]),
+        data: originGeo.map((item) => {
+          const code = String(item.origin || '');
+          return {
+            name: code,
+            value: [Number(item.origin_lon), Number(item.origin_lat), Number(item.flightCount || 0), 0, `${code} ${item.origin_name || ''}`, 0],
+            label: {
+              position: originLabelPosition(code),
+              offset: originLabelOffset(code),
+            },
+          };
+        }),
         symbolSize: 15,
         rippleEffect: { scale: 3.2, brushType: 'stroke' },
         itemStyle: { color: '#f59e0b', borderColor: pointBorder, borderWidth: 1.4, shadowBlur: 12, shadowColor: 'rgba(245, 158, 11, 0.42)' },
         label: {
           show: true,
           position: 'right',
-          formatter: (params: any) => String(params.data?.[4] || '').split(' ')[0],
+          formatter: (params: any) => String(pointPayload(params.data)?.[4] || '').split(' ')[0],
           color: dark ? '#fde68a' : '#92400e',
+          fontSize: 11,
           fontWeight: 700,
+          backgroundColor: labelBackground,
+          borderRadius: 4,
+          padding: [2, 5],
         },
         zlevel: 3,
       },

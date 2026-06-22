@@ -16,6 +16,10 @@ export const DASHBOARD_PRELOAD_URLS = [
   '/api/module1/heatmap',
   '/api/module1/ontime-pie',
   '/api/module1/delayed-airlines',
+  '/api/module3/route-analysis',
+  '/api/module3/dest-geo',
+  '/api/module3/origin-geo',
+  '/api/airports-info',
 ] as const;
 
 export const EXPLORER_EDA_PRELOAD_URLS = [
