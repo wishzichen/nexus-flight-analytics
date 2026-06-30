@@ -1,0 +1,14 @@
+{
+  "rows": 38298113,
+  "train_rows": 28105070,
+  "validation_rows": 5133555,
+  "test_rows": 5059488,
+  "split": "train<=2023, validation=2024, test=2025",
+  "heavy_model_train_rows": 500000,
+  "fast_main_models": true,
+  "best_test_model_by_pr_auc": "Stacked_Ensemble",
+  "best_test_pr_auc": 0.5002354349693255,
+  "best_test_roc_auc": 0.7452380728925997,
+  "feature_file": "E:\\TJUTCM\\Activities\\第二届数据分析大赛\\modeling_data\\full_2018_2025\\flight_delay_features_2018_2025.parquet",
+  "notes": "Optimized feature set with cyclic time, route/carrier monthly history, 24h airport congestion, capacity ratio, and route share. Main-model run includes SGD, LightGBM, XGBoost, and stacking."
+}

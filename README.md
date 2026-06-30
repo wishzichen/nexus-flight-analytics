@@ -1,363 +1,242 @@
-# 航班延误分析系统 | Nexus Flight Analytics
+# Nexus Flight Analytics
 
-<div align="center">
+Code, data artifacts, and reproducibility notes for a flight-delay prediction,
+risk-ranking, and decision-support workflow.
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Data](https://img.shields.io/badge/data-NYC%202013%2B2014-orange)
-![R](https://img.shields.io/badge/R-4.0+-purple)
-![React](https://img.shields.io/badge/React-19-cyan)
-![ECharts](https://img.shields.io/badge/ECharts-6.0-orange)
+This repository accompanies the PeerJ Computer Science submission on flight
+delay prediction and recovery/risk prioritization. It contains:
 
-**基于纽约航班数据的延误分析与可视化系统**
+- public-data download scripts;
+- feature engineering for BTS flight records, IEM ASOS weather, airport
+  infrastructure, and route-network features;
+- pilot and full-scale temporal model experiments;
+- result tables used for manuscript reporting;
+- a React/Node dashboard prototype for exploratory flight-delay analytics.
 
-*航班延误分析系统 | Flight Delay Analytics System*
+The repository is intended to make the statistical analysis auditable by
+reviewers. Very large constructed datasets are documented here and should be
+uploaded to Figshare, Zenodo, or PeerJ Supplemental Files with a DOI or
+descriptive "raw data" legend.
 
-</div>
+## Project Scope
 
----
+The main modeling task predicts whether a scheduled departure will experience
+a departure delay of at least 15 minutes. The full experiment uses a
+chronological design:
 
-## 📋 项目概览
+| Split | Period | Role |
+| --- | --- | --- |
+| Train | 2018-2023 | fit base models |
+| Validation | 2024 | tune thresholds, stacking, and calibration |
+| Test | 2025 | independent out-of-time evaluation |
 
-本项目基于纽约三大机场（EWR/JFK/LGA）出发航班数据，使用 R 语言生成默认分析结果，React + ECharts 构建可视化界面。本地开发服务优先读取 `data/flights.sqlite` 数据库；前端默认展示 2013 年基线结果，用户筛选年份/月份/航司/机场/延误等级后，由后端基于数据库重新聚合核心图表。
+The dashboard prototype uses a smaller NYC-focused exploratory dataset for
+visual analysis of delay patterns, route performance, airborne recovery,
+airline comparison, propagation, attribution, and flight-level audit views.
 
-### ✨ 核心功能
+## Repository Structure
 
-| 模块 | 功能 | 特色 |
-|------|------|------|
-| **总览** | 关键指标仪表板 | KPI卡片、热力图、饼图 |
-| **时间规律** | 延误时间模式分析 | 24小时趋势、月度趋势、星期热力图 |
-| **航线分析** | 目的地/航线延误对比 | 气泡图、地理分布、风险航线识别 |
-| **空中追回** | 飞行中延误恢复分析 | 追回散点图、航司追回能力对比 |
-| **航司表现** | 航司综合表现排名 | 四象限分析、准点率排名 |
-| **延误传导** | 航班延误链式传导分析 | 桑基图、序列传播分析 |
-| **延误归因** | 延误原因归因分析 | 机龄分析、天气影响、特征重要性 |
-| **数据探索** | 原始数据查询与导出 | 高级筛选、页码跳转、CSV导出 |
-
----
-
-## 📊 数据统计
-
-**当前已纳入数据库的数据**
-
-| 指标 | 数值 |
-|------|------|
-| 总航班记录 | 590,092 条 |
-| 数据字段数 | 60 个（预处理后） |
-| 本地数据库 | `data/flights.sqlite`（本地生成，不随 Git 发布） |
-| 默认展示基线 | 2013年1月-12月 |
-| 可筛选年份 | 2013 全年；2014 年1月-10月 |
-| 平均起飞延误 | 12.6 分钟 |
-| 参与航司 | 16 家 |
-| 出发机场 | 3 个（EWR, JFK, LGA） |
-
-> 说明：BTS TranStats 官方月度 zip 可继续补齐更近年份，但该站点在当前网络环境下容易超时或断流。项目已保留可续跑的数据库导入脚本；当前提交先固定可稳定复现的 2013 + 2014 数据。
-
-### 数据真实性验证
-
-✅ **真实机场名称**：
-- EWR - Newark Liberty Intl
-- JFK - John F Kennedy Intl  
-- LGA - La Guardia
-
-✅ **真实飞机型号**：
-- BOEING 737-824, 757-223, 767-332
-- AIRBUS A320-232, A321-231
-- EMBRAER EMB-145XR
-- BOMBARDIER CL-600-2B19
-
-✅ **真实航空公司**：
-- United Air Lines Inc.
-- American Airlines Inc.
-- Delta Air Lines Inc.
-- JetBlue Airways
-- 等 16 家航司
-
----
-
-## 🗂️ 项目结构
-
-```
+```text
 nexus-flight-analytics/
-├── 📁 data/                          # 分析结果数据
-│   ├── flights.sqlite                # 本地生成的交互分析数据库（不入 Git）
-│   ├── module1/                      # 总览模块数据
-│   │   └── dashboard.json
-│   ├── module2/                      # 时间规律数据
-│   │   └── time_analysis.json
-│   ├── module3/                      # 航线分析数据
-│   │   └── route_analysis.json
-│   ├── module4/                      # 空中追回数据
-│   │   └── recovery_analysis.json
-│   ├── module5/                      # 航司表现数据
-│   │   └── airline_analysis.json
-│   ├── module6/                      # 延误传导数据
-│   │   └── propagation_analysis.json
-│   ├── module7/                      # 延误归因数据
-│   │   └── attribution_analysis.json
-│   └── module8/                      # 数据探索数据（完整数据集）
-│       ├── full_data_chunk_1.json   # 静态发布数据块
-│       ├── ...
-│       ├── full_data_chunk_12.json  # 静态发布数据块
-│       ├── explorer_data.json        # 筛选选项和元数据
-│       ├── full_first_page.json     # 首页快速加载数据
-│       └── full_summary.json         # 统计摘要
-│
-├── 📁 scripts/                       # R 语言分析脚本
-│   ├── 00_collect_multi_year_data.R  # 多年份数据采集
-│   ├── 01_data_preparation.R         # 数据预处理
-│   ├── 02_module1_dashboard.R         # 总览分析
-│   ├── 03_module2_time.R             # 时间规律分析
-│   ├── 04_module3_routes.R          # 航线分析
-│   ├── 05_module4_recovery.R       # 空中追回分析
-│   ├── 06_module5_airlines.R        # 航司表现分析
-│   ├── 07_module6_propagation.R     # 延误传导分析
-│   ├── 08_module7_attribution.R    # 延误归因分析
-│   ├── 09_module8_explorer_full.R  # 数据探索导出（完整数据）
-│   ├── build_flights_database.mjs    # SQLite 数据库构建/补数
-│   └── run_all_analyses.R           # 一键运行所有分析
-│
-├── 📁 src/                           # React 前端源码
-│   ├── 📁 components/               # 通用组件
-│   │   ├── 📁 charts/              # 图表组件
-│   │   │   └── KPICard.tsx
-│   │   ├── 📁 common/              # 通用组件
-│   │   │   └── DataError.tsx
-│   │   └── 📁 layout/              # 布局组件
-│   │       ├── FilterBar.tsx
-│   │       └── TabNav.tsx
-│   ├── 📁 hooks/                    # React Hooks
-│   │   └── useModuleData.ts
-│   ├── 📁 modules/                  # 分析模块组件
-│   │   ├── Module1Dashboard.tsx     # 总览
-│   │   ├── Module2TimeAnalysis.tsx  # 时间规律
-│   │   ├── Module3RouteAnalysis.tsx # 航线分析
-│   │   ├── Module4AirRecovery.tsx    # 空中追回
-│   │   ├── Module5AirlineAnalysis.tsx # 航司表现
-│   │   ├── Module6DelayPropagation.tsx # 延误传导
-│   │   ├── Module7Attribution.tsx   # 延误归因
-│   │   └── Module8DataExplorer.tsx  # 数据探索
-│   ├── 📁 pages/                    # 页面组件
-│   │   ├── Dashboard.tsx
-│   │   └── LandingPage.tsx
-│   ├── 📁 types/                    # TypeScript 类型定义
-│   │   └── index.ts
-│   ├── App.tsx                      # 路由配置
-│   ├── index.css                    # 全局样式
-│   └── main.tsx                     # 应用入口
-│
-├── 📁 simple-server.mjs             # Express 后端服务
-├── 📁 package.json                  # Node.js 依赖
-├── 📁 tsconfig.json                 # TypeScript 配置
-├── 📁 vite.config.ts               # Vite 配置
-├── 📁 .env.example                  # 环境变量示例
-├── 📁 README.md                     # 项目说明文档
-└── 📁 使用说明.md                    # 中文使用说明
+  analysis_results/
+    full_journal_experiment/   Full-experiment metrics and summary tables
+    model_pilot/               Lightweight pilot metrics and figures
+    derived_analysis/          Calibration, top-k, risk-decile, and audit tables
+  data/                        Dashboard-ready JSON/RDS data artifacts
+  modeling_data/               Small constructed sample dataset for review
+  scripts/
+    download_flight_delay_datasets.py
+    build_delay_modeling_sample.py
+    run_advanced_model_pilot.py
+    run_full_journal_experiment.py
+    00_collect_multi_year_data.R ... 09_module8_explorer_full.R
+  src/                         React dashboard source code
+  simple-server.mjs            Node/Express API and static server
+  package.json                 Node scripts and dashboard dependencies
+  requirements.txt             Python modeling dependencies
+  DATA_AVAILABILITY.md         Data release and supplemental-upload notes
+  CODE_AVAILABILITY.md         Code inventory and reproducibility commands
 ```
 
----
+## Dataset Information
 
-## 🚀 快速开始
+### Included in this Repository
 
-### 环境要求
+| File or folder | Format | Purpose |
+| --- | --- | --- |
+| `modeling_data/bts_nyc_weather_sample_2024_01.csv` | CSV | Small constructed raw-data sample joining January 2024 BTS NYC flights with hourly IEM ASOS weather. Suitable for quick review and pilot reproduction. |
+| `modeling_data/bts_nyc_weather_sample_2024_01_summary.csv` | CSV | Summary of the included sample dataset. |
+| `data/module8/full_data_chunk_*.json` | JSON | Dashboard exploratory flight-level data chunks for the NYC prototype. |
+| `analysis_results/full_journal_experiment/*.csv` | CSV | Main model metrics, threshold-tuned metrics, and SHAP summaries. |
+| `analysis_results/derived_analysis/*.csv` | CSV | Calibration, risk-decile, threshold, top-k, and model-comparison tables used for manuscript reporting. |
 
-- **Node.js** >= 16.0
-- **R** >= 4.0（已安装在 `E:\R-4.5.2`）
-- **RStudio**（可选，已安装在 `E:\RStudio`）
-- **npm** 或 **yarn**
+### Large Constructed Dataset to Upload Separately
 
-### R 环境配置
+The full constructed modeling table is too large for ordinary GitHub review:
 
-#### 方法1：添加 R 到系统 PATH（推荐）
+- `modeling_data/full_2018_2025/flight_delay_features_2018_2025.parquet`
+- 38,298,113 rows
+- 40 U.S. origin airports
+- date range: 2018-01-01 to 2025-12-31
+- target rate: 0.1941
+- weather match rate: 0.9564
+- local size: about 1.77 GB
 
-运行项目根目录下的批处理脚本：
+This file should be deposited as a dataset in Figshare, Zenodo, or PeerJ
+Supplemental Files. Use a legend containing the words "raw data", for example:
+
+> Raw data - constructed full feature table for the 2018-2025 U.S. flight
+> delay risk-ranking experiment. The table joins BTS flight records with
+> hourly IEM ASOS weather, airport infrastructure, dynamic congestion, route
+> reliability, graph/network features, and the departure-delay target used in
+> the manuscript analysis.
+
+See `DATA_AVAILABILITY.md` for exact upload notes and suggested legends.
+
+## Code Information
+
+The core reproducibility scripts are:
+
+| Script | Description |
+| --- | --- |
+| `scripts/download_flight_delay_datasets.py` | Downloads public source datasets: BTS, IEM ASOS, OurAirports, OpenFlights, NOAA Storm Events, and Australia OTP. |
+| `scripts/build_delay_modeling_sample.py` | Builds the included January 2024 NYC BTS-weather sample. |
+| `scripts/run_advanced_model_pilot.py` | Runs a lightweight pilot experiment on the included sample. |
+| `scripts/run_full_journal_experiment.py` | Builds the full 2018-2025 feature table and trains/evaluates the main temporal experiment. |
+| `scripts/00_collect_multi_year_data.R` to `scripts/09_module8_explorer_full.R` | Builds the dashboard exploratory data artifacts. |
+| `simple-server.mjs` and `src/` | Runs the local dashboard/API prototype. |
+
+See `CODE_AVAILABILITY.md` for a fuller inventory.
+
+## Requirements
+
+### Python Modeling
+
+Use Python 3.11 or newer. Install the modeling dependencies with:
 
 ```bash
-setup_r_path.bat
+python -m pip install -r requirements.txt
 ```
 
-之后重新打开命令行窗口，即可直接使用 `Rscript` 命令。
+The full experiment uses pandas, numpy, scikit-learn, pyarrow, LightGBM,
+XGBoost, CatBoost, SHAP, NetworkX, matplotlib, torch, and tqdm. The exact
+versions used locally are listed in `requirements.txt`.
 
-#### 方法2：使用项目提供的脚本
+### Dashboard
 
-项目已配置好 R 路径，可以直接使用 npm 脚本：
-
-```bash
-# 运行所有 R 分析脚本
-npm run r:all
-
-# 仅运行数据准备
-npm run r:prepare
-
-# 仅运行模块8数据探索
-npm run r:module8
-```
-
-或使用批处理脚本：
-
-```bash
-# 运行所有分析
-run_r_analysis.bat all
-
-# 运行数据准备
-run_r_analysis.bat prepare
-
-# 运行模块8
-run_r_analysis.bat module8
-```
-
-### 1. 安装依赖
+Use Node.js 18 or newer, then install dependencies:
 
 ```bash
 npm install
 ```
 
-### 2. 生成分析数据
+### R Dashboard-Data Scripts
 
-**重要**：首次运行前必须生成数据！
+The dashboard data scripts require R 4.0 or newer and packages such as
+`dplyr`, `tidyr`, `jsonlite`, `nycflights13`, `lubridate`, and `DBI`.
+
+## Usage Instructions
+
+### 1. Reproduce the Small Sample Dataset
 
 ```bash
-# 方式1：使用 npm 脚本
-npm run r:all
-
-# 方式2：使用批处理脚本
-run_r_analysis.bat all
-
-# 方式3：如果已添加 R 到 PATH
-cd scripts
-Rscript run_all_analyses.R
+python scripts/download_flight_delay_datasets.py --bts-years 2024 --bts-months 1 --weather-years 2024 --weather-months 1 --stations JFK,EWR,LGA
+python scripts/build_delay_modeling_sample.py
 ```
 
-数据生成过程约需数分钟，将生成：
-- `data/flights_enriched.rds` - 预处理后的完整数据集（60个字段）
-- `data/module1/` ~ `data/module7/` - 各分析模块的结果数据
-- `data/module8/` - 静态发布用航班明细数据块
+Expected outputs:
 
-### 3. 构建/补齐本地数据库
+- `modeling_data/bts_nyc_weather_sample_2024_01.csv`
+- `modeling_data/bts_nyc_weather_sample_2024_01_summary.csv`
 
-本地开发服务会优先使用 `data/flights.sqlite` 完成筛选后的实时聚合；该文件超过 GitHub 单文件限制，因此不纳入版本管理。重新生成数据库：
+### 2. Run the Pilot Model Experiment
 
 ```bash
-npm run db:build
+python scripts/run_advanced_model_pilot.py
 ```
 
-如需尝试从 BTS TranStats 补齐到最新可用月份：
+Expected outputs are written to `analysis_results/model_pilot/`.
+
+### 3. Rebuild the Full Feature Table
+
+The full build requires the complete BTS and weather source files and enough
+disk space for a multi-GB parquet file:
 
 ```bash
-npm run db:build:latest
+python scripts/run_full_journal_experiment.py --stage build
 ```
 
-`db:build:latest` 使用 `.part` 临时文件下载，失败月份默认跳过并打印清单，可稍后重复运行续补。由于 BTS 下载在部分网络环境下会长时间超时，当前推荐先使用 `npm run db:build` 生成稳定的 `2013 + 2014` 本地数据库版本。
+Expected output:
 
-### 4. 启动开发服务器
+- `modeling_data/full_2018_2025/flight_delay_features_2018_2025.parquet`
+
+### 4. Run the Full Temporal Experiment
 
 ```bash
+python scripts/run_full_journal_experiment.py --stage train --fast-main-models --heavy-model-max-rows 500000 --shap-rows 6000
+```
+
+Expected outputs are written to `analysis_results/full_journal_experiment/`.
+The included CSV/JSON/PNG files are the lightweight result artifacts; the full
+validation/test prediction parquet files should be regenerated or deposited
+separately because they are large.
+
+### 5. Run the Dashboard Prototype
+
+```bash
+npm install
 npm run dev
 ```
 
-访问 http://localhost:3000
+Open `http://localhost:3000`.
 
----
-
-## 🧪 数据探索模块功能说明
-
-数据探索模块提供完整的 336,776 条航班数据查询与导出功能：
-
-### 🔍 筛选功能
-- **搜索框**：支持航班号、航司、航线关键词搜索（支持回车快速检索）
-- **航司筛选**：按航司代码筛选（显示航班数量）
-- **目的地筛选**：按到达机场筛选（显示航班数量）
-- **延误等级筛选**：准点/轻微/中度/严重（显示各等级数量）
-- **实时反馈**：显示命中记录数和检索状态
-
-### 📄 分页功能
-- **灵活页面大小**：支持每页显示 10/20/50/100/200 条记录
-- **页码跳转**：输入目标页码快速跳转到指定页面
-- **智能页码导航**：
-  - 少于7页时显示所有页码
-  - 超过7页时智能显示当前页附近的页码
-  - 始终显示首页和末页
-- **上一页/下一页**：逐页浏览数据
-- **记录统计**：实时显示当前页范围和总记录数
-
-### 📥 导出功能
-- **一键导出**：导出符合当前筛选条件的所有记录
-- **导出格式**：CSV（UTF-8 编码，支持中文）
-- **智能文件名**：自动包含筛选条件和时间戳
-- **导出状态**：实时显示导出进度
-
-### 💡 使用技巧
-1. 在搜索框输入关键词后按回车键快速检索
-2. 使用多个筛选条件组合可以精确定位目标数据
-3. 点击"重置"按钮可一键清除所有筛选条件
-4. 导出的 CSV 文件可直接在 Excel 中打开分析
-
----
-
-## 📈 技术栈
-
-| 类别 | 技术 |
-|------|------|
-| 数据处理 | R, dplyr, tidyr, jsonlite |
-| 后端服务 | Node.js, Express |
-| 前端框架 | React 18, TypeScript |
-| 路由 | React Router v6 |
-| 样式 | Tailwind CSS |
-| 图表 | Apache ECharts, echarts-for-react |
-| 图标 | Lucide React |
-
----
-
-## 📝 航班延误等级说明
-
-| 等级 | 标准 | 颜色标识 |
-|------|------|----------|
-| 准点 | 延误 ≤ 0 分钟 | 绿色 |
-| 轻微 | 0 < 延误 ≤ 15 分钟 | 青色 |
-| 中度 | 15 < 延误 ≤ 60 分钟 | 黄色 |
-| 严重 | 延误 > 60 分钟 | 红色 |
-
----
-
-## 📜 许可证
-
-MIT License - 详见 LICENSE 文件
-
----
-
-## 🙏 致谢
-
-- 数据来源：[nycflights13](https://github.com/hadley/nycflights13) - R 语言的经典航班数据集
-- 图表库：[Apache ECharts](https://echarts.apache.org/)
-- 图标：[Lucide](https://lucide.dev/)
-
----
-
-## GitHub Pages 部署
-
-项目已支持 GitHub Pages 静态部署，发布前可先运行：
+For a static build:
 
 ```bash
-npm run deploy:check
+npm run build
 ```
 
-推送到 `main` 分支后，`.github/workflows/deploy-pages.yml` 会自动构建并发布 `dist/`。首次使用或域名异常时，请在仓库 `Settings -> Pages` 中确认：
+## Methodology Summary
 
-- `Build and deployment -> Source` 设置为 `GitHub Actions`
-- `Custom domain` 设置为 `flight.cian.fun`
+1. Download public flight, weather, airport, runway, route, and optional
+   severe-weather datasets.
+2. Join scheduled flights with hourly origin-airport weather observations.
+3. Engineer schedule, cyclic time, airport congestion, rolling-delay,
+   carrier-origin, route reliability, runway-capacity proxy, and graph/network
+   features.
+4. Define the binary target as departure delay of at least 15 minutes.
+5. Split chronologically into 2018-2023 training, 2024 validation, and 2025
+   test sets.
+6. Compare linear, gradient-boosting, tree-ensemble, neural tabular, and
+   stacked models.
+7. Evaluate ranking, threshold-tuned warning, calibration, top-k capture,
+   risk deciles, and feature importance.
+8. Use the dashboard as a decision-support and audit prototype.
 
-线上排查可运行：
+## Citation and Data Sources
 
-```bash
-npm run deploy:diagnose
-```
+Please cite the public data providers if this repository is reused:
 
-更完整说明见 [docs/deployment-github-pages.md](docs/deployment-github-pages.md)。
+- U.S. Bureau of Transportation Statistics, Airline On-Time Performance Data:
+  https://transtats.bts.gov/
+- Iowa Environmental Mesonet ASOS/METAR archive:
+  https://mesonet.agron.iastate.edu/request/download.phtml
+- OurAirports data:
+  https://ourairports.com/data/
+- OpenFlights data:
+  https://openflights.org/data.php
+- NOAA Storm Events Database:
+  https://www.ncei.noaa.gov/products/storm-events
+- Australian Government domestic airline on-time performance dataset:
+  https://data.gov.au/
+- nycflights13 R package:
+  https://github.com/hadley/nycflights13
 
----
+## License and Contributions
 
-<div align="center">
+Code is released under the MIT License; see `LICENSE`.
 
-**Made with ❤️ for data analytics**
-
-</div>
+For peer review, please open an issue or contact the corresponding author
+listed in the PeerJ submission system before submitting changes. Author names,
+affiliations, funding, grant disclosures, and competing-interest declarations
+must be kept accurate in the PeerJ submission system.

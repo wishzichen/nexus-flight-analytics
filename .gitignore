@@ -2,6 +2,8 @@ node_modules/
 build/
 dist/
 coverage/
+__pycache__/
+*.py[cod]
 .DS_Store
 *.log
 .env*
@@ -11,3 +13,10 @@ data/flights.sqlite-wal
 data/flights.sqlite
 data/raw_multi_year/bts_cache/*.zip
 data/raw_multi_year/bts_cache/*.part
+external_datasets/
+modeling_data/full_2018_2025/
+analysis_results/full_journal_experiment/*.parquet
+analysis_results/full_journal_experiment/*.pkl
+analysis_results/full_journal_experiment/*.joblib
+analysis_results/model_pilot/*.pkl
+analysis_results/model_pilot/*.joblib

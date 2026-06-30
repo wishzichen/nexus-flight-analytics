@@ -1,0 +1,12 @@
+{
+  "rows": 32347,
+  "train_rows": 18404,
+  "validation_rows": 6392,
+  "test_rows": 7551,
+  "target_rate_train": 0.2260921538795914,
+  "target_rate_validation": 0.2000938673341677,
+  "target_rate_test": 0.13852469871540193,
+  "best_test_model_by_pr_auc": "RandomForest",
+  "best_test_pr_auc": 0.22597821394042394,
+  "best_sklearn_for_importance": "RandomForest"
+}

@@ -1,0 +1,5 @@
+model,threshold,setting,tn,fp,fn,tp
+Stacked_Ensemble,0.5,default,2657401,1266687,364326,771074
+XGBoost,0.5,default,2506563,1417525,326347,809053
+XGBoost,0.56,validation_tuned,2891728,1032360,432117,703283
+LightGBM,0.56,validation_tuned,2867169,1056919,439756,695644

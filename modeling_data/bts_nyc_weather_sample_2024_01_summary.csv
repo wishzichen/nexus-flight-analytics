@@ -1,0 +1,8 @@
+metric,value
+rows,32347.0
+origins,3.0
+destinations,105.0
+weather_match_rate,0.9641697839057718
+departure_delay_15_rate,0.20051318514854546
+arrival_delay_15_rate,0.20688162735338672
+cancel_or_divert_rate,0.05076204903082202
