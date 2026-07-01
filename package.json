@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node simple-server.mjs",
     "vite": "vite",
+    "prebuild": "node scripts/build_static_analysis_cache.mjs",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
     "lint": "tsc --noEmit",

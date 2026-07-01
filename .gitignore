@@ -11,6 +11,7 @@ __pycache__/
 data/flights.sqlite-shm
 data/flights.sqlite-wal
 data/flights.sqlite
+data/module8/default_2013_*.json
 data/raw_multi_year/bts_cache/*.zip
 data/raw_multi_year/bts_cache/*.part
 external_datasets/

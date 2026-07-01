@@ -40,7 +40,18 @@ export function cachedJson<T = any>(url: string): Promise<T> {
       url,
       fetch(url)
         .then(async (response) => {
-          if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+          if (!response.ok) {
+            let detail = '';
+            try {
+              const payload = await response.clone().json();
+              detail = String(payload?.error || payload?.message || payload?.code || '');
+            } catch {
+              detail = await response.text().catch(() => '');
+            }
+
+            const suffix = detail ? `: ${detail.slice(0, 240)}` : '';
+            throw new Error(`HTTP ${response.status}${suffix}`);
+          }
           return response.json();
         })
         .catch((error) => {
@@ -66,11 +77,6 @@ export function preloadDashboardData() {
   DASHBOARD_PRELOAD_URLS.forEach((url, index) => {
     window.setTimeout(() => preloadJson(url), index * 35);
   });
-
-  window.setTimeout(
-    () => preloadExplorerAndEdaData(),
-    DASHBOARD_PRELOAD_URLS.length * 35 + 250,
-  );
 }
 
 export function preloadExplorerAndEdaData() {

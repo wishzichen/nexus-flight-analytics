@@ -63,6 +63,9 @@ if (!fs.existsSync(distDir)) {
     'data/module3/route_analysis.json',
     'data/module8/full_first_page.json',
     'data/module8/full_summary.json',
+    'data/module8/default_2013_analysis.json',
+    'data/module8/default_2013_eda_zh.json',
+    'data/module8/default_2013_eda_en.json',
   ];
 
   for (const relativePath of requiredDataFiles) {

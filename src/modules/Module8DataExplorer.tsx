@@ -73,6 +73,7 @@ export default function Module8DataExplorer() {
   const [flightList, setFlightList] = useState<Flight[]>([]);
   const [totalRecords, setTotalRecords] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [searchError, setSearchError] = useState<string | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
   const [jumpPageInput, setJumpPageInput] = useState('');
   const [exporting, setExporting] = useState(false);
@@ -115,6 +116,7 @@ export default function Module8DataExplorer() {
 
   const searchFlights = useCallback(async (filters: typeof appliedFilters, pageNum: number, size: number) => {
     setLoading(true);
+    setSearchError(null);
     setHasSearched(true);
     try {
       const params = new URLSearchParams({
@@ -133,10 +135,11 @@ export default function Module8DataExplorer() {
       console.error('Flight search failed:', error);
       setFlightList([]);
       setTotalRecords(0);
+      setSearchError(error instanceof Error ? error.message : (language === 'zh' ? '检索失败' : 'Search failed'));
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     searchFlights(DEFAULT_FILTERS, 1, DEFAULT_PAGE_SIZE);
@@ -342,6 +345,11 @@ export default function Module8DataExplorer() {
             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-slate-900/50 px-2.5 py-1">
               <Loader2 className="h-3.5 w-3.5 animate-spin" />
               {t('status.loadingData')}
+            </span>
+          )}
+          {searchError && (
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-red-500/20 bg-red-500/10 px-2.5 py-1 text-red-300">
+              {searchError}
             </span>
           )}
           </div>

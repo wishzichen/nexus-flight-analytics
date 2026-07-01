@@ -94,6 +94,11 @@ const DEFAULT_YEAR = '2013';
 const DEFAULT_CHUNK_SIZE = 50000;
 const DEFAULT_EDA_ROWS = 50000;
 const MAX_EDA_ROWS = 400000;
+const DEFAULT_ANALYSIS_CACHE_FILE = `module8/default_${DEFAULT_YEAR}_analysis.json`;
+const DEFAULT_EDA_CACHE_FILES: Record<string, string> = {
+  zh: `module8/default_${DEFAULT_YEAR}_eda_zh.json`,
+  en: `module8/default_${DEFAULT_YEAR}_eda_en.json`,
+};
 const jsonCache = new Map<string, Promise<unknown>>();
 
 declare global {
@@ -160,6 +165,10 @@ function hasOnlyDefaultYear(filters: Record<string, string[]>): boolean {
       .every((key) => !filters[key]?.length);
 }
 
+function normalizeDefaultFilters(filters: Record<string, string[]>): Record<string, string[]> {
+  return hasAnyInteractiveFilter(filters) ? filters : { ...filters, years: [DEFAULT_YEAR] };
+}
+
 function resolveEdaRequest(params: URLSearchParams) {
   const requestedFullLoad = (params.get('limit') || '').toLowerCase() === 'all';
   const filters = parseInteractiveFilters(params);
@@ -177,6 +186,11 @@ function resolveEdaRequest(params: URLSearchParams) {
 
 function hasExplorerFilters(params: URLSearchParams): boolean {
   return ['q', 'airline', 'destination', 'delayLevel'].some((key) => (params.get(key) || '').trim());
+}
+
+function isDefaultYearOnlyParams(params: URLSearchParams): boolean {
+  const filters = normalizeDefaultFilters(parseInteractiveFilters(params));
+  return hasOnlyDefaultYear(filters);
 }
 
 function asText(value: unknown): string {
@@ -267,12 +281,14 @@ async function loadFirstPage(nativeFetch: typeof fetch): Promise<FlightRecord[]>
   return loadArray('module8/first_page.json', nativeFetch);
 }
 
-async function loadAllFlights(nativeFetch: typeof fetch): Promise<FlightRecord[]> {
-  const { chunkCount } = await loadModule8ChunkInfo(nativeFetch);
-  const chunks = await Promise.all(
-    Array.from({ length: chunkCount }, (_, index) => loadChunk(index + 1, nativeFetch)),
-  );
-  return chunks.flat();
+async function loadDefaultAnalysisCache(nativeFetch: typeof fetch): Promise<Record<string, any> | null> {
+  const cache = await loadJson(DEFAULT_ANALYSIS_CACHE_FILE, nativeFetch).catch(() => null);
+  return cache && typeof cache === 'object' ? cache as Record<string, any> : null;
+}
+
+async function loadDefaultEdaCache(language: string, nativeFetch: typeof fetch): Promise<Record<string, any> | null> {
+  const cache = await loadJson(DEFAULT_EDA_CACHE_FILES[language] || DEFAULT_EDA_CACHE_FILES.zh, nativeFetch).catch(() => null);
+  return cache && typeof cache === 'object' ? cache as Record<string, any> : null;
 }
 
 async function loadUnfilteredRange(startIndex: number, endIndex: number, nativeFetch: typeof fetch) {
@@ -295,6 +311,58 @@ async function loadUnfilteredRange(startIndex: number, endIndex: number, nativeF
   }
 
   return rows;
+}
+
+async function collectMatchingFlights(
+  params: URLSearchParams,
+  nativeFetch: typeof fetch,
+  options: { mode: 'all' } | { mode: 'page'; start: number; end: number },
+): Promise<{ rows: FlightRecord[]; total: number }> {
+  const { chunkCount } = await loadModule8ChunkInfo(nativeFetch);
+  const rows: FlightRecord[] = [];
+  let total = 0;
+
+  for (let chunkNumber = 1; chunkNumber <= chunkCount; chunkNumber += 1) {
+    const chunk = await loadChunk(chunkNumber, nativeFetch);
+
+    for (const flight of chunk) {
+      if (!matchesExplorerFlight(flight, params)) continue;
+
+      if (options.mode === 'all') {
+        rows.push(flight);
+      } else if (total >= options.start && total < options.end) {
+        rows.push(flight);
+      }
+
+      total += 1;
+    }
+  }
+
+  return { rows, total };
+}
+
+async function collectFilteredFlights(
+  filters: Record<string, string[]>,
+  nativeFetch: typeof fetch,
+  limit: number | null,
+): Promise<{ rows: FlightRecord[]; total: number }> {
+  const { chunkCount } = await loadModule8ChunkInfo(nativeFetch);
+  const rows: FlightRecord[] = [];
+  let total = 0;
+
+  for (let chunkNumber = 1; chunkNumber <= chunkCount; chunkNumber += 1) {
+    const chunk = await loadChunk(chunkNumber, nativeFetch);
+    const filtered = filterFlights(chunk, filters);
+    total += filtered.length;
+
+    if (limit === null) {
+      rows.push(...filtered);
+    } else if (rows.length < limit) {
+      rows.push(...filtered.slice(0, limit - rows.length));
+    }
+  }
+
+  return { rows, total };
 }
 
 async function handleSimpleEndpoint(pathname: string, nativeFetch: typeof fetch): Promise<Response | null> {
@@ -353,14 +421,18 @@ async function handleModule8Search(url: URL, nativeFetch: typeof fetch): Promise
     return jsonResponse({ data: rows, total, page, pageSize, totalPages: Math.ceil(total / pageSize) });
   }
 
-  const allFlights = await loadAllFlights(nativeFetch);
-  const filtered = allFlights.filter((flight) => matchesExplorerFlight(flight, params));
+  const filtered = await collectMatchingFlights(params, nativeFetch, {
+    start,
+    end,
+    mode: 'page',
+  });
+
   return jsonResponse({
-    data: filtered.slice(start, end),
-    total: filtered.length,
+    data: filtered.rows,
+    total: filtered.total,
     page,
     pageSize,
-    totalPages: Math.ceil(filtered.length / pageSize),
+    totalPages: Math.ceil(filtered.total / pageSize),
   });
 }
 
@@ -388,8 +460,8 @@ async function handleModule8Export(url: URL, nativeFetch: typeof fetch): Promise
     const endPage = mode === 'range' ? toPositiveInt(params.get('endPage'), startPage) : page;
     rows = await loadUnfilteredRange((startPage - 1) * pageSize, endPage * pageSize, nativeFetch);
   } else {
-    const allFlights = await loadAllFlights(nativeFetch);
-    rows = hasExplorerFilters(params) ? allFlights.filter((flight) => matchesExplorerFlight(flight, params)) : allFlights;
+    const collection = await collectMatchingFlights(params, nativeFetch, { mode: 'all' });
+    rows = collection.rows;
 
     if (mode === 'current') {
       const start = (page - 1) * pageSize;
@@ -406,9 +478,19 @@ async function handleModule8Export(url: URL, nativeFetch: typeof fetch): Promise
 }
 
 async function handleInteractiveAnalysis(url: URL, nativeFetch: typeof fetch): Promise<Response> {
-  const allFlights = await loadAllFlights(nativeFetch);
-  const filters = parseInteractiveFilters(url.searchParams);
-  return jsonResponse(buildInteractiveAnalysis(allFlights, filters));
+  const filters = normalizeDefaultFilters(parseInteractiveFilters(url.searchParams));
+
+  if (isDefaultYearOnlyParams(url.searchParams)) {
+    const cache = await loadDefaultAnalysisCache(nativeFetch);
+    if (cache?.analysis) return jsonResponse(cache.analysis);
+  }
+
+  const filtered = await collectFilteredFlights(filters, nativeFetch, null);
+  return jsonResponse({
+    ...buildInteractiveAnalysis(filtered.rows, {}),
+    filters,
+    source: 'static-json',
+  });
 }
 
 async function handleEdaRows(url: URL, nativeFetch: typeof fetch): Promise<Response> {
@@ -417,6 +499,18 @@ async function handleEdaRows(url: URL, nativeFetch: typeof fetch): Promise<Respo
   const { filters, limit, requestedFullLoad } = resolveEdaRequest(params);
 
   if (hasOnlyDefaultYear(filters)) {
+    const cachedPayload = await loadDefaultEdaCache(language, nativeFetch);
+    if (cachedPayload && limit <= DEFAULT_EDA_ROWS && !requestedFullLoad) {
+      return jsonResponse({
+        ...cachedPayload,
+        rows: cachedPayload.rows.slice(0, limit),
+        loaded: Math.min(cachedPayload.loaded, limit),
+        limit,
+        requestedFullLoad,
+        filters,
+      });
+    }
+
     const total = await loadYearTotal(DEFAULT_YEAR, nativeFetch) || await loadTotalRecords(nativeFetch);
     const rows = (await loadUnfilteredRange(0, Math.min(limit, total), nativeFetch))
       .map((row: any) => projectFlightRow(row));
@@ -434,17 +528,16 @@ async function handleEdaRows(url: URL, nativeFetch: typeof fetch): Promise<Respo
     });
   }
 
-  const allFlights = await loadAllFlights(nativeFetch);
-  const filtered = filterFlights(allFlights, filters);
-  const rows = filtered.slice(0, limit).map((row: any) => projectFlightRow(row));
+  const filtered = await collectFilteredFlights(filters, nativeFetch, limit);
+  const rows = filtered.rows.map((row: any) => projectFlightRow(row));
 
   return jsonResponse({
     rows,
     fields: getLocalizedFields(language),
-    total: filtered.length,
+    total: filtered.total,
     loaded: rows.length,
     limit,
-    sampled: filtered.length > rows.length,
+    sampled: filtered.total > rows.length,
     requestedFullLoad,
     filters,
     source: 'static-json',
